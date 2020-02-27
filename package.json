@@ -25,8 +25,10 @@
     "contentful-import": "^7.7.0",
     "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-react": "^7.18.3",
     "gh-pages": "^2.2.0",
+    "husky": "^4.2.3",
     "prettier": "^1.19.1"
   },
   "homepage": "https://github.com/contentful-userland/gatsby-contentful-starter#readme",
@@ -41,18 +43,14 @@
     "url": "git+https://github.com/contentful-userland/gatsby-contentful-starter.git"
   },
   "scripts": {
-    "dev": "npm run develop",
-    "develop": "gatsby develop",
     "lint": "eslint --ext .js,.jsx --ignore-path .gitignore .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "prettier --write \"**/*.+(js|json)\"",
+    "prettier": "prettier --ignore-path .gitignore '**/*.+(js)'",
+    "format": "npm run prettier -- --write",
+    "check-format": "npm run prettier -- --list-different",
+    "validate": "npm run check-format",
     "build": "gatsby build",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",
-    "fix-semi": "eslint --quiet --ignore-pattern node_modules --ignore-pattern public --parser babel-eslint --no-eslintrc --rule '{\"semi\": [2, \"never\"], \"no-extra-semi\": [2]}' --fix *.js bin/*.js",
-    "postinstall": "node ./bin/hello.js",
-    "setup": "node ./bin/setup.js",
-    "start": "npm run develop",
-    "heroku-postbuild": "gatsby build",
-    "cleanup-repository": "rimraf bin contentful && yarn remove contentful-import chalk inquirer rimraf "
+    "start": "gatsby develop"
   }
 }

@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-undef
 require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV}`
+  path: `.env.${process.env.NODE_ENV}`,
 })
 
 const contentfulConfig = {
@@ -8,13 +8,13 @@ const contentfulConfig = {
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
 }
 
-const { spaceId, accessToken } = contentfulConfig
+const {spaceId, accessToken} = contentfulConfig
 
 console.log(accessToken)
 
 if (!spaceId || !accessToken) {
   throw new Error(
-    'Contentful spaceId and the access token need to be provided.'
+    'Contentful spaceId and the access token need to be provided.',
   )
 }
 
@@ -32,6 +32,6 @@ module.exports = {
     {
       resolve: 'gatsby-source-contentful',
       options: contentfulConfig,
-    }
+    },
   ],
 }
