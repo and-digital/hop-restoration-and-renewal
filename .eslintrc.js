@@ -3,7 +3,6 @@ module.exports = {
     browser: true,
     es6: true,
   },
-  plugins: ['react'],
   globals: {
     graphql: false,
     process: false,
@@ -16,5 +15,9 @@ module.exports = {
       jsx: true,
     },
   },
-  extends: ['eslint:recommended', 'eslint-config-prettier'],
+  extends: [
+    'eslint:recommended',
+    'eslint-config-prettier',
+    'plugin:react/recommended',
+  ],
 }
