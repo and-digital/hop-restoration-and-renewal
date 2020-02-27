@@ -8,6 +8,7 @@ module.exports = {
   ],
   "globals": {
     "graphql": false,
+    "process": false
   },
   "parserOptions": {
     "sourceType": "module",
@@ -16,5 +17,6 @@ module.exports = {
       "experimentalObjectRestSpread": true,
       "jsx": true,
     },
-  }
+  },
+  "extends": ["eslint:recommended"]
 }

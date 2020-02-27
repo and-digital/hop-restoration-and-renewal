@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-undef
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`
 })
@@ -17,6 +18,7 @@ if (!spaceId || !accessToken) {
   )
 }
 
+// eslint-disable-next-line no-undef
 module.exports = {
   siteMetadata: {
     title: 'Gatsby Contentful starter',
