@@ -1,82 +1,117 @@
-# gatsby-contentful-starter
+# Restoration & Renewal - Houses of Parliament
 
-Gatsby [Contentful](https://www.contentful.com) starter for creating a blog
+## VSCode settings
 
-![The index page of the starter blog](https://rawgit.com/contentful-userland/gatsby-contentful-starter/master/screenshot.jpg "The index page of the starter blog")
+If you want to take advantage of the built in features of VSCode then follow
+along:
 
-Static sites are scalable, secure and have very little required maintenance. They come with a drawback though. Not everybody feels good editing files, building a project and uploading it somewhere. This is where Contentful comes into play.
+- Install Eslint exstension
+- Install Prettier extension
 
-With Contentful and Gatsby you can connect your favorite static site generator with an API that provides an easy to use interface for people writing content and automate the publishing using services like [Travis CI](https://travis-ci.org/) or [Netlify](https://www.netlify.com/).
-
-## Features
-
-* Simple content model and structure. Easy to adjust to your needs.
-* Contentful integration using our [Sync API](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/synchronization/initial-synchronization-of-entries-of-a-specific-content-type)
-* Using our [Delivery API](https://www.contentful.com/developers/docs/references/content-delivery-api/).
-* Responsive/adaptive images via [gatsby-image](https://www.gatsbyjs.org/packages/gatsby-image/)
-
-## Contribution
-
-This project is part of [contentful-userland](https://github.com/contentful-userland) which means that we’re always open to contributions **and you can be part of userland and shape the project yourself after your first merged pull request**. You can learn more about how contentful userland is organized by visiting [our about repository](https://github.com/contentful-userland/about).
-
-## Requirements
-
-To use this project you have to have a Contentful account. If you don't have one yet you can register at [www.contentful.com/sign-up](https://www.contentful.com/sign-up/).
-
-## Getting started
-
-Install [Yarn](https://yarnpkg.com/en/docs/install) (if you haven't already).
-
-### Get the source code and install dependencies.
+Go to settings, select code visualization and add those two lines
 
 ```
-$ git clone git@github.com:contentful-userland/gatsby-contentful-starter.git
-$ yarn install
+"editor.defaultFormatter": "esbenp.prettier-vscode", // format code with prettier
+"editor.formatOnSave": true // format code authomatically on save
 ```
 
-Or use the [Gatsby CLI](https://www.npmjs.com/package/gatsby-cli).
+## Installation
 
 ```
-$ gatsby new contentful-starter https://github.com/contentful-userland/gatsby-contentful-starter
+npm i
 ```
 
-### Set up of the needed content model and create a configuration file
+Create a `.env` file at root level and add those two lines
 
-This project comes with a Contentful setup command `yarn run setup`.
+```
+CONTENTFUL_SPACE_ID=
+CONTENTFUL_ACCESS_TOKEN=
+```
 
-![Command line dialog of the yarn run setup command](https://rawgit.com/contentful-userland/gatsby-contentful-starter/master/setup.jpg "Command line dialog of the yarn run setup command")
+Log in Contentful, go to the Restoration & Renewal - HoP space, from the header
+menu select `Settings` and from the dropdown menu select `API Keys`
 
-This command will ask you for a space ID, and access tokens for the Contentful Management and Delivery API and then import the needed content model into the space you define and write a config file (`./contentful.json`).
+Click the `Main` API key link and you should see a page with
 
-`yarn run setup` automates that for you but if you want to do it yourself rename `.contentful.json.sample` to `.contentful.json` and add your configuration in this file.
+- SpaceID
+- Content Delivery API - access token
 
-## Crucial Commands
+Copy and paste those values in the `.env` file
 
-This project comes with a few handy commands for linting and code fixing. The most important ones are the ones to develop and ship code. You can find the most important commands below.
+Now you're good to go
 
-### `yarn run dev`
+## Local development
 
-Run in the project locally.
+Launch the local dev server with hot reload (http://localhost:8000)
 
-### `yarn run build`
+```
+npm start
+```
 
-Run a production build into `./public`. The result is ready to be put on any static hosting you prefer.
+This will pull down content from Contentful and build a local version of the
+website
 
-### `yarn run deploy`
+Every time you update content in Contentful you have to restart the local
+environment
 
-Run a production build into `./public` and publish the site to GitHub pages.
+## Git hooks
 
-### `yarn run cleanup-repository`
+Every time you commit, there's going to be a `pre-commit` hook which will run an
+health check which include:
 
-Removes all dependencies, scripts and data from the installation script.
+- eslint
+- prettier
+- test
+- build
 
-## Roadmap
+If all of those are green, the commit will succede, otherwise you'll receive an
+error, which could either be:
 
-- [x] [make the starter completely responsive](https://github.com/contentful-userland/gatsby-contentful-starter/issues/2)
-- [ ] [include tags](https://github.com/contentful-userland/gatsby-contentful-starter/issues/3)
-- [x] [support traced placeholders](https://github.com/contentful-userland/gatsby-contentful-starter/issues/4)
-- [ ] [add i18n](https://github.com/contentful-userland/gatsby-contentful-starter/issues/6)
+- linting error
+- failing test
+- build failure
 
-## Other resources
+After everything is fixed, try to commit again and hopefully it's going to work!
 
-- Tutorial video series ["Building a blazing fast website with GatsbyJS and Contentful"](https://www.youtube.com/watch?v=Ek4o40w1tH4&list=PL8KiuH6vpACV-F7jXribe4YveGBhBeG9A) by @Khaledgarbaya
+## Scripts
+
+This project comes with scripts for repetitive processes (such as creating a
+component) in order to standardize it and reduce errors
+
+### Components
+
+```
+npm run create-component `ComponentName`
+```
+
+Creates a React component within `src/components` with this structure:
+
+```
+ComponentName/
+  tests/
+    ComponentName.test.js
+  ComponentName.js
+  index.js
+```
+
+Each component will be exposes through the `index.js` and comes with its own
+unit test file
+
+### Hooks
+
+```
+npm run create-hook `hookName`
+```
+
+Creates a React hook within `src/hooks` with this structure:
+
+```
+hook/
+  tests/
+    hook.test.js
+  hook.js
+  index.js
+```
+
+Each hook will be exposes through the `index.js` and comes with its own unit
+test file
