@@ -52,6 +52,7 @@
     "validate": "npm run check-format",
     "build": "gatsby build",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",
-    "start": "gatsby develop"
+    "start": "gatsby develop",
+    "generate-component": "node ./scripts/createComponent.js"
   }
 }
