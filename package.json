@@ -21,14 +21,21 @@
     "sharp": "^0.24.1"
   },
   "devDependencies": {
+    "@testing-library/react": "^9.4.1",
+    "@testing-library/react-hooks": "^3.2.1",
     "babel-eslint": "^10.1.0",
+    "babel-jest": "^25.1.0",
+    "babel-preset-gatsby": "^0.2.29",
     "contentful-import": "^7.7.0",
     "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-jest": "^23.8.0",
     "eslint-plugin-react": "^7.18.3",
     "gh-pages": "^2.2.0",
     "husky": "^4.2.3",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^25.1.0",
     "lint-staged": "^10.0.8",
     "prettier": "^1.19.1"
   },
@@ -44,12 +51,10 @@
     "url": "git+https://github.com/contentful-userland/gatsby-contentful-starter.git"
   },
   "scripts": {
+    "test": "jest --watch",
     "lint": "eslint --ext .js,.jsx --ignore-path .gitignore .",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "prettier": "prettier --ignore-path .gitignore '**/*.+(js)'",
     "format": "npm run prettier -- --write",
-    "check-format": "npm run prettier -- --list-different",
-    "validate": "npm run check-format",
     "build": "gatsby build",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",
     "start": "gatsby develop",

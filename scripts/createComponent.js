@@ -11,7 +11,7 @@ const $CNAME = () => (
 
 export default $CNAME;`
 const componentTestTemplate = `import React from 'react';
-import { render } from 'testing-library/react';
+import { render } from '@testing-library/react';
 
 import $CNAME from '../$CNAME';
 it('should render the component', () => {

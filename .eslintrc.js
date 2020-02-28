@@ -2,8 +2,11 @@ module.exports = {
   env: {
     browser: true,
     es6: true,
+    'jest/globals': true,
   },
   globals: {
+    module: true,
+    require: true,
     graphql: false,
     process: false,
   },
@@ -19,5 +22,6 @@ module.exports = {
     'eslint:recommended',
     'eslint-config-prettier',
     'plugin:react/recommended',
+    'plugin:jest/recommended',
   ],
 }
