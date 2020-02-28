@@ -8,6 +8,8 @@ const generateComponentContext = (dir, fName) => {
   }
   const createDir = fName => fs.mkdirSync(`${COMPONENTS_DIR}/${fName}`)
   const createTestDir = fName => fs.mkdirSync(`${COMPONENTS_DIR}/${fName}/test`)
+  const createStoriesDir = fName =>
+    fs.mkdirSync(`${COMPONENTS_DIR}/${fName}/stories`)
 
   const replaceInTemplate = template => needle =>
     template.replace(/\$CNAME/g, needle).replace(/\$FNAME/g, needle)
@@ -26,19 +28,29 @@ const generateComponentContext = (dir, fName) => {
       'utf8',
     )
 
-  const generateWriteTest = fName => template =>
-    fs.writeFileSync(
+  const generateWriteTest = fName => template => {
+    createTestDir(fName)
+    return fs.writeFileSync(
       `${COMPONENTS_DIR}/${fName}/test/${fName}.test.js`,
       replaceInTemplate(template)(fName),
       'utf8',
     )
+  }
+  const generateWriteStories = fName => template => {
+    createStoriesDir(fName)
+    return fs.writeFileSync(
+      `${COMPONENTS_DIR}/${fName}/stories/${fName}.stories.js`,
+      replaceInTemplate(template)(fName),
+      'utf8',
+    )
+  }
   createDir(fName)
-  createTestDir(fName)
 
   return {
     writeComponent: generateWriteComponent(fName),
     writeIndex: generateWriteIndex(fName),
     writeTest: generateWriteTest(fName),
+    writeStories: generateWriteStories(fName),
   }
 }
 

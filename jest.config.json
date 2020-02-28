@@ -12,7 +12,10 @@
     "__PATH_PREFIX__": ""
   },
   "setupFiles": ["<rootDir>/loadershim.js"],
-  "collectCoverageFrom": ["<rootDir>/src/**/*.js"],
+  "collectCoverageFrom": [
+    "<rootDir>/src/**/*.js",
+    "!<rootDir>/src/**/*.stories.js"
+  ],
   "coverageThreshold": {
     "global": {
       "branches": 90,

@@ -3,20 +3,20 @@ const {generateComponentContext} = require('./utils')
 const fName = process.argv[2]
 
 const indexTemplate = `export { default } from './$CNAME'`
-const componentTemplate = `import React from 'react';
+const componentTemplate = `import React from 'react'
 
 const $CNAME = () => (
   <div>$CNAME page</div>
 );
 
 export default $CNAME;`
-const componentTestTemplate = `import React from 'react';
-import { render } from '@testing-library/react';
+const componentTestTemplate = `import React from 'react'
+import { render } from '@testing-library/react'
 
-import $CNAME from '../$CNAME';
+import $CNAME from '../$CNAME'
 it('should render the page', () => {
-  const wrapper = render(<$CNAME />);
-  expect(false).toEqual(true);
+  const wrapper = render(<$CNAME />)
+  expect(false).toEqual(true)
 });`
 
 const {writeComponent, writeIndex, writeTest} = generateComponentContext(

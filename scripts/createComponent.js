@@ -10,20 +10,31 @@ const $CNAME = () => (
 );
 
 export default $CNAME;`
-const componentTestTemplate = `import React from 'react';
-import { render } from '@testing-library/react';
+const componentStoryTemplate = `
+import React from 'react'
+import $CNAME from '../$CNAME'
 
-import $CNAME from '../$CNAME';
+export default { title: '$CNAME' }
+
+export const withProps = () => <$CNAME />
+`
+const componentTestTemplate = `import React from 'react'
+import { render } from '@testing-library/react'
+
+import $CNAME from '../$CNAME'
 it('should render the component', () => {
-  const wrapper = render(<$CNAME />);
-  expect(false).toEqual(true);
-});`
+  const wrapper = render(<$CNAME />)
+  expect(false).toEqual(true)
+})`
 
-const {writeComponent, writeIndex, writeTest} = generateComponentContext(
-  '../src/components',
-  fName,
-)
+const {
+  writeComponent,
+  writeIndex,
+  writeTest,
+  writeStories,
+} = generateComponentContext('../src/components', fName)
 
 writeComponent(componentTemplate)
 writeIndex(indexTemplate)
 writeTest(componentTestTemplate)
+writeStories(componentStoryTemplate)

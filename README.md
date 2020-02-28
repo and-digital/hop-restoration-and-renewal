@@ -1,20 +1,5 @@
 # Restoration & Renewal - Houses of Parliament
 
-## VSCode settings
-
-If you want to take advantage of the built in features of VSCode then follow
-along:
-
-- Install Eslint exstension
-- Install Prettier extension
-
-Go to settings, select code visualization and add those two lines
-
-```
-"editor.defaultFormatter": "esbenp.prettier-vscode", // format code with prettier
-"editor.formatOnSave": true // format code authomatically on save
-```
-
 ## Installation
 
 ```
@@ -54,6 +39,14 @@ website
 Every time you update content in Contentful you have to restart the local
 environment
 
+## Storybook
+
+Launch the Storybook for isolated components development
+
+```
+npm run storybook
+```
+
 ## Git hooks
 
 Every time you commit, there's going to be a `pre-commit` hook which will run an
@@ -72,6 +65,21 @@ error, which could either be:
 - build failure
 
 After everything is fixed, try to commit again and hopefully it's going to work!
+
+## VSCode settings
+
+If you want to take advantage of the built in features of VSCode then follow
+along:
+
+- Install Eslint exstension
+- Install Prettier extension
+
+Go to settings, select code visualization and add those two lines
+
+```
+"editor.defaultFormatter": "esbenp.prettier-vscode", // format code with prettier
+"editor.formatOnSave": true // format code authomatically on save
+```
 
 ## Scripts
 
