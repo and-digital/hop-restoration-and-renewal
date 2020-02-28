@@ -23,7 +23,7 @@ module.exports = {
   siteMetadata: {
     title: 'Gatsby Contentful starter',
   },
-  pathPrefix: '/gatsby-contentful-starter',
+  pathPrefix: '/hop-restoration-and-renewal',
   plugins: [
     'gatsby-transformer-remark',
     'gatsby-transformer-sharp',
