@@ -19,8 +19,7 @@ test('test', () => {
   expect(getByText('Restoration and Renewal')).toBeDefined()
   data.contentfulHeader.sections.forEach(({name}) => {
     const section = getByText(name)
-    expect(section)
-      .toBeDefined()
-      .toHaveAttribute('href', '/palace')
+    expect(section).toBeDefined()
+    expect(section).toHaveAttribute('href', '/palace')
   })
 })
