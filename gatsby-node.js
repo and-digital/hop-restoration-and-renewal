@@ -1,42 +1,67 @@
-// const Promise = require('bluebird')
-// const path = require('path')
+const path = require('path')
+const sectionTemplate = path.resolve('./src/templates/section/section.js')
+const articleTemplate = path.resolve('./src/templates/article/article.js')
 
-// exports.createPages = ({ graphql, actions }) => {
-//   const { createPage } = actions
+const extractNodes = key => response =>
+  response.data[key].edges.map(({node}) => node)
 
-//   return new Promise((resolve, reject) => {
-//     const blogPost = path.resolve('./src/templates/blog-post.js')
-//     resolve(
-//       graphql(
-//         `
-//           {
-//             allContentfulBlogPost {
-//               edges {
-//                 node {
-//                   title
-//                   slug
-//                 }
-//               }
-//             }
-//           }
-//           `
-//       ).then(result => {
-//         if (result.errors) {
-//           console.log(result.errors)
-//           reject(result.errors)
-//         }
+exports.createPages = async ({graphql, actions}) => {
+  const {createPage} = actions
 
-//         const posts = result.data.allContentfulBlogPost.edges
-//         posts.forEach((post, index) => {
-//           createPage({
-//             path: `/blog/${post.node.slug}/`,
-//             component: blogPost,
-//             context: {
-//               slug: post.node.slug
-//             },
-//           })
-//         })
-//       })
-//     )
-//   })
-// }
+  const allSections = () =>
+    graphql(`
+      query AllSections {
+        allContentfulSection {
+          edges {
+            node {
+              slug
+              name
+              articles {
+                slug
+                name
+              }
+            }
+          }
+        }
+      }
+    `).then(extractNodes('allContentfulSection'))
+
+  const allArticles = () =>
+    graphql(`
+      query AllArticles {
+        allContentfulArticle {
+          edges {
+            node {
+              slug
+              name
+              section {
+                slug
+              }
+            }
+          }
+        }
+      }
+    `).then(extractNodes('allContentfulArticle'))
+
+  const [sections, articles] = await Promise.all([allSections(), allArticles()])
+
+  sections.forEach(({slug}) => {
+    createPage({
+      path: `/${slug}/`,
+      component: sectionTemplate,
+      context: {
+        slug: slug,
+      },
+    })
+  })
+
+  articles.forEach(({slug, section: [{slug: sectionSlug}]}) => {
+    createPage({
+      path: `/${sectionSlug}/${slug}/`,
+      component: articleTemplate,
+      context: {
+        slug: slug,
+      },
+    })
+  })
+}

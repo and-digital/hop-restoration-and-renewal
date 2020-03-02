@@ -12,6 +12,7 @@
     "__PATH_PREFIX__": ""
   },
   "setupFiles": ["<rootDir>/loadershim.js"],
+  "setupFilesAfterEnv": ["jest-chain"],
   "collectCoverageFrom": [
     "<rootDir>/src/**/*.js",
     "!<rootDir>/src/**/*.stories.js"

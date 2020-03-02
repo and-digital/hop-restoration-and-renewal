@@ -1,9 +1,11 @@
 {
   "compilerOptions": {
-    "target": "es2019"
+    "target": "es2019",
+    "jsx": "react",
+    "baseUrl": "./"
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules", "public", ".cache"],
   "typeAcquisition": {
     "include": ["jest"]
   }

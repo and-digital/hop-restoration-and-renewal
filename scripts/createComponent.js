@@ -21,7 +21,7 @@ export const withProps = () => <$CNAME />
 const componentTestTemplate = `import React from 'react'
 import { render } from '@testing-library/react'
 
-import $CNAME from '../$CNAME'
+import $CNAME from '../'
 it('should render the component', () => {
   const wrapper = render(<$CNAME />)
   expect(false).toEqual(true)

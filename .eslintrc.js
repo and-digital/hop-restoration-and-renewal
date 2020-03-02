@@ -5,6 +5,7 @@ module.exports = {
     'jest/globals': true,
   },
   globals: {
+    exports: true,
     module: true,
     require: true,
     graphql: false,
