@@ -7,9 +7,9 @@ const Index = ({
     contentfulHeader: {sections},
   },
 }) => (
-  <div style={{background: '#fff'}}>
+  <main style={{background: '#fff'}}>
     <div className="wrapper">
-      <h2 className="section-headline">Restoration and Renewal</h2>
+      <h1 className="section-headline">Restoration and Renewal</h1>
     </div>
     <ul>
       {sections.map(({name, slug}) => (
@@ -18,7 +18,7 @@ const Index = ({
         </li>
       ))}
     </ul>
-  </div>
+  </main>
 )
 
 export default Index
