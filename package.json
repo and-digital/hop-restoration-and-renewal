@@ -71,7 +71,7 @@
     "test": "jest --watch",
     "storybook": "start-storybook",
     "test-coverage": "jest --coverage",
-    "cy-open": "cypress open",
+    "cy-open": "CYPRESS_BASE_URL=http://localhost:8000 cypress open",
     "e2e": "start-server-and-test start http://localhost:8000 cy-open",
     "cy-run": "cypress run",
     "e2e-ci": "start-server-and-test serve http://localhost:9000 cy-run",
