@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
+    "module": "commonjs",
     "target": "es2019",
-    "jsx": "react",
-    "baseUrl": "./"
+    "jsx": "react"
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "public", ".cache"],

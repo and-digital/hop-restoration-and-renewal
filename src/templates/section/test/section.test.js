@@ -1,5 +1,5 @@
 import React from 'react'
-import Section from '../'
+import Section from '..'
 import {render} from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 

@@ -68,6 +68,7 @@
     "prettier": "prettier --ignore-path .gitignore '**/*.+(js)'",
     "format": "npm run prettier -- --write",
     "generate-component": "node ./scripts/createComponent.js",
+    "generate-template": "node ./scripts/createTemplate.js",
     "generate-page": "node ./scripts/createPage.js",
     "generate-hook": "node ./scripts/createHook.js"
   }
