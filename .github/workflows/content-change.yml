@@ -1,11 +1,11 @@
 name: Github Pages
 # This workflow is triggered on pushes to the repository.
-on: [push]
+on: [repository_dispatch]
 
 jobs:
   build:
     # Job name is Greeting
-    name: Build and Deploy
+    name: Pull content, build and deploy to GH Pages
     # This job runs on Linux
     runs-on: ubuntu-latest
     strategy:

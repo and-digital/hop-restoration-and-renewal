@@ -1,0 +1,31 @@
+name: Github Pages
+# This workflow is triggered on pushes to the repository.
+on: [push]
+
+jobs:
+  build:
+    # Job name is Greeting
+    name: Build, test and Deploy to GH Pages
+    # This job runs on Linux
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: ['12', '10']
+    steps:
+      - name: Check out
+        uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm install
+      - run: npm run lint
+      - run: npm run test-coverage
+      - run: npm run build
+        env:
+          CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
+          CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_ACTIONS_TOKEN }}
+          publish_dir: ./public
