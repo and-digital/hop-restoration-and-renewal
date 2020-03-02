@@ -1,6 +1,6 @@
 const path = require('path')
-const sectionTemplate = path.resolve('./src/templates/section/section.js')
-const articleTemplate = path.resolve('./src/templates/article/article.js')
+const sectionTemplate = path.resolve('./src/templates/Section/Section.js')
+const articleTemplate = path.resolve('./src/templates/Article/Article.js')
 
 const extractNodes = key => response =>
   response.data[key].edges.map(({node}) => node)
