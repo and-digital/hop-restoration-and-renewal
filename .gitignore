@@ -71,3 +71,6 @@ public
 !.env.example
 
 *.DS_Store
+
+cypress/videos
+cypress/screenshots

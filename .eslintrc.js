@@ -3,7 +3,6 @@ module.exports = {
     browser: true,
     es6: true,
     'jest/globals': true,
-    'cypress/globals': true,
   },
   globals: {
     exports: true,
@@ -25,6 +24,5 @@ module.exports = {
     'eslint-config-prettier',
     'plugin:react/recommended',
     'plugin:jest/recommended',
-    'plugin:cypress/recommended',
   ],
 }
