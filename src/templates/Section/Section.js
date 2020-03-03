@@ -1,13 +1,14 @@
 import React from 'react'
 import {shape, string, arrayOf} from 'prop-types'
 import {graphql, Link} from 'gatsby'
+import Layout from '../../components/Layout'
 
 const Section = ({
   data: {
     contentfulSection: {name, slug, articles},
   },
 }) => (
-  <div style={{background: '#fff'}}>
+  <Layout title={name}>
     <div className="wrapper">
       <h2 className="section-headline">{name}</h2>
     </div>
@@ -20,7 +21,7 @@ const Section = ({
         ))}
       </ul>
     </section>
-  </div>
+  </Layout>
 )
 
 Section.propTypes = {

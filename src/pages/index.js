@@ -1,15 +1,18 @@
 import React from 'react'
 import {graphql, Link} from 'gatsby'
 import {shape, string, arrayOf} from 'prop-types'
+import Layout from '../components/Layout'
+
+const title = 'Restoration and Renewal'
 
 const Index = ({
   data: {
     contentfulHeader: {sections},
   },
 }) => (
-  <main style={{background: '#fff'}}>
+  <Layout title={title}>
     <div className="wrapper">
-      <h1 className="section-headline">Restoration and Renewal</h1>
+      <h1 className="section-headline">{title}</h1>
     </div>
     <ul>
       {sections.map(({name, slug}) => (
@@ -18,7 +21,7 @@ const Index = ({
         </li>
       ))}
     </ul>
-  </main>
+  </Layout>
 )
 
 export default Index

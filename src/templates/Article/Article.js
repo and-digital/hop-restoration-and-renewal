@@ -1,17 +1,18 @@
 import React from 'react'
 import {shape, string} from 'prop-types'
 import {graphql} from 'gatsby'
+import Layout from '../../components/Layout'
 
 const Article = ({
   data: {
     contentfulArticle: {name},
   },
 }) => (
-  <div style={{background: '#fff'}}>
+  <Layout title={name}>
     <div className="wrapper">
       <h2 className="Article-headline">{name}</h2>
     </div>
-  </div>
+  </Layout>
 )
 
 Article.propTypes = {

@@ -1,6 +1,6 @@
 import React from 'react'
 import Section from '..'
-import {render} from '@testing-library/react'
+import {render, waitForDomChange} from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 
 const data = {
@@ -16,9 +16,15 @@ const data = {
   },
 }
 
-test('test', () => {
+test('show page title and component', async () => {
   const {getByText} = render(<Section data={data} />)
+  await waitForDomChange()
+  expect(document.title).toEqual(data.contentfulSection.name)
   expect(getByText(data.contentfulSection.name)).toBeDefined()
+})
+
+test('should show all the articles', () => {
+  const {getByText} = render(<Section data={data} />)
   data.contentfulSection.articles.forEach(({name, slug}) => {
     const articleLink = getByText(name)
     expect(articleLink).toBeDefined()

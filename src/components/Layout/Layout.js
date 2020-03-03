@@ -8,7 +8,7 @@ const Layout = ({title, children}) => (
       <html lang="en" />
       <title>{title}</title>
     </Helmet>
-    {children}
+    <main style={{background: '#fff'}}>{children}</main>
   </>
 )
 
