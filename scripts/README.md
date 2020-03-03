@@ -41,6 +41,25 @@ pageName/
 Each page will be exposes through the `index.js` and comes with its own unit
 test file
 
+## Templates
+
+```
+npm run create-template `TemplateName`
+```
+
+Creates a React component within `src/templates` with this structure:
+
+```
+ComponentName/
+  tests/
+    ComponentName.test.js
+  ComponentName.js
+  index.js
+```
+
+Each component will be exposes through the `index.js` and comes with its own
+unit test file
+
 ## Hooks
 
 ```
