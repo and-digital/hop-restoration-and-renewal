@@ -84,3 +84,8 @@ Go to settings, select code visualization and add those two lines
 ## Scripts
 
 For scripts specifications please have a look [here](scripts/RADME.md)
+
+## Accessibility
+
+To make sure that the general public can access this website with ease we are
+working towards meeting the AA rating set by WCAG.
