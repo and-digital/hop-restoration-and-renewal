@@ -20,7 +20,10 @@
   "setupFilesAfterEnv": ["jest-chain"],
   "collectCoverageFrom": [
     "<rootDir>/src/**/*.js",
-    "!<rootDir>/src/**/*.stories.js"
+    "!<rootDir>/src/**/*.stories.js",
+    "!<rootDir>/gatsby-browser.js",
+    "!<rootDir>/gatsby-ssr.js",
+    "!<rootDir>/src/components/MainWrapper/*.js"
   ],
   "coverageThreshold": {
     "global": {
