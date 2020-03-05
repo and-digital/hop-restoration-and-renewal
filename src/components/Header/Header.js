@@ -1,17 +1,17 @@
 import React from 'react'
-import {useStaticQuery, Link} from 'gatsby'
+import {useStaticQuery, Link, graphql} from 'gatsby'
 
 const Header = () => {
-  const data = useStaticQuery(`
-  query HeaderQuery {
-    contentfulHeader(name: {eq: "main"}) {
-      sections {
-        name
-        slug
+  const data = useStaticQuery(graphql`
+    query HeaderQuery {
+      contentfulHeader(name: {eq: "main"}) {
+        sections {
+          name
+          slug
+        }
       }
     }
-  }
-`)
+  `)
   const {
     contentfulHeader: {sections},
   } = data
