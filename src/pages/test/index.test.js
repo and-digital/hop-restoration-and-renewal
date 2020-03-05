@@ -2,6 +2,7 @@ import React from 'react'
 import IndexPage from '../'
 import {render, waitForDomChange} from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
+import {useStaticQuery} from 'gatsby'
 
 const data = {
   contentfulHeader: {
@@ -15,8 +16,9 @@ const data = {
 }
 
 test('should show page title, main heading text and section links', async () => {
+  useStaticQuery.mockImplementation(() => data)
   const title = 'Restoration and Renewal'
-  const {getByText} = render(<IndexPage data={data} />)
+  const {getByText} = render(<IndexPage />)
   expect(getByText(title)).toBeDefined()
   await waitForDomChange()
   expect(document.title).toEqual(title)
