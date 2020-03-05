@@ -15,11 +15,6 @@ exports.createPages = async ({graphql, actions}) => {
           edges {
             node {
               slug
-              name
-              articles {
-                slug
-                name
-              }
             }
           }
         }
@@ -33,7 +28,6 @@ exports.createPages = async ({graphql, actions}) => {
           edges {
             node {
               slug
-              name
               section {
                 slug
               }
@@ -60,7 +54,7 @@ exports.createPages = async ({graphql, actions}) => {
       path: `/${sectionSlug}/${slug}/`,
       component: articleTemplate,
       context: {
-        slug: slug,
+        slug,
       },
     })
   })
