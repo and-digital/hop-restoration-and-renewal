@@ -1,5 +1,7 @@
 import React from 'react'
 import {useStaticQuery, Link, graphql} from 'gatsby'
+import Image from 'gatsby-image'
+import {shape, string, object, arrayOf} from 'prop-types'
 
 const Header = () => {
   const data = useStaticQuery(graphql`
@@ -9,13 +11,26 @@ const Header = () => {
           name
           slug
         }
+        logo {
+          fixed {
+            ...GatsbyContentfulFixed_withWebp
+          }
+          title
+        }
       }
     }
   `)
-  const {
-    contentfulHeader: {sections},
-  } = data
-  return (
+  return <HeaderComponent {...data} />
+}
+
+const HeaderComponent = ({
+  contentfulHeader: {
+    sections,
+    logo: {fixed, title},
+  },
+}) => (
+  <>
+    <Image fixed={fixed} alt={title} />
     <ul>
       {sections.map(({name, slug}) => (
         <li key={name}>
@@ -23,7 +38,16 @@ const Header = () => {
         </li>
       ))}
     </ul>
-  )
+  </>
+)
+
+HeaderComponent.propTypes = {
+  contentfulHeader: shape({
+    sections: arrayOf(shape({name: string.isRequired, slug: string.isRequired}))
+      .isRequired,
+    logo: shape({fixed: object.isRequired, title: string.isRequired})
+      .isRequired,
+  }).isRequired,
 }
 
 export default Header

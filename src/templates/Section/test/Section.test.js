@@ -1,9 +1,9 @@
 import React from 'react'
 import Section from '..'
-import headerData from '../../../stubs/headerData'
 import {render, waitForDomChange} from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
-import {useStaticQuery} from 'gatsby'
+
+import mockHeader from '../../../stubs/mockHeader'
 
 const data = {
   contentfulSection: {
@@ -19,7 +19,7 @@ const data = {
 }
 
 test('show page title and component', async () => {
-  useStaticQuery.mockImplementation(() => headerData)
+  mockHeader()
   const {getByText} = render(<Section data={data} />)
   await waitForDomChange()
   expect(document.title).toEqual(data.contentfulSection.title)
@@ -27,7 +27,7 @@ test('show page title and component', async () => {
 })
 
 test('should show all the articles', () => {
-  useStaticQuery.mockImplementation(() => headerData)
+  mockHeader()
   const {getByText} = render(<Section data={data} />)
   data.contentfulSection.articles.forEach(({name, slug}) => {
     const articleLink = getByText(name)
