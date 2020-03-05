@@ -1,4 +1,5 @@
 import React from 'react'
+import Header from '../Header'
 import {Helmet} from 'react-helmet'
 import {string, node} from 'prop-types'
 
@@ -8,7 +9,12 @@ const Layout = ({title, children}) => (
       <html lang="en" />
       <title>{title}</title>
     </Helmet>
-    <main style={{background: '#fff'}}>{children}</main>
+    <main style={{background: '#fff'}}>
+      <>
+        <Header />
+        {children}
+      </>
+    </main>
   </>
 )
 

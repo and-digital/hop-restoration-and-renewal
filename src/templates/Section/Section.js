@@ -5,12 +5,12 @@ import Layout from '../../components/Layout'
 
 const Section = ({
   data: {
-    contentfulSection: {name, slug, articles},
+    contentfulSection: {title, slug, articles},
   },
 }) => (
-  <Layout title={name}>
+  <Layout title={title}>
     <div className="wrapper">
-      <h2 className="section-headline">{name}</h2>
+      <h2 className="section-headline">{title}</h2>
     </div>
     <section>
       <ul>
@@ -27,7 +27,7 @@ const Section = ({
 Section.propTypes = {
   data: shape({
     contentfulSection: shape({
-      name: string.isRequired,
+      title: string.isRequired,
       slug: string.isRequired,
       articles: arrayOf(
         shape({
@@ -44,7 +44,7 @@ export default Section
 export const query = graphql`
   query SectionQuery($slug: String!) {
     contentfulSection(slug: {eq: $slug}) {
-      name
+      title
       slug
       articles {
         name
