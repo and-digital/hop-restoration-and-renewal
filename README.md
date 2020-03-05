@@ -47,6 +47,13 @@ Launch the Storybook for isolated components development
 npm run storybook
 ```
 
+## Material UI
+
+The site uses Material UI React Framework, if you need to access any of the
+components or features from the framework - see the documentation below.
+
+https://material-ui.com/getting-started/usage/
+
 ## Git hooks
 
 Every time you commit, there's going to be a `pre-commit` hook which will run an
