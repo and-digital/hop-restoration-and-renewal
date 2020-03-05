@@ -3,7 +3,10 @@ import {useStaticQuery, Link, graphql} from 'gatsby'
 import Image from 'gatsby-image'
 import {shape, string, object, arrayOf} from 'prop-types'
 import {makeStyles} from '@material-ui/core/styles'
-import {Box, AppBar, Toolbar} from '@material-ui/core'
+import Box from '@material-ui/core/Box'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import Grid from '@material-ui/core/Grid'
 
 const styles = makeStyles({
   root: {
@@ -50,12 +53,14 @@ const HeaderComponent = ({
           margin="auto"
         >
           <Image fixed={fixed} alt={title} />
-          <Box display="flex" flexDirection="row">
-            {sections.map(({name, slug}) => (
-              <Box key={name} className={styles.root}>
-                <Link to={`/${slug}`}>{name}</Link>
-              </Box>
-            ))}
+          <Box display="flex" flexDirection="row" alignItems="center">
+            <Grid container spacing={3}>
+              {sections.map(({name, slug}) => (
+                <Grid item key={name}>
+                  <Link to={`/${slug}`}>{name}</Link>
+                </Grid>
+              ))}
+            </Grid>
           </Box>
         </Box>
       </Toolbar>
