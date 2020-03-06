@@ -50,7 +50,7 @@ const HeaderComponent = ({
   const isNotMobile = useMediaQuery(theme.breakpoints.up('sm'))
   const Wrapper = isNotMobile ? DesktopWrapper : MobileWrapper
   return (
-    <AppBar className={classes.root}>
+    <AppBar className={classes.root} data-testid="header">
       <Box
         display="flex"
         justifyContent="space-between"
