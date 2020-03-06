@@ -1,12 +1,16 @@
 import React from 'react'
-import {useStaticQuery, Link, graphql} from 'gatsby'
-import Image from 'gatsby-image'
+import {useStaticQuery, graphql} from 'gatsby'
 import {shape, string, object, arrayOf} from 'prop-types'
+
+import Image from 'gatsby-image'
 import {makeStyles} from '@material-ui/core/styles'
 import Box from '@material-ui/core/Box'
 import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import Grid from '@material-ui/core/Grid'
+
+import DesktopWrapper from './DesktopWrapper'
+import MobileWrapper from './MobileWrapper'
+import {useMediaQuery, useTheme} from '@material-ui/core'
+import Menu from './Menu'
 
 const styles = makeStyles({
   root: {
@@ -42,28 +46,23 @@ const HeaderComponent = ({
   },
 }) => {
   const classes = styles()
+  const theme = useTheme()
+  const isNotMobile = useMediaQuery(theme.breakpoints.up('sm'))
+  const Wrapper = isNotMobile ? DesktopWrapper : MobileWrapper
   return (
     <AppBar className={classes.root}>
-      <Toolbar>
-        <Box
-          display="flex"
-          justifyContent="space-between"
-          width="100%"
-          maxWidth={1560}
-          margin="auto"
-        >
-          <Image fixed={fixed} alt={title} />
-          <Box display="flex" flexDirection="row" alignItems="center">
-            <Grid container spacing={3}>
-              {sections.map(({name, slug}) => (
-                <Grid item key={name}>
-                  <Link to={`/${slug}`}>{name}</Link>
-                </Grid>
-              ))}
-            </Grid>
-          </Box>
-        </Box>
-      </Toolbar>
+      <Box
+        display="flex"
+        justifyContent="space-between"
+        width="100%"
+        maxWidth={1560}
+        margin="auto"
+      >
+        <Image fixed={fixed} alt={title} />
+        <Wrapper>
+          <Menu sections={sections} />
+        </Wrapper>
+      </Box>
     </AppBar>
   )
 }

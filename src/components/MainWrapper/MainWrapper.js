@@ -4,6 +4,7 @@ import {Helmet} from 'react-helmet'
 import ThemeProvider from '@material-ui/styles/ThemeProvider'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import {node} from 'prop-types'
+import theme from '../../utils/theme'
 
 const MainWrapper = ({children}) => {
   return (
@@ -18,7 +19,7 @@ const MainWrapper = ({children}) => {
           rel="stylesheet"
         />
       </Helmet>
-      <ThemeProvider>
+      <ThemeProvider theme={theme}>
         <CssBaseline />
         {children}
       </ThemeProvider>
