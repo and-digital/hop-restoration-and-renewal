@@ -10,6 +10,7 @@ import {node} from 'prop-types'
 const useStyles = makeStyles({
   paper: {
     background: '#8B7DC8',
+    width: '100%',
   },
 })
 
@@ -20,7 +21,7 @@ const MobileMenu = ({children}) => {
   const styles = useStyles()
 
   return (
-    <Box display="flex" flexDirection="row" alignItems="center">
+    <Box display="flex" flexDirection="row" flexWrap="wrap" alignItems="center">
       <MenuIcon onClick={openMenu} color="primary" data-testid="mobileMenu" />
       <Drawer
         anchor="right"

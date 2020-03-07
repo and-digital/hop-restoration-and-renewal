@@ -1,12 +1,10 @@
 import React from 'react'
 import {useStaticQuery, graphql} from 'gatsby'
 import {shape, string, object, arrayOf} from 'prop-types'
-
 import Image from 'gatsby-image'
 import {makeStyles} from '@material-ui/core/styles'
 import Box from '@material-ui/core/Box'
 import AppBar from '@material-ui/core/AppBar'
-
 import DesktopWrapper from './DesktopWrapper'
 import MobileWrapper from './MobileWrapper'
 import {useMediaQuery, useTheme} from '@material-ui/core'
@@ -47,8 +45,8 @@ const HeaderComponent = ({
 }) => {
   const classes = styles()
   const theme = useTheme()
-  const isNotMobile = useMediaQuery(theme.breakpoints.up('sm'))
-  const Wrapper = isNotMobile ? DesktopWrapper : MobileWrapper
+  const isDesktop = useMediaQuery(theme.breakpoints.up('md'))
+  const Wrapper = isDesktop ? DesktopWrapper : MobileWrapper
   return (
     <AppBar className={classes.root} data-testid="header">
       <Box
