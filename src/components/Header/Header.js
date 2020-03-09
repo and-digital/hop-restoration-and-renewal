@@ -18,7 +18,10 @@ const styles = makeStyles(theme => ({
   box: {
     boxSizing: 'border-box',
     padding: '17px 22px 20px 12px',
-    [theme.breakpoints.up('md')]: {marginTop: '30px', marginBottom: '42px'},
+    [theme.breakpoints.up('md')]: {
+      padding: 'unset',
+      marginTop: '20px',
+    },
   },
   logo: {
     width: '262px',
@@ -37,7 +40,7 @@ const Header = () => {
         }
         logo {
           fluid(
-            maxWidth: 400
+            maxWidth: 450
             cropFocus: CENTER
             resizingBehavior: FILL
             quality: 85
