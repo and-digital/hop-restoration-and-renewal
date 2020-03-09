@@ -15,11 +15,15 @@ const styles = makeStyles(theme => ({
     backgroundColor: theme.palette.background.desktopMenu,
     boxShadow: '0px 5px 5px rgba(35, 35, 35, 0.1)',
   },
+  box: {
+    boxSizing: 'border-box',
+    padding: '17px 22px 20px 12px',
+    [theme.breakpoints.up('md')]: {marginTop: '30px', marginBottom: '42px'},
+  },
   logo: {
-    img: {
-      width: '250px',
-      [theme.breakpoints.up('md')]: {width: '450px'},
-    },
+    width: '262px',
+    height: '48px',
+    [theme.breakpoints.up('md')]: {width: '450px', height: '82px'},
   },
 }))
 
@@ -32,8 +36,13 @@ const Header = () => {
           slug
         }
         logo {
-          fixed {
-            ...GatsbyContentfulFixed_withWebp
+          fluid(
+            maxWidth: 400
+            cropFocus: CENTER
+            resizingBehavior: FILL
+            quality: 85
+          ) {
+            src
           }
           title
         }
@@ -46,7 +55,7 @@ const Header = () => {
 const HeaderComponent = ({
   contentfulHeader: {
     sections,
-    logo: {fixed, title},
+    logo: {fluid, title},
   },
 }) => {
   const classes = styles()
@@ -61,8 +70,9 @@ const HeaderComponent = ({
         width="100%"
         maxWidth={1560}
         margin="auto"
+        className={classes.box}
       >
-        <Image fixed={fixed} alt={title} className={classes.logo} />
+        <Image fluid={fluid} alt={title} className={classes.logo} />
         <Wrapper>
           <Menu sections={sections} />
         </Wrapper>
@@ -75,7 +85,7 @@ HeaderComponent.propTypes = {
   contentfulHeader: shape({
     sections: arrayOf(shape({name: string.isRequired, slug: string.isRequired}))
       .isRequired,
-    logo: shape({fixed: object.isRequired, title: string.isRequired})
+    logo: shape({fluid: object.isRequired, title: string.isRequired})
       .isRequired,
   }).isRequired,
 }

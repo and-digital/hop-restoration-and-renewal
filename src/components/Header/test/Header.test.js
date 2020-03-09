@@ -13,9 +13,9 @@ import mockIsMobile from '../../../stubs/mockIsMobile'
 
 it('should render the component', () => {
   mockHeader()
-  const {getByText, getByAltText} = render(<Header />)
+  const {getByAltText, queryByTestId} = render(<Header />)
   data.contentfulHeader.sections.forEach(({name}) => {
-    const section = getByText(name)
+    const section = queryByTestId(`section-link-${name}`)
     expect(section).toBeDefined()
     expect(section).toHaveAttribute('href', '/palace')
   })
@@ -23,7 +23,7 @@ it('should render the component', () => {
   expect(logo).toBeDefined()
 })
 
-it('should show the hamburgher menu, open and close it', async () => {
+it('should show the hamburger menu, open and close it', async () => {
   mockHeader()
   mockIsMobile()
   const {queryByText, queryByTestId} = render(<Header />)

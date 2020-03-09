@@ -7,7 +7,7 @@ export default {
       },
     ],
     logo: {
-      fixed: {
+      fluid: {
         aspectRatio: 1000,
         base64: '',
         height: 400,
