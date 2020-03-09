@@ -10,12 +10,18 @@ import MobileWrapper from './MobileWrapper'
 import {useMediaQuery, useTheme} from '@material-ui/core'
 import Menu from './Menu'
 
-const styles = makeStyles({
+const styles = makeStyles(theme => ({
   root: {
-    backgroundColor: '#ffffff',
+    backgroundColor: theme.palette.background.desktopMenu,
     boxShadow: '0px 5px 5px rgba(35, 35, 35, 0.1)',
   },
-})
+  logo: {
+    img: {
+      width: '250px',
+      [theme.breakpoints.up('md')]: {width: '450px'},
+    },
+  },
+}))
 
 const Header = () => {
   const data = useStaticQuery(graphql`
@@ -56,7 +62,7 @@ const HeaderComponent = ({
         maxWidth={1560}
         margin="auto"
       >
-        <Image fixed={fixed} alt={title} />
+        <Image fixed={fixed} alt={title} className={classes.logo} />
         <Wrapper>
           <Menu sections={sections} />
         </Wrapper>
