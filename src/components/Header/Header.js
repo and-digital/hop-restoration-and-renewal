@@ -42,7 +42,7 @@ const Header = () => {
             resizingBehavior: FILL
             quality: 85
           ) {
-            src
+            ...GatsbyContentfulFluid_withWebp
           }
           title
         }
