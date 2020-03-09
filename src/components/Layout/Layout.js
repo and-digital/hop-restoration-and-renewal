@@ -2,6 +2,8 @@ import React from 'react'
 import Header from '../Header'
 import {Helmet} from 'react-helmet'
 import {string, node} from 'prop-types'
+import {ThemeProvider} from '@material-ui/core'
+import theme from '../../utils/theme'
 
 const Layout = ({title, children}) => (
   <>
@@ -9,12 +11,14 @@ const Layout = ({title, children}) => (
       <html lang="en" />
       <title>{title}</title>
     </Helmet>
-    <main style={{background: '#fff'}}>
-      <>
-        <Header />
-        {children}
-      </>
-    </main>
+    <ThemeProvider theme={theme}>
+      <main style={{background: '#fff'}}>
+        <>
+          <Header />
+          {children}
+        </>
+      </main>
+    </ThemeProvider>
   </>
 )
 

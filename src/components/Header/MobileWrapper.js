@@ -7,12 +7,15 @@ import Drawer from '@material-ui/core/Drawer'
 import {makeStyles} from '@material-ui/core/styles'
 import {node} from 'prop-types'
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   paper: {
-    background: '#8B7DC8',
+    background: theme.palette.background.mobileMenu,
     width: '100%',
   },
-})
+  MuiAppBar: {
+    colorPrimary: theme.palette.primary.main,
+  },
+}))
 
 const MobileMenu = ({children}) => {
   const [isOpen, setIsOpen] = useState()
