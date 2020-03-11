@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from '../Header'
-import {Helmet} from 'react-helmet'
+import {Helmet, HelmetProvider} from 'react-helmet-async'
 import {string, node} from 'prop-types'
 import {ThemeProvider} from '@material-ui/core'
 import theme from '../../utils/theme'
@@ -16,7 +16,7 @@ const Layout = ({title, children}) => {
   const classes = useStyles()
 
   return (
-    <>
+    <HelmetProvider>
       <Helmet>
         <html lang="en" />
         <title>{title}</title>
@@ -29,7 +29,7 @@ const Layout = ({title, children}) => {
           </>
         </main>
       </ThemeProvider>
-    </>
+    </HelmetProvider>
   )
 }
 
