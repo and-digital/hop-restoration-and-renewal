@@ -9,6 +9,7 @@ const theme = createMuiTheme({
       main: nero,
       text: nero,
       cross: white,
+      menuText: purple,
     },
     background: {
       main: whiteSmoke,
@@ -17,7 +18,7 @@ const theme = createMuiTheme({
       mobileMenu: lilac,
       card: white,
     },
-    links: {
+    link: {
       main: purple,
     },
   },
