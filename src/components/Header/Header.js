@@ -17,7 +17,6 @@ const styles = makeStyles(theme => ({
   },
   box: {
     boxSizing: 'border-box',
-    // padding: '17px 22px 0px 12px',
   },
   linkBox: {
     boxSizing: 'border-box',
@@ -40,6 +39,7 @@ const Header = () => {
           name
           slug
         }
+        homePageLinkText
         logo {
           fluid(
             maxWidth: 450
@@ -61,6 +61,7 @@ const HeaderComponent = ({
   contentfulHeader: {
     sections,
     logo: {fluid, title},
+    homePageLinkText,
   },
 }) => {
   const classes = styles()
@@ -77,7 +78,7 @@ const HeaderComponent = ({
         margin="auto"
         className={classes.box}
       >
-        <Link to="/" className={classes.linkBox} aria-label="go to home page">
+        <Link to="/" className={classes.linkBox} aria-label={homePageLinkText}>
           <Image fluid={fluid} alt={title} className={classes.logo} />
         </Link>
         <Wrapper>
@@ -94,6 +95,7 @@ HeaderComponent.propTypes = {
       .isRequired,
     logo: shape({fluid: object.isRequired, title: string.isRequired})
       .isRequired,
+    homePageLinkText: string.isRequired,
   }).isRequired,
 }
 
