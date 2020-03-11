@@ -1,5 +1,5 @@
 import React from 'react'
-import {Helmet} from 'react-helmet'
+import {Helmet, HelmetProvider} from 'react-helmet-async'
 
 import ThemeProvider from '@material-ui/styles/ThemeProvider'
 import CssBaseline from '@material-ui/core/CssBaseline'
@@ -8,7 +8,7 @@ import theme from '../../utils/theme'
 
 const MainWrapper = ({children}) => {
   return (
-    <>
+    <HelmetProvider>
       <Helmet>
         <meta
           name="viewport"
@@ -23,7 +23,7 @@ const MainWrapper = ({children}) => {
         <CssBaseline />
         {children}
       </ThemeProvider>
-    </>
+    </HelmetProvider>
   )
 }
 
