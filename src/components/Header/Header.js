@@ -77,7 +77,7 @@ const HeaderComponent = ({
         margin="auto"
         className={classes.box}
       >
-        <Link to="/" className={classes.linkBox}>
+        <Link to="/" className={classes.linkBox} aria-label="go to home page">
           <Image fluid={fluid} alt={title} className={classes.logo} />
         </Link>
         <Wrapper>
