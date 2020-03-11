@@ -49,8 +49,6 @@ exports.createPages = async ({graphql, actions}) => {
     })
   })
 
-  console.log(articles)
-
   articles.forEach(({slug, section: [{slug: sectionSlug}]}) => {
     createPage({
       path: `/${sectionSlug}/${slug}/`,

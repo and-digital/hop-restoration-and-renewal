@@ -24,4 +24,6 @@ const theme = createMuiTheme({
   },
 })
 
-export default responsiveFonts(theme)
+theme.typography = responsiveFonts(theme)
+
+export default theme
