@@ -5,21 +5,20 @@ import Image from 'gatsby-image'
 import {shape, object, arrayOf, string} from 'prop-types'
 import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
+import Hero from '../components/Hero'
 
 const title = 'Restoration and Renewal'
 
 const Index = ({
   data: {
     contentfulTemplateHeroWithCards: {
-      hero: {
-        image: {title: heroImageTitle, fluid},
-      },
+      hero: {image},
       cards,
     },
   },
 }) => (
   <Layout title={title}>
-    <Image fluid={fluid} alt={heroImageTitle} />
+    <Hero image={image} />
     <Typography variant="h1">{title}</Typography>
     <Box
       my={5}
