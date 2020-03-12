@@ -1,6 +1,7 @@
 import React from 'react'
 import Section from '..'
-import {render, waitForDomChange} from '@testing-library/react'
+import {waitForDomChange} from '@testing-library/react'
+import render from '../../../utils/tests/renderWithTheme'
 import '@testing-library/jest-dom/extend-expect'
 
 import mockHeader from '../../../stubs/mockHeader'
