@@ -78,7 +78,7 @@ test('should show page title, main heading text and section links', async () => 
       expect(getByText(previewLinkName)).toBeDefined()
       expect(getByText(previewLinkName).parentNode).toHaveAttribute(
         'href',
-        slug,
+        `/${slug}`,
       )
     },
   )

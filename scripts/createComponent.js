@@ -19,7 +19,7 @@ export default { title: '$CNAME' }
 export const withProps = () => <$CNAME />
 `
 const componentTestTemplate = `import React from 'react'
-import { render } from '@testing-library/react'
+import render from '../../../utils/tests/renderWithTheme'
 
 import $CNAME from '..'
 
