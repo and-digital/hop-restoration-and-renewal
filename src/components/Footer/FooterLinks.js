@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid'
 import {Link} from 'gatsby'
 import Typography from '@material-ui/core/Typography'
 import {graphql, useStaticQuery} from 'gatsby'
-import {makeStyles} from '@material-ui/styles'
+import {makeStyles} from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
   footerMenuLink: {

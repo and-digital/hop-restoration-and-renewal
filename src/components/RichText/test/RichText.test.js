@@ -8,27 +8,19 @@ it('should render the component', () => {
     className: 'footer__content',
     text: {
       json: {
+        data: {},
         content: [
           {
-            nodeType: 'paragraph',
+            data: {},
             content: [
               {
-                nodeType: 'text',
-                value: 'lorem ipsum',
+                data: {},
                 marks: [],
-              },
-              {
-                nodeType: 'hyperlink',
-                data: {
-                  uri: 'https://www.test.com',
-                },
-                content: [
-                  {
-                    value: 'test-url',
-                  },
-                ],
+                value: '© Houses of Parliament | Restoration and Renewal 2020',
+                nodeType: 'text',
               },
             ],
+            nodeType: 'paragraph',
           },
         ],
       },

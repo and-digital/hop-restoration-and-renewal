@@ -6,7 +6,7 @@ import mockData from '../../../stubs/mockData'
 
 it('should render the component', () => {
   mockData(footerData)
-  const {queryByTestId} = render(<Footer type="header" />)
+  const {queryByTestId} = render(<Footer />)
   footerData.contentfulFooter.pages.forEach(({name}) => {
     const footerLink = queryByTestId(`footer-link-${name}`)
     expect(footerLink).toBeDefined()

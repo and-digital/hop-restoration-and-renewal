@@ -13,11 +13,11 @@ import mockIsMobile from '../../../stubs/mockIsMobile'
 
 it('should render the component', () => {
   mockData(headerData)
-  const {getByAltText, queryByTestId} = render(<Header />)
+  const {getByAltText, queryByText} = render(<Header />)
   headerData.contentfulHeader.sections.forEach(({name}) => {
-    const section = queryByTestId(`section-link-${name}`)
+    const section = queryByText(name)
     expect(section).toBeDefined()
-    expect(section).toHaveAttribute('href', '/palace')
+    expect(section.parentNode).toHaveAttribute('href', '/palace')
   })
   const logo = getByAltText(headerData.contentfulHeader.logo.title)
   expect(logo).toBeDefined()
