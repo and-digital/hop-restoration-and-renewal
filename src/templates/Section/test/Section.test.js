@@ -1,9 +1,10 @@
 import React from 'react'
 import Section from '..'
-import {render, waitForDomChange} from '@testing-library/react'
+import {waitForDomChange} from '@testing-library/react'
+import render from '../../../utils/tests/renderWithTheme'
 import '@testing-library/jest-dom/extend-expect'
-import mockData from '../../../stubs/mockData'
-import headerData from '../../../stubs/headerData'
+import mockHeader from '../../../stubs/mockHeader'
+import mockFooter from '../../../stubs/mockFooter'
 
 const data = {
   contentfulSection: {
@@ -18,8 +19,13 @@ const data = {
   },
 }
 
+beforeEach(() => {
+  jest.clearAllMocks()
+})
+
 test('show page title and component', async () => {
-  mockData(headerData)
+  mockHeader()
+  mockFooter()
   const {getByText} = render(<Section data={data} />)
   await waitForDomChange()
   expect(document.title).toEqual(data.contentfulSection.title)
@@ -27,7 +33,8 @@ test('show page title and component', async () => {
 })
 
 test('should show all the articles', () => {
-  mockData(headerData)
+  mockHeader()
+  mockFooter()
   const {getByText} = render(<Section data={data} />)
   data.contentfulSection.articles.forEach(({name, slug}) => {
     const articleLink = getByText(name)

@@ -1,7 +1,6 @@
 import React from 'react'
-// import {data} from './FooterFragment'
 import {graphql, useStaticQuery} from 'gatsby'
-import {shape, object} from 'prop-types'
+import {shape, object, arrayOf} from 'prop-types'
 import RichText from '../RichText'
 import FooterLinks from './FooterLinks'
 import Box from '@material-ui/core/Box'
@@ -31,13 +30,17 @@ const Footer = () => {
         copyrightAndContact {
           json
         }
+        pages {
+          name
+          slug
+        }
       }
     }
   `)
   return <FooterComponent {...data} />
 }
 
-const FooterComponent = ({contentfulFooter: {copyrightAndContact}}) => {
+const FooterComponent = ({contentfulFooter: {pages, copyrightAndContact}}) => {
   const theme = useTheme()
   const classes = useStyles()
   return (
@@ -46,7 +49,7 @@ const FooterComponent = ({contentfulFooter: {copyrightAndContact}}) => {
         bgcolor={theme.palette.background.footer}
         className={classes.footerWrapper}
       >
-        <FooterLinks />
+        <FooterLinks pages={pages} />
         <RichText
           text={copyrightAndContact}
           className={classes.copyrightText}
@@ -61,6 +64,7 @@ FooterComponent.propTypes = {
     copyrightAndContact: shape({
       json: object.isRequired,
     }).isRequired,
+    pages: arrayOf(object).isRequired,
   }).isRequired,
 }
 

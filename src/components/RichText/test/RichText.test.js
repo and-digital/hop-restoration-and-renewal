@@ -1,5 +1,5 @@
 import React from 'react'
-import {render} from '@testing-library/react'
+import render from '../../../utils/tests/renderWithTheme'
 import '@testing-library/jest-dom/extend-expect'
 import RichText from '..'
 
@@ -27,9 +27,7 @@ it('should render the component', () => {
     },
   }
 
-  const {getByText, getByTestId} = render(<RichText {...props} />)
-  const contentValue = getByText('lorem ipsum')
+  const {getByText} = render(<RichText {...props} />)
+  const contentValue = getByText(/Houses of Parliament/g)
   expect(contentValue).toBeDefined()
-  const link = getByTestId('hyperlink-richtext')
-  expect(link).toBeDefined()
 })

@@ -1,11 +1,9 @@
 import React from 'react'
-// import {data} from './FooterFragment'
 import {shape, string, arrayOf} from 'prop-types'
 import Grid from '@material-ui/core/Grid'
 import {Link} from 'gatsby'
 import Typography from '@material-ui/core/Typography'
-import {graphql, useStaticQuery} from 'gatsby'
-import {makeStyles} from '@material-ui/styles'
+import {makeStyles} from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
   hamburgerMenuLink: {
@@ -22,21 +20,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const FooterLinks = () => {
-  const data = useStaticQuery(graphql`
-    query FooterLinksHamburgerQuery {
-      contentfulFooter {
-        pages {
-          name
-          slug
-        }
-      }
-    }
-  `)
-  return <FooterLinksComponent {...data} />
-}
-
-const FooterLinksComponent = ({contentfulFooter: {pages}}) => {
+const FooterLinksComponent = ({pages}) => {
   const classes = useStyles()
   return (
     <Grid
@@ -63,14 +47,12 @@ const FooterLinksComponent = ({contentfulFooter: {pages}}) => {
 }
 
 FooterLinksComponent.propTypes = {
-  contentfulFooter: shape({
-    pages: arrayOf(
-      shape({
-        name: string.isRequired,
-        slug: string.isRequired,
-      }).isRequired,
-    ),
-  }).isRequired,
+  pages: arrayOf(
+    shape({
+      name: string.isRequired,
+      slug: string.isRequired,
+    }).isRequired,
+  ),
 }
 
-export default FooterLinks
+export default FooterLinksComponent

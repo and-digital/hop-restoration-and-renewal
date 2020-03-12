@@ -4,7 +4,7 @@ import MenuIcon from '@material-ui/icons/Menu'
 import CloseIcon from '@material-ui/icons/Close'
 import Drawer from '@material-ui/core/Drawer'
 import {makeStyles} from '@material-ui/core/styles'
-import {node} from 'prop-types'
+import {node, arrayOf, object} from 'prop-types'
 import FooterLinks from './FooterLinks'
 
 const useStyles = makeStyles(theme => ({
@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const MobileMenu = ({children}) => {
+const MobileMenu = ({footerLinks, children}) => {
   const [isOpen, setIsOpen] = useState()
   const openMenu = () => setIsOpen(true)
   const closeMenu = () => setIsOpen(false)
@@ -54,7 +54,7 @@ const MobileMenu = ({children}) => {
         />
         <Box margin="80px 105px 302px 50px" lineHeight="96px">
           {children}
-          <FooterLinks />
+          <FooterLinks pages={footerLinks} />
         </Box>
       </Drawer>
     </Box>
@@ -62,6 +62,7 @@ const MobileMenu = ({children}) => {
 }
 
 MobileMenu.propTypes = {
+  footerLinks: arrayOf(object).isRequired,
   children: node.isRequired,
 }
 

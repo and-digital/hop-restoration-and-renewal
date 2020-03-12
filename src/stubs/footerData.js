@@ -3,7 +3,7 @@ export default {
     pages: [
       {
         name: 'test',
-        slug: '/test',
+        slug: 'test',
       },
     ],
     copyrightAndContact: {
