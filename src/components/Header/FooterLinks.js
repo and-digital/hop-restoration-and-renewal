@@ -9,7 +9,7 @@ import {makeStyles} from '@material-ui/styles'
 
 const useStyles = makeStyles(theme => ({
   hamburgerMenuLink: {
-    color: theme.palette.links.mobileMenu,
+    color: theme.palette.link.mobileMenu,
     fontSize: '28px',
     textDecoration: 'none',
   },
@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
 
 const FooterLinks = () => {
   const data = useStaticQuery(graphql`
-    query FooterLinksQuery {
+    query FooterLinksHamburgerQuery {
       contentfulFooter {
         pages {
           name

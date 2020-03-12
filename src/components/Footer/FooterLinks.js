@@ -9,9 +9,10 @@ import {makeStyles} from '@material-ui/styles'
 
 const useStyles = makeStyles(theme => ({
   footerMenuLink: {
-    color: theme.palette.links.main,
+    color: theme.palette.link.main,
     lineHeight: '40px',
     fontWeight: 'bold',
+    textDecoration: 'none',
   },
 }))
 

@@ -23,6 +23,10 @@ const useStyles = makeStyles(theme => ({
     width: '45px',
     position: 'absolute',
   },
+  menuIcon: {
+    height: '42px',
+    width: '60px',
+  },
 }))
 
 const MobileMenu = ({children}) => {
@@ -33,7 +37,12 @@ const MobileMenu = ({children}) => {
 
   return (
     <Box display="flex" flexDirection="row" flexWrap="wrap" alignItems="center">
-      <MenuIcon onClick={openMenu} color="primary" data-testid="mobileMenu" />
+      <MenuIcon
+        onClick={openMenu}
+        color="primary"
+        data-testid="mobileMenu"
+        className={styles.menuIcon}
+      />
       <Drawer
         anchor="right"
         open={isOpen}

@@ -1,3 +1,3 @@
-import {useMediaQuery} from '@material-ui/core'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 export default () => useMediaQuery.mockImplementation(() => false)

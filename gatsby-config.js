@@ -25,7 +25,7 @@ module.exports = {
   plugins: [
     'gatsby-transformer-remark',
     'gatsby-transformer-sharp',
-    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-react-helmet-async',
     'gatsby-plugin-sharp',
     `gatsby-plugin-material-ui`,
     {

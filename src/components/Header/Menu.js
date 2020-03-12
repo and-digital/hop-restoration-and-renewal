@@ -15,12 +15,17 @@ const useStyles = makeStyles(theme => ({
       flexDirection: 'row',
       alignItems: 'unset',
       margin: 'auto',
+      lineHeight: '48px',
     },
   },
   link: {
     color: theme.palette.secondary.main,
     textDecoration: 'none',
-    [theme.breakpoints.up('md')]: {color: '#000000'},
+    [theme.breakpoints.up('md')]: {color: theme.palette.primary.menuText},
+  },
+  activeLink: {
+    display: 'inline-block',
+    borderBottom: '5px solid',
   },
 }))
 
@@ -30,11 +35,12 @@ const Menu = ({sections}) => {
     <Box display="flex" flexDirection="row" alignItems="center">
       <Grid container spacing={3} className={classes.gridOuter}>
         {sections.map(({name, slug}) => (
-          <Grid item key={name} xs={12} sm="auto">
+          <Grid item key={name} xs={12} sm="auto" className={classes.gridInner}>
             <Link
               to={`/${slug}`}
               className={classes.link}
               data-testid={`section-link-${name}`}
+              activeClassName={classes.activeLink}
             >
               <Typography variant="h6">{name}</Typography>
             </Link>

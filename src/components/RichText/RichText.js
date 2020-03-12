@@ -7,7 +7,7 @@ import {makeStyles} from '@material-ui/styles'
 
 const useStyles = makeStyles(theme => ({
   richTextLink: {
-    color: theme.palette.links.main,
+    color: theme.palette.link.main,
   },
 }))
 

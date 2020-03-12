@@ -9,6 +9,7 @@ const theme = createMuiTheme({
       main: nero,
       text: nero,
       cross: white,
+      menuText: purple,
     },
     secondary: {
       main: white,
@@ -21,11 +22,13 @@ const theme = createMuiTheme({
       card: white,
       footer: grey,
     },
-    links: {
+    link: {
       main: purple,
       mobileMenu: white,
     },
   },
 })
 
-export default responsiveFonts(theme)
+theme.typography = responsiveFonts(theme)
+
+export default theme
