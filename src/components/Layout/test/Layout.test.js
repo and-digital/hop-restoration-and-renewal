@@ -1,13 +1,13 @@
 import React from 'react'
 import {render, waitForDomChange} from '@testing-library/react'
-
-import mockHeader from '../../../stubs/mockHeader'
+import mockData from '../../../stubs/mockData'
+import headerData from '../../../stubs/headerData'
 import Layout from '../'
 
 const title = 'page title'
 
 it('should add a title to the browser page and correct html attributes', async () => {
-  mockHeader()
+  mockData(headerData)
   const text = 'child component'
   const {getByText} = render(
     <Layout title={title}>

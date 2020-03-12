@@ -1,5 +1,6 @@
 import React from 'react'
 import Header from '../Header'
+import Footer from '../Footer'
 import {Helmet} from 'react-helmet'
 import {string, node} from 'prop-types'
 import {ThemeProvider} from '@material-ui/core'
@@ -26,6 +27,7 @@ const Layout = ({title, children}) => {
           <>
             <Header />
             {children}
+            <Footer />
           </>
         </main>
       </ThemeProvider>

@@ -9,7 +9,7 @@ import {makeStyles} from '@material-ui/core/styles'
 const useStyles = makeStyles(theme => ({
   gridOuter: {
     flexDirection: 'column',
-    margin: '80px 105px 302px 50px',
+    margin: '80px 105px 99px 50px',
     lineHeight: '96px',
     [theme.breakpoints.up('md')]: {
       flexDirection: 'row',
@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   link: {
-    color: '#ffffff',
+    color: theme.palette.secondary.main,
     textDecoration: 'none',
     [theme.breakpoints.up('md')]: {color: '#000000'},
   },

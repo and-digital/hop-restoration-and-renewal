@@ -2,7 +2,8 @@ import React from 'react'
 import IndexPage from '../'
 import {render, waitForDomChange} from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
-import mockHeader from '../../stubs/mockHeader'
+import mockData from '../../stubs/mockData'
+import headerData from '../../stubs/headerData'
 
 const heroImageTitle = 'Hero image title'
 
@@ -52,7 +53,7 @@ const homePageData = {
 }
 
 test('should show page title, main heading text and section links', async () => {
-  mockHeader()
+  mockData(headerData)
   const title = 'Restoration and Renewal'
   const {getByText, getByTestId, getByAltText} = render(
     <IndexPage data={homePageData} />,

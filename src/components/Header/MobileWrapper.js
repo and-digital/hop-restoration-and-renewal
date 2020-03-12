@@ -1,11 +1,11 @@
 import React, {useState} from 'react'
-
 import Box from '@material-ui/core/Box'
 import MenuIcon from '@material-ui/icons/Menu'
 import CloseIcon from '@material-ui/icons/Close'
 import Drawer from '@material-ui/core/Drawer'
 import {makeStyles} from '@material-ui/core/styles'
 import {node} from 'prop-types'
+import FooterLinks from './FooterLinks'
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -47,6 +47,7 @@ const MobileMenu = ({children}) => {
           data-testid="closeMenu"
         />
         {children}
+        <FooterLinks />
       </Drawer>
     </Box>
   )
