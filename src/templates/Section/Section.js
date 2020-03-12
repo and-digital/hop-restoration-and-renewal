@@ -1,26 +1,48 @@
 import React from 'react'
-import {shape, string, arrayOf} from 'prop-types'
-import {graphql, Link} from 'gatsby'
+import {shape, string, arrayOf, object} from 'prop-types'
+import {graphql} from 'gatsby'
+
+import Box from '@material-ui/core/Box'
+
 import Layout from '../../components/Layout'
+import ArticleCard from '../../components/ArticleCard'
+import Hero from '../../components/Hero'
 
 const Section = ({
   data: {
-    contentfulSection: {title, slug, articles},
+    contentfulSection: {title, slug, hero, articles},
   },
 }) => (
   <Layout title={title}>
+    <Hero {...hero} />
     <div className="wrapper">
       <h2 className="section-headline">{title}</h2>
     </div>
-    <section>
-      <ul>
-        {articles.map(({name, slug: articleSlug}) => (
-          <li key={name}>
-            <Link to={`/${slug}/${articleSlug}/`}>{name}</Link>
-          </li>
-        ))}
-      </ul>
-    </section>
+    <Box
+      component="section"
+      my={5}
+      data-testid="sections"
+      display="flex"
+      flexDirection="row"
+      justifyContent="space-between"
+      width="100%"
+    >
+      {articles.map(({previewLinkText, slug: articleSlug}) => (
+        <Box
+          key={`${title}-${slug}`}
+          position="relative"
+          width={{
+            xs: '100%',
+          }}
+        >
+          <ArticleCard
+            sectionSlug={slug}
+            slug={articleSlug}
+            linkText={previewLinkText}
+          />
+        </Box>
+      ))}
+    </Box>
   </Layout>
 )
 
@@ -29,9 +51,15 @@ Section.propTypes = {
     contentfulSection: shape({
       title: string.isRequired,
       slug: string.isRequired,
+      hero: shape({
+        image: shape({
+          title: string.isRequired,
+          fluid: object.isRequired,
+        }).isRequired,
+      }).isRequired,
       articles: arrayOf(
         shape({
-          name: string.isRequired,
+          previewLinkText: string.isRequired,
           slug: string.isRequired,
         }),
       ).isRequired,
@@ -46,9 +74,17 @@ export const query = graphql`
     contentfulSection(slug: {eq: $slug}) {
       title
       slug
+      hero {
+        image {
+          title
+          fluid {
+            ...GatsbyContentfulFluid
+          }
+        }
+      }
       articles {
-        name
         slug
+        previewLinkText
       }
     }
   }

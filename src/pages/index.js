@@ -11,14 +11,11 @@ const title = 'Restoration and Renewal'
 
 const Index = ({
   data: {
-    contentfulTemplateHeroWithCards: {
-      hero: {image},
-      cards,
-    },
+    contentfulTemplateHeroWithCards: {hero, cards},
   },
 }) => (
   <Layout title={title}>
-    <Hero image={image} />
+    <Hero {...hero} />
     <Typography variant="h1">{title}</Typography>
     <Box
       my={5}
