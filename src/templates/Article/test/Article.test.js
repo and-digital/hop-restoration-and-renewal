@@ -3,8 +3,9 @@ import Article from '..'
 import {waitForDomChange} from '@testing-library/react'
 import render from '../../../utils/tests/renderWithTheme'
 import '@testing-library/jest-dom/extend-expect'
-
-import mockHeader from '../../../stubs/mockHeader'
+import mockData from '../../../stubs/mockData'
+import headerData from '../../../stubs/headerData'
+import mockFooter from '../../../stubs/mockFooter'
 
 const data = {
   contentfulArticle: {
@@ -13,7 +14,8 @@ const data = {
 }
 
 test('should render title and component', async () => {
-  mockHeader()
+  mockData(headerData)
+  mockFooter()
   const {getByText} = render(<Article data={data} />)
   await waitForDomChange()
   expect(document.title).toEqual(data.contentfulArticle.name)

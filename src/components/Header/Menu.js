@@ -7,7 +7,7 @@ import {makeStyles} from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
   link: {
-    color: theme.palette.primary.cross,
+    color: theme.palette.secondary.main,
     textDecoration: 'none',
     [theme.breakpoints.up('md')]: {color: theme.palette.primary.menuText},
   },

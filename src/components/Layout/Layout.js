@@ -1,11 +1,11 @@
 import React from 'react'
 import Header from '../Header'
+import Footer from '../Footer'
 import {Helmet, HelmetProvider} from 'react-helmet-async'
 import {string, node} from 'prop-types'
-import {ThemeProvider} from '@material-ui/core'
 import Box from '@material-ui/core/Box'
 import theme from '../../utils/theme'
-import {makeStyles} from '@material-ui/core/styles'
+import {makeStyles, ThemeProvider} from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
   body: {
@@ -28,6 +28,7 @@ const Layout = ({title, children}) => {
           <Box maxWidth={1620} margin="auto">
             {children}
           </Box>
+          <Footer />
         </Box>
       </ThemeProvider>
     </HelmetProvider>
