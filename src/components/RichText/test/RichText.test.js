@@ -22,12 +22,26 @@ it('should render the component', () => {
             ],
             nodeType: 'paragraph',
           },
+          {
+            data: {
+              uri: 'http://google.com',
+            },
+            content: [
+              {
+                data: {},
+                marks: [],
+                value: 'Here is an external link',
+                nodeType: 'text',
+              },
+            ],
+            nodeType: 'hyperlink',
+          },
         ],
       },
     },
   }
 
   const {getByText} = render(<RichText {...props} />)
-  const contentValue = getByText(/Houses of Parliament/g)
-  expect(contentValue).toBeDefined()
+  expect(getByText(/Houses of Parliament/g)).toBeDefined()
+  expect(getByText('Here is an external link')).toBeDefined()
 })
