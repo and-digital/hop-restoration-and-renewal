@@ -12,9 +12,6 @@ const useStyles = makeStyles(theme => ({
     background: theme.palette.background.mobileMenu,
     width: '100%',
   },
-  MuiAppBar: {
-    colorPrimary: theme.palette.primary.main,
-  },
   closeIcon: {
     color: theme.palette.primary.cross,
     right: '29px',
@@ -55,7 +52,9 @@ const MobileMenu = ({children}) => {
           className={styles.closeIcon}
           data-testid="closeMenu"
         />
-        {children}
+        <Box margin="80px 105px 302px 50px" lineHeight="96px">
+          {children}
+        </Box>
       </Drawer>
     </Box>
   )

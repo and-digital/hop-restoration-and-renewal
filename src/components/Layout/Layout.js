@@ -3,6 +3,7 @@ import Header from '../Header'
 import {Helmet, HelmetProvider} from 'react-helmet-async'
 import {string, node} from 'prop-types'
 import {ThemeProvider} from '@material-ui/core'
+import Box from '@material-ui/core/Box'
 import theme from '../../utils/theme'
 import {makeStyles} from '@material-ui/core/styles'
 
@@ -22,12 +23,12 @@ const Layout = ({title, children}) => {
         <title>{title}</title>
       </Helmet>
       <ThemeProvider theme={theme}>
-        <main className={classes.body}>
-          <>
-            <Header />
+        <Box component="main" className={classes.body}>
+          <Header />
+          <Box maxWidth={1620} margin="auto">
             {children}
-          </>
-        </main>
+          </Box>
+        </Box>
       </ThemeProvider>
     </HelmetProvider>
   )

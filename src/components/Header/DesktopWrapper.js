@@ -3,7 +3,7 @@ import Box from '@material-ui/core/Box'
 import {node} from 'prop-types'
 
 const DesktopMenu = ({children}) => (
-  <Box display="flex" flexDirection="row" alignItems="center">
+  <Box display="flex" alignItems="center" marginRight="10px">
     {children}
   </Box>
 )

@@ -15,12 +15,8 @@ const styles = makeStyles(theme => ({
     backgroundColor: theme.palette.background.desktopMenu,
     boxShadow: '0px 5px 5px rgba(35, 35, 35, 0.1)',
   },
-  box: {
-    boxSizing: 'border-box',
-  },
   linkBox: {
     boxSizing: 'border-box',
-    [theme.breakpoints.up('md')]: {},
     padding: '20px 22px 20px 12px',
   },
   logo: {
@@ -74,7 +70,7 @@ const HeaderComponent = ({
         display="flex"
         justifyContent="space-between"
         width="100%"
-        maxWidth={1560}
+        maxWidth={1620}
         margin="auto"
         className={classes.box}
       >
