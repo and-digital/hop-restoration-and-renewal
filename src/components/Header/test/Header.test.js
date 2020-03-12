@@ -1,10 +1,7 @@
 import React from 'react'
-import {
-  render,
-  fireEvent,
-  waitForElementToBeRemoved,
-} from '@testing-library/react'
+import {fireEvent, waitForElementToBeRemoved} from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
+import render from '../../../utils/tests/renderWithTheme'
 
 import Header from '..'
 import data from '../../../stubs/headerData'
