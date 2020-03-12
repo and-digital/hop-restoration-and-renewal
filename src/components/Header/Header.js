@@ -73,7 +73,7 @@ const HeaderComponent = ({
   const Wrapper = isDesktop ? DesktopWrapper : MobileWrapper
 
   return (
-    <AppBar className={classes.root} data-testid="header">
+    <AppBar className={classes.root} data-testid="header" position="relative">
       <Box
         display="flex"
         justifyContent="space-between"

@@ -15,7 +15,6 @@ const useStyles = makeStyles(theme => ({
 
 const Layout = ({title, children}) => {
   const classes = useStyles()
-
   return (
     <HelmetProvider>
       <Helmet>
@@ -25,7 +24,7 @@ const Layout = ({title, children}) => {
       <ThemeProvider theme={theme}>
         <Box component="main" className={classes.body}>
           <Header />
-          <Box maxWidth={1620} margin="auto">
+          <Box maxWidth={1620} mx="auto">
             {children}
           </Box>
           <Footer />
