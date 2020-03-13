@@ -62,7 +62,7 @@ exports.createPages = async ({graphql, actions}) => {
       path: `/${slug}/`,
       component: sectionTemplate,
       context: {
-        slug: slug,
+        slug,
       },
     })
   })
