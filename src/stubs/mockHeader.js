@@ -1,7 +1,4 @@
-import {useStaticQuery} from 'gatsby'
+import headerData from './headerData'
+import mockData from './mockData'
 
-import data from './headerData'
-
-export default () => {
-  useStaticQuery.mockImplementation(() => data)
-}
+export default () => mockData(headerData)

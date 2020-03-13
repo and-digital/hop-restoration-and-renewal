@@ -48,6 +48,12 @@ const Header = () => {
           title
         }
       }
+      contentfulFooter {
+        pages {
+          name
+          slug
+        }
+      }
     }
   `)
   return <HeaderComponent {...data} />
@@ -59,13 +65,15 @@ const HeaderComponent = ({
     logo: {fluid, title},
     homePageLinkText,
   },
+  contentfulFooter: {pages},
 }) => {
   const classes = styles()
   const theme = useTheme()
   const isDesktop = useMediaQuery(theme.breakpoints.up('md'))
   const Wrapper = isDesktop ? DesktopWrapper : MobileWrapper
+
   return (
-    <AppBar className={classes.root} data-testid="header">
+    <AppBar className={classes.root} data-testid="header" position="relative">
       <Box
         display="flex"
         justifyContent="space-between"
@@ -77,7 +85,7 @@ const HeaderComponent = ({
         <Link to="/" className={classes.linkBox} aria-label={homePageLinkText}>
           <Image fluid={fluid} alt={title} className={classes.logo} />
         </Link>
-        <Wrapper>
+        <Wrapper footerLinks={pages}>
           <Menu sections={sections} />
         </Wrapper>
       </Box>
@@ -92,6 +100,9 @@ HeaderComponent.propTypes = {
     logo: shape({fluid: object.isRequired, title: string.isRequired})
       .isRequired,
     homePageLinkText: string.isRequired,
+  }).isRequired,
+  contentfulFooter: shape({
+    pages: arrayOf(object).isRequired,
   }).isRequired,
 }
 

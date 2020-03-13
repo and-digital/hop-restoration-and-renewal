@@ -1,25 +1,21 @@
 import React from 'react'
 import Layout from '../components/Layout'
-import {graphql, Link} from 'gatsby'
-import Image from 'gatsby-image'
+import {graphql} from 'gatsby'
 import {shape, object, arrayOf, string} from 'prop-types'
 import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
+import Hero from '../components/Hero'
+import SectionCard from '../components/SectionCard'
 
 const title = 'Restoration and Renewal'
 
 const Index = ({
   data: {
-    contentfulTemplateHeroWithCards: {
-      hero: {
-        image: {title: heroImageTitle, fluid},
-      },
-      cards,
-    },
+    contentfulTemplateHeroWithCards: {hero, cards},
   },
 }) => (
   <Layout title={title}>
-    <Image fluid={fluid} alt={heroImageTitle} />
+    <Hero {...hero} />
     <Typography variant="h1">{title}</Typography>
     <Box
       my={5}
@@ -29,7 +25,7 @@ const Index = ({
       justifyContent="space-between"
       width="100%"
     >
-      {cards.map(({slug, previewLinkName, hero: {image: {title, fluid}}}) => (
+      {cards.map(({slug, previewLinkName, hero: {image}}) => (
         <Box
           key={`${title}-${slug}`}
           position="relative"
@@ -37,10 +33,7 @@ const Index = ({
             xs: '100%',
           }}
         >
-          <Image fluid={fluid} alt={title} />
-          <Link to={slug}>
-            <Typography>{previewLinkName}</Typography>
-          </Link>
+          <SectionCard image={image} slug={slug} linkText={previewLinkName} />
         </Box>
       ))}
     </Box>

@@ -7,7 +7,7 @@ import {makeStyles} from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
   link: {
-    color: theme.palette.primary.cross,
+    color: theme.palette.secondary.main,
     textDecoration: 'none',
     [theme.breakpoints.up('md')]: {color: theme.palette.primary.menuText},
   },
@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
 const Menu = ({sections}) => {
   const classes = useStyles()
   return (
-    <Grid container spacing={3}>
+    <Grid container spacing={3} style={{width: 'calc(100% + 25px)'}}>
       {sections.map(({name, slug}) => (
         <Grid item key={name} xs={12} sm={12} md="auto">
           <Link

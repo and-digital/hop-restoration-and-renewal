@@ -1,33 +1,31 @@
 import React from 'react'
-// import {waitForDomChange} from '@testing-library/react'
 import render from '../../../utils/tests/renderWithTheme'
+import '@testing-library/jest-dom/extend-expect'
 
-// import mockHeader from '../../../stubs/mockHeader'
-import SectionCard from '../'
+import SectionCard from '..'
 
-const title = 'page title'
-const content = 'this is some content for the section card'
-const imageUrl = '/imagetest'
+const image = {
+  title: 'palace image',
+  fluid: {
+    base64: '',
+    aspectRatio: 1000,
+    height: 400,
+    src: '',
+    srcSet: '',
+    srcSetWebp: '',
+    srcWebp: '',
+    sizes: '',
+  },
+}
 
-describe('section card', () => {
-  it('should render a box with the title', async () => {
-    const {getByText} = render(
-      <SectionCard title={title} content={content} imageUrl={imageUrl} />,
-    )
-    expect(getByText(title)).toBeDefined()
-  })
+const slug = 'path'
+const linkText = 'here is a link'
 
-  it('should render a box with the content', async () => {
-    const {getByText} = render(
-      <SectionCard title={title} content={content} imageUrl={imageUrl} />,
-    )
-    expect(getByText(content)).toBeDefined()
-  })
-
-  it('should render a box with the image', async () => {
-    const {getByText} = render(
-      <SectionCard title={title} content={content} imageUrl={imageUrl} />,
-    )
-    expect(getByText(content)).toBeDefined()
-  })
+it('should show an image and a link with text', () => {
+  const {getByText} = render(
+    <SectionCard slug={slug} image={image} linkText={linkText} />,
+  )
+  const link = getByText(linkText)
+  expect(link).toBeDefined()
+  expect(link.parentNode).toHaveAttribute('href', '/path')
 })

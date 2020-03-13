@@ -1,4 +1,12 @@
 export default {
+  contentfulFooter: {
+    pages: [
+      {
+        name: 'test',
+        slug: 'test',
+      },
+    ],
+  },
   contentfulHeader: {
     sections: [
       {
