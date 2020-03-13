@@ -3,9 +3,9 @@ import Article from '..'
 import {waitForDomChange} from '@testing-library/react'
 import render from '../../../utils/tests/renderWithTheme'
 import '@testing-library/jest-dom/extend-expect'
-import mockData from '../../../stubs/mockData'
-import headerData from '../../../stubs/headerData'
 import mockFooter from '../../../stubs/mockFooter'
+import mockSEO from '../../../stubs/mockSEO'
+import mockHeader from '../../../stubs/mockHeader'
 
 const data = {
   contentfulArticle: {
@@ -14,7 +14,8 @@ const data = {
 }
 
 test('should render title and component', async () => {
-  mockData(headerData)
+  mockSEO()
+  mockHeader()
   mockFooter()
   const {getByText} = render(<Article data={data} />)
   await waitForDomChange()

@@ -5,6 +5,7 @@ import render from '../../../utils/tests/renderWithTheme'
 import Layout from '../'
 import mockHeader from '../../../stubs/mockHeader'
 import mockFooter from '../../../stubs/mockFooter'
+import mockSEO from '../../../stubs/mockSEO'
 
 const title = 'page title'
 
@@ -13,6 +14,7 @@ beforeEach(() => {
 })
 
 it('should add a title to the browser page and correct html attributes', async () => {
+  mockSEO()
   mockHeader()
   mockFooter()
   const text = 'child component'
