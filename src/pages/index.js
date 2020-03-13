@@ -25,17 +25,29 @@ const Index = ({
       justifyContent="space-between"
       width="100%"
     >
-      {cards.map(({slug, previewLinkName, hero: {image}}) => (
-        <Box
-          key={`${title}-${slug}`}
-          position="relative"
-          width={{
-            xs: '100%',
-          }}
-        >
-          <SectionCard image={image} slug={slug} linkText={previewLinkName} />
-        </Box>
-      ))}
+      {cards.map(
+        ({
+          slug,
+          previewLinkName,
+          hero: {image},
+          childContentfulSectionPreviewContentRichTextNode,
+        }) => (
+          <Box
+            key={`${title}-${slug}`}
+            position="relative"
+            width={{
+              xs: '100%',
+            }}
+          >
+            <SectionCard
+              image={image}
+              slug={slug}
+              linkText={previewLinkName}
+              body={childContentfulSectionPreviewContentRichTextNode}
+            />
+          </Box>
+        ),
+      )}
     </Box>
   </Layout>
 )
@@ -79,8 +91,12 @@ export const query = graphql`
         }
       }
       cards {
+        title
         slug
         previewLinkName
+        childContentfulSectionPreviewContentRichTextNode {
+          json
+        }
         hero {
           image {
             title
