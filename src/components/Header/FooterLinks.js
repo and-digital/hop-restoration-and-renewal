@@ -7,7 +7,7 @@ import {makeStyles} from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
   linkWrapper: {
-    marginTop: '50px',
+    marginTop: '99px',
     '&.MuiGrid-item': {
       marginTop: '0px',
     },
@@ -19,7 +19,8 @@ const useStyles = makeStyles(theme => ({
   },
   hamburgerMenuText: {
     fontSize: '28px',
-    lineHeight: '40px',
+    lineHeight: '48px',
+    fontWeight: 'normal',
   },
 }))
 
