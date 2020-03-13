@@ -11,6 +11,12 @@ const useStyles = makeStyles(theme => ({
     lineHeight: '40px',
     fontWeight: 'bold',
     textDecoration: 'none',
+    display: 'block',
+    '& p': {
+      lineHeight: '30px',
+      display: 'inline-block',
+      borderBottom: '3px solid',
+    },
   },
 }))
 
