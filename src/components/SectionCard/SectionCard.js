@@ -7,10 +7,17 @@ import RichText from '../RichText/RichText'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 
-const SectionCard = ({image: {fluid, title}, body, linkText, slug}) => (
+const SectionCard = ({
+  image: {fluid, title},
+  sectionTitle,
+  body,
+  linkText,
+  slug,
+}) => (
   <Card>
     <Image fluid={fluid} alt={title} />
     <CardContent>
+      {sectionTitle}
       <RichText text={body} aria-label="section description" />
       <Link to={`/${slug}`}>
         <Typography variant="body1">{linkText}</Typography>
@@ -29,6 +36,7 @@ SectionCard.propTypes = {
   }).isRequired,
   slug: string.isRequired,
   linkText: string.isRequired,
+  sectionTitle: string.isRequired,
 }
 
 export default SectionCard

@@ -28,6 +28,7 @@ const Index = ({
       {cards.map(
         ({
           slug,
+          title: sectionTitle,
           previewLinkName,
           hero: {image},
           childContentfulSectionPreviewContentRichTextNode,
@@ -41,6 +42,7 @@ const Index = ({
           >
             <SectionCard
               image={image}
+              sectionTitle={sectionTitle}
               slug={slug}
               linkText={previewLinkName}
               body={childContentfulSectionPreviewContentRichTextNode}
