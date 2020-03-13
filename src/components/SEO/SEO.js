@@ -31,6 +31,10 @@ const SEO = ({title, description}) => {
         <meta name="description" content={description || seoDescription} />
         <meta name="keywords" content={tags.join(', ')} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link
+          href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap"
+          rel="stylesheet"
+        />
       </Helmet>
     </HelmetProvider>
   )
