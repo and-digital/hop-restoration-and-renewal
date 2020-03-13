@@ -5,6 +5,7 @@ import render from '../../../utils/tests/renderWithTheme'
 import '@testing-library/jest-dom/extend-expect'
 import mockHeader from '../../../stubs/mockHeader'
 import mockFooter from '../../../stubs/mockFooter'
+import mockSEO from '../../../stubs/mockSEO'
 
 const heroImageTitle = 'Hero image title'
 
@@ -41,6 +42,7 @@ beforeEach(() => {
 })
 
 test('show page title and component', async () => {
+  mockSEO()
   mockHeader()
   mockFooter()
   const {getByText} = render(<Section data={data} />)
@@ -50,6 +52,7 @@ test('show page title and component', async () => {
 })
 
 test('should show all the articles', () => {
+  mockSEO()
   mockHeader()
   mockFooter()
   const {getByText} = render(<Section data={data} />)
