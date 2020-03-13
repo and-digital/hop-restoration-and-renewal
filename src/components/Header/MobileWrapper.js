@@ -52,7 +52,7 @@ const MobileMenu = ({footerLinks, children}) => {
           className={styles.closeIcon}
           data-testid="closeMenu"
         />
-        <Box margin="80px 105px 302px 50px" lineHeight="96px">
+        <Box margin="80px 105px 105px 50px" lineHeight="96px">
           {children}
           <FooterLinks pages={footerLinks} />
         </Box>
