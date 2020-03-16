@@ -12,6 +12,8 @@ const useStyles = makeStyles(theme => ({
     height: '605px',
     width: '100%',
     overflow: 'hidden',
+    [theme.breakpoints.between('sm', 'md')]: {height: '400px'},
+    [theme.breakpoints.between('md', 'lg')]: {height: '605px'},
   },
   imageWrapper: {
     width: '100%',
@@ -20,34 +22,44 @@ const useStyles = makeStyles(theme => ({
     left: '0',
     display: 'none',
     [theme.breakpoints.up('md')]: {display: 'block '},
-    '& .gatsby-image-wrapper' : {
+    '& .gatsby-image-wrapper': {
       position: 'unset !important',
-    }
+    },
   },
   contextWrapper: {
     position: 'relative',
     width: '100%',
     maxWidth: '1620px',
     margin: 'auto',
-    height: '605px',
+    height: '100%',
   },
   heroTextContent: {
-    padding: '34px 30px',
+    padding: '20px 22px 43px 23px;',
     position: 'absolute',
     top: '0',
+    opacity: '0.95',
     backgroundColor: theme.palette.background.hero,
     color: theme.palette.secondary.main,
     width: '100%',
     height: '100%',
     '& h1': {
-      fontSize: '64px',
-      lineHeight: '60px',
+      fontSize: '36px',
+      lineHeight: '48px',
       fontWeight: 'normal',
+      [theme.breakpoints.up('md')]: {
+        fontSize: '64px',
+        lineHeight: '60px',
+      },
     },
     [theme.breakpoints.up('md')]: {
+      padding: '34px 32px 46px 30px',
       width: '481px',
       height: '605px',
     },
+  },
+  heroSubTextContent: {
+    fontSize: '24px',
+    lineHeight: '36px',
   },
 }))
 
@@ -60,10 +72,10 @@ const Hero = ({image: {title: heroImageTitle, fixed}, title, text}) => {
       </Box>
       <Box maxWidth="1620" className={classes.contextWrapper}>
         <Box className={classes.heroTextContent}>
-          <Typography variant="h1">
-            {title}
-          </Typography>
-          {text &&<RichText text={text} />}
+          <Typography variant="h1">{title}</Typography>
+          {text && (
+            <RichText text={text} className={classes.heroSubTextContent} />
+          )}
         </Box>
       </Box>
     </Box>
@@ -76,9 +88,9 @@ Hero.propTypes = {
     fixed: object.isRequired,
   }).isRequired,
   title: string.isRequired,
-  text: {
-    json: object,
-  },
+  text: shape({
+    json: object.isRequired,
+  }).isRequired,
 }
 
 export default Hero
