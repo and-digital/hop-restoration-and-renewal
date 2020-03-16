@@ -4,6 +4,7 @@ import {graphql} from 'gatsby'
 import {shape, object, arrayOf, string} from 'prop-types'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
+
 import Box from '@material-ui/core/Box'
 import Hero from '../components/Hero'
 import SectionCard from '../components/SectionCard'
@@ -70,7 +71,7 @@ Index.propTypes = {
         title: string.isRequired,
         text: {
           json: object,
-        }
+        },
       }).isRequired,
       cards: arrayOf(
         shape({
@@ -79,7 +80,7 @@ Index.propTypes = {
           hero: shape({
             image: shape({
               title: string.isRequired,
-              fluid: object.isRequired,
+              fixed: object.isRequired,
             }).isRequired,
           }).isRequired,
         }),
@@ -98,8 +99,8 @@ export const query = graphql`
         }
         image {
           title
-          fluid (minHeight:605) {
-            ...GatsbyContentfulFluid
+          fixed( height: 605 , cropFocus: RIGHT, resizingBehavior: FILL, quality: 99) {
+            ...GatsbyContentfulFixed_withWebp
           }
       
         }

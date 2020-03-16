@@ -20,6 +20,9 @@ const useStyles = makeStyles(theme => ({
     left: '0',
     display: 'none',
     [theme.breakpoints.up('md')]: {display: 'block '},
+    '& .gatsby-image-wrapper' : {
+      position: 'unset !important',
+    }
   },
   contextWrapper: {
     position: 'relative',
@@ -48,12 +51,12 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const Hero = ({image: {title: heroImageTitle, fluid}, title, text}) => {
+const Hero = ({image: {title: heroImageTitle, fixed}, title, text}) => {
   const classes = useStyles()
   return (
     <Box component="section" className={classes.heroContainer}>
       <Box className={classes.imageWrapper}>
-        <Image fluid={fluid} alt={heroImageTitle} />
+        <Image fixed={fixed} alt={heroImageTitle} />
       </Box>
       <Box maxWidth="1620" className={classes.contextWrapper}>
         <Box className={classes.heroTextContent}>
@@ -70,7 +73,7 @@ const Hero = ({image: {title: heroImageTitle, fluid}, title, text}) => {
 Hero.propTypes = {
   image: shape({
     title: string.isRequired,
-    fluid: object.isRequired,
+    fixed: object.isRequired,
   }).isRequired,
   title: string.isRequired,
   text: {
