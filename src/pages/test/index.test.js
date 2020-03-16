@@ -9,20 +9,39 @@ import mockHeader from '../../stubs/mockHeader'
 
 const heroImageTitle = 'Hero image title'
 
+const heroImageText = {
+  json: {
+    data: {},
+    content: [
+      {
+        data: {},
+        content: [
+          {
+            data: {},
+            marks: [],
+            value: 'Restoration and Renewal',
+            nodeType: 'text',
+          },
+        ],
+        nodeType: 'paragraph',
+      },
+    ],
+  },
+}
+
 const heroData = {
   image: {
     title: heroImageTitle,
-    fluid: {
-      base64: '',
-      aspectRatio: 1000,
-      height: 400,
+    fixed: {
+      height: 605,
       src: '',
       srcSet: '',
       srcSetWebp: '',
       srcWebp: '',
-      sizes: '',
     },
   },
+  title: heroImageTitle,
+  text: heroImageText,
 }
 
 const cardsData = [
