@@ -16,14 +16,15 @@ const Index = ({
 }) => (
   <Layout title={title}>
     <Hero {...hero} />
-    <Typography variant="h1">{title}</Typography>
     <Box
+      mx="auto"
       my={5}
       data-testid="sections"
       display="flex"
       flexDirection="row"
       justifyContent="space-between"
       width="100%"
+      maxWidth="1620px"
     >
       {cards.map(({slug, previewLinkName, hero: {image}}) => (
         <Box
@@ -50,6 +51,10 @@ Index.propTypes = {
           title: string.isRequired,
           fluid: object.isRequired,
         }).isRequired,
+        title: string.isRequired,
+        text: {
+          json: object,
+        }
       }).isRequired,
       cards: arrayOf(
         shape({
@@ -71,11 +76,16 @@ export const query = graphql`
   query HomePageQuery {
     contentfulTemplateHeroWithCards(name: {eq: "homePage"}) {
       hero {
+        title
+        text {
+          json
+        }
         image {
           title
-          fluid {
+          fluid (minHeight:605) {
             ...GatsbyContentfulFluid
           }
+      
         }
       }
       cards {
