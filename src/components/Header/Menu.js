@@ -12,9 +12,12 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('md')]: {color: theme.palette.primary.menuText},
   },
   activeLink: {
-    lineHeight: '40px',
-    display: 'inline-block',
-    borderBottom: '5px solid',
+    '& h6': {
+      lineHeight: '40px',
+      [theme.breakpoints.up('md')]: {lineHeight: 'unset'},
+      display: 'inline-block',
+      borderBottom: '5px solid',
+    },
   },
 }))
 

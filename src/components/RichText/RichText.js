@@ -1,15 +1,14 @@
+/* eslint-disable react/display-name */
 import React from 'react'
 import PropTypes from 'prop-types'
 import {documentToReactComponents} from '@contentful/rich-text-react-renderer'
-import {INLINES, BLOCKS} from '@contentful/rich-text-types'
+import {INLINES} from '@contentful/rich-text-types'
 import ExternalLink from './ExternalLink'
-import Paragraph from './Paragraph'
 
 const RichText = ({className, text}) => {
   const options = {
     renderNode: {
       [INLINES.HYPERLINK]: ExternalLink,
-      [BLOCKS.PARAGRAPH]: Paragraph,
     },
   }
   return (
