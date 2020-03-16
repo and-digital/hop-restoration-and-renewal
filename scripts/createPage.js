@@ -2,7 +2,7 @@ const {generateComponentContext} = require('./utils')
 
 const fName = process.argv[2]
 
-const indexTemplate = `export { default } from './$CNAME'`
+const indexTemplate = `export {default} from './$CNAME'`
 const componentTemplate = `import React from 'react'
 
 const $CNAME = () => (
