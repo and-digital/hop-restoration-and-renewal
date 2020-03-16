@@ -17,11 +17,7 @@ const useStyles = makeStyles(theme => ({
 const ExternalLink = ({data: {uri}, content: [{value: text}]}) => {
   const classes = useStyles()
   return (
-    <a
-      href={uri}
-      className={classes.richTextLink}
-      data-testid="hyperlink-richtext"
-    >
+    <a href={uri} className={classes.richTextLink}>
       {text}
     </a>
   )

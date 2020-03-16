@@ -3,8 +3,8 @@ import {string, shape, arrayOf} from 'prop-types'
 
 import Typography from '@material-ui/core/Typography'
 
-const Paragraph = ({content: [{value: text}]}) => (
-  <Typography variant="body1">{text}</Typography>
+const Paragraph = (node, children) => (
+  <Typography variant="body1">{children}</Typography>
 )
 
 Paragraph.propTypes = {
