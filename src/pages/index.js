@@ -1,8 +1,7 @@
 import React from 'react'
 import Layout from '../components/Layout'
 import {graphql} from 'gatsby'
-import {shape, object, arrayOf, string} from 'prop-types'
-import Typography from '@material-ui/core/Typography'
+import {arrayOf, object, shape, string} from 'prop-types'
 import Box from '@material-ui/core/Box'
 import Hero from '../components/Hero'
 import SectionCard from '../components/SectionCard'
@@ -10,10 +9,10 @@ import SectionCard from '../components/SectionCard'
 const title = 'Restoration and Renewal'
 
 const Index = ({
-  data: {
-    contentfulTemplateHeroWithCards: {hero, cards},
-  },
-}) => (
+                 data: {
+                   contentfulTemplateHeroWithCards: {hero, cards},
+                 },
+               }) => (
   <Layout title={title}>
     <Hero {...hero} />
     <Box
@@ -54,7 +53,7 @@ Index.propTypes = {
         title: string.isRequired,
         text: {
           json: object,
-        }
+        },
       }).isRequired,
       cards: arrayOf(
         shape({
@@ -63,7 +62,7 @@ Index.propTypes = {
           hero: shape({
             image: shape({
               title: string.isRequired,
-              fluid: object.isRequired,
+              fixed: object.isRequired,
             }).isRequired,
           }).isRequired,
         }),
@@ -82,8 +81,8 @@ export const query = graphql`
         }
         image {
           title
-          fluid (minHeight:605) {
-            ...GatsbyContentfulFluid
+          fixed( height: 605 , cropFocus: RIGHT, resizingBehavior: FILL, quality: 99) {
+            ...GatsbyContentfulFixed_withWebp
           }
       
         }
