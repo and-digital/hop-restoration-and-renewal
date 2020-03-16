@@ -41,6 +41,7 @@ const testBody = {
 }
 
 const slug = 'path'
+const sectionTitle = 'title'
 const linkText = 'here is a link'
 const description =
   'The Palace of Westminster is an icon of our nation, a symbol of democracy, and a workplace for thousands. Today its structure and workings need urgent attention.'
@@ -52,6 +53,7 @@ it('should show an image,description and a link with text', () => {
       image={image}
       linkText={linkText}
       body={testBody}
+      sectionTitle={sectionTitle}
     />,
   )
 
