@@ -4,12 +4,14 @@ import {documentToReactComponents} from '@contentful/rich-text-react-renderer'
 import {INLINES, BLOCKS} from '@contentful/rich-text-types'
 import ExternalLink from './ExternalLink'
 import Paragraph from './Paragraph'
+import EmbeddedComponent from './EmbeddedEntry'
 
 const RichText = ({className, text}) => {
   const options = {
     renderNode: {
       [INLINES.HYPERLINK]: ExternalLink,
       [BLOCKS.PARAGRAPH]: Paragraph,
+      [BLOCKS.EMBEDDED_ENTRY]: EmbeddedComponent,
     },
   }
   return (

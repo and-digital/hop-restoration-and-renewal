@@ -1,11 +1,17 @@
 import React from 'react'
-import {shape, string, arrayOf} from 'prop-types'
+import {arrayOf, shape, string} from 'prop-types'
 import Grid from '@material-ui/core/Grid'
 import {Link} from 'gatsby'
 import Typography from '@material-ui/core/Typography'
 import {makeStyles} from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
+  linkWrapper: {
+    marginTop: '99px',
+    '&.MuiGrid-item': {
+      marginTop: '0px',
+    },
+  },
   hamburgerMenuLink: {
     color: theme.palette.link.mobileMenu,
     fontSize: '28px',
@@ -13,10 +19,8 @@ const useStyles = makeStyles(theme => ({
   },
   hamburgerMenuText: {
     fontSize: '28px',
-    lineHeight: '40px',
-  },
-  gridOuter: {
-    margin: '0 105px 58px 50px',
+    lineHeight: '48px',
+    fontWeight: 'normal',
   },
 }))
 
@@ -27,10 +31,10 @@ const FooterLinksComponent = ({pages}) => {
       container
       spacing={3}
       direction="column"
-      className={classes.gridOuter}
+      className={classes.linkWrapper}
     >
       {pages.map(({name, slug}) => (
-        <Grid item key={name} xs={12} sm="auto">
+        <Grid item key={name} xs={12} sm="auto" className={classes.linkWrapper}>
           <Link
             to={`/${slug}`}
             data-testid={`footer-link-${name}`}

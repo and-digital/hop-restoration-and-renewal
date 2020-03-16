@@ -6,18 +6,28 @@ import Typography from '@material-ui/core/Typography'
 import {makeStyles} from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
+  linkWrapper: {
+    marginBottom: '52px',
+    [theme.breakpoints.up('sm')]: {marginBottom: '0px'},
+  },
   footerMenuLink: {
     color: theme.palette.link.main,
     lineHeight: '40px',
     fontWeight: 'bold',
     textDecoration: 'none',
+    display: 'block',
+    '& p': {
+      lineHeight: '30px',
+      display: 'inline-block',
+      borderBottom: '3px solid',
+    },
   },
 }))
 
 const FooterLinks = ({pages}) => {
   const classes = useStyles()
   return (
-    <Grid container spacing={3} direction="row">
+    <Grid container spacing={3} direction="row" className={classes.linkWrapper}>
       {pages.map(({name, slug}) => (
         <Grid item key={name} xs={12} sm="auto">
           <Link

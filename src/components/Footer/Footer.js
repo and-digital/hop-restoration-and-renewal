@@ -1,18 +1,21 @@
 import React from 'react'
 import {graphql, useStaticQuery} from 'gatsby'
-import {shape, object, arrayOf} from 'prop-types'
+import {arrayOf, object, shape} from 'prop-types'
 import RichText from '../RichText'
 import FooterLinks from './FooterLinks'
 import Box from '@material-ui/core/Box'
-import {makeStyles, useTheme} from '@material-ui/core/styles'
+import {makeStyles} from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
   footerWrapper: {
+    backgroundColor: theme.palette.background.footer,
     padding: '27px 63px 13px 29px',
     minHeight: '418px',
+    [theme.breakpoints.up('sm')]: {
+      minHeight: '220px',
+    },
     [theme.breakpoints.up('md')]: {
-      padding: '27px 23px 28px 200px',
-      minHeight: '278px',
+      padding: '27px 23px 28px 29px',
     },
   },
   copyrightText: {
@@ -41,14 +44,10 @@ const Footer = () => {
 }
 
 const FooterComponent = ({contentfulFooter: {pages, copyrightAndContact}}) => {
-  const theme = useTheme()
   const classes = useStyles()
   return (
-    <footer>
-      <Box
-        bgcolor={theme.palette.background.footer}
-        className={classes.footerWrapper}
-      >
+    <footer className={classes.footerWrapper}>
+      <Box maxWidth={1620} margin="auto">
         <FooterLinks pages={pages} />
         <RichText
           text={copyrightAndContact}

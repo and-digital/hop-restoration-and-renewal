@@ -3,10 +3,10 @@ import IndexPage from '../'
 import {waitForDomChange} from '@testing-library/react'
 import render from '../../utils/tests/renderWithTheme'
 import '@testing-library/jest-dom/extend-expect'
-import mockData from '../../stubs/mockData'
-import headerData from '../../stubs/headerData'
 import mockFooter from '../../stubs/mockFooter'
 import cardsData from '../../stubs/cardsData'
+import mockSEO from '../../stubs/mockSEO'
+import mockHeader from '../../stubs/mockHeader'
 
 const heroImageTitle = 'Hero image title'
 
@@ -34,7 +34,8 @@ const homePageData = {
 }
 
 test('should show page title, main heading text and section links', async () => {
-  mockData(headerData)
+  mockSEO()
+  mockHeader()
   mockFooter()
   const title = 'Restoration and Renewal'
   const {getByText, getByTestId, getByAltText} = render(
