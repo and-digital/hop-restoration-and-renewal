@@ -33,21 +33,14 @@ const Index = ({
           hero: {image},
           childContentfulSectionPreviewContentRichTextNode,
         }) => (
-          <Box
+          <SectionCard
             key={`${title}-${slug}`}
-            position="relative"
-            width={{
-              xs: '100%',
-            }}
-          >
-            <SectionCard
-              image={image}
-              sectionTitle={sectionTitle}
-              slug={slug}
-              linkText={previewLinkName}
-              body={childContentfulSectionPreviewContentRichTextNode}
-            />
-          </Box>
+            image={image}
+            sectionTitle={sectionTitle}
+            slug={slug}
+            linkText={previewLinkName}
+            body={childContentfulSectionPreviewContentRichTextNode}
+          />
         ),
       )}
     </Box>

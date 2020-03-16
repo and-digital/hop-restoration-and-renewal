@@ -1,5 +1,5 @@
 import * as colors from './colors'
-const {white, whiteSmoke, deepPurple, nero, purple, lilac, grey} = colors
+const {white, whiteSmoke, deepPurple, nero, purple, lilac, grey, jewel} = colors
 
 export default {
   primary: {
@@ -22,5 +22,6 @@ export default {
   link: {
     main: purple,
     mobileMenu: white,
+    arrow: jewel,
   },
 }
