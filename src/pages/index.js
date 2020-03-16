@@ -67,6 +67,10 @@ Index.propTypes = {
           title: string.isRequired,
           fluid: object.isRequired,
         }).isRequired,
+        title: string.isRequired,
+        text: {
+          json: object,
+        }
       }).isRequired,
       cards: arrayOf(
         shape({
@@ -88,11 +92,16 @@ export const query = graphql`
   query HomePageQuery {
     contentfulTemplateHeroWithCards(name: {eq: "homePage"}) {
       hero {
+        title
+        text {
+          json
+        }
         image {
           title
-          fluid {
+          fluid (minHeight:605) {
             ...GatsbyContentfulFluid
           }
+      
         }
       }
       cards {
