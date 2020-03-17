@@ -2,6 +2,7 @@ import React from 'react'
 import {shape, string} from 'prop-types'
 import {graphql} from 'gatsby'
 import Layout from '../../components/Layout'
+import Typography from '@material-ui/core/Typography'
 
 const Article = ({
   data: {
@@ -10,7 +11,9 @@ const Article = ({
 }) => (
   <Layout title={name}>
     <div className="wrapper">
-      <h2 className="Article-headline">{name}</h2>
+      <Typography variant="h1" className="Article-headline">
+        {name}
+      </Typography>
     </div>
   </Layout>
 )
