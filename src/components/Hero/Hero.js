@@ -42,19 +42,22 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.secondary.main,
     width: '100%',
     height: '100%',
-    '& h1': {
-      fontSize: '36px',
-      lineHeight: '48px',
-      fontWeight: 'normal',
-      [theme.breakpoints.up('md')]: {
-        fontSize: '64px',
-        lineHeight: '60px',
-      },
-    },
     [theme.breakpoints.up('md')]: {
       padding: '34px 32px 46px 30px',
       width: '481px',
       height: '605px',
+      left: '18px',
+    },
+    '& h1': {
+      fontSize: '36px',
+      lineHeight: '48px',
+      fontWeight: 'normal',
+      marginBottom: '9px',
+      [theme.breakpoints.up('md')]: {
+        fontSize: '64px',
+        lineHeight: '60px',
+        marginBottom: '18px',
+      },
     },
   },
   heroSubTextContent: {
@@ -73,9 +76,7 @@ const Hero = ({image: {title: heroImageTitle, fixed}, title, text}) => {
       <Box maxWidth="1620" className={classes.contextWrapper}>
         <Box className={classes.heroTextContent}>
           <Typography variant="h1">{title}</Typography>
-          {text && (
-            <RichText text={text} className={classes.heroSubTextContent} />
-          )}
+          <RichText text={text} className={classes.heroSubTextContent} />
         </Box>
       </Box>
     </Box>

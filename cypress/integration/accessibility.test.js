@@ -5,13 +5,25 @@ const A11Y_OPTIONS = {
   },
 }
 
+const pageUrls = [
+  '/',
+  '/palace_of_westminster',
+  '/our-plan',
+  'work-with-us',
+  '/news',
+  '/resources',
+  '/sitemap',
+  '/privacy-policy',
+  '/accessibility',
+]
+
 describe('Accessibility tests', () => {
-  beforeEach(() => {
-    cy.visit('/')
-      .get('main')
-      .injectAxe()
-  })
-  it('Has no detectable accessibility violations on load', () => {
-    cy.checkA11y(A11Y_OPTIONS)
+  pageUrls.forEach(url => {
+    it(`Has no detectable accessibility violations on load on on ${url} page`, () => {
+      cy.visit(url)
+        .get('main')
+        .injectAxe()
+      cy.checkA11y(A11Y_OPTIONS)
+    })
   })
 })
