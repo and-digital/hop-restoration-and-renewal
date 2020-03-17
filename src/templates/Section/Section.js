@@ -27,21 +27,30 @@ const Section = ({
       justifyContent="space-between"
       width="100%"
     >
-      {articles.map(({previewLinkText, slug: articleSlug}) => (
-        <Box
-          key={`${title}-${slug}`}
-          position="relative"
-          width={{
-            xs: '100%',
-          }}
-        >
-          <ArticleCard
-            sectionSlug={slug}
-            slug={articleSlug}
-            linkText={previewLinkText}
-          />
-        </Box>
-      ))}
+      {articles.map(
+        ({
+          title: articleTitle,
+          previewText,
+          previewLinkText,
+          slug: articleSlug,
+        }) => (
+          <Box
+            key={`${title}-${slug}`}
+            position="relative"
+            width={{
+              xs: '100%',
+            }}
+          >
+            <ArticleCard
+              title={articleTitle}
+              sectionSlug={slug}
+              slug={articleSlug}
+              linkText={previewLinkText}
+              previewText={previewText}
+            />
+          </Box>
+        ),
+      )}
     </Box>
   </Layout>
 )
@@ -59,6 +68,7 @@ Section.propTypes = {
       }).isRequired,
       articles: arrayOf(
         shape({
+          previewText: object.isRequired,
           previewLinkText: string.isRequired,
           slug: string.isRequired,
         }),
@@ -83,8 +93,15 @@ export const query = graphql`
         }
       }
       articles {
+        title
         slug
         previewLinkText
+        previewText {
+          children {
+            id
+          }
+          json
+        }
       }
     }
   }

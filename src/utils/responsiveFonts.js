@@ -1,8 +1,23 @@
 export default theme => ({
   ...theme.typography,
   body1: {
-    fontSize: '18px',
+    fontSize: '21px',
     fontFamily: 'sans-serif',
+  },
+  body2: {
+    fontSize: '24px',
+    fontFamily: 'sans-serif',
+    lineHeight: '30px',
+  },
+  h2: {
+    fontWeight: 'bold',
+    fontSize: '24px',
+    lineHeight: '36px',
+    fontFamily: 'sans-serif',
+    [theme.breakpoints.up('md')]: {
+      fontWeight: '500',
+      lineHeight: '30px',
+    },
   },
   h6: {
     fontSize: '28px',
