@@ -2,7 +2,6 @@ import React from 'react'
 import Layout from '../components/Layout'
 import {graphql} from 'gatsby'
 import {shape, object, arrayOf, string, number} from 'prop-types'
-import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import Box from '@material-ui/core/Box'
 import Hero from '../components/Hero'
@@ -24,7 +23,6 @@ const Index = ({
   return (
     <Layout title={title}>
       <Hero {...hero} />
-      <Typography variant="h1">{title}</Typography>
       <Box my={5} mx="auto" data-testid="sections" maxWidth={1620}>
         <Grid
           container

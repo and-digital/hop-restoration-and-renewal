@@ -58,10 +58,9 @@ test('should show page title, main heading text and section links', async () => 
   mockHeader()
   mockFooter()
   const title = 'Restoration and Renewal'
-  const {getByText, getByTestId, getByAltText, container} = render(
+  const {getByText, getByTestId, getByAltText} = render(
     <IndexPage data={homePageData} />,
   )
-  console.log(container.innerHTML)
   expect(getByText(title)).toBeDefined()
   await waitForDomChange()
   expect(document.title).toEqual(title)
@@ -91,10 +90,9 @@ test('successfully renders cards when in mobile view', async () => {
   mockHeader()
   mockFooter()
   const title = 'Restoration and Renewal'
-  const {getByText, getByTestId, getByAltText, container} = render(
+  const {getByText, getByTestId, getByAltText} = render(
     <IndexPage data={homePageData} />,
   )
-  console.log(container.innerHTML)
   expect(getByText(title)).toBeDefined()
   await waitForDomChange()
   expect(document.title).toEqual(title)
