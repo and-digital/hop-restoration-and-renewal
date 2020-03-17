@@ -1,7 +1,7 @@
 const A11Y_OPTIONS = {
   runOnly: {
     type: 'tag',
-    values: ['wcag21aa', 'wcag2aa', 'best-practice'],
+    values: ['wcag21aa', 'wcag2aa', 'best-practice', 'section508'],
   },
 }
 
@@ -9,7 +9,7 @@ const pageUrls = [
   '/',
   '/palace_of_westminster',
   '/our-plan',
-  'work-with-us',
+  '/work-with-us',
   '/news',
   '/resources',
   '/sitemap',
