@@ -23,7 +23,7 @@ const Index = ({
   return (
     <Layout title={title}>
       <Hero {...hero} />
-      <Box data-testid="sections" maxWidth={1620} my={5} mx="20px">
+      <Box data-testid="sections" maxWidth={1620} my={5} mx="auto">
         <Grid
           container
           justify={justify}
