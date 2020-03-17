@@ -193,7 +193,7 @@ Object {
   "typography": Object {
     "body1": Object {
       "@media (min-width:960px)": Object {
-        "fontSize": "21px",
+        "fontSize": "24px",
       },
       "fontFamily": "sans-serif",
       "fontSize": "18px",
