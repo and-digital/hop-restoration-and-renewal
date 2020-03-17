@@ -1,8 +1,11 @@
 export default theme => ({
   ...theme.typography,
   body1: {
-    fontSize: '21px',
+    fontSize: '18px',
     fontFamily: 'sans-serif',
+    [theme.breakpoints.up('md')]: {
+      fontSize: '24px',
+    },
   },
   body2: {
     fontSize: '24px',

@@ -22,14 +22,22 @@ const useStyles = makeStyles(theme => ({
     },
   },
   previewImage: {
-    width: '430px',
-    height: '220px',
+    width: '295px',
+    height: '200px',
     margin: '28px auto 0',
+    [theme.breakpoints.up('md')]: {
+      width: '430px',
+      height: '220px',
+    },
   },
   card: {
-    width: '480px',
-    height: '570px',
+    width: '330px',
+    height: '562px',
     position: 'relative',
+    [theme.breakpoints.up('md')]: {
+      height: '570px',
+      width: '480px',
+    },
   },
   arrowIcon: {
     verticalAlign: 'middle',
@@ -44,6 +52,7 @@ const useStyles = makeStyles(theme => ({
     position: 'absolute',
     bottom: 0,
     marginBottom: '28px',
+    marginRight: '10px',
   },
   previewWrapper: {
     maxHeight: '110px',
@@ -61,35 +70,28 @@ const SectionCard = ({
   const classes = useStyles()
 
   return (
-    <Box
-      position="relative"
-      width={{
-        xs: '100%',
-      }}
-    >
-      <Card className={classes.card}>
-        <Image fluid={fluid} alt={title} className={classes.previewImage} />
-        <CardContent className={classes.cardContent}>
-          <Box mb={1}>
-            <Typography variant="h2">{sectionTitle}</Typography>
-          </Box>
-          <Box mb={1} className={classes.previewWrapper}>
-            <RichText
-              className={classes.sectionPreview}
-              text={body}
-              aria-label="section description"
-            />
-          </Box>
-          <Box className={classes.linkWrapper}>
-            <Link className={classes.link} to={`/${slug}`}>
-              <Typography variant="body2">
-                {linkText} <ArrowForwardIcon className={classes.arrowIcon} />
-              </Typography>
-            </Link>
-          </Box>
-        </CardContent>
-      </Card>
-    </Box>
+    <Card className={classes.card}>
+      <Image fluid={fluid} alt={title} className={classes.previewImage} />
+      <CardContent className={classes.cardContent}>
+        <Box mb={1}>
+          <Typography variant="h2">{sectionTitle}</Typography>
+        </Box>
+        <Box mb={1} className={classes.previewWrapper}>
+          <RichText
+            className={classes.sectionPreview}
+            text={body}
+            aria-label="section description"
+          />
+        </Box>
+        <Box className={classes.linkWrapper}>
+          <Link className={classes.link} to={`/${slug}`}>
+            <Typography variant="body2">
+              {linkText} <ArrowForwardIcon className={classes.arrowIcon} />
+            </Typography>
+          </Link>
+        </Box>
+      </CardContent>
+    </Card>
   )
 }
 
