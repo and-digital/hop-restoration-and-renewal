@@ -3,6 +3,7 @@ import {string, shape} from 'prop-types'
 import {graphql} from 'gatsby'
 
 import Layout from '../../components/Layout'
+import Typography from '@material-ui/core/Typography'
 
 const Page = ({
   data: {
@@ -10,7 +11,9 @@ const Page = ({
   },
 }) => (
   <Layout title={title}>
-    <p>{title}</p>
+    <Typography variant="h1" className="page-headline">
+      {title}
+    </Typography>
   </Layout>
 )
 

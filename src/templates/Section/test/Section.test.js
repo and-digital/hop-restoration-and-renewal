@@ -8,26 +8,47 @@ import mockFooter from '../../../stubs/mockFooter'
 import mockSEO from '../../../stubs/mockSEO'
 
 const heroImageTitle = 'Hero image title'
+const heroImageText = {
+  json: {
+    data: {},
+    content: [
+      {
+        data: {},
+        content: [
+          {
+            data: {},
+            marks: [],
+            value: 'Restoration and Renewal',
+            nodeType: 'text',
+          },
+        ],
+        nodeType: 'paragraph',
+      },
+    ],
+  },
+}
+
+const heroData = {
+  image: {
+    title: heroImageTitle,
+    fixed: {
+      height: 605,
+      width: 605,
+      src: '',
+      srcSet: '',
+      srcWebp: '',
+      srcSetWebp: '',
+    },
+  },
+  title: heroImageTitle,
+  text: heroImageText,
+}
 
 const data = {
   contentfulSection: {
     title: 'Westminster',
     slug: 'palace',
-    hero: {
-      image: {
-        title: heroImageTitle,
-        fluid: {
-          base64: '',
-          aspectRatio: 1000,
-          height: 400,
-          src: '',
-          srcSet: '',
-          srcSetWebp: '',
-          srcWebp: '',
-          sizes: '',
-        },
-      },
-    },
+    hero: heroData,
     articles: [
       {
         previewLinkText: 'history',

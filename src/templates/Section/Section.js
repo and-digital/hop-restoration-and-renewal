@@ -64,7 +64,7 @@ Section.propTypes = {
       hero: shape({
         image: shape({
           title: string.isRequired,
-          fluid: object.isRequired,
+          fixed: object.isRequired,
         }).isRequired,
       }).isRequired,
       articles: arrayOf(
@@ -86,10 +86,14 @@ export const query = graphql`
       title
       slug
       hero {
+        title
+        text {
+          json
+        }
         image {
           title
-          fluid {
-            ...GatsbyContentfulFluid
+          fixed(height: 605) {
+            ...GatsbyContentfulFixed_withWebp
           }
         }
       }

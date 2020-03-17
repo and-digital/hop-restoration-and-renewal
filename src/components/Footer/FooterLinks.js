@@ -33,6 +33,7 @@ const FooterLinks = ({pages}) => {
           <Link
             to={`/${slug}`}
             data-testid={`footer-link-${name}`}
+            data-cy="footer-link"
             className={classes.footerMenuLink}
           >
             <Typography variant="body1">{name}</Typography>
