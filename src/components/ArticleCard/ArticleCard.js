@@ -3,28 +3,20 @@ import {string, object, shape} from 'prop-types'
 import {Link} from 'gatsby'
 import Typography from '@material-ui/core/Typography'
 import RichText from '../RichText/RichText'
-import Card from '@material-ui/core/Card'
-import CardContent from '@material-ui/core/CardContent'
+import Paper from '@material-ui/core/Paper'
 import Box from '@material-ui/core/Box'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
 import {makeStyles} from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
-  sectionPreview: {
+  articlePreview: {
     color: theme.palette.primary.main,
     lineHeight: '28px',
-    fontSize: '21px',
   },
   cardContent: {
     padding: '28px',
   },
-  previewImage: {
-    width: '430px',
-    height: '220px',
-    margin: '28px auto 0',
-  },
   card: {
-    width: '324px',
     height: '427px',
     position: 'relative',
     borderLeft: '7px solid purple',
@@ -33,7 +25,6 @@ const useStyles = makeStyles(theme => ({
 
     [theme.breakpoints.up('md')]: {
       height: '301px',
-      width: '480px',
     },
   },
   arrowIcon: {
@@ -49,6 +40,7 @@ const useStyles = makeStyles(theme => ({
     position: 'absolute',
     bottom: 0,
     marginBottom: '28px',
+    marginRight: '10px',
   },
   previewWrapper: {
     maxHeight: '110px',
@@ -59,27 +51,29 @@ const useStyles = makeStyles(theme => ({
 const ArticleCard = ({title, previewText, linkText, slug, sectionSlug}) => {
   const classes = useStyles()
   return (
-    <Card className={classes.card}>
-      <CardContent className={classes.cardContent}>
-        <Box mb={1}>
-          <Typography variant="h2">{title}</Typography>
+    <Box>
+      <Paper className={classes.card}>
+        <Box className={classes.cardContent}>
+          <Box mb={1}>
+            <Typography variant="h2">{title}</Typography>
+          </Box>
+          <Box mb={1} className={classes.previewWrapper}>
+            <RichText
+              className={classes.articlePreview}
+              text={previewText}
+              aria-label="article description"
+            />
+          </Box>
+          <Box className={classes.linkWrapper}>
+            <Link to={`/${sectionSlug}/${slug}`} className={classes.link}>
+              <Typography variant="body2">
+                {linkText} <ArrowForwardIcon className={classes.arrowIcon} />
+              </Typography>
+            </Link>
+          </Box>
         </Box>
-        <Box mb={1} className={classes.previewWrapper}>
-          <RichText
-            className={classes.sectionPreview}
-            text={previewText}
-            aria-label="section description"
-          />
-        </Box>
-        <Box className={classes.linkWrapper}>
-          <Link to={`/${sectionSlug}/${slug}`} className={classes.link}>
-            <Typography variant="body2">
-              {linkText} <ArrowForwardIcon className={classes.arrowIcon} />
-            </Typography>
-          </Link>
-        </Box>
-      </CardContent>
-    </Card>
+      </Paper>
+    </Box>
   )
 }
 
