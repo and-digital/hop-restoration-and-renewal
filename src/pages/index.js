@@ -25,11 +25,11 @@ const Index = ({
     <Layout title={title}>
       <Hero {...hero} />
       <Typography variant="h1">{title}</Typography>
-      <Box my={5} mx="auto" data-testid="sections" maxWidth={1620}>
+      <Box data-testid="sections" maxWidth={1620} my={5} mx="20px">
         <Grid
           container
           justify={justify}
-          spacing={10}
+          spacing={5}
           data-testid="sectionsGrid"
         >
           {cards.map(
@@ -40,7 +40,14 @@ const Index = ({
               hero: {image},
               childContentfulSectionPreviewContentRichTextNode,
             }) => (
-              <Grid item key={`${title}-${slug}`} xs="auto">
+              <Grid
+                item
+                key={`${title}-${slug}`}
+                xs="auto"
+                sm={6}
+                md={6}
+                lg={4}
+              >
                 <SectionCard
                   image={image}
                   sectionTitle={sectionTitle}

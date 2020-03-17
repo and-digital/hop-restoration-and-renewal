@@ -13,6 +13,7 @@ const useStyles = makeStyles(theme => ({
   sectionPreview: {
     color: theme.palette.primary.main,
     lineHeight: '28px',
+    fontSize: '21px',
   },
   cardContent: {
     padding: '28px',
@@ -23,12 +24,17 @@ const useStyles = makeStyles(theme => ({
     margin: '28px auto 0',
   },
   card: {
-    width: '480px',
-    height: '300px',
+    width: '324px',
+    height: '427px',
     position: 'relative',
     borderLeft: '7px solid purple',
     borderRadius: '0px',
     boxShadow: '0px -4px 4px #ECECEC',
+
+    [theme.breakpoints.up('md')]: {
+      height: '301px',
+      width: '480px',
+    },
   },
   arrowIcon: {
     verticalAlign: 'middle',
