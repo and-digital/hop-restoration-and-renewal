@@ -98,6 +98,7 @@ Object {
       "main": "#2196f3",
     },
     "link": Object {
+      "arrow": "#16913F",
       "main": "#6B609C",
       "mobileMenu": "#ffffff",
     },
@@ -190,15 +191,16 @@ Object {
   },
   "typography": Object {
     "body1": Object {
+      "@media (min-width:960px)": Object {
+        "fontSize": "24px",
+      },
       "fontFamily": "sans-serif",
       "fontSize": "18px",
     },
     "body2": Object {
-      "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-      "fontSize": "0.875rem",
-      "fontWeight": 400,
-      "letterSpacing": "0.01071em",
-      "lineHeight": 1.43,
+      "fontFamily": "sans-serif",
+      "fontSize": "24px",
+      "lineHeight": "30px",
     },
     "button": Object {
       "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
@@ -229,11 +231,14 @@ Object {
       "lineHeight": 1.167,
     },
     "h2": Object {
-      "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-      "fontSize": "3.75rem",
-      "fontWeight": 300,
-      "letterSpacing": "-0.00833em",
-      "lineHeight": 1.2,
+      "@media (min-width:960px)": Object {
+        "fontWeight": "500",
+        "lineHeight": "30px",
+      },
+      "fontFamily": "sans-serif",
+      "fontSize": "24px",
+      "fontWeight": "bold",
+      "lineHeight": "36px",
     },
     "h3": Object {
       "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
