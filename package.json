@@ -69,7 +69,7 @@
     "clean": "gatsby clean",
     "start": "gatsby develop",
     "build": "gatsby build",
-    "serve": "gatsby serve",
+    "serve": "gatsby serve --prefix-paths",
     "serve-static": "npm run build && npm run serve",
     "test": "jest --watch",
     "storybook": "start-storybook",
