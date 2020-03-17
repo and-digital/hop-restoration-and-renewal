@@ -53,6 +53,28 @@ const data = {
       {
         previewLinkText: 'history',
         slug: 'history',
+        title: 'History',
+        previewText: {
+          json: {
+            data: {},
+            content: [
+              {
+                data: {},
+                content: [
+                  {
+                    data: {},
+                    marks: [],
+                    value:
+                      'First images of temporary House of Commons Chamber revealed. Plans will include a new temporary House of Commons Chamber, as well as work-space for all 650 MPs and their staff within a single secure site.',
+                    nodeType: 'text',
+                  },
+                ],
+                nodeType: 'paragraph',
+              },
+            ],
+            nodeType: 'document',
+          },
+        },
       },
     ],
   },

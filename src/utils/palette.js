@@ -18,6 +18,7 @@ export default {
     mobileMenu: lilac,
     card: white,
     footer: grey,
+    cardBorder: purple,
   },
   link: {
     main: purple,

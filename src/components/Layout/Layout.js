@@ -21,9 +21,7 @@ const Layout = ({title, children}) => {
       <ThemeProvider theme={theme}>
         <Box component="main" className={classes.body}>
           <Header />
-          <Box>
-            {children}
-          </Box>
+          <Box>{children}</Box>
           <Footer />
         </Box>
       </ThemeProvider>

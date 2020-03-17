@@ -3,48 +3,58 @@ import {shape, string, arrayOf, object} from 'prop-types'
 import {graphql} from 'gatsby'
 
 import Box from '@material-ui/core/Box'
-
+import Grid from '@material-ui/core/Grid'
 import Layout from '../../components/Layout'
 import ArticleCard from '../../components/ArticleCard'
 import Hero from '../../components/Hero'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
+import {useTheme} from '@material-ui/core/styles'
 
 const Section = ({
   data: {
     contentfulSection: {title, slug, hero, articles},
   },
-}) => (
-  <Layout title={title}>
-    <Hero {...hero} />
-    <div className="wrapper">
-      <h2 className="section-headline">{title}</h2>
-    </div>
-    <Box
-      component="section"
-      my={5}
-      data-testid="sections"
-      display="flex"
-      flexDirection="row"
-      justifyContent="space-between"
-      width="100%"
-    >
-      {articles.map(({previewLinkText, slug: articleSlug}) => (
-        <Box
-          key={`${title}-${slug}`}
-          position="relative"
-          width={{
-            xs: '100%',
-          }}
+}) => {
+  const theme = useTheme()
+  const isDesktop = useMediaQuery(theme.breakpoints.up('md'))
+  const justify = isDesktop ? 'flex-start' : 'center'
+
+  return (
+    <Layout title={title}>
+      <Hero {...hero} />
+      <div className="wrapper">
+        <h2 className="section-headline">{title}</h2>
+      </div>
+      <Box my={5} mx="auto" data-testid="sections" maxWidth={1620}>
+        <Grid
+          container
+          justify={justify}
+          spacing={10}
+          data-testid="sectionsGrid"
         >
-          <ArticleCard
-            sectionSlug={slug}
-            slug={articleSlug}
-            linkText={previewLinkText}
-          />
-        </Box>
-      ))}
-    </Box>
-  </Layout>
-)
+          {articles.map(
+            ({
+              title: articleTitle,
+              previewText,
+              previewLinkText,
+              slug: articleSlug,
+            }) => (
+              <Grid item key={`${title}-${slug}`} xs="auto">
+                <ArticleCard
+                  title={articleTitle}
+                  sectionSlug={slug}
+                  slug={articleSlug}
+                  linkText={previewLinkText}
+                  previewText={previewText}
+                />
+              </Grid>
+            ),
+          )}
+        </Grid>
+      </Box>
+    </Layout>
+  )
+}
 
 Section.propTypes = {
   data: shape({
@@ -59,6 +69,7 @@ Section.propTypes = {
       }).isRequired,
       articles: arrayOf(
         shape({
+          previewText: object.isRequired,
           previewLinkText: string.isRequired,
           slug: string.isRequired,
         }),
@@ -87,8 +98,15 @@ export const query = graphql`
         }
       }
       articles {
+        title
         slug
         previewLinkText
+        previewText {
+          children {
+            id
+          }
+          json
+        }
       }
     }
   }

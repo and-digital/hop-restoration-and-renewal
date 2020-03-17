@@ -54,6 +54,7 @@ Object {
     "augmentColor": [Function],
     "background": Object {
       "card": "#ffffff",
+      "cardBorder": "#6B609C",
       "default": "#fafafa",
       "desktopMenu": "#ffffff",
       "footer": "#EBE9E8",
