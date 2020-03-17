@@ -3,6 +3,7 @@ import Layout from '../components/Layout'
 import {graphql} from 'gatsby'
 import {shape, object, arrayOf, string} from 'prop-types'
 import Typography from '@material-ui/core/Typography'
+import Grid from '@material-ui/core/Grid'
 import Box from '@material-ui/core/Box'
 import Hero from '../components/Hero'
 import SectionCard from '../components/SectionCard'
@@ -17,32 +18,28 @@ const Index = ({
   <Layout title={title}>
     <Hero {...hero} />
     <Typography variant="h1">{title}</Typography>
-    <Box
-      my={5}
-      data-testid="sections"
-      display="flex"
-      flexDirection="row"
-      justifyContent="space-between"
-      width="100%"
-    >
-      {cards.map(
-        ({
-          slug,
-          title: sectionTitle,
-          previewLinkName,
-          hero: {image},
-          childContentfulSectionPreviewContentRichTextNode,
-        }) => (
-          <SectionCard
-            key={`${title}-${slug}`}
-            image={image}
-            sectionTitle={sectionTitle}
-            slug={slug}
-            linkText={previewLinkName}
-            body={childContentfulSectionPreviewContentRichTextNode}
-          />
-        ),
-      )}
+    <Box my={5} mx="auto" data-testid="sections" maxWidth={1620}>
+      <Grid container justify="left" spacing={10}>
+        {cards.map(
+          ({
+            slug,
+            title: sectionTitle,
+            previewLinkName,
+            hero: {image},
+            childContentfulSectionPreviewContentRichTextNode,
+          }) => (
+            <Grid item key={`${title}-${slug}`} xs="auto">
+              <SectionCard
+                image={image}
+                sectionTitle={sectionTitle}
+                slug={slug}
+                linkText={previewLinkName}
+                body={childContentfulSectionPreviewContentRichTextNode}
+              />
+            </Grid>
+          ),
+        )}
+      </Grid>
     </Box>
   </Layout>
 )
