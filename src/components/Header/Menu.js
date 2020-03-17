@@ -31,6 +31,7 @@ const Menu = ({sections}) => {
             to={`/${slug}`}
             className={classes.link}
             activeClassName={classes.activeLink}
+            data-cy="navigation-link"
           >
             <Typography variant="h6">{name}</Typography>
           </Link>
