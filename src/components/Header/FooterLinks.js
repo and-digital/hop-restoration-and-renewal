@@ -34,7 +34,7 @@ const FooterLinksComponent = ({pages}) => {
       className={classes.linkWrapper}
     >
       {pages.map(({name, slug}) => (
-        <Grid item key={name} xs={12} sm="auto" className={classes.linkWrapper}>
+        <Grid item key={name} xs={12} sm="auto">
           <Link
             to={`/${slug}`}
             data-testid={`footer-link-${name}`}

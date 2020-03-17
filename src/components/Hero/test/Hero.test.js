@@ -5,7 +5,7 @@ import Hero from '..'
 
 const image = {
   title: 'Hero image title',
-  fluid: {
+  fixed: {
     base64: '',
     aspectRatio: 1000,
     height: 400,
@@ -16,8 +16,37 @@ const image = {
     sizes: '',
   },
 }
+const title = 'Hero title'
+const text = {
+  json: {
+    data: {},
+    content: [
+      {
+        data: {},
+        content: [
+          {
+            data: {},
+            marks: [],
+            value:
+              'The Palace of' +
+              ' Westminster is the political, historic and symbolic heart of our democracy and our nation. Today, they' +
+              ' are in a state of serious disrepair. Practically, symbolically and economically their restoration and renewal is urgent and vital.',
+            nodeType: 'text',
+          },
+        ],
+        nodeType: 'paragraph',
+      },
+    ],
+    nodeType: 'document',
+  },
+}
 
-it('should display a fluid image', () => {
-  const {getByAltText} = render(<Hero image={image} />)
+const props = {
+  image,
+  title,
+  text,
+}
+it('should display a fixed image', () => {
+  const {getByAltText} = render(<Hero {...props} />)
   expect(getByAltText(image.title)).toBeDefined()
 })
