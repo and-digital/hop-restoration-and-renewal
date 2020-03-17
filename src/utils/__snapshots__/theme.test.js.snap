@@ -222,11 +222,15 @@ Object {
     "fontWeightMedium": 500,
     "fontWeightRegular": 400,
     "h1": Object {
-      "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-      "fontSize": "6rem",
-      "fontWeight": 300,
-      "letterSpacing": "-0.01562em",
-      "lineHeight": 1.167,
+      "@media (min-width:960px)": Object {
+        "fontSize": "64px",
+        "lineHeight": "60px",
+        "marginBottom": "18px",
+      },
+      "fontSize": "36px",
+      "fontWeight": "normal",
+      "lineHeight": "48px",
+      "marginBottom": "9px",
     },
     "h2": Object {
       "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
