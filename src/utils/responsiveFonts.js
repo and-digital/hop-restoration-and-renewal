@@ -22,6 +22,18 @@ export default theme => ({
       lineHeight: '30px',
     },
   },
+
+  h1: {
+    fontSize: '36px',
+    lineHeight: '48px',
+    fontWeight: 'normal',
+    marginBottom: '9px',
+    [theme.breakpoints.up('md')]: {
+      fontSize: '64px',
+      lineHeight: '60px',
+      marginBottom: '18px',
+    },
+  },
   h6: {
     fontSize: '28px',
     fontFamily: 'sans-serif',
