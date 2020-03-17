@@ -1,10 +1,13 @@
 import React from 'react'
 import Layout from '../components/Layout'
 import {graphql} from 'gatsby'
-import {arrayOf, object, shape, string, number} from 'prop-types'
+import {shape, object, arrayOf, string, number} from 'prop-types'
+import Grid from '@material-ui/core/Grid'
 import Box from '@material-ui/core/Box'
 import Hero from '../components/Hero'
 import SectionCard from '../components/SectionCard'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
+import {useTheme} from '@material-ui/core/styles'
 
 const title = 'Restoration and Renewal'
 
@@ -12,33 +15,45 @@ const Index = ({
   data: {
     contentfulTemplateHeroWithCards: {hero, cards},
   },
-}) => (
-  <Layout title={title}>
-    <Hero {...hero} />
-    <Box
-      mx="auto"
-      my={5}
-      data-testid="sections"
-      display="flex"
-      flexDirection="row"
-      justifyContent="space-between"
-      width="100%"
-      maxWidth="1620px"
-    >
-      {cards.map(({slug, previewLinkName, hero: {image}}) => (
-        <Box
-          key={`${title}-${slug}`}
-          position="relative"
-          width={{
-            xs: '100%',
-          }}
+}) => {
+  const theme = useTheme()
+  const isDesktop = useMediaQuery(theme.breakpoints.up('md'))
+  const justify = isDesktop ? 'flex-start' : 'center'
+
+  return (
+    <Layout title={title}>
+      <Hero {...hero} />
+      <Box my={5} mx="auto" data-testid="sections" maxWidth={1620}>
+        <Grid
+          container
+          justify={justify}
+          spacing={10}
+          data-testid="sectionsGrid"
         >
-          <SectionCard image={image} slug={slug} linkText={previewLinkName} />
-        </Box>
-      ))}
-    </Box>
-  </Layout>
-)
+          {cards.map(
+            ({
+              slug,
+              title: sectionTitle,
+              previewLinkName,
+              hero: {image},
+              childContentfulSectionPreviewContentRichTextNode,
+            }) => (
+              <Grid item key={`${title}-${slug}`} xs="auto">
+                <SectionCard
+                  image={image}
+                  sectionTitle={sectionTitle}
+                  slug={slug}
+                  linkText={previewLinkName}
+                  body={childContentfulSectionPreviewContentRichTextNode}
+                />
+              </Grid>
+            ),
+          )}
+        </Grid>
+      </Box>
+    </Layout>
+  )
+}
 
 export default Index
 
@@ -89,8 +104,12 @@ export const query = graphql`
         }
       }
       cards {
+        title
         slug
         previewLinkName
+        childContentfulSectionPreviewContentRichTextNode {
+          json
+        }
         hero {
           image {
             title

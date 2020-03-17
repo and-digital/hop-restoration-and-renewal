@@ -6,14 +6,12 @@ import Hero from '..'
 const image = {
   title: 'Hero image title',
   fixed: {
-    base64: '',
-    aspectRatio: 1000,
-    height: 400,
+    height: 605,
+    width: 605,
     src: '',
     srcSet: '',
-    srcSetWebp: '',
     srcWebp: '',
-    sizes: '',
+    srcSetWebp: '',
   },
 }
 const title = 'Hero title'

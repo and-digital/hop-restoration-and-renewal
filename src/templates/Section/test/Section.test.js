@@ -33,10 +33,11 @@ const heroData = {
     title: heroImageTitle,
     fixed: {
       height: 605,
+      width: 605,
       src: '',
       srcSet: '',
-      srcSetWebp: '',
       srcWebp: '',
+      srcSetWebp: '',
     },
   },
   title: heroImageTitle,

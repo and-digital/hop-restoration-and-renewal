@@ -1,7 +1,6 @@
 import React from 'react'
 import {waitForDomChange} from '@testing-library/react'
 import render from '../../../utils/tests/renderWithTheme'
-
 import Layout from '../'
 import mockHeader from '../../../stubs/mockHeader'
 import mockFooter from '../../../stubs/mockFooter'
