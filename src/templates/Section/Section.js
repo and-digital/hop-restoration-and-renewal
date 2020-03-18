@@ -25,7 +25,13 @@ const Section = ({
       <div className="wrapper">
         <h2 className="section-headline">{title}</h2>
       </div>
-      <Box my={5} mx="20px" data-testid="articles" maxWidth={1620}>
+      <Box
+        my={5}
+        mx="20px"
+        data-testid="articles"
+        maxWidth={1620}
+        padding="20px"
+      >
         <Grid container justify={justify} spacing={5} data-testid="articleGrid">
           {articles.map(
             ({
