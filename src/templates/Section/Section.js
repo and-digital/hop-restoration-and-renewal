@@ -34,14 +34,7 @@ const Section = ({
               previewLinkText,
               slug: articleSlug,
             }) => (
-              <Grid
-                item
-                key={`${title}-${slug}`}
-                xs="auto"
-                sm={6}
-                md={6}
-                lg={4}
-              >
+              <Grid item key={`${title}-${slug}`} xs={12} sm={6} md={6} lg={4}>
                 <ArticleCard
                   title={articleTitle}
                   sectionSlug={slug}
