@@ -22,12 +22,9 @@ const Section = ({
   return (
     <Layout title={title}>
       <Hero {...hero} />
-      <div className="wrapper">
-        <h2 className="section-headline">{title}</h2>
-      </div>
       <Box
         my={5}
-        mx="20px"
+        mx="auto"
         data-testid="articles"
         maxWidth={1620}
         padding="20px"
