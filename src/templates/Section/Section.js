@@ -25,13 +25,8 @@ const Section = ({
       <div className="wrapper">
         <h2 className="section-headline">{title}</h2>
       </div>
-      <Box my={5} mx="auto" data-testid="sections" maxWidth={1620}>
-        <Grid
-          container
-          justify={justify}
-          spacing={10}
-          data-testid="sectionsGrid"
-        >
+      <Box my={5} mx="20px" data-testid="articles" maxWidth={1620}>
+        <Grid container justify={justify} spacing={5} data-testid="articleGrid">
           {articles.map(
             ({
               title: articleTitle,
@@ -39,7 +34,7 @@ const Section = ({
               previewLinkText,
               slug: articleSlug,
             }) => (
-              <Grid item key={`${title}-${slug}`} xs="auto">
+              <Grid item key={`${title}-${slug}`} xs={12} sm={6} md={6} lg={4}>
                 <ArticleCard
                   title={articleTitle}
                   sectionSlug={slug}

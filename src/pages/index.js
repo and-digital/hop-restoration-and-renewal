@@ -38,14 +38,7 @@ const Index = ({
               hero: {image},
               childContentfulSectionPreviewContentRichTextNode,
             }) => (
-              <Grid
-                item
-                key={`${title}-${slug}`}
-                xs="auto"
-                sm={6}
-                md={6}
-                lg={4}
-              >
+              <Grid item key={`${title}-${slug}`} xs={12} sm={6} md={6} lg={4}>
                 <SectionCard
                   image={image}
                   sectionTitle={sectionTitle}
