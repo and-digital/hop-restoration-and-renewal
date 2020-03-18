@@ -88,10 +88,9 @@ test('show page title and component', async () => {
   mockSEO()
   mockHeader()
   mockFooter()
-  const {getByText} = render(<Section data={data} />)
+  render(<Section data={data} />)
   await waitForDomChange()
   expect(document.title).toEqual(data.contentfulSection.title)
-  expect(getByText(data.contentfulSection.title)).toBeDefined()
 })
 
 test('should show all the articles', () => {
