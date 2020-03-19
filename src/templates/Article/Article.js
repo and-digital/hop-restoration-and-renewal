@@ -1,10 +1,11 @@
 import React from 'react'
-import {shape, string} from 'prop-types'
-import {graphql} from 'gatsby'
+import {shape, string, arrayOf} from 'prop-types'
+import {graphql, Link} from 'gatsby'
 import Layout from '../../components/Layout'
 import Typography from '@material-ui/core/Typography'
 
 const Article = ({
+  pageContext: {articleList},
   data: {
     contentfulArticle: {name},
   },
@@ -14,6 +15,13 @@ const Article = ({
       <Typography variant="h1" className="Article-headline">
         {name}
       </Typography>
+      <ul>
+        {articleList.map(({title, slug}) => (
+          <li key={slug}>
+            <Link to={`/${slug}`}>{title}</Link>
+          </li>
+        ))}
+      </ul>
     </div>
   </Layout>
 )
@@ -24,6 +32,14 @@ Article.propTypes = {
       name: string.isRequired,
     }).isRequired,
   }).isRequired,
+  pageContext: shape({
+    articleList: arrayOf(
+      shape({
+        title: string.isRequired,
+        slug: string.isRequired,
+      }),
+    ).isRequired,
+  }),
 }
 
 export default Article
