@@ -13,12 +13,26 @@ const data = {
   },
 }
 
-test('should render title and component', async () => {
+const pageContext = {
+  articleList: [
+    {
+      title: 'article 1',
+      slug: '/history/article-1',
+    },
+  ],
+}
+
+test('should render title amd sidebar menu containing a list of articles', async () => {
   mockSEO()
   mockHeader()
   mockFooter()
-  const {getByText} = render(<Article data={data} />)
+  const {getByText} = render(<Article data={data} pageContext={pageContext} />)
   await waitForDomChange()
   expect(document.title).toEqual(data.contentfulArticle.name)
   expect(getByText(data.contentfulArticle.name)).toBeDefined()
+  pageContext.articleList.forEach(({title, slug}) => {
+    const articleLink = getByText(title)
+    expect(articleLink).toBeDefined()
+    expect(articleLink).toHaveAttribute('href', `/${slug}`)
+  })
 })
