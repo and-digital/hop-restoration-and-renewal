@@ -10,6 +10,9 @@ import mockHeader from '../../../stubs/mockHeader'
 const data = {
   contentfulArticle: {
     name: 'History',
+    section: {
+      name: 'section title',
+    },
   },
 }
 
@@ -30,6 +33,7 @@ test('should render title amd sidebar menu containing a list of articles', async
   await waitForDomChange()
   expect(document.title).toEqual(data.contentfulArticle.name)
   expect(getByText(data.contentfulArticle.name)).toBeDefined()
+  expect(getByText(data.contentfulArticle.section.name)).toBeDefined()
   pageContext.articleList.forEach(({title, slug}) => {
     const articleLink = getByText(title)
     expect(articleLink).toBeDefined()
