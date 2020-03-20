@@ -1,5 +1,5 @@
 import React from 'react'
-import {string, shape} from 'prop-types'
+import {string, shape, arrayOf} from 'prop-types'
 import {Link} from 'gatsby'
 import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
@@ -67,10 +67,12 @@ const SideBar = ({articleList}) => {
 }
 
 SideBar.propTypes = {
-  articleList: shape({
-    slug: string,
-    title: string,
-  }).isRequired,
+  articleList: arrayOf(
+    shape({
+      slug: string,
+      title: string,
+    }),
+  ).isRequired,
 }
 
 export default SideBar
