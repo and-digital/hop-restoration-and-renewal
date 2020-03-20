@@ -26,13 +26,17 @@ test('should render title amd sidebar menu containing a list of articles', async
   mockSEO()
   mockHeader()
   mockFooter()
-  const {getByText} = render(<Article data={data} pageContext={pageContext} />)
+  const {getByText, queryByTestId} = render(
+    <Article data={data} pageContext={pageContext} />,
+  )
   await waitForDomChange()
   expect(document.title).toEqual(data.contentfulArticle.name)
   expect(getByText(data.contentfulArticle.name)).toBeDefined()
   pageContext.articleList.forEach(({title, slug}) => {
     const articleLink = getByText(title)
+    const articleSlug = queryByTestId(`sideBar-link-${title}`)
+
     expect(articleLink).toBeDefined()
-    expect(articleLink).toHaveAttribute('href', `/${slug}`)
+    expect(articleSlug).toHaveAttribute('href', `/${slug}`)
   })
 })

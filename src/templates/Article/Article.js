@@ -1,7 +1,8 @@
 import React from 'react'
 import {shape, string, arrayOf} from 'prop-types'
-import {graphql, Link} from 'gatsby'
+import {graphql} from 'gatsby'
 import Layout from '../../components/Layout'
+import SideBar from '../../components/SideBar'
 import Typography from '@material-ui/core/Typography'
 
 const Article = ({
@@ -12,16 +13,10 @@ const Article = ({
 }) => (
   <Layout title={name}>
     <div className="wrapper">
+      <SideBar articleList={articleList} />
       <Typography variant="h1" className="Article-headline">
         {name}
       </Typography>
-      <ul>
-        {articleList.map(({title, slug}) => (
-          <li key={slug}>
-            <Link to={`/${slug}`}>{title}</Link>
-          </li>
-        ))}
-      </ul>
     </div>
   </Layout>
 )
