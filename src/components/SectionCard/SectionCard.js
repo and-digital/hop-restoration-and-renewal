@@ -16,10 +16,9 @@ const useStyles = makeStyles(theme => ({
   },
   cardContent: {
     marginTop: '24px',
-    height: '100%',
-    '&:last-child': {
-      paddingBottom: '28px',
-    },
+    marginBottom: '24px',
+    height: 294,
+    position: 'relative',
   },
   previewImage: {
     height: '200px',
@@ -47,8 +46,6 @@ const useStyles = makeStyles(theme => ({
   linkWrapper: {
     position: 'absolute',
     bottom: 0,
-    marginBottom: '28px',
-    marginRight: '10px',
   },
   previewWrapper: {
     maxHeight: '110px',

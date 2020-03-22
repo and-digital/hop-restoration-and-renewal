@@ -14,7 +14,8 @@ const useStyles = makeStyles(theme => ({
     lineHeight: '28px',
   },
   cardContent: {
-    padding: '28px',
+    position: 'relative',
+    height: '100%',
   },
   card: {
     height: '427px',
@@ -22,7 +23,7 @@ const useStyles = makeStyles(theme => ({
     borderLeft: '7px solid purple',
     borderRadius: '0px',
     boxShadow: '0px -4px 4px #ECECEC',
-
+    padding: '28px',
     [theme.breakpoints.up('md')]: {
       height: '301px',
     },
@@ -39,8 +40,6 @@ const useStyles = makeStyles(theme => ({
   linkWrapper: {
     position: 'absolute',
     bottom: 0,
-    marginBottom: '28px',
-    marginRight: '10px',
   },
   previewWrapper: {
     maxHeight: '110px',
