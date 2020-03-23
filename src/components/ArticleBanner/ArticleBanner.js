@@ -1,21 +1,17 @@
 import React from 'react'
 import {string, shape} from 'prop-types'
 import Box from '@material-ui/core/Box'
-import {makeStyles} from '@material-ui/core/styles'
+import {makeStyles, useTheme} from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 
 const useStyles = makeStyles(theme => ({
   articleBannerWrapper: {
-    padding: '42px 39px 33px 56px',
-    backgroundColor: theme.palette.background.hero,
-    color: theme.palette.secondary.main,
     [theme.breakpoints.up('xl')]: {
       padding: '42px 0 43px 30px',
     },
   },
   articleBannerText: {
     fontWeight: 'bold',
-    color: '#ffffff',
     [theme.breakpoints.up('sm')]: {
       fontWeight: 'normal',
     },
@@ -25,8 +21,16 @@ const useStyles = makeStyles(theme => ({
 const ArticleBanner = section => {
   const classes = useStyles()
   const {title} = section
+  const theme = useTheme()
   return (
-    <Box width="100%" height="100%" className={classes.articleBannerWrapper}>
+    <Box
+      width="100%"
+      height="100%"
+      padding="42px 39px 33px 56px"
+      bgcolor={theme.palette.background.hero}
+      color={theme.palette.secondary.main}
+      className={classes.articleBannerWrapper}
+    >
       <Box
         maxWidth={1620}
         position="relative"
@@ -34,7 +38,11 @@ const ArticleBanner = section => {
         height="100%"
         margin="auto"
       >
-        <Typography variant="h1" className={classes.articleBannerText}>
+        <Typography
+          variant="h1"
+          color="textSecondary"
+          className={classes.articleBannerText}
+        >
           {title}
         </Typography>
       </Box>
