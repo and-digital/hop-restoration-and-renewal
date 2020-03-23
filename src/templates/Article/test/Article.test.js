@@ -12,6 +12,9 @@ const data = {
     name: 'History',
     section: {
       name: 'section title',
+      section: {
+        name: 'section title',
+      },
     },
   },
 }
