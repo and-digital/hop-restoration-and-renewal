@@ -4,10 +4,7 @@ const A11Y_OPTIONS = {
     values: ['wcag21aa', 'wcag2aa', 'best-practice', 'section508'],
   },
 }
-const isMailTo = content =>
-  content.match(
-    /^mailto:([^?]+)\?{0,1}(?:[sS]ubject='([^']*)')?(?:&?[Bb]ody=(.*))?/,
-  )
+const isMasked = content => content.match(/obfuscated/)
 
 describe('Accessibility tests', () => {
   it('Has no detectable accessibility violations on load on header links', () => {
@@ -24,7 +21,7 @@ describe('Accessibility tests', () => {
     cy.visit('/')
     cy.get('footer a').should('have.length', 4)
     cy.get('footer a').each(item => {
-      if (!isMailTo(item[0].href)) {
+      if (!isMasked(item[0].href)) {
         cy.visit(item[0].href)
           .get('main')
           .injectAxe()

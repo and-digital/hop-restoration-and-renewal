@@ -117,6 +117,7 @@ Object {
       "dark": "rgb(178, 178, 178)",
       "light": "rgb(255, 255, 255)",
       "main": "#ffffff",
+      "text": "#ffffff",
     },
     "success": Object {
       "contrastText": "rgba(0, 0, 0, 0.87)",
@@ -127,8 +128,8 @@ Object {
     "text": Object {
       "disabled": "rgba(0, 0, 0, 0.38)",
       "hint": "rgba(0, 0, 0, 0.38)",
-      "primary": "rgba(0, 0, 0, 0.87)",
-      "secondary": "rgba(0, 0, 0, 0.54)",
+      "primary": "#232323",
+      "secondary": "#ffffff",
     },
     "tonalOffset": 0.2,
     "type": "light",

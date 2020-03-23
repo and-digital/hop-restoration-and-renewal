@@ -7,18 +7,12 @@ import Grid from '@material-ui/core/Grid'
 import Layout from '../../components/Layout'
 import ArticleCard from '../../components/ArticleCard'
 import Hero from '../../components/Hero'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
-import {useTheme} from '@material-ui/core/styles'
 
 const Section = ({
   data: {
     contentfulSection: {title, slug, hero, articles},
   },
 }) => {
-  const theme = useTheme()
-  const isDesktop = useMediaQuery(theme.breakpoints.up('md'))
-  const justify = isDesktop ? 'flex-start' : 'center'
-
   return (
     <Layout title={title}>
       <Hero {...hero} />
@@ -29,7 +23,7 @@ const Section = ({
         maxWidth={1620}
         padding="20px"
       >
-        <Grid container justify={justify} spacing={5} data-testid="articleGrid">
+        <Grid container spacing={5} data-testid="articleGrid">
           {articles.map(
             ({
               title: articleTitle,

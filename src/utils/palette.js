@@ -10,6 +10,7 @@ export default {
   },
   secondary: {
     main: white,
+    text: white,
   },
   background: {
     main: whiteSmoke,
@@ -24,5 +25,9 @@ export default {
     main: purple,
     mobileMenu: white,
     arrow: jewel,
+  },
+  text: {
+    primary: nero,
+    secondary: white,
   },
 }
