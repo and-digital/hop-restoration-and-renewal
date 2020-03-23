@@ -1,5 +1,7 @@
 import React from 'react'
 import {shape, object} from 'prop-types'
+import {Box} from '@material-ui/core'
+import Typography from '@material-ui/core/Typography'
 
 const EmbeddedAsset = ({
   data: {
@@ -7,9 +9,14 @@ const EmbeddedAsset = ({
       fields: {file, title},
     },
   },
-}) => {
-  return <img src={file['en-US'].url} alt={title['en-US']} />
-}
+}) => (
+  <Box>
+    <img src={file['en-US'].url} alt={title['en-US']} />
+    <Typography variant="body1" className="image-description">
+      {title['en-US']}
+    </Typography>
+  </Box>
+)
 
 EmbeddedAsset.propTypes = {
   data: shape({
@@ -19,7 +26,6 @@ EmbeddedAsset.propTypes = {
         title: shape(object).isRequired,
       }).isRequired,
     }).isRequired,
-    fields: shape(object).isRequired,
   }).isRequired,
 }
 
