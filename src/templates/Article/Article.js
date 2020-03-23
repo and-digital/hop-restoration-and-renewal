@@ -1,13 +1,17 @@
 import React from 'react'
-import {shape, string, arrayOf} from 'prop-types'
+import {arrayOf, object, shape, string} from 'prop-types'
 import {graphql, Link} from 'gatsby'
 import Layout from '../../components/Layout'
 import Typography from '@material-ui/core/Typography'
+import RichText from '../../components/RichText'
 
 const Article = ({
   pageContext: {articleList},
   data: {
-    contentfulArticle: {name},
+    contentfulArticle: {
+      name,
+      template: {content},
+    },
   },
 }) => (
   <Layout title={name}>
@@ -23,6 +27,9 @@ const Article = ({
         ))}
       </ul>
     </div>
+    <article>
+      <RichText text={content} />
+    </article>
   </Layout>
 )
 
@@ -30,6 +37,11 @@ Article.propTypes = {
   data: shape({
     contentfulArticle: shape({
       name: string.isRequired,
+      template: shape({
+        content: shape({
+          json: object.isRequired,
+        }).isRequired,
+      }).isRequired,
     }).isRequired,
   }).isRequired,
   pageContext: shape({
@@ -48,6 +60,11 @@ export const query = graphql`
   query ArticleQuery($slug: String!) {
     contentfulArticle(slug: {eq: $slug}) {
       name
+      template {
+        content {
+          json
+        }
+      }
     }
   }
 `

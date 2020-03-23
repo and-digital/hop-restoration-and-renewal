@@ -10,6 +10,28 @@ import mockHeader from '../../../stubs/mockHeader'
 const data = {
   contentfulArticle: {
     name: 'History',
+    template: {
+      content: {
+        json: {
+          data: {},
+          content: [
+            {
+              data: {},
+              content: [
+                {
+                  data: {},
+                  marks: [],
+                  value:
+                    '© Houses of Parliament | Restoration and Renewal 2020',
+                  nodeType: 'text',
+                },
+              ],
+              nodeType: 'paragraph',
+            },
+          ],
+        },
+      },
+    },
   },
 }
 
