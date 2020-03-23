@@ -2,19 +2,19 @@ import React from 'react'
 import {shape, string, arrayOf} from 'prop-types'
 import {graphql, Link} from 'gatsby'
 import Layout from '../../components/Layout'
+import ArticleBanner from '../../components/ArticleBanner'
 import Typography from '@material-ui/core/Typography'
 
 const Article = ({
   pageContext: {articleList},
   data: {
-    contentfulArticle: {name},
+    contentfulArticle: {title, section},
   },
 }) => (
-  <Layout title={name}>
+  <Layout title={title}>
     <div className="wrapper">
-      <Typography variant="h1" className="Article-headline">
-        {name}
-      </Typography>
+      <ArticleBanner {...section} />
+      <Typography variant="h2">{title}</Typography>
       <ul>
         {articleList.map(({title, slug}) => (
           <li key={slug}>
@@ -29,7 +29,10 @@ const Article = ({
 Article.propTypes = {
   data: shape({
     contentfulArticle: shape({
-      name: string.isRequired,
+      title: string.isRequired,
+      section: shape({
+        title: string.isRequired,
+      }).isRequired,
     }).isRequired,
   }).isRequired,
   pageContext: shape({
@@ -47,7 +50,10 @@ export default Article
 export const query = graphql`
   query ArticleQuery($slug: String!) {
     contentfulArticle(slug: {eq: $slug}) {
-      name
+      title
+      section {
+        title
+      }
     }
   }
 `
