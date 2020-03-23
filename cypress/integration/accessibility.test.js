@@ -4,10 +4,7 @@ const A11Y_OPTIONS = {
     values: ['wcag21aa', 'wcag2aa', 'best-practice', 'section508'],
   },
 }
-const isMasked = content =>
-  content.match(
-    /^obfuscated?/,
-  )
+const isMasked = content => content.match(/obfuscated/)
 
 describe('Accessibility tests', () => {
   it('Has no detectable accessibility violations on load on header links', () => {
