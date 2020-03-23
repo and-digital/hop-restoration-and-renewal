@@ -1,6 +1,6 @@
 import React from 'react'
 import {string} from 'prop-types'
-
+import Obfuscate from 'react-obfuscate'
 import {makeStyles} from '@material-ui/styles'
 import {Typography} from '@material-ui/core'
 
@@ -15,14 +15,20 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const MailTo = ({label, emailAddress}) => {
+const MailTo = ({label, emailAddress, subject, body}) => {
   const classes = useStyles()
   return (
     <Typography variant="body1">
       {label}
-      <a href={`mailto:${emailAddress}`} className={classes.richTextLink}>
-        {emailAddress}
-      </a>
+      <Obfuscate
+        data-testid="mailto-link"
+        className={classes.richTextLink}
+        email={emailAddress}
+        headers={{
+          subject,
+          body,
+        }}
+      />
     </Typography>
   )
 }
@@ -30,6 +36,12 @@ const MailTo = ({label, emailAddress}) => {
 MailTo.propTypes = {
   label: string.isRequired,
   emailAddress: string.isRequired,
+  subject: string.isRequired,
+  body: string.isRequired,
 }
 
+MailTo.defaultProps = {
+  subject: '',
+  body: '',
+}
 export default MailTo
