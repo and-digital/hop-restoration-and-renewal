@@ -4,11 +4,12 @@ import {graphql, Link} from 'gatsby'
 import Layout from '../../components/Layout'
 import ArticleBanner from '../../components/ArticleBanner'
 import Typography from '@material-ui/core/Typography'
+import Breadcrumbs from '../../components/Breadcrumbs/breadcrumbs'
 
 const Article = ({
   pageContext: {articleList},
   data: {
-    contentfulArticle: {title, section},
+    contentfulArticle: {title, section, slug},
   },
 }) => (
   <Layout title={title}>
@@ -22,6 +23,7 @@ const Article = ({
           </li>
         ))}
       </ul>
+      <Breadcrumbs pathname={slug} />
     </div>
   </Layout>
 )
@@ -33,6 +35,7 @@ Article.propTypes = {
       section: shape({
         title: string.isRequired,
       }).isRequired,
+      slug: string.isRequired,
     }).isRequired,
   }).isRequired,
   pageContext: shape({
@@ -54,6 +57,7 @@ export const query = graphql`
       section {
         title
       }
+      slug
     }
   }
 `
