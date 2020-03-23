@@ -56,6 +56,7 @@ export const query = graphql`
       title
       section {
         title
+        slug
       }
       slug
     }
