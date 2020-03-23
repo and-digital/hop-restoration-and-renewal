@@ -5,44 +5,37 @@ import {makeStyles} from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 
 const useStyles = makeStyles(theme => ({
-  contextWrapper: {
-    position: 'relative',
-    width: '100%',
-    maxWidth: '1620px',
-    margin: 'auto',
-    height: '100%',
-  },
   articleBannerWrapper: {
-    padding: '42px 39px 33px 30px',
-    height: '100%',
+    padding: '42px 39px 33px 56px',
     backgroundColor: theme.palette.background.hero,
     color: theme.palette.secondary.main,
-    width: '100%',
-    [theme.breakpoints.up(1620)]: {
+    [theme.breakpoints.up('xl')]: {
       padding: '42px 0 43px 30px',
     },
   },
   articleBannerText: {
-    fontSize: '36px',
-    lineHeight: '48px',
     fontWeight: 'bold',
     color: '#ffffff',
     [theme.breakpoints.up('sm')]: {
-      fontSize: '48px',
       fontWeight: 'normal',
-      lineHeight: '60px',
     },
   },
 }))
 
 const ArticleBanner = section => {
   const classes = useStyles()
-  const {name} = section
+  const {title} = section
   return (
-    <Box className={classes.articleBannerWrapper}>
-      <Box maxWidth="1620" className={classes.contextWrapper}>
+    <Box width="100%" height="100%" className={classes.articleBannerWrapper}>
+      <Box
+        maxWidth={1620}
+        position="relative"
+        width="100%"
+        height="100%"
+        margin="auto"
+      >
         <Typography variant="h1" className={classes.articleBannerText}>
-          {name}
+          {title}
         </Typography>
       </Box>
     </Box>
@@ -51,7 +44,7 @@ const ArticleBanner = section => {
 
 ArticleBanner.propTypes = {
   section: shape({
-    name: string.isRequired,
+    title: string.isRequired,
   }).isRequired,
 }
 

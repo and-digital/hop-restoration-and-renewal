@@ -4,7 +4,7 @@ import ArticleBanner from '..'
 
 const section = {
   section: {
-    name: 'section title',
+    title: 'section title',
   },
 }
 

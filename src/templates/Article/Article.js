@@ -8,13 +8,13 @@ import Typography from '@material-ui/core/Typography'
 const Article = ({
   pageContext: {articleList},
   data: {
-    contentfulArticle: {name, section},
+    contentfulArticle: {title, section},
   },
 }) => (
-  <Layout title={name}>
+  <Layout title={title}>
     <div className="wrapper">
       <ArticleBanner {...section} />
-      <Typography variant="h2">{name}</Typography>
+      <Typography variant="h2">{title}</Typography>
       <ul>
         {articleList.map(({title, slug}) => (
           <li key={slug}>
@@ -29,9 +29,9 @@ const Article = ({
 Article.propTypes = {
   data: shape({
     contentfulArticle: shape({
-      name: string.isRequired,
+      title: string.isRequired,
       section: shape({
-        name: string.isRequired,
+        title: string.isRequired,
       }).isRequired,
     }).isRequired,
   }).isRequired,
@@ -50,9 +50,9 @@ export default Article
 export const query = graphql`
   query ArticleQuery($slug: String!) {
     contentfulArticle(slug: {eq: $slug}) {
-      name
+      title
       section {
-        name
+        title
       }
     }
   }
