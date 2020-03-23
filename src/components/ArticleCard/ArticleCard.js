@@ -54,7 +54,7 @@ const ArticleCard = ({title, previewText, linkText, slug, sectionSlug}) => {
       <Paper className={classes.card}>
         <Box className={classes.cardContent}>
           <Box mb={1}>
-            <Typography variant="h2">{title}</Typography>
+            <Typography variant="h3">{title}</Typography>
           </Box>
           <Box mb={1} className={classes.previewWrapper}>
             <RichText

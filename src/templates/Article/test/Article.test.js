@@ -57,7 +57,6 @@ test('should render title amd sidebar menu containing a list of articles', async
   const {getByText} = render(<Article data={data} pageContext={pageContext} />)
   await waitForDomChange()
   expect(document.title).toEqual(data.contentfulArticle.title)
-  expect(getByText(data.contentfulArticle.title)).toBeDefined()
   expect(getByText(data.contentfulArticle.section.title)).toBeDefined()
   pageContext.articleList.forEach(({title, slug}) => {
     const articleLink = getByText(title)

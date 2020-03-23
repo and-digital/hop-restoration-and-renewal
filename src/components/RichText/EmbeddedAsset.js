@@ -2,6 +2,17 @@ import React from 'react'
 import {shape, object} from 'prop-types'
 import {Box} from '@material-ui/core'
 import Typography from '@material-ui/core/Typography'
+import {makeStyles} from '@material-ui/core/styles'
+
+const styles = makeStyles(() => ({
+  imageWrapper: {
+    width: '100%',
+    maxWidth: '1150px',
+    '& img': {
+      width: '100%',
+    },
+  },
+}))
 
 const EmbeddedAsset = ({
   data: {
@@ -9,15 +20,17 @@ const EmbeddedAsset = ({
       fields: {file, title},
     },
   },
-}) => (
-  <Box>
-    <img src={file['en-US'].url} alt={title['en-US']} />
-    <Typography variant="body1" className="image-description">
-      {title['en-US']}
-    </Typography>
-  </Box>
-)
-
+}) => {
+  const classes = styles()
+  return (
+    <Box className={classes.imageWrapper}>
+      <img src={file['en-US'].url} alt={title['en-US']} />
+      <Typography variant="caption" className="image-description">
+        {title['en-US']}
+      </Typography>
+    </Box>
+  )
+}
 EmbeddedAsset.propTypes = {
   data: shape({
     target: shape({

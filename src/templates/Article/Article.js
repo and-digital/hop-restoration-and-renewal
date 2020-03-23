@@ -3,8 +3,23 @@ import {arrayOf, object, shape, string} from 'prop-types'
 import {graphql, Link} from 'gatsby'
 import Layout from '../../components/Layout'
 import ArticleBanner from '../../components/ArticleBanner'
-import Typography from '@material-ui/core/Typography'
 import RichText from '../../components/RichText'
+import Grid from '@material-ui/core/Grid'
+import Box from '@material-ui/core/Box'
+import Paper from '@material-ui/core/Paper'
+import {useTheme, makeStyles} from '@material-ui/core/styles'
+
+const useStyles = makeStyles(theme => ({
+  articlePaper: {
+    padding: '30px 60px 30px 30px',
+    '& p': {
+      marginBottom: '50px',
+      [theme.breakpoints.up('md')]: {
+        marginRight: '200px',
+      },
+    },
+  },
+}))
 
 const Article = ({
   pageContext: {articleList},
@@ -15,29 +30,42 @@ const Article = ({
       template: {content},
     },
   },
-}) => (
-  <Layout title={title}>
-    <div className="wrapper">
+}) => {
+  const theme = useTheme()
+  const classes = useStyles()
+  return (
+    <Layout title={title}>
       <ArticleBanner {...section} />
-      <Typography variant="h2">{title}</Typography>
-      <ul>
-        {articleList.map(({title, slug}) => (
-          <li key={slug}>
-            <Link to={`/${slug}`}>{title}</Link>
-          </li>
-        ))}
-      </ul>
-    </div>
-    <article>
-      <RichText text={content} />
-    </article>
-  </Layout>
-)
+      <Box maxWidth={1680} margin="auto">
+        <Grid container spacing={8}>
+          <Grid item xs={12} md={3}>
+            <Box bgcolor={theme.palette.background.hero}>
+              <ul>
+                {articleList.map(({title, slug}) => (
+                  <li key={slug}>
+                    <Link to={`/${slug}`}>{title}</Link>
+                  </li>
+                ))}
+              </ul>
+            </Box>
+          </Grid>
+          <Grid item xs={12} md={9}>
+            <Paper className={classes.articlePaper}>
+              <article>
+                <RichText text={content} />
+              </article>
+            </Paper>
+          </Grid>
+        </Grid>
+      </Box>
+    </Layout>
+  )
+}
 
 Article.propTypes = {
   data: shape({
     contentfulArticle: shape({
-      name: string.isRequired,
+      title: string.isRequired,
       section: shape({
         title: string.isRequired,
       }).isRequired,

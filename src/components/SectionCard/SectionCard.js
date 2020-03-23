@@ -68,7 +68,7 @@ const SectionCard = ({
         <Image fluid={fluid} alt={title} className={classes.previewImage} />
         <Box className={classes.cardContent}>
           <Box mb={1}>
-            <Typography variant="h2">{sectionTitle}</Typography>
+            <Typography variant="h3">{sectionTitle}</Typography>
           </Box>
           <Box mb={1} className={classes.previewWrapper}>
             <RichText
