@@ -26,6 +26,9 @@ const useStyles = makeStyles(theme => ({
     padding: '28px',
     [theme.breakpoints.up('md')]: {
       height: '301px',
+      '& h2': {
+        fontSize: '24px',
+      },
     },
   },
   arrowIcon: {
@@ -54,7 +57,7 @@ const ArticleCard = ({title, previewText, linkText, slug, sectionSlug}) => {
       <Paper className={classes.card}>
         <Box className={classes.cardContent}>
           <Box mb={1}>
-            <Typography variant="h3">{title}</Typography>
+            <Typography variant="h2">{title}</Typography>
           </Box>
           <Box mb={1} className={classes.previewWrapper}>
             <RichText
