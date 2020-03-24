@@ -9,22 +9,20 @@ import Breadcrumbs from '../../components/Breadcrumbs/breadcrumbs'
 const Article = ({
   pageContext: {articleList},
   data: {
-    contentfulArticle: {title, section, slug},
+    contentfulArticle: {title, section},
   },
 }) => (
   <Layout title={title}>
-    <div className="wrapper">
-      <ArticleBanner {...section} />
-      <Typography variant="h2">{title}</Typography>
-      <ul>
-        {articleList.map(({title, slug}) => (
-          <li key={slug}>
-            <Link to={`/${slug}`}>{title}</Link>
-          </li>
-        ))}
-      </ul>
-      <Breadcrumbs pathname={slug} />
-    </div>
+    <ArticleBanner {...section} />
+    <Breadcrumbs breadcrumbs={[section]} />
+    <Typography variant="h2">{title}</Typography>
+    <ul>
+      {articleList.map(({title, slug}) => (
+        <li key={slug}>
+          <Link to={`/${slug}`}>{title}</Link>
+        </li>
+      ))}
+    </ul>
   </Layout>
 )
 
@@ -35,7 +33,6 @@ Article.propTypes = {
       section: shape({
         title: string.isRequired,
       }).isRequired,
-      slug: string.isRequired,
     }).isRequired,
   }).isRequired,
   pageContext: shape({

@@ -2,54 +2,78 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {Box} from '@material-ui/core'
 import {Link} from 'gatsby'
+import {makeStyles} from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
 
-const Breadcrumbs = ({pathname}) => {
-  let path = ''
-  const breadcrumbs = []
-  const splitPath = pathname.split('/').filter(slug => slug.length)
+const useStyles = makeStyles(theme => ({
+  breadcrumbLink: {
+    color: theme.palette.primary.text,
+  },
+}))
 
-  splitPath.forEach(crumb => {
-    path = `${path}/${crumb}`
-    breadcrumbs.push({
-      label: crumb
-        .toLowerCase()
-        .split('-')
-        .map(word => word.charAt(0).toUpperCase() + word.substring(1))
-        .join(' '),
-      slug: path,
-    })
-    breadcrumbs.push('/')
-    return breadcrumbs
-  })
+const lastElement = array => {
+  if (array && array.length > 0) {
+    return array[array.length - 1]
+  }
+  return
+}
 
-  breadcrumbs.pop()
+const dividerCharacter = '›'
 
+const Breadcrumbs = ({breadcrumbs}) => {
+  const styles = useStyles()
+  const lastBreadcrumb = lastElement(breadcrumbs)
   return (
-    <Box>
-      <Link to="/" aria-label="Back to the Home">
-        Home
-      </Link>
-      <span>/</span>
-
-      {breadcrumbs &&
-        breadcrumbs.map(crumb =>
-          crumb.label ? (
-            <Link to={crumb.slug}> {crumb.label}</Link>
-          ) : (
-            <span>{crumb}</span>
-          ),
+    <>
+      <Box
+        padding="20px"
+        display={{md: 'none'}}
+        data-testid="mobile-breadcrumbs"
+      >
+        {lastBreadcrumb && (
+          <Typography variant="body1">
+            <span>‹ Back to </span>
+            <Link to={lastBreadcrumb.slug} className={styles.breadcrumbLink}>
+              {lastBreadcrumb.title}
+            </Link>
+          </Typography>
         )}
-    </Box>
+      </Box>
+      <Box
+        padding="45px"
+        display={{xs: 'none', md: 'block'}}
+        data-testid="desktop-breadcrumbs"
+      >
+        <Typography variant="body1">
+          <Link
+            to="/"
+            className={styles.breadcrumbLink}
+            aria-label="Back to the Home"
+          >
+            Home
+          </Link>
+          {breadcrumbs &&
+            breadcrumbs.map(breadcrumb => (
+              <span key={breadcrumb.slug}>
+                <span> {dividerCharacter} </span>
+                <Link to={breadcrumb.slug} className={styles.breadcrumbLink}>
+                  {breadcrumb.title}
+                </Link>
+              </span>
+            ))}
+        </Typography>
+      </Box>
+    </>
   )
 }
 
 Breadcrumbs.propTypes = {
-  pathname: PropTypes.string.isRequired,
-  showFinalBreadcrumb: PropTypes.bool,
-}
-
-Breadcrumbs.defaultProps = {
-  showFinalBreadcrumb: false,
+  breadcrumbs: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      slug: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
 }
 
 export default Breadcrumbs
