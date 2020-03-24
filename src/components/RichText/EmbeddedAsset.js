@@ -26,9 +26,7 @@ const EmbeddedAsset = ({
   return (
     <Box className={classes.imageWrapper}>
       <img src={file['en-US'].url} alt={title['en-US']} />
-      <Typography variant="caption" className="image-description">
-        {title['en-US']}
-      </Typography>
+      <Typography variant="caption">{title['en-US']}</Typography>
     </Box>
   )
 }
