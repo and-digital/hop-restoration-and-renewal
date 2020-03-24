@@ -6,40 +6,7 @@ import '@testing-library/jest-dom/extend-expect'
 import mockFooter from '../../../stubs/mockFooter'
 import mockSEO from '../../../stubs/mockSEO'
 import mockHeader from '../../../stubs/mockHeader'
-
-const data = {
-  contentfulArticle: {
-    title: 'History',
-    section: {
-      title: 'section title',
-      section: {
-        title: 'section title',
-      },
-    },
-    template: {
-      content: {
-        json: {
-          data: {},
-          content: [
-            {
-              data: {},
-              content: [
-                {
-                  data: {},
-                  marks: [],
-                  value:
-                    '© Houses of Parliament | Restoration and Renewal 2020',
-                  nodeType: 'text',
-                },
-              ],
-              nodeType: 'paragraph',
-            },
-          ],
-        },
-      },
-    },
-  },
-}
+import data from '../../../stubs/articleData'
 
 const pageContext = {
   articleList: [

@@ -8,6 +8,8 @@ const styles = makeStyles(() => ({
   imageWrapper: {
     width: '100%',
     maxWidth: '1150px',
+    marginBottom: '21px',
+
     '& img': {
       width: '100%',
     },
