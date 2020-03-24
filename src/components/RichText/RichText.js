@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import {shape, string, object} from 'prop-types'
 import {documentToReactComponents} from '@contentful/rich-text-react-renderer'
 import {INLINES, BLOCKS} from '@contentful/rich-text-types'
 import ExternalLink from './ExternalLink'
@@ -35,12 +35,12 @@ const RichText = ({className, text}) => {
   )
 }
 RichText.propTypes = {
-  data: PropTypes.shape({
-    uri: PropTypes.string,
+  data: shape({
+    uri: string,
   }),
-  className: PropTypes.string,
-  text: PropTypes.shape({
-    json: PropTypes.object,
+  className: string,
+  text: shape({
+    json: object,
   }).isRequired,
 }
 RichText.defaultProps = {

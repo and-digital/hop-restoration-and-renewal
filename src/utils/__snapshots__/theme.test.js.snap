@@ -197,7 +197,8 @@ Object {
         "fontSize": "24px",
       },
       "fontFamily": "sans-serif",
-      "fontSize": "18px",
+      "fontSize": "21px",
+      "lineHeight": "44px",
     },
     "body2": Object {
       "fontFamily": "sans-serif",
@@ -228,23 +229,24 @@ Object {
       "@media (min-width:960px)": Object {
         "fontSize": "64px",
         "lineHeight": "60px",
-        "marginBottom": "18px",
+        "marginBottom": "36px",
       },
       "fontSize": "36px",
       "fontWeight": "normal",
       "lineHeight": "48px",
-      "marginBottom": "9px",
+      "marginBottom": "18px",
     },
     "h2": Object {
       "@media (min-width:960px)": Object {
         "fontSize": "36px",
         "lineHeight": "48px",
-        "marginBottom": "9px",
+        "marginBottom": "20px",
       },
       "fontFamily": "sans-serif",
       "fontSize": "24px",
       "fontWeight": "bold",
       "lineHeight": "36px",
+      "marginBottom": "14px",
     },
     "h3": Object {
       "@media (min-width:960px)": Object {
