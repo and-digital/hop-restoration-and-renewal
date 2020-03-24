@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import {useEffect} from 'react'
 import TagManager from 'react-gtm-module'
 
 const tagManagerArgs = {
@@ -9,7 +9,7 @@ const Analytics = () => {
   useEffect(() => {
     TagManager.initialize(tagManagerArgs)
   }, [])
-  return <div />
+  return ''
 }
 
 export default Analytics
