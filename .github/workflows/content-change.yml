@@ -1,4 +1,4 @@
-name: Github Pages
+name: Deploy Content
 # This workflow is triggered on pushes to the repository.
 on: [repository_dispatch]
 

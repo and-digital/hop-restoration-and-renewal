@@ -1,4 +1,4 @@
-name: Github Pages
+name: Build, Test and Deploy
 # This workflow is triggered on pushes to the repository.
 on:
   push:
@@ -7,9 +7,7 @@ on:
 
 jobs:
   build:
-    # Job name is Greeting
     name: Build, test and Deploy to GH Pages
-    # This job runs on Linux
     runs-on: ubuntu-latest
     strategy:
       matrix:

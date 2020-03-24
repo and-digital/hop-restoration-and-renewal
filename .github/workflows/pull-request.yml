@@ -1,4 +1,4 @@
-name: Github Pages
+name: Pull request
 # This workflow is triggered on pushes to the repository.
 on: [pull-request]
 
