@@ -213,11 +213,10 @@ Object {
       "textTransform": "uppercase",
     },
     "caption": Object {
-      "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-      "fontSize": "0.75rem",
-      "fontWeight": 400,
-      "letterSpacing": "0.03333em",
-      "lineHeight": 1.66,
+      "fontSize": "18px",
+      "fontStyle": "italic",
+      "fontWeight": "normal",
+      "lineHeight": "24px",
     },
     "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
     "fontSize": 14,
@@ -238,8 +237,9 @@ Object {
     },
     "h2": Object {
       "@media (min-width:960px)": Object {
-        "fontWeight": "500",
-        "lineHeight": "30px",
+        "fontSize": "36px",
+        "lineHeight": "48px",
+        "marginBottom": "9px",
       },
       "fontFamily": "sans-serif",
       "fontSize": "24px",
@@ -247,11 +247,14 @@ Object {
       "lineHeight": "36px",
     },
     "h3": Object {
-      "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-      "fontSize": "3rem",
-      "fontWeight": 400,
-      "letterSpacing": "0em",
-      "lineHeight": 1.167,
+      "@media (min-width:960px)": Object {
+        "fontWeight": "500",
+        "lineHeight": "30px",
+      },
+      "fontFamily": "sans-serif",
+      "fontSize": "24px",
+      "fontWeight": "bold",
+      "lineHeight": "36px",
     },
     "h4": Object {
       "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
