@@ -17,6 +17,17 @@ export default theme => ({
     lineHeight: '36px',
     fontFamily: 'sans-serif',
     [theme.breakpoints.up('md')]: {
+      fontSize: '36px',
+      lineHeight: '48px',
+      marginBottom: '9px',
+    },
+  },
+  h3: {
+    fontWeight: 'bold',
+    fontSize: '24px',
+    lineHeight: '36px',
+    fontFamily: 'sans-serif',
+    [theme.breakpoints.up('md')]: {
       fontWeight: '500',
       lineHeight: '30px',
     },
@@ -39,5 +50,11 @@ export default theme => ({
     fontSize: '24px',
     fontFamily: 'sans-serif',
     lineHeight: '30px',
+  },
+  caption: {
+    fontStyle: 'italic',
+    fontWeight: 'normal',
+    fontSize: '18px',
+    lineHeight: '24px',
   },
 })

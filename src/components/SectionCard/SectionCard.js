@@ -32,6 +32,9 @@ const useStyles = makeStyles(theme => ({
     position: 'relative',
     [theme.breakpoints.up('md')]: {
       height: '570px',
+      '& h2': {
+        fontSize: '24px',
+      },
     },
   },
   arrowIcon: {
