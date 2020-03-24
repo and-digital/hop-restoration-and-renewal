@@ -8,6 +8,10 @@ import EmbeddedComponent from './EmbeddedEntry'
 import EmbeddedAsset from './EmbeddedAsset'
 import HeadingOne from './HeadingOne'
 import HeadingTwo from './HeadingTwo'
+import HeadingThree from './HeadingThree'
+import HeadingFour from './HeadingFour'
+import HeadingFive from './HeadingFive'
+import HeadingSix from './HeadingSix'
 
 const RichText = ({className, text}) => {
   const options = {
@@ -16,6 +20,10 @@ const RichText = ({className, text}) => {
       [BLOCKS.PARAGRAPH]: Paragraph,
       [BLOCKS.HEADING_1]: HeadingOne,
       [BLOCKS.HEADING_2]: HeadingTwo,
+      [BLOCKS.HEADING_3]: HeadingThree,
+      [BLOCKS.HEADING_4]: HeadingFour,
+      [BLOCKS.HEADING_5]: HeadingFive,
+      [BLOCKS.HEADING_6]: HeadingSix,
       [BLOCKS.EMBEDDED_ENTRY]: EmbeddedComponent,
       [BLOCKS.EMBEDDED_ASSET]: EmbeddedAsset,
     },

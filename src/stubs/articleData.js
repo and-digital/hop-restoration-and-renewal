@@ -50,6 +50,54 @@ export default {
               nodeType: 'heading-2',
             },
             {
+              data: {},
+              content: [
+                {
+                  data: {},
+                  marks: [],
+                  value: 'Heading 3',
+                  nodeType: 'text',
+                },
+              ],
+              nodeType: 'heading-3',
+            },
+            {
+              data: {},
+              content: [
+                {
+                  data: {},
+                  marks: [],
+                  value: 'Heading 4',
+                  nodeType: 'text',
+                },
+              ],
+              nodeType: 'heading-4',
+            },
+            {
+              data: {},
+              content: [
+                {
+                  data: {},
+                  marks: [],
+                  value: 'Heading 5',
+                  nodeType: 'text',
+                },
+              ],
+              nodeType: 'heading-5',
+            },
+            {
+              data: {},
+              content: [
+                {
+                  data: {},
+                  marks: [],
+                  value: 'Heading 6',
+                  nodeType: 'text',
+                },
+              ],
+              nodeType: 'heading-6',
+            },
+            {
               data: {
                 target: {
                   fields: {
