@@ -1,14 +1,11 @@
 name: Github Pages
 # This workflow is triggered on pushes to the repository.
-on:
-  push:
-    branches:
-      - master
+on: [pull-request]
 
 jobs:
   build:
     # Job name is Greeting
-    name: Build, test and Deploy to GH Pages
+    name: Build and test
     # This job runs on Linux
     runs-on: ubuntu-latest
     strategy:
@@ -28,8 +25,3 @@ jobs:
       - run: npm run test-coverage
       - run: npm run build
       - run: npm run e2e-ci
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_ACTIONS_TOKEN }}
-          publish_dir: ./public
