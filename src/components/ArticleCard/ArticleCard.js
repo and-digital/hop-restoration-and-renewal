@@ -26,6 +26,9 @@ const useStyles = makeStyles(theme => ({
     padding: '28px',
     [theme.breakpoints.up('md')]: {
       height: '301px',
+      '& h2': {
+        fontSize: '24px',
+      },
     },
   },
   arrowIcon: {

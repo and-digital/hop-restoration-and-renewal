@@ -6,16 +6,7 @@ import '@testing-library/jest-dom/extend-expect'
 import mockFooter from '../../../stubs/mockFooter'
 import mockSEO from '../../../stubs/mockSEO'
 import mockHeader from '../../../stubs/mockHeader'
-
-const data = {
-  contentfulArticle: {
-    title: 'History',
-    section: {
-      title: 'section title',
-      slug: '/section',
-    },
-  },
-}
+import data from '../../../stubs/articleData'
 
 const pageContext = {
   articleList: [
@@ -30,10 +21,13 @@ test('should render title amd sidebar menu containing a list of articles', async
   mockSEO()
   mockHeader()
   mockFooter()
-  const {getByText} = render(<Article data={data} pageContext={pageContext} />)
+  const {getByText, getAllByText} = render(
+    <Article data={data} pageContext={pageContext} />,
+  )
   await waitForDomChange()
   expect(document.title).toEqual(data.contentfulArticle.title)
-  expect(getByText(data.contentfulArticle.title)).toBeDefined()
+  // Should appear in the title, mobile breadcrumbs and desktop breadcrumbs
+  expect(getAllByText(data.contentfulArticle.section.title).length).toBe(3)
   pageContext.articleList.forEach(({title, slug}) => {
     const articleLink = getByText(title)
     expect(articleLink).toBeDefined()
