@@ -10,12 +10,16 @@ import Box from '@material-ui/core/Box'
 import Paper from '@material-ui/core/Paper'
 import {makeStyles} from '@material-ui/core/styles'
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
   articlePaper: {
     padding: '30px 60px 30px 30px',
     '& p': {
       marginBottom: '24px',
     },
+  },
+  articlePadding: {
+    padding: '0 20px 20px 20px !important',
+    [theme.breakpoints.up('md')]: {padding: '20px !important'},
   },
 }))
 
@@ -33,12 +37,12 @@ const Article = ({
   return (
     <Layout title={title}>
       <ArticleBanner {...section} />
-      <Box maxWidth={1620} mx={{xs: '20px', lg: 'auto'}} my="20px">
-        <Grid container spacing={8}>
+      <Box maxWidth={1620} mx={{xs: '20px', lg: 'auto'}} my="45px">
+        <Grid container spacing={5}>
           <Grid item xs={12} md={3}>
             <SideBar articleList={articleList} />
           </Grid>
-          <Grid item xs={12} md={9}>
+          <Grid item xs={12} md={9} className={classes.articlePadding}>
             <Paper className={classes.articlePaper}>
               <article>
                 <RichText text={content} />
