@@ -10,7 +10,6 @@ import SEO from '../SEO'
 const useStyles = makeStyles(theme => ({
   body: {
     background: theme.palette.background.main,
-    minWidth: '360px',
   },
 }))
 
