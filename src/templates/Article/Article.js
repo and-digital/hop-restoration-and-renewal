@@ -8,7 +8,7 @@ import RichText from '../../components/RichText'
 import Grid from '@material-ui/core/Grid'
 import Box from '@material-ui/core/Box'
 import Paper from '@material-ui/core/Paper'
-import {useTheme, makeStyles} from '@material-ui/core/styles'
+import {makeStyles} from '@material-ui/core/styles'
 
 const useStyles = makeStyles(() => ({
   articlePaper: {
@@ -29,17 +29,14 @@ const Article = ({
     },
   },
 }) => {
-  const theme = useTheme()
   const classes = useStyles()
   return (
     <Layout title={title}>
       <ArticleBanner {...section} />
-      <Box maxWidth={1680} margin="auto">
+      <Box maxWidth={1620} mx={{xs: '20px', lg: 'auto'}} my="20px">
         <Grid container spacing={8}>
           <Grid item xs={12} md={3}>
-            <Box bgcolor={theme.palette.background.hero}>
-              <SideBar articleList={articleList} />
-            </Box>
+            <SideBar articleList={articleList} />
           </Grid>
           <Grid item xs={12} md={9}>
             <Paper className={classes.articlePaper}>

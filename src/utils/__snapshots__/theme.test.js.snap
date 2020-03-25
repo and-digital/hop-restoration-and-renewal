@@ -62,6 +62,7 @@ Object {
       "main": "#F1F1F1",
       "mobileMenu": "#8B7DC8",
       "paper": "#fff",
+      "sideBar": "#F8F7FF;",
     },
     "common": Object {
       "black": "#000",

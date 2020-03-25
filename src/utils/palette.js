@@ -1,5 +1,15 @@
 import * as colors from './colors'
-const {white, whiteSmoke, deepPurple, nero, purple, lilac, grey, jewel} = colors
+const {
+  white,
+  whiteSmoke,
+  deepPurple,
+  lightPurple,
+  nero,
+  purple,
+  lilac,
+  grey,
+  jewel,
+} = colors
 
 export default {
   primary: {
@@ -20,6 +30,7 @@ export default {
     card: white,
     footer: grey,
     cardBorder: purple,
+    sideBar: lightPurple,
   },
   link: {
     main: purple,
