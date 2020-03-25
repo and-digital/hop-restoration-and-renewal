@@ -12,7 +12,12 @@ import {makeStyles} from '@material-ui/core/styles'
 const useStyles = makeStyles(theme => ({
   sectionPreview: {
     color: theme.palette.primary.main,
-    lineHeight: '28px',
+    '& p': {
+      lineHeight: '22px',
+      [theme.breakpoints.up('md')]: {
+        lineHeight: '28px',
+      },
+    },
   },
   cardContent: {
     marginTop: '24px',
@@ -34,6 +39,8 @@ const useStyles = makeStyles(theme => ({
       height: '570px',
       '& h2': {
         fontSize: '24px',
+        lineHeight: '36px',
+        marginBottom: '9px',
       },
     },
   },
