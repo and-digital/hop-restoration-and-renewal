@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const MobileMenu = ({children}) => {
+const SideBarMobileMenu = ({children}) => {
   const [isOpen, setIsOpen] = useState()
   const openMenu = () => setIsOpen(true)
   const closeMenu = () => setIsOpen(false)
@@ -69,8 +69,8 @@ const MobileMenu = ({children}) => {
   )
 }
 
-MobileMenu.propTypes = {
+SideBarMobileMenu.propTypes = {
   children: node.isRequired,
 }
 
-export default MobileMenu
+export default SideBarMobileMenu

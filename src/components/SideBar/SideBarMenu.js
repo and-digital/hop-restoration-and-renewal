@@ -14,8 +14,6 @@ const useStyles = makeStyles(theme => ({
     textDecoration: 'none',
     display: 'inline-flex',
     flexDirection: 'column',
-  },
-  linkText: {
     borderBottom: `4px solid ${theme.palette.primary.menuText}`,
   },
   list: {
@@ -29,17 +27,16 @@ const useStyles = makeStyles(theme => ({
     },
   },
   activeLink: {
+    borderLeft: `4px solid ${theme.palette.primary.menuText}`,
+    paddingLeft: '15px',
     borderBottom: 'none',
     '& .selected': {
       backgroundColor: theme.palette.primary.menuText,
     },
-    '& .active': {
-      borderBottom: 'none',
-    },
   },
 }))
 
-const Menu = ({articleList}) => {
+const SideBarMenu = ({articleList}) => {
   const classes = useStyles()
   return (
     <Box className={classes.wrapper}>
@@ -50,7 +47,6 @@ const Menu = ({articleList}) => {
               to={`/${slug}`}
               className={classes.link}
               activeClassName={classes.activeLink}
-              data-testid={`sideBar-link-${title}`}
             >
               <Typography className={classes.linkText}>{title}</Typography>
             </Link>
@@ -61,7 +57,7 @@ const Menu = ({articleList}) => {
   )
 }
 
-Menu.propTypes = {
+SideBarMenu.propTypes = {
   articleList: arrayOf(
     shape({
       slug: string.isRequired,
@@ -69,4 +65,4 @@ Menu.propTypes = {
   ).isRequired,
 }
 
-export default Menu
+export default SideBarMenu

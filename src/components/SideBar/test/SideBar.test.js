@@ -19,9 +19,15 @@ const articleList = [
 ]
 
 it('should render the correct article names', () => {
-  const {getByText} = render(<SideBar articleList={articleList} />)
-  const articleName = getByText(title)
-  expect(articleName).toBeDefined()
+  const {getAllByText} = render(<SideBar articleList={articleList} />)
+
+  articleList.forEach(({title, slug}) => {
+    const articleLink = getAllByText(title)
+    articleLink.forEach(node =>
+      expect(node.parentNode).toHaveAttribute('href', `/${slug}`),
+    )
+    expect(articleLink).toHaveLength(2)
+  })
 })
 
 it('should render the mobile menu properly and open and close it', async () => {

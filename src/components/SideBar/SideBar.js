@@ -1,22 +1,24 @@
 import React from 'react'
 import {string, shape, arrayOf} from 'prop-types'
-import Menu from './SideBarMenu'
-import {useTheme} from '@material-ui/core/styles'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
-import DesktopMenu from './SideBarDesktopWrapper'
-import MobileMenu from './SideBarMobileWrapper'
+import SideBarMenu from './SideBarMenu'
+import Hidden from '@material-ui/core/Hidden'
+import SideBarDesktopMenu from './SideBarDesktopWrapper'
+import SideBarMobileMenu from './SideBarMobileWrapper'
 
-const SideBar = ({articleList}) => {
-  const theme = useTheme()
-  const isDesktop = useMediaQuery(theme.breakpoints.up('md'))
-  const Wrapper = isDesktop ? DesktopMenu : MobileMenu
-
-  return (
-    <Wrapper>
-      <Menu articleList={articleList} />
-    </Wrapper>
-  )
-}
+const SideBar = ({articleList}) => (
+  <>
+    <Hidden implementation="css" mdUp>
+      <SideBarMobileMenu>
+        <SideBarMenu articleList={articleList} />
+      </SideBarMobileMenu>
+    </Hidden>
+    <Hidden implementation="css" smDown>
+      <SideBarDesktopMenu>
+        <SideBarMenu articleList={articleList} />
+      </SideBarDesktopMenu>
+    </Hidden>
+  </>
+)
 
 SideBar.propTypes = {
   articleList: arrayOf(
