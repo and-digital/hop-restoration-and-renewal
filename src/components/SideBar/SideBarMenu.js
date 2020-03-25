@@ -8,6 +8,8 @@ import Box from '@material-ui/core/Box'
 const useStyles = makeStyles(theme => ({
   wrapper: {
     backgroundColor: theme.palette.background.sideBar,
+    width: '100%',
+    marginLeft: '15px',
   },
   link: {
     color: theme.palette.primary.text,
