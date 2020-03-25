@@ -17,7 +17,7 @@ exports.createPages = async ({graphql, actions}) => {
             node {
               slug
               article {
-                title
+                shortTitle
                 slug
               }
             }
@@ -73,7 +73,7 @@ exports.createPages = async ({graphql, actions}) => {
 
   articles.forEach(({slug, section: {slug: sectionSlug}}) => {
     const {article} = sections.find(({slug}) => slug === sectionSlug)
-    const articleList = article.map(({slug, sectionSlug, title}) => ({
+    const articleList = article.map(({slug, shortTitle: title}) => ({
       slug: `/${sectionSlug}/${slug}`,
       title,
     }))

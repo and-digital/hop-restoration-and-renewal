@@ -11,7 +11,12 @@ import {makeStyles} from '@material-ui/core/styles'
 const useStyles = makeStyles(theme => ({
   articlePreview: {
     color: theme.palette.primary.main,
-    lineHeight: '28px',
+    '& p': {
+      lineHeight: '22px',
+      [theme.breakpoints.up('md')]: {
+        lineHeight: '28px',
+      },
+    },
   },
   cardContent: {
     position: 'relative',
@@ -25,9 +30,11 @@ const useStyles = makeStyles(theme => ({
     boxShadow: '0px -4px 4px #ECECEC',
     padding: '28px',
     [theme.breakpoints.up('md')]: {
-      height: '301px',
+      height: '340px',
       '& h2': {
         fontSize: '24px',
+        lineHeight: '36px',
+        marginBottom: '9px',
       },
     },
   },

@@ -12,8 +12,10 @@ const useStyles = makeStyles(theme => ({
   },
   articleBannerText: {
     fontWeight: 'bold',
+    marginBottom: '9px',
     [theme.breakpoints.up('sm')]: {
       fontWeight: 'normal',
+      marginBottom: '18px',
     },
   },
 }))
