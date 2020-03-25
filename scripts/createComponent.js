@@ -10,14 +10,16 @@ const $CNAME = () => (
 );
 
 export default $CNAME;`
-const componentStoryTemplate = `
-import React from 'react'
+const componentStoryTemplate = `import React from 'react'
+import { storiesOf } from '@storybook/react';
 import $CNAME from '../$CNAME'
 
-export default {title: '$CNAME'}
-
-export const withProps = () => <$CNAME />
+storiesOf('$CNAME', module)
+  .add('$CNAME', () => (
+   <$CNAME />
+  ))
 `
+
 const componentTestTemplate = `import React from 'react'
 import render from '../../../utils/tests/renderWithTheme'
 
