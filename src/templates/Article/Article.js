@@ -10,14 +10,11 @@ import Box from '@material-ui/core/Box'
 import Paper from '@material-ui/core/Paper'
 import {useTheme, makeStyles} from '@material-ui/core/styles'
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   articlePaper: {
     padding: '30px 60px 30px 30px',
     '& p': {
-      marginBottom: '50px',
-      [theme.breakpoints.up('md')]: {
-        marginRight: '200px',
-      },
+      marginBottom: '24px',
     },
   },
 }))

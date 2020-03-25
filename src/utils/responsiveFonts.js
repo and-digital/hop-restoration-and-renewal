@@ -4,11 +4,11 @@ export default theme => ({
     fontSize: '36px',
     lineHeight: '48px',
     fontWeight: 'normal',
-    marginBottom: '9px',
+    marginBottom: '18px',
     [theme.breakpoints.up('md')]: {
       fontSize: '64px',
       lineHeight: '60px',
-      marginBottom: '18px',
+      marginBottom: '36px',
     },
   },
   h2: {
@@ -16,10 +16,11 @@ export default theme => ({
     fontSize: '24px',
     lineHeight: '36px',
     fontFamily: 'sans-serif',
+    marginBottom: '14px',
     [theme.breakpoints.up('md')]: {
       fontSize: '36px',
       lineHeight: '48px',
-      marginBottom: '9px',
+      marginBottom: '20px',
     },
   },
   h3: {
@@ -40,8 +41,9 @@ export default theme => ({
     [theme.breakpoints.up('lg')]: {fontSize: '28px'},
   },
   body1: {
-    fontSize: '18px',
+    fontSize: '21px',
     fontFamily: 'sans-serif',
+    lineHeight: '44px',
     [theme.breakpoints.up('md')]: {
       fontSize: '24px',
     },
