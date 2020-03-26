@@ -8,7 +8,7 @@ const MobileBreadcrumbs = ({breadcrumbs, backText}) => {
   const lastBreadcrumb = breadcrumbs[breadcrumbs.length - 1]
   return (
     !!lastBreadcrumb && (
-      <Box padding="20px">
+      <Box>
         <Typography variant="body1">
           <span>{backText}</span>
           <BreadcrumbLink to={lastBreadcrumb.slug}>
