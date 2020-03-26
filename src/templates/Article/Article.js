@@ -29,9 +29,6 @@ const useStyles = makeStyles(theme => ({
       marginTop: '-90px',
     },
   },
-  articleBreadcrumbs: {
-    padding: '0',
-  },
 }))
 
 const Article = ({
