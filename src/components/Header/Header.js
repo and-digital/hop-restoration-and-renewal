@@ -13,7 +13,10 @@ import Menu from './Menu'
 const styles = makeStyles(theme => ({
   root: {
     backgroundColor: theme.palette.background.desktopMenu,
-    boxShadow: '0px 5px 5px rgba(35, 35, 35, 0.1)',
+    boxShadow: 'none',
+    [theme.breakpoints.up('md')]: {
+      boxShadow: '0px 5px 5px rgba(35, 35, 35, 0.1)',
+    },
   },
   linkBox: {
     boxSizing: 'border-box',
