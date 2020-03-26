@@ -4,6 +4,7 @@ import {graphql} from 'gatsby'
 import Layout from '../../components/Layout'
 import SideBar from '../../components/SideBar'
 import ArticleBanner from '../../components/ArticleBanner'
+import BreadcrumbsComponent from '../../components/Breadcrumbs/Breadcrumbs'
 import RichText from '../../components/RichText'
 import Grid from '@material-ui/core/Grid'
 import Box from '@material-ui/core/Box'
@@ -28,6 +29,9 @@ const useStyles = makeStyles(theme => ({
       marginTop: '-90px',
     },
   },
+  articleBreadcrumbs: {
+    padding: '0',
+  },
 }))
 
 const Article = ({
@@ -44,11 +48,16 @@ const Article = ({
   return (
     <Layout title={title} className={classes.root}>
       <ArticleBanner {...section} />
-      <Box maxWidth={1620} mx={{xs: '20px', lg: 'auto'}} my="45px">
-        <Grid container spacing={5}>
+      <Box
+        maxWidth={1620}
+        mx={{xs: '20px', lg: 'auto'}}
+        my="45px"
+        padding="20px"
+      >
+        <Grid container spacing={5} width="100%">
           <Grid item md={3} implementation="css" smDown component={Hidden} />
           <Grid item md={9}>
-            <Box display="inline-flex">Breadcrumbs</Box>
+            <BreadcrumbsComponent breadcrumbs={[section]} />
           </Grid>
           <Grid item xs={12} md={3} className={classes.articleSidebar}>
             <SideBar articleList={articleList} />
@@ -98,6 +107,7 @@ export const query = graphql`
       title
       section {
         title
+        slug
       }
       template {
         content {
