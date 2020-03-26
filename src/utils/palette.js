@@ -8,6 +8,7 @@ const {
   purple,
   lilac,
   grey,
+  lightGrey,
   jewel,
 } = colors
 
@@ -31,6 +32,7 @@ export default {
     footer: grey,
     cardBorder: purple,
     sideBar: lightPurple,
+    boxShadow: lightGrey,
   },
   link: {
     main: purple,

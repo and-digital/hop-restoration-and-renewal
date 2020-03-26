@@ -9,7 +9,10 @@ import SEO from '../SEO'
 
 const useStyles = makeStyles(theme => ({
   body: {
-    background: theme.palette.background.main,
+    backgroundColor: theme.palette.secondary.main,
+    [theme.breakpoints.up('md')]: {
+      backgroundColor: theme.palette.background.main,
+    },
   },
 }))
 
