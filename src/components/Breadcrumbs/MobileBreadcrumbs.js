@@ -2,28 +2,22 @@ import React from 'react'
 import {arrayOf, shape, string} from 'prop-types'
 import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
-import {Link} from 'gatsby'
+import BreadcrumbLink from './BreadcrumbLink'
 
-const lastElement = array => {
-  if (array && array.length > 0) {
-    return array[array.length - 1]
-  }
-  return null
-}
-
-const MobileBreadcrumbs = ({breadcrumbs}) => {
-  const lastBreadcrumb = lastElement(breadcrumbs)
-  if (lastBreadcrumb) {
-    return (
+const MobileBreadcrumbs = ({breadcrumbs, backText}) => {
+  const lastBreadcrumb = breadcrumbs[breadcrumbs.length - 1]
+  return (
+    !!lastBreadcrumb && (
       <Box padding="20px">
         <Typography variant="body1">
-          <span>‹ Back to </span>
-          <Link to={lastBreadcrumb.slug}>{lastBreadcrumb.title}</Link>
+          <span>{backText}</span>
+          <BreadcrumbLink to={lastBreadcrumb.slug}>
+            {lastBreadcrumb.title}
+          </BreadcrumbLink>
         </Typography>
       </Box>
     )
-  }
-  return null
+  )
 }
 
 MobileBreadcrumbs.propTypes = {
@@ -33,6 +27,7 @@ MobileBreadcrumbs.propTypes = {
       slug: string.isRequired,
     }),
   ).isRequired,
+  backText: string.isRequired,
 }
 
 export default MobileBreadcrumbs

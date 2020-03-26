@@ -4,7 +4,7 @@ import {graphql} from 'gatsby'
 import Layout from '../../components/Layout'
 import SideBar from '../../components/SideBar'
 import ArticleBanner from '../../components/ArticleBanner'
-import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs'
+import BreadcrumbsComponent from '../../components/Breadcrumbs/Breadcrumbs'
 import RichText from '../../components/RichText'
 import Grid from '@material-ui/core/Grid'
 import Box from '@material-ui/core/Box'
@@ -34,7 +34,7 @@ const Article = ({
   return (
     <Layout title={title}>
       <ArticleBanner {...section} />
-      <Breadcrumbs breadcrumbs={[section]} />
+      <BreadcrumbsComponent breadcrumbs={[section]} />
       <Box maxWidth={1620} mx={{xs: '20px', lg: 'auto'}} my="20px">
         <Grid container spacing={8}>
           <Grid item xs={12} md={3}>

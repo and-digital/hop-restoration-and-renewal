@@ -1,21 +1,20 @@
 import React from 'react'
 import {arrayOf, shape, string} from 'prop-types'
-import {Link} from 'gatsby'
 import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
-const dividerCharacter = '›'
+import BreadcrumbLink from './BreadcrumbLink'
 
-const DesktopBreadcrumbs = ({breadcrumbs}) => (
+const DesktopBreadcrumbs = ({breadcrumbs, dividerCharacter, homepageText}) => (
   <Box padding="45px">
     <Typography variant="body1">
-      <Link to="/" aria-label="Back to the Home">
-        Home
-      </Link>
+      <BreadcrumbLink to="/">{homepageText}</BreadcrumbLink>
       {breadcrumbs &&
         breadcrumbs.map(breadcrumb => (
           <span key={breadcrumb.slug}>
             <span> {dividerCharacter} </span>
-            <Link to={breadcrumb.slug}>{breadcrumb.title}</Link>
+            <BreadcrumbLink to={breadcrumb.slug}>
+              {breadcrumb.title}
+            </BreadcrumbLink>
           </span>
         ))}
     </Typography>
@@ -29,6 +28,8 @@ DesktopBreadcrumbs.propTypes = {
       slug: string.isRequired,
     }),
   ).isRequired,
+  dividerCharacter: string.isRequired,
+  homepageText: string.isRequired,
 }
 
 export default DesktopBreadcrumbs
