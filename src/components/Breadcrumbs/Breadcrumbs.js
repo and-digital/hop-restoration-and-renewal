@@ -52,3 +52,4 @@ BreadcrumbsComponent.propTypes = {
 }
 
 export default Breadcrumbs
+export {BreadcrumbsComponent}
