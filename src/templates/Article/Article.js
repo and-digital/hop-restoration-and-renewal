@@ -8,8 +8,8 @@ import RichText from '../../components/RichText'
 import Grid from '@material-ui/core/Grid'
 import Box from '@material-ui/core/Box'
 import Paper from '@material-ui/core/Paper'
-import Hidden from '@material-ui/core/Hidden'
 import {makeStyles} from '@material-ui/core/styles'
+import Hidden from '@material-ui/core/Hidden'
 
 const useStyles = makeStyles(theme => ({
   articlePaper: {
@@ -20,6 +20,12 @@ const useStyles = makeStyles(theme => ({
     },
     '& p': {
       marginBottom: '24px',
+    },
+  },
+  articleSidebar: {
+    marginTop: '0',
+    [theme.breakpoints.up('md')]: {
+      marginTop: '-90px',
     },
   },
 }))
@@ -39,23 +45,15 @@ const Article = ({
     <Layout title={title} className={classes.root}>
       <ArticleBanner {...section} />
       <Box maxWidth={1620} mx={{xs: '20px', lg: 'auto'}} my="45px">
-        <Grid container spacing={5} className={classes.articlePadding}>
-          <Hidden mdUp>
-            <Grid item xs={12}>
-              <Box height="40px" bgcolor="yellow">
-                Breadcrumbs
-              </Box>
-            </Grid>
-          </Hidden>
-          <Grid item xs={12} md={3}>
+        <Grid container spacing={5}>
+          <Grid item md={3} implementation="css" smDown component={Hidden} />
+          <Grid item md={9}>
+            <Box display="inline-flex">Breadcrumbs</Box>
+          </Grid>
+          <Grid item xs={12} md={3} className={classes.articleSidebar}>
             <SideBar articleList={articleList} />
           </Grid>
           <Grid item xs={12} md={9}>
-            <Hidden smDown>
-              <Box height="40px" bgcolor="yellow">
-                Breadcrumbs
-              </Box>
-            </Hidden>
             <Paper className={classes.articlePaper}>
               <article>
                 <RichText text={content} />
