@@ -1,7 +1,7 @@
 import React from 'react'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
-import {Link} from 'gatsby'
+import LinkHandler from '../LinkHandler'
 import {arrayOf, shape, string} from 'prop-types'
 import {makeStyles} from '@material-ui/core/styles'
 
@@ -27,14 +27,14 @@ const Menu = ({sections}) => {
     <Grid container spacing={3} style={{width: 'calc(100% + 25px)'}}>
       {sections.map(({name, slug}) => (
         <Grid item key={name} xs={12} sm={12} md="auto">
-          <Link
-            to={`/${slug}`}
+          <LinkHandler
+            url={`/${slug}`}
             className={classes.link}
             activeClassName={classes.activeLink}
             data-cy="navigation-link"
           >
             <Typography variant="h6">{name}</Typography>
-          </Link>
+          </LinkHandler>
         </Grid>
       ))}
     </Grid>

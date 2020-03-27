@@ -1,6 +1,6 @@
 import React from 'react'
 import {node} from 'prop-types'
-import {Link} from 'gatsby'
+import LinkHandler from '../LinkHandler'
 import {makeStyles} from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
@@ -12,9 +12,9 @@ const useStyles = makeStyles(theme => ({
 const BreadcrumbLink = ({children, ...props}) => {
   const styles = useStyles()
   return (
-    <Link {...props} className={styles.breadcrumbLink}>
+    <LinkHandler {...props} className={styles.breadcrumbLink}>
       {children}
-    </Link>
+    </LinkHandler>
   )
 }
 

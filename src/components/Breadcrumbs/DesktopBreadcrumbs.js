@@ -7,12 +7,12 @@ import BreadcrumbLink from './BreadcrumbLink'
 const DesktopBreadcrumbs = ({breadcrumbs, dividerCharacter, homepageText}) => (
   <Box>
     <Typography variant="body1">
-      <BreadcrumbLink to="/">{homepageText}</BreadcrumbLink>
+      <BreadcrumbLink url="/">{homepageText}</BreadcrumbLink>
       {breadcrumbs &&
         breadcrumbs.map(breadcrumb => (
           <span key={breadcrumb.slug}>
             <span> {dividerCharacter} </span>
-            <BreadcrumbLink to={breadcrumb.slug}>
+            <BreadcrumbLink url={breadcrumb.slug}>
               {breadcrumb.title}
             </BreadcrumbLink>
           </span>
