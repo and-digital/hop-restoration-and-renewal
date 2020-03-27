@@ -1,11 +1,9 @@
 import React from 'react'
 import MailTo from './MailTo'
-import FileLink from './FileLink'
 import {shape, string, object} from 'prop-types'
 
 const EmbeddedComponents = {
   mailto: MailTo,
-  fileDownload: FileLink,
 }
 
 const EmbeddedComponent = ({

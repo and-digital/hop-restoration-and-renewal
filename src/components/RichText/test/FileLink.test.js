@@ -15,6 +15,5 @@ it('FileLink renders correctly', () => {
   const title = getByText('testTitle')
   expect(title).toBeDefined()
   expect(title.parentNode).toHaveAttribute('href', 'testUrl')
-  expect(getByText('PDF', {exact: false})).toBeDefined()
-  expect(getByText('13 KB', {exact: false})).toBeDefined()
+  expect(getByText('PDF, 13 KB')).toBeDefined()
 })
