@@ -5,7 +5,7 @@ import Person from '../Person'
 
 const EmbeddedComponents = {
   mailto: MailTo,
-  person: Person
+  person: Person,
 }
 
 const EmbeddedComponent = ({
@@ -25,7 +25,6 @@ const EmbeddedComponent = ({
   Object.keys(fields).forEach(key => {
     localizedFields[key] = fields[key]['en-US']
   })
-  console.log(localizedFields)
   return <Component {...localizedFields} />
 }
 

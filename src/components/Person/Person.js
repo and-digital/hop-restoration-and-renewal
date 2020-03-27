@@ -2,26 +2,32 @@ import React from 'react'
 import {object, shape, string} from 'prop-types'
 import {makeStyles} from '@material-ui/core/styles'
 import {Box} from '@material-ui/core'
-import Image from 'gatsby-image'
+// import Image from 'gatsby-image'
 import Typography from '@material-ui/core/Typography'
 import RichText from '../RichText'
 
 const useStyles = makeStyles(() => ({
   personWrapper: {
-    width: '100%'
+    width: '100%',
   },
   avatar: {
-   width: "190px"
+    width: '190px',
   },
 }))
 
-const Person = ({avatar: {title: avatarTitle, fluid}, title, description}) => {
+const Person = ({
+  avatar: {
+    fields: {title: avatarTitle, file: url},
+  },
+  title,
+  description,
+}) => {
   const classes = useStyles()
 
   return (
     <Box component="section" className={classes.personWrapper}>
       <Box className={classes.avatar}>
-        {/*<Image fluid={fluid} alt={avatarTitle} />*/}
+        {/* <img src={url} alt={avatarTitle} /> */}
       </Box>
       <Box className={classes.contextWrapper}>
         <Box>
