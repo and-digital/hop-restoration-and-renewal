@@ -4,7 +4,6 @@ import {graphql} from 'gatsby'
 import RichText from '../../components/RichText'
 import Layout from '../../components/Layout'
 import Paper from '@material-ui/core/Paper'
-// import Typography from '@material-ui/core/Typography'
 import {makeStyles} from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
