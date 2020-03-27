@@ -1,5 +1,5 @@
 import React from 'react'
-import {string, shape, number} from 'prop-types'
+import {string, number} from 'prop-types'
 import {makeStyles} from '@material-ui/styles'
 import {Typography} from '@material-ui/core'
 import displayWithUnits from 'filesize'
@@ -30,19 +30,8 @@ const formatFileSize = fileSize =>
     round: 0,
   })
 
-const FileLink = ({title, file}) => {
+const FileLink = ({title, url, contentType, size}) => {
   const classes = useStyles()
-  const {
-    fields: {
-      file: {
-        'en-US': {
-          url,
-          contentType,
-          details: {size},
-        },
-      },
-    },
-  } = file
   const fileType = formatFileType(contentType)
   const fileSize = formatFileSize(size)
   return (
@@ -61,19 +50,9 @@ const FileLink = ({title, file}) => {
 
 FileLink.propTypes = {
   title: string.isRequired,
-  file: shape({
-    fields: shape({
-      file: shape({
-        'en-US': shape({
-          url: string.isRequired,
-          contentType: string.isRequired,
-          details: shape({
-            size: number.isRequired,
-          }).isRequired,
-        }).isRequired,
-      }).isRequired,
-    }).isRequired,
-  }).isRequired,
+  url: string.isRequired,
+  contentType: string.isRequired,
+  size: number.isRequired,
 }
 
 export default FileLink

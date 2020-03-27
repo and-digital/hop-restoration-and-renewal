@@ -5,22 +5,12 @@ import FileLink from '../FileLink'
 
 const props = {
   title: 'testTitle',
-  file: {
-    fields: {
-      file: {
-        'en-US': {
-          url: 'testUrl',
-          contentType: 'test/pdf',
-          details: {
-            size: 13624,
-          },
-        },
-      },
-    },
-  },
+  url: 'testUrl',
+  contentType: 'test/pdf',
+  size: 13624,
 }
 
-it('filelink renders correctly', () => {
+it('FileLink renders correctly', () => {
   const {getByText} = render(<FileLink {...props} />)
   const title = getByText('testTitle')
   expect(title).toBeDefined()
