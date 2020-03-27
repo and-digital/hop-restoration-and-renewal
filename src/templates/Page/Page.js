@@ -11,9 +11,9 @@ const useStyles = makeStyles(theme => ({
   noPageWrapper: {
     padding: '30px',
     maxWidth: '1620px',
-    margin: '40px auto 65px',
     boxShadow: 'none',
     [theme.breakpoints.up('md')]: {
+      margin: '40px auto 65px',
       boxShadow: `0px -4px 4px ${theme.palette.background.boxShadow}`,
     },
   },
