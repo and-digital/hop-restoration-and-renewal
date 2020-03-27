@@ -5,7 +5,7 @@ import Box from '@material-ui/core/Box'
 import BreadcrumbLink from './BreadcrumbLink'
 
 const DesktopBreadcrumbs = ({breadcrumbs, dividerCharacter, homepageText}) => (
-  <Box padding="45px">
+  <Box>
     <Typography variant="body1">
       <BreadcrumbLink to="/">{homepageText}</BreadcrumbLink>
       {breadcrumbs &&

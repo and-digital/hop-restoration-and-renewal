@@ -53,6 +53,7 @@ Object {
     },
     "augmentColor": [Function],
     "background": Object {
+      "boxShadow": "#ECECEC",
       "card": "#ffffff",
       "cardBorder": "#6B609C",
       "default": "#fafafa",
