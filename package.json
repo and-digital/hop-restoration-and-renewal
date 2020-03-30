@@ -92,6 +92,7 @@
     "create-component": "node ./scripts/createComponent.js",
     "create-template": "node ./scripts/createTemplate.js",
     "create-page": "node ./scripts/createPage.js",
-    "create-hook": "node ./scripts/createHook.js"
+    "create-hook": "node ./scripts/createHook.js",
+    "create-provider": "node ./scripts/createProvider.js"
   }
 }
