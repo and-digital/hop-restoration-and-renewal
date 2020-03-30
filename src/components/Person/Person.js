@@ -1,23 +1,34 @@
 import React from 'react'
-import {object, shape, string} from 'prop-types'
+import {shape, string} from 'prop-types'
 import {makeStyles} from '@material-ui/core/styles'
 import {Box} from '@material-ui/core'
-// import Image from 'gatsby-image'
 import Typography from '@material-ui/core/Typography'
-import RichText from '../RichText'
 
 const useStyles = makeStyles(() => ({
   personWrapper: {
     width: '100%',
+    display: 'flex',
+    margin: '50px 0',
   },
   avatar: {
     width: '190px',
+  },
+  contextWrapper: {
+    marginLeft: '43px',
+  },
+  title: {
+    fontWeight: 'bold',
   },
 }))
 
 const Person = ({
   avatar: {
-    fields: {title: avatarTitle, file: url},
+    fields: {
+      title: {avatarTitle},
+      file: {
+        'en-US': {url},
+      },
+    },
   },
   title,
   description,
@@ -27,13 +38,15 @@ const Person = ({
   return (
     <Box component="section" className={classes.personWrapper}>
       <Box className={classes.avatar}>
-        {/* <img src={url} alt={avatarTitle} /> */}
+        <img src={url} alt={avatarTitle} />
       </Box>
       <Box className={classes.contextWrapper}>
-        <Box>
-          <Typography variant="h4">{title}</Typography>
-          <RichText text={description} className={classes.description} />
-        </Box>
+        <Typography variant="h3" className={classes.title}>
+          {title}
+        </Typography>
+        <Typography className={classes.description} variant="body1">
+          {description}
+        </Typography>
       </Box>
     </Box>
   )
@@ -41,13 +54,19 @@ const Person = ({
 
 Person.propTypes = {
   avatar: shape({
-    title: string.isRequired,
-    fluid: object.isRequired,
+    fields: shape({
+      title: shape({
+        avatarTitle: string.isRequired,
+      }),
+      file: shape({
+        'en-US': shape({
+          url: string.isRequired,
+        }),
+      }),
+    }),
   }).isRequired,
   title: string.isRequired,
-  description: shape({
-    json: object.isRequired,
-  }).isRequired,
+  description: string.isRequired,
 }
 
 export default Person

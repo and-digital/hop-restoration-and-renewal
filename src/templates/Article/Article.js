@@ -31,6 +31,7 @@ const Article = ({
   },
 }) => {
   const classes = useStyles()
+
   return (
     <Layout title={title}>
       <ArticleBanner {...section} />

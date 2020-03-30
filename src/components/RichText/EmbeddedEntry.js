@@ -25,6 +25,7 @@ const EmbeddedComponent = ({
   Object.keys(fields).forEach(key => {
     localizedFields[key] = fields[key]['en-US']
   })
+
   return <Component {...localizedFields} />
 }
 
