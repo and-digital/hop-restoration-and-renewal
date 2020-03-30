@@ -1,37 +1,21 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {node, string} from 'prop-types'
 
 import LocationContext from './LocationContext'
 
 const {Provider} = LocationContext
 
-const LocationProvider = ({
-  section: defaultSection,
-  article: defaultArticle,
-  childArticle: defaultChildArticle,
-  children,
-}) => {
-  const [location, setLocation] = useState({
-    section: defaultSection,
-    article: defaultArticle,
-    childArticle: defaultChildArticle,
-  })
-
-  const {section, article, childArticle} = location
-
-  return (
-    <Provider
-      value={{
-        section,
-        article,
-        childArticle,
-        setLocation,
-      }}
-    >
-      {children}
-    </Provider>
-  )
-}
+const LocationProvider = ({section, article, childArticle, children}) => (
+  <Provider
+    value={{
+      section,
+      article,
+      childArticle,
+    }}
+  >
+    {children}
+  </Provider>
+)
 
 LocationProvider.propTypes = {
   children: node.isRequired,
