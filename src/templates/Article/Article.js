@@ -42,6 +42,7 @@ const Article = ({
   },
 }) => {
   const classes = useStyles()
+
   return (
     <Layout title={title} className={classes.root}>
       <ArticleBanner {...section} />

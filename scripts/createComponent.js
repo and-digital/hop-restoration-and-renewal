@@ -19,6 +19,7 @@ storiesOf('$CNAME', module)
    <$CNAME />
   ))
 `
+
 const componentTestTemplate = `import React from 'react'
 import render from '../../../utils/tests/renderWithTheme'
 
