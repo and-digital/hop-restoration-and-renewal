@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import {Link} from 'gatsby'
 
 const LinkHandler = ({url, newTab, children, ...props}) => {
-  if (url.startsWith('/')) {
+  if (/^\/(?!\/)/.test(url)) {
     return (
       <Link to={url} {...props}>
         {children}

@@ -31,7 +31,7 @@ test('should render title amd sidebar menu containing a list of articles', async
   pageContext.articleList.forEach(({title, slug}) => {
     const articleLink = getAllByText(title)
     articleLink.forEach(node =>
-      expect(node.parentNode).toHaveAttribute('href', `/${slug}`),
+      expect(node.parentNode).toHaveAttribute('href', slug),
     )
     expect(articleLink).toHaveLength(2)
   })

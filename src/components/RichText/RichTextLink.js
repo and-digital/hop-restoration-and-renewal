@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
 const RichTextLink = ({data: {uri}, content: [{value: text}]}) => {
   const classes = useStyles()
   return (
-    <LinkHandler url={uri} className={classes.richTextLink}>
+    <LinkHandler newTab url={uri} className={classes.richTextLink}>
       {text}
     </LinkHandler>
   )
