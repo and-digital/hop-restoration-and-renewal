@@ -1,9 +1,12 @@
 import React from 'react'
+import classNames from 'classnames'
+
 import Typography from '@material-ui/core/Typography'
 import {Link} from 'gatsby'
 import {arrayOf, shape, string} from 'prop-types'
 import {makeStyles} from '@material-ui/core/styles'
 import Box from '@material-ui/core/Box'
+import useLocation from '../../hooks/useLocation'
 
 const useStyles = makeStyles(theme => ({
   wrapper: {
@@ -40,6 +43,7 @@ const useStyles = makeStyles(theme => ({
 
 const SideBarMenu = ({articleList}) => {
   const classes = useStyles()
+  const {article} = useLocation()
   return (
     <Box className={classes.wrapper}>
       <ul className={classes.list}>
@@ -47,7 +51,9 @@ const SideBarMenu = ({articleList}) => {
           <li key={slug} className={classes.listItem}>
             <Link
               to={`/${slug}`}
-              className={classes.link}
+              className={classNames(classes.link, {
+                [classes.activeLink]: slug === article,
+              })}
               activeClassName={classes.activeLink}
             >
               <Typography className={classes.linkText}>{title}</Typography>

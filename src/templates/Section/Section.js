@@ -14,7 +14,7 @@ const Section = ({
   },
 }) => {
   return (
-    <Layout title={title}>
+    <Layout title={title} section={slug}>
       <Hero {...hero} />
       <Box
         my={5}

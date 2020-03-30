@@ -13,6 +13,10 @@ export default {
         name: 'Palace',
         slug: 'palace',
       },
+      {
+        name: 'News',
+        slug: 'news',
+      },
     ],
     homePageLinkText: 'go back to home page',
     logo: {
