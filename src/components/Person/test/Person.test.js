@@ -6,7 +6,7 @@ import Person from '..'
 const data = {
   avatar: {
     fields: {
-      title: {avatarTitle: 'altText'},
+      title: {['en-US']: 'hi'},
       file: {['en-US']: {url: 'imageUrl'}},
     },
   },
@@ -22,5 +22,5 @@ it('should render the component with the correct title and description', () => {
 
 it('should render the component with image and alt text', () => {
   const {getByAltText} = render(<Person {...data} />)
-  expect(getByAltText(data.avatar.fields.title.avatarTitle)).toBeDefined()
+  expect(getByAltText(data.avatar.fields.title['en-US'])).toBeDefined()
 })

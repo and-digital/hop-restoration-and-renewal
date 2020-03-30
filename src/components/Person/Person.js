@@ -4,17 +4,27 @@ import {makeStyles} from '@material-ui/core/styles'
 import {Box} from '@material-ui/core'
 import Typography from '@material-ui/core/Typography'
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
   personWrapper: {
+    flexDirection: 'column',
     width: '100%',
     display: 'flex',
     margin: '50px 0',
+    [theme.breakpoints.up('md')]: {
+      flexDirection: 'row',
+    },
   },
   avatar: {
     width: '190px',
+    marginBottom: '24px',
+    [theme.breakpoints.up('md')]: {
+      marginBottom: 0,
+    },
   },
   contextWrapper: {
-    marginLeft: '43px',
+    [theme.breakpoints.up('md')]: {
+      marginLeft: '43px',
+    },
   },
   title: {
     fontWeight: 'bold',
@@ -24,7 +34,7 @@ const useStyles = makeStyles(() => ({
 const Person = ({
   avatar: {
     fields: {
-      title: {avatarTitle},
+      title: altText,
       file: {
         'en-US': {url},
       },
@@ -38,7 +48,7 @@ const Person = ({
   return (
     <Box component="section" className={classes.personWrapper}>
       <Box className={classes.avatar}>
-        <img src={url} alt={avatarTitle} />
+        <img src={url} alt={altText['en-US']} />
       </Box>
       <Box className={classes.contextWrapper}>
         <Typography variant="h3" className={classes.title}>
@@ -56,7 +66,7 @@ Person.propTypes = {
   avatar: shape({
     fields: shape({
       title: shape({
-        avatarTitle: string.isRequired,
+        'en-US': string.isRequired,
       }),
       file: shape({
         'en-US': shape({
