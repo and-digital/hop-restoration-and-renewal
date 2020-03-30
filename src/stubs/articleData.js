@@ -2,7 +2,7 @@ export default {
   contentfulArticle: {
     title: 'History',
     section: {
-      title: 'section title',
+      title: 'article Test',
       slug: '/section',
     },
     template: {

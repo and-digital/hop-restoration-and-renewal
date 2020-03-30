@@ -32,11 +32,10 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const Article = ({
-  pageContext: {articleList},
+  pageContext: {articleList, parentSection},
   data: {
     contentfulArticle: {
       title,
-      section,
       template: {content},
     },
   },
@@ -44,7 +43,7 @@ const Article = ({
   const classes = useStyles()
   return (
     <Layout title={title} className={classes.root}>
-      <ArticleBanner {...section} />
+      <ArticleBanner {...parentSection} />
       <Box
         maxWidth={1620}
         mx={{xs: '20px', lg: 'auto'}}
@@ -54,7 +53,7 @@ const Article = ({
         <Grid container spacing={5} width="100%">
           <Grid item md={3} implementation="css" smDown component={Hidden} />
           <Grid item md={9}>
-            <BreadcrumbsComponent breadcrumbs={[section]} />
+            <BreadcrumbsComponent breadcrumbs={[parentSection]} />
           </Grid>
           <Grid item xs={12} md={3} className={classes.articleSidebar}>
             <SideBar articleList={articleList} />
@@ -75,10 +74,6 @@ const Article = ({
 Article.propTypes = {
   data: shape({
     contentfulArticle: shape({
-      title: string.isRequired,
-      section: shape({
-        title: string.isRequired,
-      }).isRequired,
       template: shape({
         content: shape({
           json: object.isRequired,
@@ -102,10 +97,6 @@ export const query = graphql`
   query ArticleQuery($slug: String!) {
     contentfulArticle(slug: {eq: $slug}) {
       title
-      section {
-        title
-        slug
-      }
       template {
         content {
           json

@@ -34,6 +34,7 @@ exports.createPages = async ({graphql, actions}) => {
             node {
               slug
               section {
+                title
                 slug
               }
             }
@@ -71,19 +72,24 @@ exports.createPages = async ({graphql, actions}) => {
     })
   })
 
-  articles.forEach(({slug, section: {slug: sectionSlug}}) => {
-    const {article} = sections.find(({slug}) => slug === sectionSlug)
+  articles.forEach(({slug, section}) => {
+    const {article} = sections.find(({slug}) => slug === section.slug)
     const articleList = article.map(({slug, shortTitle: title}) => ({
-      slug: `/${sectionSlug}/${slug}`,
+      slug: `/${section.slug}/${slug}`,
       title,
     }))
+    const parentSection = {
+      ...section,
+      slug: `/${section.slug}`,
+    }
 
     createPage({
-      path: `/${sectionSlug}/${slug}/`,
+      path: `/${section.slug}/${slug}/`,
       component: articleTemplate,
       context: {
         slug,
         articleList,
+        parentSection,
       },
     })
   })

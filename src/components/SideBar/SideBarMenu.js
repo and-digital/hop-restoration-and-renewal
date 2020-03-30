@@ -48,7 +48,7 @@ const SideBarMenu = ({articleList}) => {
             <LinkHandler
               url={slug}
               className={classes.link}
-              activeClassName={classes.activeLink}
+              activeclassname={classes.activeLink}
             >
               <Typography className={classes.linkText}>{title}</Typography>
             </LinkHandler>

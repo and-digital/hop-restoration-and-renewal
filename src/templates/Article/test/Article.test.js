@@ -11,10 +11,14 @@ import data from '../../../stubs/articleData'
 const pageContext = {
   articleList: [
     {
-      title: 'article Test',
+      title: 'articleList Test',
       slug: '/history/article-1',
     },
   ],
+  parentSection: {
+    title: 'article Test',
+    slug: '/history/article-1',
+  },
 }
 
 test('should render title amd sidebar menu containing a list of articles', async () => {
