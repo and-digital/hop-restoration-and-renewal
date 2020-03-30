@@ -10,12 +10,23 @@ import Grid from '@material-ui/core/Grid'
 import Box from '@material-ui/core/Box'
 import Paper from '@material-ui/core/Paper'
 import {makeStyles} from '@material-ui/core/styles'
+import Hidden from '@material-ui/core/Hidden'
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
   articlePaper: {
     padding: '30px 60px 30px 30px',
+    boxShadow: 'none',
+    [theme.breakpoints.up('md')]: {
+      boxShadow: `0px -4px 4px ${theme.palette.background.boxShadow}`,
+    },
     '& p': {
       marginBottom: '24px',
+    },
+  },
+  articleSidebar: {
+    marginTop: '0',
+    [theme.breakpoints.up('md')]: {
+      marginTop: '-90px',
     },
   },
 }))
@@ -33,12 +44,20 @@ const Article = ({
   const classes = useStyles()
 
   return (
-    <Layout title={title}>
+    <Layout title={title} className={classes.root}>
       <ArticleBanner {...section} />
-      <BreadcrumbsComponent breadcrumbs={[section]} />
-      <Box maxWidth={1620} mx={{xs: '20px', lg: 'auto'}} my="20px">
-        <Grid container spacing={8}>
-          <Grid item xs={12} md={3}>
+      <Box
+        maxWidth={1620}
+        mx={{xs: '20px', lg: 'auto'}}
+        my="45px"
+        padding="20px"
+      >
+        <Grid container spacing={5} width="100%">
+          <Grid item md={3} implementation="css" smDown component={Hidden} />
+          <Grid item md={9}>
+            <BreadcrumbsComponent breadcrumbs={[section]} />
+          </Grid>
+          <Grid item xs={12} md={3} className={classes.articleSidebar}>
             <SideBar articleList={articleList} />
           </Grid>
           <Grid item xs={12} md={9}>

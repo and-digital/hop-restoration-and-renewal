@@ -21,11 +21,13 @@ const EmbeddedComponent = ({
   },
 }) => {
   const Component = EmbeddedComponents[id]
-  const localizedFields = {}
-  Object.keys(fields).forEach(key => {
-    localizedFields[key] = fields[key]['en-US']
-  })
-
+  const localizedFields = Object.entries(fields).reduce(
+    (accumulator, [key, value]) => ({
+      ...accumulator,
+      [key]: value['en-US'],
+    }),
+    {},
+  )
   return <Component {...localizedFields} />
 }
 
