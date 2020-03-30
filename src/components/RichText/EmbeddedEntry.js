@@ -1,9 +1,11 @@
 import React from 'react'
 import MailTo from './MailTo'
 import {shape, string, object} from 'prop-types'
+import Person from '../Person'
 
 const EmbeddedComponents = {
   mailto: MailTo,
+  person: Person,
 }
 
 const EmbeddedComponent = ({

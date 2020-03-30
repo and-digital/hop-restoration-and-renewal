@@ -19,6 +19,7 @@ const pageContext = {
     title: 'History Section',
     slug: '/history/article-1',
   },
+  slug: 'article',
 }
 
 test('should render title amd sidebar menu containing a list of articles', async () => {
