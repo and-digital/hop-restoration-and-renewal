@@ -1,5 +1,5 @@
 import React from 'react'
-import {string, shape} from 'prop-types'
+import {string} from 'prop-types'
 import Box from '@material-ui/core/Box'
 import {makeStyles, useTheme} from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
@@ -20,9 +20,8 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const ArticleBanner = section => {
+const ArticleBanner = ({title}) => {
   const classes = useStyles()
-  const {title} = section
   const theme = useTheme()
   return (
     <Box
@@ -53,9 +52,7 @@ const ArticleBanner = section => {
 }
 
 ArticleBanner.propTypes = {
-  section: shape({
-    title: string.isRequired,
-  }).isRequired,
+  title: string.isRequired,
 }
 
 export default ArticleBanner

@@ -1,27 +1,51 @@
 import React from 'react'
-import {string, shape} from 'prop-types'
+import {string, shape, object} from 'prop-types'
 import {graphql} from 'gatsby'
-
+import RichText from '../../components/RichText'
 import Layout from '../../components/Layout'
-import Typography from '@material-ui/core/Typography'
+import Paper from '@material-ui/core/Paper'
+import {makeStyles} from '@material-ui/core/styles'
+
+const useStyles = makeStyles(theme => ({
+  noPageWrapper: {
+    padding: '30px',
+    maxWidth: '1620px',
+    boxShadow: 'none',
+    [theme.breakpoints.up('md')]: {
+      margin: '40px auto 65px',
+      boxShadow: `0px -4px 4px ${theme.palette.background.boxShadow}`,
+    },
+  },
+}))
 
 const Page = ({
   data: {
-    contentfulPage: {title},
+    contentfulPage: {
+      title,
+      template: {content},
+    },
   },
-}) => (
-  <Layout title={title}>
-    <Typography variant="h1" className="page-headline">
-      {title}
-    </Typography>
-  </Layout>
-)
+}) => {
+  const classes = useStyles()
+  return (
+    <Layout title={title}>
+      <Paper className={classes.noPageWrapper}>
+        <RichText text={content} aria-label="page not found description" />
+      </Paper>
+    </Layout>
+  )
+}
 
 Page.propTypes = {
   data: shape({
     contentfulPage: shape({
       title: string.isRequired,
-    }).isRequired,
+      template: shape({
+        content: shape({
+          json: object.isRequired,
+        }).isRequired,
+      }).isRequired,
+    }),
   }),
 }
 
@@ -31,6 +55,11 @@ export const query = graphql`
   query PageQuery($slug: String!) {
     contentfulPage(slug: {eq: $slug}) {
       title
+      template {
+        content {
+          json
+        }
+      }
     }
   }
 `

@@ -1,41 +1,53 @@
 import React from 'react'
-import {shape, object} from 'prop-types'
-import {Box} from '@material-ui/core'
-import Typography from '@material-ui/core/Typography'
-import {makeStyles} from '@material-ui/core/styles'
-
-const styles = makeStyles(() => ({
-  imageWrapper: {
-    width: '100%',
-    maxWidth: '1150px',
-    margin: '40px 0',
-    '& img': {
-      width: '100%',
-    },
-  },
-}))
+import {shape, string, number} from 'prop-types'
+import ImageWrapper from './ImageWrapper'
+import FileLink from './FileLink'
 
 const EmbeddedAsset = ({
   data: {
     target: {
-      fields: {file, title},
+      fields: {
+        file: {
+          'en-US': {
+            contentType,
+            url,
+            details: {size},
+          },
+        },
+        title,
+      },
     },
   },
 }) => {
-  const classes = styles()
-  return (
-    <Box className={classes.imageWrapper}>
-      <img src={file['en-US'].url} alt={title['en-US']} />
-      <Typography variant="caption">{title['en-US']}</Typography>
-    </Box>
-  )
+  if (contentType.startsWith('image')) {
+    return <ImageWrapper url={url} title={title['en-US']} />
+  } else if (contentType.endsWith('pdf')) {
+    return (
+      <FileLink
+        url={url}
+        title={title['en-US']}
+        size={size}
+        contentType={contentType}
+      />
+    )
+  }
+  return null
 }
+
 EmbeddedAsset.propTypes = {
   data: shape({
     target: shape({
       fields: shape({
-        file: shape(object).isRequired,
-        title: shape(object).isRequired,
+        file: shape({
+          'en-US': shape({
+            contentType: string.isRequired,
+            url: string.isRequired,
+            details: shape({size: number.isRequired}),
+          }).isRequired,
+        }).isRequired,
+        title: shape({
+          'en-US': string.isRequired,
+        }).isRequired,
       }).isRequired,
     }).isRequired,
   }).isRequired,

@@ -40,7 +40,7 @@ const SideBarMobileMenu = ({children}) => {
       flexDirection="row"
       flexWrap="wrap"
       alignItems="center"
-      width="90%"
+      width="100%"
       margin="auto"
     >
       <ExpansionPanel className={styles.header}>

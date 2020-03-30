@@ -3,9 +3,7 @@ import render from '../../../utils/tests/renderWithTheme'
 import ArticleBanner from '..'
 
 const section = {
-  section: {
-    title: 'section title',
-  },
+  title: 'section title',
 }
 
 it('should display a title', () => {
