@@ -1,6 +1,7 @@
 const path = require('path')
 const sectionTemplate = path.resolve('./src/templates/Section/Section.js')
 const articleTemplate = path.resolve('./src/templates/Article/Article.js')
+const subarticleTemplate = path.resolve('./src/templates/Article/Article.js')
 const pageTemplate = path.resolve('./src/templates/Page/Page.js')
 
 const extractNodes = key => response =>
@@ -42,6 +43,22 @@ exports.createPages = async ({graphql, actions}) => {
       }
     `).then(extractNodes('allContentfulArticle'))
 
+  const allSubArticles = () =>
+    graphql(`
+      query AllSubArticles {
+        allContentfulSubArticle {
+          edges {
+            node {
+              slug
+              article {
+                slug
+              }
+            }
+          }
+        }
+      }
+    `).then(extractNodes('allContentfulSubArticle'))
+
   const allPages = () =>
     graphql(`
       query AllPages {
@@ -55,9 +72,10 @@ exports.createPages = async ({graphql, actions}) => {
       }
     `).then(extractNodes('allContentfulPage'))
 
-  const [sections, articles, pages] = await Promise.all([
+  const [sections, articles, subarticles, pages] = await Promise.all([
     allSections(),
     allArticles(),
+    allSubArticles(),
     allPages(),
   ])
 
@@ -73,6 +91,8 @@ exports.createPages = async ({graphql, actions}) => {
 
   articles.forEach(({slug, section: {slug: sectionSlug}}) => {
     const {article} = sections.find(({slug}) => slug === sectionSlug)
+    console.log(article)
+
     const articleList = article.map(({slug, shortTitle: title}) => ({
       slug: `/${sectionSlug}/${slug}`,
       title,
@@ -84,6 +104,25 @@ exports.createPages = async ({graphql, actions}) => {
       context: {
         slug,
         articleList,
+      },
+    })
+  })
+
+  subarticles.forEach(({slug, article: {slug: articleSlug}}) => {
+    const subarticle = articles.find(({slug}) => slug === articleSlug)
+    console.log(subarticle)
+
+    const subarticleList = subarticle.map(({slug, shortTitle: title}) => ({
+      slug: `/${articleSlug}/${slug}`,
+      title,
+    }))
+
+    createPage({
+      path: `/${articleSlug}/${slug}/`,
+      component: subarticleTemplate,
+      context: {
+        slug,
+        subarticleList,
       },
     })
   })
