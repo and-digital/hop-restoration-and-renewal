@@ -11,7 +11,7 @@ const $CNAME = () => (
 
 export default $CNAME;`
 const componentTestTemplate = `import React from 'react'
-import render from '../../utils/tests/renderWithTheme'
+import render from '../../utils/tests/renderWithSection'
 
 import $CNAME from '../$CNAME'
 it('should render the page', () => {

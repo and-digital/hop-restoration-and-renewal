@@ -1,6 +1,6 @@
 import React from 'react'
 import {waitForDomChange} from '@testing-library/react'
-import render from '../../../utils/tests/renderWithTheme'
+import render from '../../../utils/tests/renderWithHelmet'
 import seoData from '../../../stubs/seoData'
 import mockSEO from '../../../stubs/mockSEO'
 

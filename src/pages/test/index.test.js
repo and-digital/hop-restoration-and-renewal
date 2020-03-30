@@ -1,7 +1,7 @@
 import React from 'react'
 import IndexPage from '../'
 import {waitForDomChange} from '@testing-library/react'
-import render from '../../utils/tests/renderWithTheme'
+import render from '../../utils/tests/renderWithHelmet'
 import '@testing-library/jest-dom/extend-expect'
 import mockFooter from '../../stubs/mockFooter'
 import cardsData from '../../stubs/cardsData'
