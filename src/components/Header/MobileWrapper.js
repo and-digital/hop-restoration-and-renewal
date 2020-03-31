@@ -33,7 +33,13 @@ const MobileMenu = ({footerLinks, children}) => {
   const styles = useStyles()
 
   return (
-    <Box display="flex" flexDirection="row" flexWrap="wrap" alignItems="center">
+    <Box
+      display="flex"
+      flexDirection="row"
+      flexWrap="wrap"
+      alignItems="center"
+      height="100%"
+    >
       <MenuIcon
         onClick={openMenu}
         color="primary"

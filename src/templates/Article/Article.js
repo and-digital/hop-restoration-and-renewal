@@ -60,7 +60,9 @@ const Article = ({
         <Grid container spacing={5} width="100%">
           <Grid item md={3} implementation="css" smDown component={Hidden} />
           <Grid item md={9}>
-            <BreadcrumbsComponent breadcrumbs={[section]} />
+            <BreadcrumbsComponent
+              breadcrumbs={[{...section, slug: `/${sectionSlug}`}]}
+            />
           </Grid>
           <Grid item xs={12} md={3} className={classes.articleSidebar}>
             <SideBar articleList={articleList} />

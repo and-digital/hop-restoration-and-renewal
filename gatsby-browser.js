@@ -3,7 +3,6 @@ import MainWrapper from './src/components/MainWrapper'
 export const wrapRootElement = MainWrapper
 
 export const onRouteUpdate = () => {
-  console.log('change')
   if (process.env.NODE_ENV === `production`) {
     // wrap inside a timeout to ensure the title has properly been changed
     setTimeout(() => {
