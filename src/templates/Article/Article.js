@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const Article = ({
-  pageContext: {articleSlug, sectionSlug, articleList, subArticles},
+  pageContext: {articleSlug, sectionSlug, articleList, subarticleList},
   data: {
     contentfulArticle: {
       title,
@@ -42,7 +42,7 @@ const Article = ({
   },
 }) => {
   const classes = useStyles()
-  // console.log('articleSlug ', articleSlug)
+  console.log(subarticleList)
   // console.log('sectionSlug ', sectionSlug)
   // console.log('subArticles ', subArticles)
 
@@ -66,7 +66,10 @@ const Article = ({
             <BreadcrumbsComponent breadcrumbs={[section]} />
           </Grid>
           <Grid item xs={12} md={3} className={classes.articleSidebar}>
-            <SideBar articleList={articleList} subArticles={subArticles} />
+            <SideBar
+              articleList={articleList}
+              subarticleList={subarticleList}
+            />
           </Grid>
           <Grid item xs={12} md={9}>
             <Paper className={classes.articlePaper}>

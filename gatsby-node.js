@@ -111,11 +111,12 @@ exports.createPages = async ({graphql, actions}) => {
         title,
       }))
 
-      // const subarticleList = sub_article.map(({slug, shortTitle: title}) => ({
-      // parentArticle
-      //   slug: `${sectionSlug}/${articleSlug}/${slug}`,
-      //   title,
-      // }))
+      const subarticleList =
+        subArticles &&
+        subArticles.map(({slug, shortTitle: title}) => ({
+          slug: `${sectionSlug}/${articleSlug}/${slug}`,
+          title,
+        }))
 
       createPage({
         path: `/${sectionSlug}/${articleSlug}/`,
@@ -124,7 +125,7 @@ exports.createPages = async ({graphql, actions}) => {
           sectionSlug,
           articleSlug,
           articleList,
-          subArticles,
+          subarticleList,
         },
       })
     },
@@ -144,7 +145,7 @@ exports.createPages = async ({graphql, actions}) => {
         slug: `/${sectionSlug}/${articleSlug}/${slug}`,
         title,
       }))
-      console.log(subarticleList)
+      // console.log(subarticleList)
 
       createPage({
         path: `/${sectionSlug}/${articleSlug}/${slug}/`,

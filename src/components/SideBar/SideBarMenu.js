@@ -41,10 +41,10 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const SideBarMenu = ({articleList, subArticles}) => {
+const SideBarMenu = ({articleList, subarticleList}) => {
   const classes = useStyles()
   const {article} = useLocation()
-  console.log(articleList)
+  console.log(subarticleList)
 
   return (
     <Box className={classes.wrapper}>
@@ -60,6 +60,23 @@ const SideBarMenu = ({articleList, subArticles}) => {
             >
               <Typography className={classes.linkText}>{title}</Typography>
             </Link>
+            <ul>
+              {subarticleList.map(({title, slug}) => (
+                <li key={slug}>
+                  <Link
+                    to={`/${slug}`}
+                    className={classNames(classes.link, {
+                      [classes.activeLink]: slug === article,
+                    })}
+                    activeClassName={classes.activeLink}
+                  >
+                    <Typography className={classes.linkText}>
+                      {title}
+                    </Typography>
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </li>
         ))}
       </ul>
