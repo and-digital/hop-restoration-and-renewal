@@ -12,14 +12,11 @@ const pageContext = {
   articleList: [
     {
       title: 'articleList Test',
-      slug: '/history/article-1',
+      slug: 'history/article-1',
     },
   ],
-  parentSection: {
-    title: 'History Section',
-    slug: '/history/article-1',
-  },
   slug: 'article',
+  sectionSlug: 'section',
 }
 
 test('should render title amd sidebar menu containing a list of articles', async () => {
@@ -32,11 +29,11 @@ test('should render title amd sidebar menu containing a list of articles', async
   await waitForDomChange()
   expect(document.title).toEqual(data.contentfulArticle.title)
   // Should appear in the banner, mobile breadcrumbs and desktop breadcrumbs
-  expect(getAllByText(pageContext.parentSection.title).length).toBe(3)
+  expect(getAllByText(data.contentfulArticle.section.title).length).toBe(3)
   pageContext.articleList.forEach(({title, slug}) => {
     const articleLink = getAllByText(title)
     articleLink.forEach(node =>
-      expect(node.parentNode).toHaveAttribute('href', slug),
+      expect(node.parentNode).toHaveAttribute('href', `/${slug}`),
     )
     expect(articleLink).toHaveLength(2)
   })

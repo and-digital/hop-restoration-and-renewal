@@ -1,6 +1,10 @@
 export default {
   contentfulArticle: {
     title: 'History',
+    section: {
+      title: 'section title',
+      slug: 'section',
+    },
     template: {
       content: {
         json: {

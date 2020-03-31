@@ -12,7 +12,7 @@ const DesktopBreadcrumbs = ({breadcrumbs, dividerCharacter, homepageText}) => (
         breadcrumbs.map(breadcrumb => (
           <span key={breadcrumb.slug}>
             <span> {dividerCharacter} </span>
-            <BreadcrumbLink url={breadcrumb.slug}>
+            <BreadcrumbLink url={`/${breadcrumb.slug}`}>
               {breadcrumb.title}
             </BreadcrumbLink>
           </span>

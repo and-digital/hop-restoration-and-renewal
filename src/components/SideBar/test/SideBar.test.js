@@ -29,7 +29,7 @@ it('should render the correct article names', () => {
   articleList.forEach(({title, slug}) => {
     const articleLink = getAllByText(title)
     articleLink.forEach(node =>
-      expect(node.parentNode).toHaveAttribute('href', slug),
+      expect(node.parentNode).toHaveAttribute('href', `/${slug}`),
     )
     expect(articleLink).toHaveLength(2)
   })

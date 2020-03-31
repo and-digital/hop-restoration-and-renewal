@@ -50,7 +50,7 @@ const SideBarMenu = ({articleList}) => {
         {articleList.map(({title, slug}) => (
           <li key={slug} className={classes.listItem}>
             <LinkHandler
-              url={slug}
+              url={`/${slug}`}
               className={classNames(classes.link, {
                 [classes.activeLink]: slug === article,
               })}

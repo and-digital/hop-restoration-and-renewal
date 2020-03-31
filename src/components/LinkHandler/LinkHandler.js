@@ -2,14 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {Link} from 'gatsby'
 
-const LinkHandler = ({url, newTab, children, activeclassname, ...props}) => {
+const LinkHandler = ({url, newTab, children, ...props}) => {
   if (/^\/(?!\/)/.test(url)) {
     return (
-      <Link
-        to={url}
-        {...props}
-        activeClassName={activeclassname ? activeclassname : null}
-      >
+      <Link to={url} {...props}>
         {children}
       </Link>
     )
@@ -28,7 +24,6 @@ const LinkHandler = ({url, newTab, children, activeclassname, ...props}) => {
 LinkHandler.propTypes = {
   url: PropTypes.string.isRequired,
   newTab: PropTypes.bool,
-  activeclassname: PropTypes.string,
   children: PropTypes.node,
 }
 
