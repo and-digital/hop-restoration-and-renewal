@@ -37,6 +37,10 @@ exports.createPages = async ({graphql, actions}) => {
               section {
                 slug
               }
+              sub_article {
+                slug
+                shortTitle
+              }
             }
           }
         }
@@ -91,7 +95,6 @@ exports.createPages = async ({graphql, actions}) => {
 
   articles.forEach(({slug, section: {slug: sectionSlug}}) => {
     const {article} = sections.find(({slug}) => slug === sectionSlug)
-    console.log(article)
 
     const articleList = article.map(({slug, shortTitle: title}) => ({
       slug: `/${sectionSlug}/${slug}`,
@@ -109,10 +112,9 @@ exports.createPages = async ({graphql, actions}) => {
   })
 
   subarticles.forEach(({slug, article: {slug: articleSlug}}) => {
-    const subarticle = articles.find(({slug}) => slug === articleSlug)
-    console.log(subarticle)
+    const {sub_article} = articles.find(({slug}) => slug === articleSlug)
 
-    const subarticleList = subarticle.map(({slug, shortTitle: title}) => ({
+    const subarticleList = sub_article.map(({slug, shortTitle: title}) => ({
       slug: `/${articleSlug}/${slug}`,
       title,
     }))
