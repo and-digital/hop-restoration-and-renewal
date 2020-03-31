@@ -41,9 +41,11 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const SideBarMenu = ({articleList}) => {
+const SideBarMenu = ({articleList, subArticles}) => {
   const classes = useStyles()
   const {article} = useLocation()
+  console.log(articleList)
+
   return (
     <Box className={classes.wrapper}>
       <ul className={classes.list}>

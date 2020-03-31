@@ -5,16 +5,16 @@ import Hidden from '@material-ui/core/Hidden'
 import SideBarDesktopMenu from './SideBarDesktopWrapper'
 import SideBarMobileMenu from './SideBarMobileWrapper'
 
-const SideBar = ({articleList}) => (
+const SideBar = ({articleList, subArticles}) => (
   <>
     <Hidden implementation="css" mdUp>
       <SideBarMobileMenu>
-        <SideBarMenu articleList={articleList} />
+        <SideBarMenu articleList={articleList} subArticles={subArticles} />
       </SideBarMobileMenu>
     </Hidden>
     <Hidden implementation="css" smDown>
       <SideBarDesktopMenu>
-        <SideBarMenu articleList={articleList} />
+        <SideBarMenu articleList={articleList} subArticles={subArticles} />
       </SideBarDesktopMenu>
     </Hidden>
   </>

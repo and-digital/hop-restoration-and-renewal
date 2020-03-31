@@ -1,7 +1,9 @@
 const path = require('path')
 const sectionTemplate = path.resolve('./src/templates/Section/Section.js')
 const articleTemplate = path.resolve('./src/templates/Article/Article.js')
-const subarticleTemplate = path.resolve('./src/templates/Article/Article.js')
+const subarticleTemplate = path.resolve(
+  './src/templates/SubArticle/SubArticle.js',
+)
 const pageTemplate = path.resolve('./src/templates/Page/Page.js')
 
 const extractNodes = key => response =>
@@ -56,6 +58,9 @@ exports.createPages = async ({graphql, actions}) => {
               slug
               article {
                 slug
+                section {
+                  slug
+                }
               }
             }
           }
@@ -93,42 +98,65 @@ exports.createPages = async ({graphql, actions}) => {
     })
   })
 
-  articles.forEach(({slug, section: {slug: sectionSlug}}) => {
-    const {article} = sections.find(({slug}) => slug === sectionSlug)
+  articles.forEach(
+    ({
+      slug: articleSlug,
+      section: {slug: sectionSlug},
+      sub_article: subArticles,
+    }) => {
+      const {article} = sections.find(({slug}) => slug === sectionSlug)
 
-    const articleList = article.map(({slug, shortTitle: title}) => ({
-      slug: `${sectionSlug}/${slug}`,
-      title,
-    }))
+      const articleList = article.map(({slug, shortTitle: title}) => ({
+        slug: `${sectionSlug}/${slug}`,
+        title,
+      }))
 
-    createPage({
-      path: `/${sectionSlug}/${slug}/`,
-      component: articleTemplate,
-      context: {
-        sectionSlug,
-        slug,
-        articleList,
+      // const subarticleList = sub_article.map(({slug, shortTitle: title}) => ({
+      // parentArticle
+      //   slug: `${sectionSlug}/${articleSlug}/${slug}`,
+      //   title,
+      // }))
+
+      createPage({
+        path: `/${sectionSlug}/${articleSlug}/`,
+        component: articleTemplate,
+        context: {
+          sectionSlug,
+          articleSlug,
+          articleList,
+          subArticles,
+        },
+      })
+    },
+  )
+
+  subarticles.forEach(
+    ({
+      slug,
+      article: {
+        slug: articleSlug,
+        section: {slug: sectionSlug},
       },
-    })
-  })
+    }) => {
+      const {sub_article} = articles.find(({slug}) => slug === articleSlug)
 
-  subarticles.forEach(({slug, article: {slug: articleSlug}}) => {
-    const {sub_article} = articles.find(({slug}) => slug === articleSlug)
+      const subarticleList = sub_article.map(({slug, shortTitle: title}) => ({
+        slug: `/${sectionSlug}/${articleSlug}/${slug}`,
+        title,
+      }))
+      console.log(subarticleList)
 
-    const subarticleList = sub_article.map(({slug, shortTitle: title}) => ({
-      slug: `/${articleSlug}/${slug}`,
-      title,
-    }))
-
-    createPage({
-      path: `/${articleSlug}/${slug}/`,
-      component: subarticleTemplate,
-      context: {
-        slug,
-        subarticleList,
-      },
-    })
-  })
+      createPage({
+        path: `/${sectionSlug}/${articleSlug}/${slug}/`,
+        component: subarticleTemplate,
+        context: {
+          articleSlug,
+          slug,
+          subarticleList,
+        },
+      })
+    },
+  )
 
   pages.forEach(({slug}) => {
     createPage({

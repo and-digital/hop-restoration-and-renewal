@@ -31,29 +31,26 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const Article = ({
-  pageContext: {articleSlug, sectionSlug, articleList, subArticles},
+const SubArticle = ({
+  pageContext: {slug, articleSlug, subarticleList},
   data: {
-    contentfulArticle: {
+    contentfulSubArticle: {
       title,
-      section,
+      article,
       template: {content},
     },
   },
 }) => {
   const classes = useStyles()
-  // console.log('articleSlug ', articleSlug)
-  // console.log('sectionSlug ', sectionSlug)
-  // console.log('subArticles ', subArticles)
 
   return (
     <Layout
       title={title}
       className={classes.root}
-      section={sectionSlug}
       article={articleSlug}
+      subarticle={slug}
     >
-      <ArticleBanner {...section} />
+      <ArticleBanner {...article} />
       <Box
         maxWidth={1620}
         mx={{xs: '20px', lg: 'auto'}}
@@ -63,10 +60,13 @@ const Article = ({
         <Grid container spacing={5} width="100%">
           <Grid item md={3} implementation="css" smDown component={Hidden} />
           <Grid item md={9}>
-            <BreadcrumbsComponent breadcrumbs={[section]} />
+            <BreadcrumbsComponent breadcrumbs={[article]} />
           </Grid>
           <Grid item xs={12} md={3} className={classes.articleSidebar}>
-            <SideBar articleList={articleList} subArticles={subArticles} />
+            {/* <SideBar
+              articleList={articleList}
+              // subarticleList={subarticleList}
+            /> */}
           </Grid>
           <Grid item xs={12} md={9}>
             <Paper className={classes.articlePaper}>
@@ -81,46 +81,46 @@ const Article = ({
   )
 }
 
-Article.propTypes = {
-  data: shape({
-    contentfulArticle: shape({
-      title: string.isRequired,
-      section: shape({
-        title: string.isRequired,
-      }).isRequired,
-      template: shape({
-        content: shape({
-          json: object.isRequired,
-        }).isRequired,
-      }).isRequired,
-    }).isRequired,
-  }).isRequired,
-  pageContext: shape({
-    slug: string.isRequired,
-    sectionSlug: string.isRequired,
-    articleList: arrayOf(
-      shape({
-        title: string.isRequired,
-        slug: string.isRequired,
-      }),
-    ).isRequired,
-  }),
-}
+// SubArticle.propTypes = {
+//   data: shape({
+//     contentfulArticle: shape({
+//       title: string.isRequired,
+//       section: shape({
+//         title: string.isRequired,
+//       }).isRequired,
+//       template: shape({
+//         content: shape({
+//           json: object.isRequired,
+//         }).isRequired,
+//       }).isRequired,
+//     }).isRequired,
+//   }).isRequired,
+//   pageContext: shape({
+//     slug: string.isRequired,
+//     sectionSlug: string.isRequired,
+//     articleList: arrayOf(
+//       shape({
+//         title: string.isRequired,
+//         slug: string.isRequired,
+//       }),
+//     ).isRequired,
+//   }),
+// }
 
-export default Article
+export default SubArticle
 
 export const query = graphql`
-  query ArticleQuery($articleSlug: String!) {
-    contentfulArticle(slug: {eq: $articleSlug}) {
+  query SubArticle($slug: String!) {
+    contentfulSubArticle(slug: {eq: $slug}) {
       title
-      section {
-        title
-        slug
-      }
       template {
         content {
           json
         }
+      }
+      article {
+        slug
+        title
       }
     }
   }
