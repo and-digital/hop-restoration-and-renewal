@@ -58,6 +58,7 @@ exports.createPages = async ({graphql, actions}) => {
               slug
               article {
                 slug
+                shortTitle
                 section {
                   slug
                 }
@@ -116,6 +117,7 @@ exports.createPages = async ({graphql, actions}) => {
         subArticles.map(({slug, shortTitle: title}) => ({
           slug: `${sectionSlug}/${articleSlug}/${slug}`,
           title,
+          articleSlug: `${sectionSlug}/${articleSlug}`,
         }))
 
       createPage({
@@ -131,33 +133,35 @@ exports.createPages = async ({graphql, actions}) => {
     },
   )
 
-  subarticles.forEach(
-    ({
-      slug,
-      article: {
-        slug: articleSlug,
-        section: {slug: sectionSlug},
+  subarticles.forEach(({slug, article}) => {
+    const {
+      slug: articleSlug,
+      section: {slug: sectionSlug},
+    } = article
+
+    const {sub_article} = articles.find(({slug}) => slug === articleSlug)
+
+    const subarticleList = sub_article.map(({slug, shortTitle: title}) => ({
+      slug: `/${sectionSlug}/${articleSlug}/${slug}`,
+      title,
+    }))
+    // console.log(article)
+    // const articleList = {
+    //   slug: `${sectionSlug}/${article.slug}/`,
+    //   title: article.shortTitle,
+    // }
+    // console.log(articleList)
+
+    createPage({
+      path: `/${sectionSlug}/${articleSlug}/${slug}/`,
+      component: subarticleTemplate,
+      context: {
+        articleSlug,
+        slug,
+        subarticleList,
       },
-    }) => {
-      const {sub_article} = articles.find(({slug}) => slug === articleSlug)
-
-      const subarticleList = sub_article.map(({slug, shortTitle: title}) => ({
-        slug: `/${sectionSlug}/${articleSlug}/${slug}`,
-        title,
-      }))
-      // console.log(subarticleList)
-
-      createPage({
-        path: `/${sectionSlug}/${articleSlug}/${slug}/`,
-        component: subarticleTemplate,
-        context: {
-          articleSlug,
-          slug,
-          subarticleList,
-        },
-      })
-    },
-  )
+    })
+  })
 
   pages.forEach(({slug}) => {
     createPage({

@@ -44,38 +44,42 @@ const useStyles = makeStyles(theme => ({
 const SideBarMenu = ({articleList, subarticleList}) => {
   const classes = useStyles()
   const {article} = useLocation()
-  console.log(subarticleList)
 
   return (
     <Box className={classes.wrapper}>
       <ul className={classes.list}>
-        {articleList.map(({title, slug}) => (
-          <li key={slug} className={classes.listItem}>
+        {articleList.map(({title, slug: test}) => (
+          <li key={test} className={classes.listItem}>
             <Link
-              to={`/${slug}`}
+              to={`/${test}`}
               className={classNames(classes.link, {
-                [classes.activeLink]: slug === article,
+                [classes.activeLink]: test === article,
               })}
               activeClassName={classes.activeLink}
             >
               <Typography className={classes.linkText}>{title}</Typography>
             </Link>
             <ul>
-              {subarticleList.map(({title, slug}) => (
-                <li key={slug}>
-                  <Link
-                    to={`/${slug}`}
-                    className={classNames(classes.link, {
-                      [classes.activeLink]: slug === article,
-                    })}
-                    activeClassName={classes.activeLink}
-                  >
-                    <Typography className={classes.linkText}>
-                      {title}
-                    </Typography>
-                  </Link>
-                </li>
-              ))}
+              {subarticleList &&
+                subarticleList.map(({title, slug, articleSlug}) =>
+                  articleSlug === test ? (
+                    <li key={slug}>
+                      <Link
+                        to={`/${slug}`}
+                        className={classNames(classes.link, {
+                          [classes.activeLink]: slug === article,
+                        })}
+                        activeClassName={classes.activeLink}
+                      >
+                        <Typography className={classes.linkText}>
+                          {title}
+                        </Typography>
+                      </Link>
+                    </li>
+                  ) : (
+                    <> </>
+                  ),
+                )}
             </ul>
           </li>
         ))}
