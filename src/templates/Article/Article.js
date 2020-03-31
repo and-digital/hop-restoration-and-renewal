@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const Article = ({
-  pageContext: {articleList},
+  pageContext: {slug, sectionSlug, articleList},
   data: {
     contentfulArticle: {
       title,
@@ -44,7 +44,12 @@ const Article = ({
   const classes = useStyles()
 
   return (
-    <Layout title={title} className={classes.root}>
+    <Layout
+      title={title}
+      className={classes.root}
+      section={sectionSlug}
+      article={slug}
+    >
       <ArticleBanner {...section} />
       <Box
         maxWidth={1620}
@@ -88,6 +93,8 @@ Article.propTypes = {
     }).isRequired,
   }).isRequired,
   pageContext: shape({
+    slug: string.isRequired,
+    sectionSlug: string.isRequired,
     articleList: arrayOf(
       shape({
         title: string.isRequired,
