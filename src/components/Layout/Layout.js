@@ -17,13 +17,13 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const Layout = ({title, children, section, article, childArticle}) => {
+const Layout = ({title, children, section, article, subArticle}) => {
   const classes = useStyles()
   return (
     <LocationProvider
       section={section}
       article={article}
-      childArticle={childArticle}
+      subArticle={subArticle}
     >
       <SEO title={title} />
       <ThemeProvider theme={theme}>
@@ -41,7 +41,7 @@ Layout.propTypes = {
   title: string.isRequired,
   section: string,
   article: string,
-  childArticle: string,
+  subArticle: string,
   children: node.isRequired,
 }
 

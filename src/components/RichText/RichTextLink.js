@@ -1,6 +1,6 @@
 import React from 'react'
 import {arrayOf, shape, string} from 'prop-types'
-
+import LinkHandler from '../LinkHandler'
 import {makeStyles} from '@material-ui/styles'
 
 const useStyles = makeStyles(theme => ({
@@ -14,16 +14,16 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const ExternalLink = ({data: {uri}, content: [{value: text}]}) => {
+const RichTextLink = ({data: {uri}, content: [{value: text}]}) => {
   const classes = useStyles()
   return (
-    <a href={uri} className={classes.richTextLink}>
+    <LinkHandler newTab url={uri} className={classes.richTextLink}>
       {text}
-    </a>
+    </LinkHandler>
   )
 }
 
-ExternalLink.propTypes = {
+RichTextLink.propTypes = {
   data: shape({
     uri: string.isRequired,
   }).isRequired,
@@ -34,4 +34,4 @@ ExternalLink.propTypes = {
   ).isRequired,
 }
 
-export default ExternalLink
+export default RichTextLink

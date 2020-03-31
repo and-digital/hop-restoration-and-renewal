@@ -1,14 +1,17 @@
 import React from 'react'
-import {useStaticQuery, graphql, Link} from 'gatsby'
+import {useStaticQuery, graphql} from 'gatsby'
 import {shape, string, object, arrayOf} from 'prop-types'
 import Image from 'gatsby-image'
-import {makeStyles, useTheme} from '@material-ui/core/styles'
+import {makeStyles} from '@material-ui/core/styles'
 import Box from '@material-ui/core/Box'
 import AppBar from '@material-ui/core/AppBar'
+import Hidden from '@material-ui/core/Hidden'
+
 import DesktopWrapper from './DesktopWrapper'
 import MobileWrapper from './MobileWrapper'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
+
 import Menu from './Menu'
+import LinkHandler from '../LinkHandler'
 
 const styles = makeStyles(theme => ({
   root: {
@@ -71,9 +74,6 @@ const HeaderComponent = ({
   contentfulFooter: {pages},
 }) => {
   const classes = styles()
-  const theme = useTheme()
-  const isDesktop = useMediaQuery(theme.breakpoints.up('md'))
-  const Wrapper = isDesktop ? DesktopWrapper : MobileWrapper
 
   return (
     <AppBar className={classes.root} data-testid="header" position="relative">
@@ -85,12 +85,23 @@ const HeaderComponent = ({
         margin="auto"
         className={classes.box}
       >
-        <Link to="/" className={classes.linkBox} aria-label={homePageLinkText}>
+        <LinkHandler
+          url="/"
+          className={classes.linkBox}
+          aria-label={homePageLinkText}
+        >
           <Image fluid={fluid} alt={title} className={classes.logo} />
-        </Link>
-        <Wrapper footerLinks={pages}>
-          <Menu sections={sections} />
-        </Wrapper>
+        </LinkHandler>
+        <Hidden implementation="css" mdUp>
+          <MobileWrapper footerLinks={pages}>
+            <Menu sections={sections} />
+          </MobileWrapper>
+        </Hidden>
+        <Hidden implementation="css" smDown>
+          <DesktopWrapper>
+            <Menu sections={sections} />
+          </DesktopWrapper>
+        </Hidden>
       </Box>
     </AppBar>
   )

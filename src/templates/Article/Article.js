@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const Article = ({
-  pageContext: {articleSlug, sectionSlug, articleList, subarticleList},
+  pageContext: {articleSlug, sectionSlug, articleList},
   data: {
     contentfulArticle: {
       title,
@@ -42,9 +42,6 @@ const Article = ({
   },
 }) => {
   const classes = useStyles()
-  console.log(subarticleList)
-  // console.log('sectionSlug ', sectionSlug)
-  // console.log('subArticles ', subArticles)
 
   return (
     <Layout
@@ -63,13 +60,12 @@ const Article = ({
         <Grid container spacing={5} width="100%">
           <Grid item md={3} implementation="css" smDown component={Hidden} />
           <Grid item md={9}>
-            <BreadcrumbsComponent breadcrumbs={[section]} />
+            <BreadcrumbsComponent
+              breadcrumbs={[{...section, slug: `/${sectionSlug}`}]}
+            />
           </Grid>
           <Grid item xs={12} md={3} className={classes.articleSidebar}>
-            <SideBar
-              articleList={articleList}
-              subarticleList={subarticleList}
-            />
+            <SideBar articleList={articleList} />
           </Grid>
           <Grid item xs={12} md={9}>
             <Paper className={classes.articlePaper}>
@@ -99,7 +95,6 @@ Article.propTypes = {
     }).isRequired,
   }).isRequired,
   pageContext: shape({
-    slug: string.isRequired,
     sectionSlug: string.isRequired,
     articleList: arrayOf(
       shape({

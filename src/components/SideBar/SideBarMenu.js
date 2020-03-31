@@ -2,7 +2,7 @@ import React from 'react'
 import classNames from 'classnames'
 
 import Typography from '@material-ui/core/Typography'
-import {Link} from 'gatsby'
+import LinkHandler from '../LinkHandler'
 import {arrayOf, shape, string} from 'prop-types'
 import {makeStyles} from '@material-ui/core/styles'
 import Box from '@material-ui/core/Box'
@@ -41,48 +41,46 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const SideBarMenu = ({articleList, subarticleList}) => {
+const SideBarMenu = ({articleList}) => {
   const classes = useStyles()
-  const {article} = useLocation()
+  const location = useLocation()
+  const {article, subArticle} = location
 
   return (
     <Box className={classes.wrapper}>
       <ul className={classes.list}>
-        {articleList.map(({title, slug: test}) => (
-          <li key={test} className={classes.listItem}>
-            <Link
-              to={`/${test}`}
-              className={classNames(classes.link, {
-                [classes.activeLink]: test === article,
-              })}
-              activeClassName={classes.activeLink}
-            >
-              <Typography className={classes.linkText}>{title}</Typography>
-            </Link>
-            <ul>
-              {subarticleList &&
-                subarticleList.map(({title, slug, articleSlug}) =>
-                  articleSlug === test ? (
+        {articleList.map(
+          ({title, slug: articleSlug, sectionSlug, subArticleList}) => (
+            <li key={articleSlug} className={classes.listItem}>
+              <LinkHandler
+                url={`/${sectionSlug}/${articleSlug}`}
+                className={classNames(classes.link, {
+                  [classes.activeLink]: articleSlug === article,
+                })}
+              >
+                <Typography className={classes.linkText}>{title}</Typography>
+              </LinkHandler>
+              {!!subArticleList.length && (
+                <ul>
+                  {subArticleList.map(({shortTitle, slug}) => (
                     <li key={slug}>
-                      <Link
-                        to={`/${slug}`}
+                      <LinkHandler
+                        url={`/${sectionSlug}/${articleSlug}/${slug}`}
                         className={classNames(classes.link, {
-                          [classes.activeLink]: slug === article,
+                          [classes.activeLink]: slug === subArticle,
                         })}
-                        activeClassName={classes.activeLink}
                       >
                         <Typography className={classes.linkText}>
-                          {title}
+                          {shortTitle}
                         </Typography>
-                      </Link>
+                      </LinkHandler>
                     </li>
-                  ) : (
-                    <> </>
-                  ),
-                )}
-            </ul>
-          </li>
-        ))}
+                  ))}
+                </ul>
+              )}
+            </li>
+          ),
+        )}
       </ul>
     </Box>
   )

@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const SubArticle = ({
-  pageContext: {slug, articleSlug, subarticleList},
+  pageContext: {subArticleSlug, articleSlug, sectionSlug, articleList},
   data: {
     contentfulSubArticle: {
       title,
@@ -42,13 +42,13 @@ const SubArticle = ({
   },
 }) => {
   const classes = useStyles()
-
   return (
     <Layout
       title={title}
       className={classes.root}
+      section={sectionSlug}
       article={articleSlug}
-      subarticle={slug}
+      subArticle={subArticleSlug}
     >
       <ArticleBanner {...article} />
       <Box
@@ -63,10 +63,7 @@ const SubArticle = ({
             <BreadcrumbsComponent breadcrumbs={[article]} />
           </Grid>
           <Grid item xs={12} md={3} className={classes.articleSidebar}>
-            {/* <SideBar
-              articleList={articleList}
-              // subarticleList={subarticleList}
-            /> */}
+            <SideBar articleList={articleList} />
           </Grid>
           <Grid item xs={12} md={9}>
             <Paper className={classes.articlePaper}>
@@ -110,8 +107,8 @@ const SubArticle = ({
 export default SubArticle
 
 export const query = graphql`
-  query SubArticle($slug: String!) {
-    contentfulSubArticle(slug: {eq: $slug}) {
+  query SubArticle($subArticleSlug: String!) {
+    contentfulSubArticle(slug: {eq: $subArticleSlug}) {
       title
       template {
         content {

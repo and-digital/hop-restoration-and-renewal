@@ -5,12 +5,12 @@ import LocationContext from './LocationContext'
 
 const {Provider} = LocationContext
 
-const LocationProvider = ({section, article, childArticle, children}) => (
+const LocationProvider = ({section, article, subArticle, children}) => (
   <Provider
     value={{
       section,
       article,
-      childArticle,
+      subArticle,
     }}
   >
     {children}
@@ -21,13 +21,13 @@ LocationProvider.propTypes = {
   children: node.isRequired,
   section: string,
   article: string,
-  childArticle: string,
+  subArticle: string,
 }
 
 LocationProvider.defaultProps = {
   section: '',
   article: '',
-  childArticle: '',
+  subArticle: '',
 }
 
 export default LocationProvider

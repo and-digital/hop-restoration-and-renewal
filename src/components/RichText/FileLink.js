@@ -3,6 +3,7 @@ import {string, number} from 'prop-types'
 import {makeStyles} from '@material-ui/styles'
 import {Typography} from '@material-ui/core'
 import displayWithUnits from 'filesize'
+import LinkHandler from '../LinkHandler'
 
 const useStyles = makeStyles(theme => ({
   link: {
@@ -20,6 +21,9 @@ const useStyles = makeStyles(theme => ({
     fontSize: '21px',
     lineHeight: '28px',
   },
+  container: {
+    margin: '32px 0',
+  },
 }))
 
 const formatFileType = fileType =>
@@ -35,16 +39,16 @@ const FileLink = ({title, url, contentType, size}) => {
   const fileType = formatFileType(contentType)
   const fileSize = formatFileSize(size)
   return (
-    <>
-      <a href={url} className={classes.link}>
+    <div className={classes.container}>
+      <LinkHandler newTab url={url} className={classes.link}>
         <Typography variant="body1" className={classes.linkText}>
           {title}
         </Typography>
-      </a>
+      </LinkHandler>
       <Typography className={classes.fileInfo}>
         {fileType}, {fileSize}
       </Typography>
-    </>
+    </div>
   )
 }
 

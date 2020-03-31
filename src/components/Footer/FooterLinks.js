@@ -1,7 +1,7 @@
 import React from 'react'
 import {shape, string, arrayOf} from 'prop-types'
 import Grid from '@material-ui/core/Grid'
-import {Link} from 'gatsby'
+import LinkHandler from '../LinkHandler'
 import Typography from '@material-ui/core/Typography'
 import {makeStyles} from '@material-ui/core/styles'
 
@@ -30,14 +30,14 @@ const FooterLinks = ({pages}) => {
     <Grid container spacing={3} direction="row" className={classes.linkWrapper}>
       {pages.map(({name, slug}) => (
         <Grid item key={name} xs={12} sm="auto">
-          <Link
-            to={`/${slug}`}
+          <LinkHandler
+            url={`/${slug}`}
             data-testid={`footer-link-${name}`}
             data-cy="footer-link"
             className={classes.footerMenuLink}
           >
             <Typography variant="body1">{name}</Typography>
-          </Link>
+          </LinkHandler>
         </Grid>
       ))}
     </Grid>

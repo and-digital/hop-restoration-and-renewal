@@ -12,7 +12,8 @@ const pageContext = {
   articleList: [
     {
       title: 'article Test',
-      slug: '/history/article-1',
+      slug: 'article-1',
+      sectionSlug: 'history',
     },
   ],
   slug: 'article',
@@ -28,12 +29,15 @@ test('should render title amd sidebar menu containing a list of articles', async
   )
   await waitForDomChange()
   expect(document.title).toEqual(data.contentfulArticle.title)
-  // Should appear in the title, mobile breadcrumbs and desktop breadcrumbs
+  // Should appear in the banner, mobile breadcrumbs and desktop breadcrumbs
   expect(getAllByText(data.contentfulArticle.section.title).length).toBe(3)
-  pageContext.articleList.forEach(({title, slug}) => {
+  pageContext.articleList.forEach(({title, sectionSlug, slug}) => {
     const articleLink = getAllByText(title)
     articleLink.forEach(node =>
-      expect(node.parentNode).toHaveAttribute('href', `/${slug}`),
+      expect(node.parentNode).toHaveAttribute(
+        'href',
+        `/${sectionSlug}/${slug}`,
+      ),
     )
     expect(articleLink).toHaveLength(2)
   })
