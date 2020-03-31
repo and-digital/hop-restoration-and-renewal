@@ -1,5 +1,5 @@
 import React from 'react'
-import {useStaticQuery, graphql, Link} from 'gatsby'
+import {useStaticQuery, graphql} from 'gatsby'
 import {shape, string, object, arrayOf} from 'prop-types'
 import Image from 'gatsby-image'
 import {makeStyles, useTheme} from '@material-ui/core/styles'
@@ -9,6 +9,7 @@ import DesktopWrapper from './DesktopWrapper'
 import MobileWrapper from './MobileWrapper'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import Menu from './Menu'
+import LinkHandler from '../LinkHandler'
 
 const styles = makeStyles(theme => ({
   root: {
@@ -85,9 +86,13 @@ const HeaderComponent = ({
         margin="auto"
         className={classes.box}
       >
-        <Link to="/" className={classes.linkBox} aria-label={homePageLinkText}>
+        <LinkHandler
+          url="/"
+          className={classes.linkBox}
+          aria-label={homePageLinkText}
+        >
           <Image fluid={fluid} alt={title} className={classes.logo} />
-        </Link>
+        </LinkHandler>
         <Wrapper footerLinks={pages}>
           <Menu sections={sections} />
         </Wrapper>

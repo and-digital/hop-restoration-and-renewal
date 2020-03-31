@@ -11,7 +11,7 @@ const MobileBreadcrumbs = ({breadcrumbs, backText}) => {
       <Box>
         <Typography variant="body1">
           <span>{backText}</span>
-          <BreadcrumbLink to={lastBreadcrumb.slug}>
+          <BreadcrumbLink url={`/${lastBreadcrumb.slug}`}>
             {lastBreadcrumb.title}
           </BreadcrumbLink>
         </Typography>
