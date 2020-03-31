@@ -1,27 +1,17 @@
-
 ## Description
-A few sentences describing the overall goals of the pull request's commits.
 
-## Changelog
-Description about the modification
+A few sentences describing the overall goals of the pull request's commits.
 
 ## Checks
 
-- [ ] Responsive on mobile
-
-- [ ] Implementation documented 
-
-- [ ] 80% test coverage
-
 - [ ] Ticket meets all Acceptance Criteria
 
-- [ ] Matches/ aligns to content model
+- [ ] Responsive on Desktop, Mobile and Tablet
 
-- [ ] Content model diagram updated
+- [ ] 90% test coverage
 
-
-## Tested in 
-- [ ] Chrome
-- [ ] Safari
+- [ ] Documentation updated
 
 ## Screenshots
+
+If applicable...
