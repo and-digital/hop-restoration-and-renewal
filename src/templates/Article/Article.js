@@ -81,6 +81,10 @@ const Article = ({
 Article.propTypes = {
   data: shape({
     contentfulArticle: shape({
+      title: string.isRequired,
+      section: shape({
+        title: string.isRequired,
+      }).isRequired,
       template: shape({
         content: shape({
           json: object.isRequired,
