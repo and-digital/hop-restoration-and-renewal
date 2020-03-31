@@ -12,6 +12,7 @@ const useStyles = makeStyles(theme => ({
     textDecoration: 'none',
     borderBottom: '3px solid',
     fontWeight: 'bold',
+    wordBreak: 'break-all',
   },
 }))
 

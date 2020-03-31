@@ -1,5 +1,5 @@
 import React from 'react'
-import {fireEvent, waitForElementToBeRemoved} from '@testing-library/react'
+import {fireEvent, waitForDomChange} from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 import render from '../../../utils/tests/renderWithTheme'
 
@@ -52,7 +52,7 @@ test('should highlight the current section', () => {
 test('should show the hamburger menu, open and close it', async () => {
   mockHeader()
   mockIsMobile()
-  const {queryByText, queryByTestId} = render(
+  const {getByText, getAllByText, queryByTestId} = render(
     <LocationProvider>
       <Header />
     </LocationProvider>,
@@ -60,18 +60,18 @@ test('should show the hamburger menu, open and close it', async () => {
   const mobileMenu = queryByTestId('mobileMenu')
   expect(mobileMenu).toBeDefined()
   headerData.contentfulHeader.sections.forEach(({name}) => {
-    expect(queryByText(name)).toBeNull()
+    expect(getByText(name)).toBeDefined()
   })
   fireEvent.click(mobileMenu)
   headerData.contentfulHeader.sections.forEach(({name}) => {
-    expect(queryByText(name)).toBeDefined()
+    expect(getAllByText(name).length).toEqual(2)
   })
   const closeMenu = queryByTestId('closeMenu')
   expect(closeMenu).toBeDefined()
   fireEvent.click(closeMenu)
-  await waitForElementToBeRemoved(() => queryByTestId('drawer'))
+  await waitForDomChange(() => queryByTestId('drawer'))
   expect(queryByTestId('closeMenu')).toBeNull()
   headerData.contentfulHeader.sections.forEach(({name}) => {
-    expect(queryByText(name)).toBeNull()
+    expect(getByText(name)).toBeDefined()
   })
 })

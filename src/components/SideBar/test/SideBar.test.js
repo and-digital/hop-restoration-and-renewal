@@ -15,6 +15,7 @@ const title = 'title'
 const articleList = [
   {
     slug: 'slug',
+    sectionSlug: 'section',
     title,
   },
 ]
@@ -26,10 +27,13 @@ it('should render the correct article names', () => {
     </LocationProvider>,
   )
 
-  articleList.forEach(({title, slug}) => {
+  articleList.forEach(({title, sectionSlug, slug}) => {
     const articleLink = getAllByText(title)
     articleLink.forEach(node =>
-      expect(node.parentNode).toHaveAttribute('href', `/${slug}`),
+      expect(node.parentNode).toHaveAttribute(
+        'href',
+        `/${sectionSlug}/${slug}`,
+      ),
     )
     expect(articleLink).toHaveLength(2)
   })

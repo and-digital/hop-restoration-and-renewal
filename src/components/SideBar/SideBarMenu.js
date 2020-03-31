@@ -47,14 +47,13 @@ const SideBarMenu = ({articleList}) => {
   return (
     <Box className={classes.wrapper}>
       <ul className={classes.list}>
-        {articleList.map(({title, slug}) => (
+        {articleList.map(({title, slug, sectionSlug}) => (
           <li key={slug} className={classes.listItem}>
             <Link
-              to={`/${slug}`}
+              to={`/${sectionSlug}/${slug}`}
               className={classNames(classes.link, {
                 [classes.activeLink]: slug === article,
               })}
-              activeClassName={classes.activeLink}
             >
               <Typography className={classes.linkText}>{title}</Typography>
             </Link>
