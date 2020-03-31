@@ -29,7 +29,7 @@ test('should render title amd sidebar menu containing a list of articles', async
   )
   await waitForDomChange()
   expect(document.title).toEqual(data.contentfulArticle.title)
-  // Should appear in the title, mobile breadcrumbs and desktop breadcrumbs
+  // Should appear in the banner, mobile breadcrumbs and desktop breadcrumbs
   expect(getAllByText(data.contentfulArticle.section.title).length).toBe(3)
   pageContext.articleList.forEach(({title, sectionSlug, slug}) => {
     const articleLink = getAllByText(title)

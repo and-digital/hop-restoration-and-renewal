@@ -2,7 +2,7 @@ import React from 'react'
 import classNames from 'classnames'
 
 import Typography from '@material-ui/core/Typography'
-import {Link} from 'gatsby'
+import LinkHandler from '../LinkHandler'
 import {arrayOf, shape, string} from 'prop-types'
 import {makeStyles} from '@material-ui/core/styles'
 import Box from '@material-ui/core/Box'
@@ -49,14 +49,14 @@ const SideBarMenu = ({articleList}) => {
       <ul className={classes.list}>
         {articleList.map(({title, slug, sectionSlug}) => (
           <li key={slug} className={classes.listItem}>
-            <Link
-              to={`/${sectionSlug}/${slug}`}
+            <LinkHandler
+              url={`/${sectionSlug}/${slug}`}
               className={classNames(classes.link, {
                 [classes.activeLink]: slug === article,
               })}
             >
               <Typography className={classes.linkText}>{title}</Typography>
-            </Link>
+            </LinkHandler>
           </li>
         ))}
       </ul>
