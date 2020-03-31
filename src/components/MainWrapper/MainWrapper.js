@@ -1,14 +1,15 @@
 import React from 'react'
+import {node} from 'prop-types'
 
 import {ThemeProvider} from '@material-ui/styles'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import {node} from 'prop-types'
+
 import theme from '../../utils/theme'
 import Analytics from '../Analytics'
 
+import './styles.css'
+
 const MainWrapper = ({element}) => (
   <ThemeProvider theme={theme}>
-    <CssBaseline />
     <Analytics />
     {element}
   </ThemeProvider>
