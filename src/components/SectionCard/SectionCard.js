@@ -1,6 +1,6 @@
 import React from 'react'
 import {shape, object, string} from 'prop-types'
-import {Link} from 'gatsby'
+import LinkHandler from '../LinkHandler'
 import Image from 'gatsby-image'
 import Typography from '@material-ui/core/Typography'
 import RichText from '../RichText/RichText'
@@ -88,11 +88,11 @@ const SectionCard = ({
             />
           </Box>
           <Box className={classes.linkWrapper}>
-            <Link className={classes.link} to={`/${slug}`}>
+            <LinkHandler className={classes.link} url={`/${slug}`}>
               <Typography variant="body2">
                 {linkText} <ArrowForwardIcon className={classes.arrowIcon} />
               </Typography>
-            </Link>
+            </LinkHandler>
           </Box>
         </Box>
       </Paper>

@@ -2,7 +2,7 @@ import React from 'react'
 import {shape, string, object} from 'prop-types'
 import {documentToReactComponents} from '@contentful/rich-text-react-renderer'
 import {INLINES, BLOCKS} from '@contentful/rich-text-types'
-import ExternalLink from './ExternalLink'
+import RichTextLink from './RichTextLink'
 import Paragraph from './Paragraph'
 import EmbeddedComponent from './EmbeddedEntry'
 import EmbeddedAsset from './EmbeddedAsset'
@@ -16,7 +16,7 @@ import HeadingSix from './HeadingSix'
 const RichText = ({className, text}) => {
   const options = {
     renderNode: {
-      [INLINES.HYPERLINK]: ExternalLink,
+      [INLINES.HYPERLINK]: RichTextLink,
       [BLOCKS.PARAGRAPH]: Paragraph,
       [BLOCKS.HEADING_1]: HeadingOne,
       [BLOCKS.HEADING_2]: HeadingTwo,

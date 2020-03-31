@@ -1,6 +1,6 @@
 import React from 'react'
 import {string, object, shape} from 'prop-types'
-import {Link} from 'gatsby'
+import LinkHandler from '../LinkHandler'
 import Typography from '@material-ui/core/Typography'
 import RichText from '../RichText/RichText'
 import Paper from '@material-ui/core/Paper'
@@ -74,11 +74,14 @@ const ArticleCard = ({title, previewText, linkText, slug, sectionSlug}) => {
             />
           </Box>
           <Box className={classes.linkWrapper}>
-            <Link to={`/${sectionSlug}/${slug}`} className={classes.link}>
+            <LinkHandler
+              url={`/${sectionSlug}/${slug}`}
+              className={classes.link}
+            >
               <Typography variant="body2">
                 {linkText} <ArrowForwardIcon className={classes.arrowIcon} />
               </Typography>
-            </Link>
+            </LinkHandler>
           </Box>
         </Box>
       </Paper>

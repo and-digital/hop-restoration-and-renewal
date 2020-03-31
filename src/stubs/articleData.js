@@ -3,7 +3,7 @@ export default {
     title: 'History',
     section: {
       title: 'section title',
-      slug: '/section',
+      slug: 'section',
     },
     template: {
       content: {

@@ -1,7 +1,7 @@
 import React from 'react'
 import {arrayOf, shape, string} from 'prop-types'
 import Grid from '@material-ui/core/Grid'
-import {Link} from 'gatsby'
+import LinkHandler from '../LinkHandler'
 import Typography from '@material-ui/core/Typography'
 import {makeStyles} from '@material-ui/core/styles'
 
@@ -35,15 +35,15 @@ const FooterLinksComponent = ({pages}) => {
     >
       {pages.map(({name, slug}) => (
         <Grid item key={name} xs={12} sm="auto">
-          <Link
-            to={`/${slug}`}
+          <LinkHandler
+            url={`/${slug}`}
             data-testid={`footer-link-${name}`}
             className={classes.hamburgerMenuLink}
           >
             <Typography variant="body1" className={classes.hamburgerMenuText}>
               {name}
             </Typography>
-          </Link>
+          </LinkHandler>
         </Grid>
       ))}
     </Grid>
