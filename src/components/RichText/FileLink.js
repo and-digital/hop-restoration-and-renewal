@@ -20,6 +20,9 @@ const useStyles = makeStyles(theme => ({
     fontSize: '21px',
     lineHeight: '28px',
   },
+  container: {
+    margin: '32px 0',
+  },
 }))
 
 const formatFileType = fileType =>
@@ -35,7 +38,7 @@ const FileLink = ({title, url, contentType, size}) => {
   const fileType = formatFileType(contentType)
   const fileSize = formatFileSize(size)
   return (
-    <>
+    <div className={classes.container}>
       <a href={url} className={classes.link}>
         <Typography variant="body1" className={classes.linkText}>
           {title}
@@ -44,7 +47,7 @@ const FileLink = ({title, url, contentType, size}) => {
       <Typography className={classes.fileInfo}>
         {fileType}, {fileSize}
       </Typography>
-    </>
+    </div>
   )
 }
 
