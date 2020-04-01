@@ -14,6 +14,12 @@ const pageContext = {
       title: 'article Test',
       slug: 'article-1',
       sectionSlug: 'history',
+      subArticleList: [
+        {
+          shortTitle: 'sub article title',
+          slug: 'sub article slug',
+        },
+      ],
     },
   ],
   slug: 'article',

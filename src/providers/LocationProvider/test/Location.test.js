@@ -6,7 +6,7 @@ import LocationProvider from '..'
 import LocationContext from '../LocationContext'
 
 const Component = () => {
-  const {section, article, childArticle} = useContext(LocationContext)
+  const {section, article, subArticle} = useContext(LocationContext)
   return (
     <>
       <p>
@@ -18,14 +18,14 @@ const Component = () => {
         <span data-testid="article">{article}</span>
       </p>
       <p>
-        <span>child article</span>
-        <span data-testid="child-article">{childArticle}</span>
+        <span>sub article</span>
+        <span data-testid="sub-article">{subArticle}</span>
       </p>
     </>
   )
 }
 
-it('should have empty section, article and child article by default', () => {
+it('should have empty section, article and sub article by default', () => {
   const {queryByTestId} = render(
     <LocationProvider>
       <Component />
@@ -33,12 +33,12 @@ it('should have empty section, article and child article by default', () => {
   )
   expect(queryByTestId('section')).toBeEmpty()
   expect(queryByTestId('article')).toBeEmpty()
-  expect(queryByTestId('child-article')).toBeEmpty()
+  expect(queryByTestId('sub-article')).toBeEmpty()
 })
 
-it('should return section, article and child article name', () => {
+it('should return section, article and sub article name', () => {
   const {getByText} = render(
-    <LocationProvider section="palace" article="history" childArticle="reports">
+    <LocationProvider section="palace" article="history" subArticle="reports">
       <Component />
     </LocationProvider>,
   )

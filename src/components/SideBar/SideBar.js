@@ -5,22 +5,16 @@ import Hidden from '@material-ui/core/Hidden'
 import SideBarDesktopMenu from './SideBarDesktopWrapper'
 import SideBarMobileMenu from './SideBarMobileWrapper'
 
-const SideBar = ({articleList, subarticleList}) => (
+const SideBar = ({articleList}) => (
   <>
     <Hidden implementation="css" mdUp>
       <SideBarMobileMenu>
-        <SideBarMenu
-          articleList={articleList}
-          subarticleList={subarticleList}
-        />
+        <SideBarMenu articleList={articleList} />
       </SideBarMobileMenu>
     </Hidden>
     <Hidden implementation="css" smDown>
       <SideBarDesktopMenu>
-        <SideBarMenu
-          articleList={articleList}
-          subarticleList={subarticleList}
-        />
+        <SideBarMenu articleList={articleList} />
       </SideBarDesktopMenu>
     </Hidden>
   </>
@@ -31,6 +25,12 @@ SideBar.propTypes = {
     shape({
       slug: string,
       title: string,
+      subArticleList: arrayOf(
+        shape({
+          shortTitle: string.isRequired,
+          slug: string.isRequired,
+        }),
+      ).isRequired,
     }),
   ).isRequired,
 }

@@ -78,31 +78,33 @@ const SubArticle = ({
   )
 }
 
-// SubArticle.propTypes = {
-//   data: shape({
-//     contentfulArticle: shape({
-//       title: string.isRequired,
-//       section: shape({
-//         title: string.isRequired,
-//       }).isRequired,
-//       template: shape({
-//         content: shape({
-//           json: object.isRequired,
-//         }).isRequired,
-//       }).isRequired,
-//     }).isRequired,
-//   }).isRequired,
-//   pageContext: shape({
-//     slug: string.isRequired,
-//     sectionSlug: string.isRequired,
-//     articleList: arrayOf(
-//       shape({
-//         title: string.isRequired,
-//         slug: string.isRequired,
-//       }),
-//     ).isRequired,
-//   }),
-// }
+SubArticle.propTypes = {
+  data: shape({
+    contentfulSubArticle: shape({
+      title: string.isRequired,
+      article: shape({
+        title: string.isRequired,
+        slug: string.isRequired,
+      }).isRequired,
+      template: shape({
+        content: shape({
+          json: object.isRequired,
+        }).isRequired,
+      }).isRequired,
+    }).isRequired,
+  }).isRequired,
+  pageContext: shape({
+    subArticleSlug: string.isRequired,
+    articleSlug: string.isRequired,
+    sectionSlug: string.isRequired,
+    articleList: arrayOf(
+      shape({
+        title: string.isRequired,
+        slug: string.isRequired,
+      }),
+    ).isRequired,
+  }),
+}
 
 export default SubArticle
 
