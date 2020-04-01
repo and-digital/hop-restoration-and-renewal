@@ -25,6 +25,10 @@ const useStyles = makeStyles(theme => ({
     listStyleType: 'none',
     padding: '25px 25px 25px 16px',
   },
+  subList: {
+    listStyleType: 'none',
+    padding: '25px 25px 0px 16px',
+  },
   listItem: {
     paddingBottom: '50px',
     '&:last-child': {
@@ -61,9 +65,9 @@ const SideBarMenu = ({articleList}) => {
                 <Typography className={classes.linkText}>{title}</Typography>
               </LinkHandler>
               {!!subArticleList.length && (
-                <ul>
+                <ul className={classes.subList}>
                   {subArticleList.map(({shortTitle, slug}) => (
-                    <li key={slug}>
+                    <li key={slug} className={classes.listItem}>
                       <LinkHandler
                         url={`/${sectionSlug}/${articleSlug}/${slug}`}
                         className={classNames(classes.link, {
