@@ -36,7 +36,7 @@ const SubArticle = ({
   data: {
     contentfulSubArticle: {
       title,
-      article,
+      article: {section, ...article},
       template: {content},
     },
   },
@@ -60,7 +60,15 @@ const SubArticle = ({
         <Grid container spacing={5} width="100%">
           <Grid item md={3} implementation="css" smDown component={Hidden} />
           <Grid item md={9}>
-            <BreadcrumbsComponent breadcrumbs={[article]} />
+            <BreadcrumbsComponent
+              breadcrumbs={[
+                section,
+                {
+                  ...article,
+                  slug: `${sectionSlug}/${articleSlug}`,
+                },
+              ]}
+            />
           </Grid>
           <Grid item xs={12} md={3} className={classes.articleSidebar}>
             <SideBar articleList={articleList} />
@@ -120,6 +128,10 @@ export const query = graphql`
       article {
         slug
         title
+        section {
+          slug
+          title
+        }
       }
     }
   }
