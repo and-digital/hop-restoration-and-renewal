@@ -9,12 +9,10 @@ const DesktopBreadcrumbs = ({breadcrumbs, dividerCharacter, homepageText}) => (
     <Typography variant="body1">
       <BreadcrumbLink url="/">{homepageText}</BreadcrumbLink>
       {breadcrumbs &&
-        breadcrumbs.map(breadcrumb => (
-          <span key={breadcrumb.slug}>
+        breadcrumbs.map(({slug, title}) => (
+          <span key={slug}>
             <span> {dividerCharacter} </span>
-            <BreadcrumbLink url={`/${breadcrumb.slug}`}>
-              {breadcrumb.title}
-            </BreadcrumbLink>
+            <BreadcrumbLink url={`/${slug}`}>{title}</BreadcrumbLink>
           </span>
         ))}
     </Typography>

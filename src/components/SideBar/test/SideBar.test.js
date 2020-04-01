@@ -17,6 +17,12 @@ const articleList = [
     slug: 'slug',
     sectionSlug: 'section',
     title,
+    subArticleList: [
+      {
+        shortTitle: 'sub article title',
+        slug: 'sub article slug',
+      },
+    ],
   },
 ]
 
@@ -60,6 +66,7 @@ it('should highlight the current article page', () => {
   const currentArticle = {
     slug: 'current_article',
     title: 'current article',
+    subArticleList: [],
   }
 
   const {getAllByText} = render(

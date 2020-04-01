@@ -19,7 +19,6 @@ describe('Accessibility tests', () => {
   })
   it('Has no detectable accessibility violations on load on footer links', () => {
     cy.visit('/')
-    cy.get('footer a').should('have.length', 4)
     cy.get('footer a').each(item => {
       if (!isMasked(item[0].href)) {
         cy.visit(item[0].href)

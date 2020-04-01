@@ -31,26 +31,26 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const Article = ({
-  pageContext: {articleSlug, sectionSlug, articleList},
+const SubArticle = ({
+  pageContext: {subArticleSlug, articleSlug, sectionSlug, articleList},
   data: {
-    contentfulArticle: {
+    contentfulSubArticle: {
       title,
-      section,
+      article: {section, ...article},
       template: {content},
     },
   },
 }) => {
   const classes = useStyles()
-
   return (
     <Layout
       title={title}
       className={classes.root}
       section={sectionSlug}
       article={articleSlug}
+      subArticle={subArticleSlug}
     >
-      <ArticleBanner {...section} />
+      <ArticleBanner {...article} />
       <Box
         maxWidth={1620}
         mx={{xs: '20px', lg: 'auto'}}
@@ -61,7 +61,13 @@ const Article = ({
           <Grid item md={3} implementation="css" smDown component={Hidden} />
           <Grid item md={9}>
             <BreadcrumbsComponent
-              breadcrumbs={[{...section, slug: sectionSlug}]}
+              breadcrumbs={[
+                section,
+                {
+                  ...article,
+                  slug: `${sectionSlug}/${articleSlug}`,
+                },
+              ]}
             />
           </Grid>
           <Grid item xs={12} md={3} className={classes.articleSidebar}>
@@ -80,12 +86,13 @@ const Article = ({
   )
 }
 
-Article.propTypes = {
+SubArticle.propTypes = {
   data: shape({
-    contentfulArticle: shape({
+    contentfulSubArticle: shape({
       title: string.isRequired,
-      section: shape({
+      article: shape({
         title: string.isRequired,
+        slug: string.isRequired,
       }).isRequired,
       template: shape({
         content: shape({
@@ -95,6 +102,8 @@ Article.propTypes = {
     }).isRequired,
   }).isRequired,
   pageContext: shape({
+    subArticleSlug: string.isRequired,
+    articleSlug: string.isRequired,
     sectionSlug: string.isRequired,
     articleList: arrayOf(
       shape({
@@ -105,19 +114,23 @@ Article.propTypes = {
   }),
 }
 
-export default Article
+export default SubArticle
 
 export const query = graphql`
-  query ArticleQuery($articleSlug: String!) {
-    contentfulArticle(slug: {eq: $articleSlug}) {
+  query SubArticle($subArticleSlug: String!) {
+    contentfulSubArticle(slug: {eq: $subArticleSlug}) {
       title
-      section {
-        title
-        slug
-      }
       template {
         content {
           json
+        }
+      }
+      article {
+        slug
+        title
+        section {
+          slug
+          title
         }
       }
     }

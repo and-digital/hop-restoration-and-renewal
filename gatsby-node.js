@@ -1,6 +1,9 @@
 const path = require('path')
 const sectionTemplate = path.resolve('./src/templates/Section/Section.js')
 const articleTemplate = path.resolve('./src/templates/Article/Article.js')
+const subarticleTemplate = path.resolve(
+  './src/templates/SubArticle/SubArticle.js',
+)
 const pageTemplate = path.resolve('./src/templates/Page/Page.js')
 
 const extractNodes = key => response =>
@@ -37,11 +40,36 @@ exports.createPages = async ({graphql, actions}) => {
                 title
                 slug
               }
+              sub_article {
+                slug
+                shortTitle
+              }
             }
           }
         }
       }
     `).then(extractNodes('allContentfulArticle'))
+
+  const allSubArticles = () =>
+    graphql(`
+      query AllSubArticles {
+        allContentfulSubArticle {
+          edges {
+            node {
+              slug
+              shortTitle
+              article {
+                slug
+                shortTitle
+                section {
+                  slug
+                }
+              }
+            }
+          }
+        }
+      }
+    `).then(extractNodes('allContentfulSubArticle'))
 
   const allPages = () =>
     graphql(`
@@ -56,9 +84,10 @@ exports.createPages = async ({graphql, actions}) => {
       }
     `).then(extractNodes('allContentfulPage'))
 
-  const [sections, articles, pages] = await Promise.all([
+  const [sections, articles, subArticles, pages] = await Promise.all([
     allSections(),
     allArticles(),
+    allSubArticles(),
     allPages(),
   ])
 
@@ -72,24 +101,62 @@ exports.createPages = async ({graphql, actions}) => {
     })
   })
 
-  articles.forEach(({slug, section: {slug: sectionSlug}}) => {
-    const {article} = sections.find(({slug}) => slug === sectionSlug)
-    const articleList = article.map(({slug, shortTitle: title}) => ({
+  const buildMenu = ({
+    articleList,
+    articleSlug: currentArticleSlug,
+    sectionSlug: currentSectionSlug,
+  }) => {
+    const subArticleList = subArticles.filter(
+      ({article: {slug}}) => currentArticleSlug === slug,
+    )
+    return articleList.map(({slug, shortTitle: title}) => ({
+      sectionSlug: currentSectionSlug,
       slug,
-      sectionSlug,
       title,
+      subArticleList: slug === currentArticleSlug ? subArticleList : [],
     }))
+  }
+
+  articles.forEach(({slug: articleSlug, section: {slug: sectionSlug}}) => {
+    const {article: articleList} = sections.find(
+      ({slug}) => slug === sectionSlug,
+    )
 
     createPage({
-      path: `/${sectionSlug}/${slug}/`,
+      path: `/${sectionSlug}/${articleSlug}/`,
       component: articleTemplate,
       context: {
         sectionSlug,
-        slug,
-        articleList,
+        articleSlug,
+        articleList: buildMenu({articleList, articleSlug, sectionSlug}),
       },
     })
   })
+
+  subArticles.forEach(
+    ({
+      slug: subArticleSlug,
+      article: {
+        slug: articleSlug,
+        section: {slug: sectionSlug},
+      },
+    }) => {
+      const {article: articleList} = sections.find(
+        ({slug}) => slug === sectionSlug,
+      )
+
+      createPage({
+        path: `/${sectionSlug}/${articleSlug}/${subArticleSlug}/`,
+        component: subarticleTemplate,
+        context: {
+          sectionSlug,
+          articleSlug,
+          subArticleSlug,
+          articleList: buildMenu({articleList, articleSlug, sectionSlug}),
+        },
+      })
+    },
+  )
 
   pages.forEach(({slug}) => {
     createPage({

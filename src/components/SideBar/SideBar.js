@@ -25,6 +25,12 @@ SideBar.propTypes = {
     shape({
       slug: string,
       title: string,
+      subArticleList: arrayOf(
+        shape({
+          shortTitle: string.isRequired,
+          slug: string.isRequired,
+        }),
+      ).isRequired,
     }),
   ).isRequired,
 }

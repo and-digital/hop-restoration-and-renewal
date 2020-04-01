@@ -25,6 +25,10 @@ const useStyles = makeStyles(theme => ({
     listStyleType: 'none',
     padding: '25px 25px 25px 16px',
   },
+  subList: {
+    listStyleType: 'none',
+    padding: '25px 25px 0px 16px',
+  },
   listItem: {
     paddingBottom: '50px',
     '&:last-child': {
@@ -43,22 +47,44 @@ const useStyles = makeStyles(theme => ({
 
 const SideBarMenu = ({articleList}) => {
   const classes = useStyles()
-  const {article} = useLocation()
+  const location = useLocation()
+  const {article, subArticle} = location
+
   return (
     <Box className={classes.wrapper}>
       <ul className={classes.list}>
-        {articleList.map(({title, slug, sectionSlug}) => (
-          <li key={slug} className={classes.listItem}>
-            <LinkHandler
-              url={`/${sectionSlug}/${slug}`}
-              className={classNames(classes.link, {
-                [classes.activeLink]: slug === article,
-              })}
-            >
-              <Typography className={classes.linkText}>{title}</Typography>
-            </LinkHandler>
-          </li>
-        ))}
+        {articleList.map(
+          ({title, slug: articleSlug, sectionSlug, subArticleList}) => (
+            <li key={articleSlug} className={classes.listItem}>
+              <LinkHandler
+                url={`/${sectionSlug}/${articleSlug}`}
+                className={classNames(classes.link, {
+                  [classes.activeLink]: articleSlug === article,
+                })}
+              >
+                <Typography className={classes.linkText}>{title}</Typography>
+              </LinkHandler>
+              {!!subArticleList.length && (
+                <ul className={classes.subList}>
+                  {subArticleList.map(({shortTitle, slug}) => (
+                    <li key={slug} className={classes.listItem}>
+                      <LinkHandler
+                        url={`/${sectionSlug}/${articleSlug}/${slug}`}
+                        className={classNames(classes.link, {
+                          [classes.activeLink]: slug === subArticle,
+                        })}
+                      >
+                        <Typography className={classes.linkText}>
+                          {shortTitle}
+                        </Typography>
+                      </LinkHandler>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ),
+        )}
       </ul>
     </Box>
   )
