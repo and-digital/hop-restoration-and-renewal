@@ -78,6 +78,7 @@ const HeroHomepage = ({
   text,
 }) => {
   const classes = useStyles()
+
   return (
     <Box component="section" className={classes.heroContainer}>
       <Box className={classes.imageWrapper}>
