@@ -104,6 +104,9 @@ export const query = graphql`
             ...GatsbyContentfulFixed_withWebp
           }
         }
+        text {
+          json
+        }
       }
       cards {
         title
