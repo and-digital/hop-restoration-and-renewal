@@ -81,5 +81,5 @@ it('should highlight the current article page', () => {
     currentArticleElement.parentNode,
   )
   expect(articleStyles['border-left']).toEqual('')
-  expect(currentArticleStyles['border-left']).toEqual('4px solid #6B609C')
+  expect(currentArticleStyles['border-left']).toEqual('4px solid #3D1152')
 })

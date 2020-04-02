@@ -11,6 +11,7 @@ import {makeStyles} from '@material-ui/core/styles'
 import {arrayOf, shape, string, object} from 'prop-types'
 import useLocation from '../../hooks/useLocation'
 import FooterLinks from './FooterLinks'
+import Image from 'gatsby-image'
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -40,9 +41,24 @@ const useStyles = makeStyles(theme => ({
       borderBottom: '5px solid',
     },
   },
+  linkBox: {
+    boxSizing: 'border-box',
+    padding: '20px 22px 20px 12px',
+  },
+  logo: {
+    width: '262px',
+    height: '48px',
+    [theme.breakpoints.up('lg')]: {width: '450px', height: '82px'},
+    [theme.breakpoints.up('md')]: {width: '300px', height: '58px'},
+  },
 }))
 
-const MobileMenu = ({footerLinks, sections}) => {
+const MobileMenu = ({
+  footerLinks,
+  sections,
+  logo: {fluid, title},
+  homePageLinkText,
+}) => {
   const [isOpen, setIsOpen] = useState()
   const openMenu = () => setIsOpen(true)
   const closeMenu = () => setIsOpen(false)
@@ -52,48 +68,64 @@ const MobileMenu = ({footerLinks, sections}) => {
   return (
     <Box
       display="flex"
-      flexDirection="row"
-      flexWrap="wrap"
-      alignItems="center"
-      height="100%"
+      justifyContent="space-between"
+      width="100%"
+      maxWidth={1620}
+      margin="auto"
     >
-      <MenuIcon
-        onClick={openMenu}
-        color="primary"
-        data-testid="mobileMenu"
-        className={styles.menuIcon}
-      />
-      <Drawer
-        anchor="right"
-        open={isOpen}
-        onClose={closeMenu}
-        data-testid="drawer"
-        classes={{paper: styles.paper}}
+      <LinkHandler
+        url="/"
+        className={styles.linkBox}
+        aria-label={homePageLinkText}
       >
-        <CloseIcon
-          onClick={closeMenu}
-          className={styles.closeIcon}
-          data-testid="closeMenu"
+        <Image fluid={fluid} alt={title} className={styles.logo} />
+      </LinkHandler>
+
+      <Box
+        display="flex"
+        flexDirection="row"
+        flexWrap="wrap"
+        alignItems="center"
+        height="100%"
+      >
+        <MenuIcon
+          onClick={openMenu}
+          color="primary"
+          data-testid="mobileMenu"
+          className={styles.menuIcon}
         />
-        <Box margin="80px 105px 105px 50px" lineHeight="96px">
-          <Grid container spacing={3} style={{width: 'calc(100% + 25px)'}}>
-            {sections.map(({name, slug}) => (
-              <Grid item key={name} xs={12} sm={12} md="auto">
-                <LinkHandler
-                  url={`/${slug}`}
-                  className={classNames(styles.link, {
-                    [styles.activeLink]: slug === section,
-                  })}
-                  data-cy="navigation-link"
-                >
-                  <Typography variant="h6">{name}</Typography>
-                </LinkHandler>
-              </Grid>
-            ))}
-          </Grid>
-          <FooterLinks pages={footerLinks} />
-        </Box>
-      </Drawer>
+        <Drawer
+          anchor="right"
+          open={isOpen}
+          onClose={closeMenu}
+          data-testid="drawer"
+          classes={{paper: styles.paper}}
+        >
+          <CloseIcon
+            onClick={closeMenu}
+            className={styles.closeIcon}
+            data-testid="closeMenu"
+          />
+          <Box margin="80px 105px 105px 50px" lineHeight="96px">
+            <Grid container spacing={3} style={{width: 'calc(100% + 25px)'}}>
+              {sections.map(({name, slug}) => (
+                <Grid item key={name} xs={12} sm={12} md="auto">
+                  <LinkHandler
+                    url={`/${slug}`}
+                    className={classNames(styles.link, {
+                      [styles.activeLink]: slug === section,
+                    })}
+                    data-cy="navigation-link"
+                  >
+                    <Typography variant="h6">{name}</Typography>
+                  </LinkHandler>
+                </Grid>
+              ))}
+            </Grid>
+            <FooterLinks pages={footerLinks} />
+          </Box>
+        </Drawer>
+      </Box>
     </Box>
   )
 }
@@ -106,6 +138,8 @@ MobileMenu.propTypes = {
       slug: string.isRequired,
     }),
   ).isRequired,
+  logo: shape({fluid: object.isRequired, title: string.isRequired}).isRequired,
+  homePageLinkText: string.isRequired,
 }
 
 export default MobileMenu

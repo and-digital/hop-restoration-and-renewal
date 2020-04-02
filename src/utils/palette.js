@@ -7,9 +7,12 @@ const {
   nero,
   purple,
   lilac,
+  pumpkin,
   grey,
   lightGrey,
   jewel,
+  snow,
+  blackcurrant,
 } = colors
 
 export default {
@@ -17,7 +20,7 @@ export default {
     main: nero,
     text: nero,
     cross: white,
-    menuText: purple,
+    menuText: blackcurrant,
   },
   secondary: {
     main: white,
@@ -38,6 +41,8 @@ export default {
     main: purple,
     mobileMenu: white,
     arrow: jewel,
+    activeHighlight: snow,
+    activeHighlightBorder: pumpkin,
   },
   text: {
     primary: nero,
