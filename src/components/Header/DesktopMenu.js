@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => {
     },
     activeLink,
     linkBox: {
-      padding: '45px 10px',
+      padding: '45px 20px',
       width: '100%',
       maxWidth: '460px',
     },
