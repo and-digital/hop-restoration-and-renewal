@@ -6,11 +6,8 @@ import {makeStyles} from '@material-ui/core/styles'
 import Box from '@material-ui/core/Box'
 import AppBar from '@material-ui/core/AppBar'
 import Hidden from '@material-ui/core/Hidden'
-
-import DesktopWrapper from './DesktopWrapper'
-import MobileWrapper from './MobileWrapper'
-
-import Menu from './Menu'
+import DesktopMenu from './DesktopMenu'
+import MobileMenu from './MobileMenu'
 import LinkHandler from '../LinkHandler'
 
 const styles = makeStyles(theme => ({
@@ -93,14 +90,10 @@ const HeaderComponent = ({
           <Image fluid={fluid} alt={title} className={classes.logo} />
         </LinkHandler>
         <Hidden implementation="css" mdUp>
-          <MobileWrapper footerLinks={pages}>
-            <Menu sections={sections} />
-          </MobileWrapper>
+          <MobileMenu footerLinks={pages} sections={sections} />
         </Hidden>
         <Hidden implementation="css" smDown>
-          <DesktopWrapper>
-            <Menu sections={sections} />
-          </DesktopWrapper>
+          <DesktopMenu sections={sections} />
         </Hidden>
       </Box>
     </AppBar>

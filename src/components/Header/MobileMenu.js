@@ -1,10 +1,15 @@
 import React, {useState} from 'react'
 import Box from '@material-ui/core/Box'
+import Grid from '@material-ui/core/Grid'
+import Typography from '@material-ui/core/Typography'
+import classNames from 'classnames'
+import LinkHandler from '../LinkHandler'
 import MenuIcon from '@material-ui/icons/Menu'
 import CloseIcon from '@material-ui/icons/Close'
 import Drawer from '@material-ui/core/Drawer'
 import {makeStyles} from '@material-ui/core/styles'
-import {node, arrayOf, object} from 'prop-types'
+import {arrayOf, shape, string, object} from 'prop-types'
+import useLocation from '../../hooks/useLocation'
 import FooterLinks from './FooterLinks'
 
 const useStyles = makeStyles(theme => ({
@@ -24,13 +29,25 @@ const useStyles = makeStyles(theme => ({
     height: '42px',
     width: '60px',
   },
+  link: {
+    color: theme.palette.secondary.main,
+    textDecoration: 'none',
+  },
+  activeLink: {
+    '& h6': {
+      lineHeight: '40px',
+      display: 'inline-block',
+      borderBottom: '5px solid',
+    },
+  },
 }))
 
-const MobileMenu = ({footerLinks, children}) => {
+const MobileMenu = ({footerLinks, sections}) => {
   const [isOpen, setIsOpen] = useState()
   const openMenu = () => setIsOpen(true)
   const closeMenu = () => setIsOpen(false)
   const styles = useStyles()
+  const {section} = useLocation()
 
   return (
     <Box
@@ -59,7 +76,21 @@ const MobileMenu = ({footerLinks, children}) => {
           data-testid="closeMenu"
         />
         <Box margin="80px 105px 105px 50px" lineHeight="96px">
-          {children}
+          <Grid container spacing={3} style={{width: 'calc(100% + 25px)'}}>
+            {sections.map(({name, slug}) => (
+              <Grid item key={name} xs={12} sm={12} md="auto">
+                <LinkHandler
+                  url={`/${slug}`}
+                  className={classNames(styles.link, {
+                    [styles.activeLink]: slug === section,
+                  })}
+                  data-cy="navigation-link"
+                >
+                  <Typography variant="h6">{name}</Typography>
+                </LinkHandler>
+              </Grid>
+            ))}
+          </Grid>
           <FooterLinks pages={footerLinks} />
         </Box>
       </Drawer>
@@ -69,7 +100,12 @@ const MobileMenu = ({footerLinks, children}) => {
 
 MobileMenu.propTypes = {
   footerLinks: arrayOf(object).isRequired,
-  children: node.isRequired,
+  sections: arrayOf(
+    shape({
+      name: string.isRequired,
+      slug: string.isRequired,
+    }),
+  ).isRequired,
 }
 
 export default MobileMenu
