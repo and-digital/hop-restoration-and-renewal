@@ -56,11 +56,12 @@ export default theme => ({
   },
   subtitle1: {
     fontFamily: 'Georgia',
-    fontSize: '36px',
-    lineHeight: '52px',
+    fontSize: '24px',
+    lineHeight: '32px',
 
     [theme.breakpoints.up('lg')]: {
       fontSize: '48px',
+      lineHeight: '52px',
     },
   },
 })

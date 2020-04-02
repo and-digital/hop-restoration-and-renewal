@@ -6,6 +6,7 @@ const {
   lightPurple,
   nero,
   purple,
+  magenta,
   lilac,
   grey,
   lightGrey,
@@ -28,6 +29,7 @@ export default {
   background: {
     main: whiteSmoke,
     hero: deepPurple,
+    mobileHero: magenta,
     desktopMenu: white,
     mobileMenu: lilac,
     card: white,

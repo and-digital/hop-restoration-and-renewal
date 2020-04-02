@@ -8,10 +8,9 @@ import Image from 'gatsby-image'
 const useStyles = makeStyles(theme => ({
   heroContainer: {
     position: 'relative',
-    height: '605px',
+    height: 'auto',
     width: '100%',
     overflow: 'hidden',
-    [theme.breakpoints.between('sm', 'md')]: {height: '400px'},
     [theme.breakpoints.between('md', 'lg')]: {height: '605px'},
   },
   imageWrapper: {
@@ -30,24 +29,35 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     maxWidth: '1620px',
     height: '100%',
-    textAlign: 'center',
-    display: 'flex',
+    textAlign: 'left-align',
+    [theme.breakpoints.up('md')]: {
+      display: 'flex',
+      textAlign: 'center',
+    },
   },
   heroTextContent: {
-    display: 'inline-block',
     margin: 'auto',
     padding: '34px 32px 46px 30px',
-    backgroundColor: theme.palette.background.hero,
+    backgroundColor: theme.palette.background.mobileHero,
     width: '100%',
     height: 'auto',
+    [theme.breakpoints.up('md')]: {
+      display: 'inline-block',
+      backgroundColor: theme.palette.background.hero,
+    },
     [theme.breakpoints.up('lg')]: {
       width: 'auto',
     },
   },
   heroTitle: {
     color: theme.palette.secondary.main,
-    fontSize: '48px',
+    fontSize: '36px',
+    lineHeight: '44px',
     marginBottom: '15px',
+
+    [theme.breakpoints.up('md')]: {
+      fontSize: '48px',
+    },
 
     [theme.breakpoints.up('lg')]: {
       fontSize: '64px',

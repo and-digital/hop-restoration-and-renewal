@@ -61,6 +61,7 @@ Object {
       "footer": "#EBE9E8",
       "hero": "rgba(55, 49, 81, 0.6)",
       "main": "#F1F1F1",
+      "mobileHero": "#3D1152",
       "mobileMenu": "#8B7DC8",
       "paper": "#fff",
       "sideBar": "#F8F7FF;",
@@ -295,10 +296,11 @@ Object {
     "subtitle1": Object {
       "@media (min-width:1280px)": Object {
         "fontSize": "48px",
+        "lineHeight": "52px",
       },
       "fontFamily": "Georgia",
-      "fontSize": "36px",
-      "lineHeight": "52px",
+      "fontSize": "24px",
+      "lineHeight": "32px",
     },
     "subtitle2": Object {
       "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
