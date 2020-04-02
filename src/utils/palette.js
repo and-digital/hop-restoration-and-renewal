@@ -10,6 +10,7 @@ const {
   grey,
   lightGrey,
   jewel,
+  mint,
 } = colors
 
 export default {
@@ -18,6 +19,7 @@ export default {
     text: nero,
     cross: white,
     menuText: purple,
+    subtitle: mint,
   },
   secondary: {
     main: white,

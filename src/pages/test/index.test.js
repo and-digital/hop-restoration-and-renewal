@@ -10,26 +10,7 @@ import mockHeader from '../../stubs/mockHeader'
 import mockIsMobile from '../../stubs/mockIsMobile'
 
 const heroImageTitle = 'Hero image title'
-
-const heroImageText = {
-  json: {
-    data: {},
-    content: [
-      {
-        data: {},
-        content: [
-          {
-            data: {},
-            marks: [],
-            value: 'Restoration and Renewal',
-            nodeType: 'text',
-          },
-        ],
-        nodeType: 'paragraph',
-      },
-    ],
-  },
-}
+const heroImageSubtitle = 'Hero image subtitle'
 
 const heroData = {
   image: {
@@ -44,7 +25,7 @@ const heroData = {
     },
   },
   title: heroImageTitle,
-  text: heroImageText,
+  subtitle: heroImageSubtitle,
 }
 
 const homePageData = {
@@ -58,13 +39,12 @@ test('should show page title, main heading text and section links', async () => 
   mockSEO()
   mockHeader()
   mockFooter()
-  const title = 'Restoration and Renewal'
+
   const {getByText, getByTestId, getByAltText} = render(
     <IndexPage data={homePageData} />,
   )
-  expect(getByText(title)).toBeDefined()
+
   await waitForDomChange()
-  expect(document.title).toEqual(title)
   expect(getByTestId('header')).toBeDefined()
   expect(getByAltText(heroImageTitle)).toBeDefined()
   homePageData.contentfulTemplateHeroWithCards.cards.forEach(
@@ -90,13 +70,9 @@ test('successfully renders cards when in mobile view', async () => {
   mockSEO()
   mockHeader()
   mockFooter()
-  const title = 'Restoration and Renewal'
   const {getByText, getByTestId, getByAltText} = render(
     <IndexPage data={homePageData} />,
   )
-  expect(getByText(title)).toBeDefined()
-  await waitForDomChange()
-  expect(document.title).toEqual(title)
   expect(getByTestId('header')).toBeDefined()
   expect(getByAltText(heroImageTitle)).toBeDefined()
   homePageData.contentfulTemplateHeroWithCards.cards.forEach(

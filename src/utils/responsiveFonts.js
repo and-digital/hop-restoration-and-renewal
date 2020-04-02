@@ -1,15 +1,10 @@
 export default theme => ({
   ...theme.typography,
   h1: {
-    fontSize: '36px',
-    lineHeight: '48px',
-    fontWeight: 'normal',
-    marginBottom: '18px',
-    [theme.breakpoints.up('md')]: {
-      fontSize: '64px',
-      lineHeight: '60px',
-      marginBottom: '36px',
-    },
+    fontSize: '42px',
+    lineHeight: '56px',
+    fontWeight: 'bold',
+    fontFamily: 'Georgia',
   },
   h2: {
     fontWeight: 'bold',
@@ -58,5 +53,14 @@ export default theme => ({
     fontWeight: 'normal',
     fontSize: '18px',
     lineHeight: '24px',
+  },
+  subtitle1: {
+    fontFamily: 'Georgia',
+    fontSize: '36px',
+    lineHeight: '52px',
+
+    [theme.breakpoints.up('lg')]: {
+      fontSize: '48px',
+    },
   },
 })

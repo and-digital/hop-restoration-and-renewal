@@ -59,7 +59,7 @@ Object {
       "default": "#fafafa",
       "desktopMenu": "#ffffff",
       "footer": "#EBE9E8",
-      "hero": "#373151",
+      "hero": "rgba(55, 49, 81, 0.6)",
       "main": "#F1F1F1",
       "mobileMenu": "#8B7DC8",
       "paper": "#fff",
@@ -112,6 +112,7 @@ Object {
       "light": "rgb(79, 79, 79)",
       "main": "#232323",
       "menuText": "#6B609C",
+      "subtitle": "#96DCBE",
       "text": "#232323",
     },
     "secondary": Object {
@@ -228,15 +229,10 @@ Object {
     "fontWeightMedium": 500,
     "fontWeightRegular": 400,
     "h1": Object {
-      "@media (min-width:960px)": Object {
-        "fontSize": "64px",
-        "lineHeight": "60px",
-        "marginBottom": "36px",
-      },
-      "fontSize": "36px",
-      "fontWeight": "normal",
-      "lineHeight": "48px",
-      "marginBottom": "18px",
+      "fontFamily": "Georgia",
+      "fontSize": "42px",
+      "fontWeight": "bold",
+      "lineHeight": "56px",
     },
     "h2": Object {
       "@media (min-width:960px)": Object {
@@ -297,11 +293,12 @@ Object {
     "pxToRem": [Function],
     "round": [Function],
     "subtitle1": Object {
-      "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-      "fontSize": "1rem",
-      "fontWeight": 400,
-      "letterSpacing": "0.00938em",
-      "lineHeight": 1.75,
+      "@media (min-width:1280px)": Object {
+        "fontSize": "48px",
+      },
+      "fontFamily": "Georgia",
+      "fontSize": "36px",
+      "lineHeight": "52px",
     },
     "subtitle2": Object {
       "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
