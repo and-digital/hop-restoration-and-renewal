@@ -4,6 +4,7 @@ import Box from '@material-ui/core/Box'
 import {makeStyles} from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import Image from 'gatsby-image'
+import RichText from '../RichText'
 
 const useStyles = makeStyles(theme => ({
   heroContainer: {
@@ -29,7 +30,7 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     maxWidth: '1620px',
     height: '100%',
-    textAlign: 'left-align',
+    textAlign: 'left',
     [theme.breakpoints.up('md')]: {
       display: 'flex',
       textAlign: 'center',
@@ -95,6 +96,9 @@ const HeroHomepage = ({
           </Typography>
         </Box>
       </Box>
+      <Box className={classes.contextWrapper}>
+        <RichText text={text} className={classes.homePageDescription} />
+      </Box>
     </Box>
   )
 }
@@ -106,6 +110,9 @@ HeroHomepage.propTypes = {
   }).isRequired,
   title: string.isRequired,
   subtitle: string,
+  text: shape({
+    json: object.isRequired,
+  }).isRequired,
 }
 
 export default HeroHomepage
