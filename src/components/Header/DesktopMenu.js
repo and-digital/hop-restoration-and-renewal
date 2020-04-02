@@ -8,32 +8,37 @@ import classNames from 'classnames'
 import {object, arrayOf, shape, string} from 'prop-types'
 import Image from 'gatsby-image'
 
-const useStyles = makeStyles(theme => ({
-  link: {
-    color: theme.palette.primary.menuText,
-    textDecoration: 'none',
-    display: 'flex',
-    'flex-direction': 'column',
-    'justify-content': 'center',
-    padding: '0 10px 5px',
-    'flex-grow': 1,
-    'text-align': 'center',
-    'white-space': 'nowrap',
-  },
-  activeLink: {
-    'padding-bottom': '0px',
+const useStyles = makeStyles(theme => {
+  const activeLink = {
+    paddingBottom: '0px',
     borderBottom: `5px solid ${theme.palette.link.activeHighlightBorder}`,
     backgroundColor: theme.palette.link.activeHighlight,
-  },
-  linkBox: {
-    padding: '45px 10px',
-    width: '100% !important',
-    maxWidth: '460px',
-  },
-  logo: {
-    maxWidth: '460px',
-  },
-}))
+  }
+
+  return {
+    link: {
+      color: theme.palette.primary.menuText,
+      textDecoration: 'none',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      padding: '0 10px 5px',
+      flexGrow: 1,
+      textAlign: 'center',
+      whiteSpace: 'nowrap',
+
+      '&:hover': {
+        ...activeLink,
+      },
+    },
+    activeLink,
+    linkBox: {
+      padding: '45px 10px',
+      width: '100%',
+      maxWidth: '460px',
+    },
+  }
+})
 
 const splitArrayInHalf = array => {
   const halfWayIndex = array.length / 2
@@ -63,25 +68,14 @@ const DesktopMenu = ({sections, logo: {fluid, title}, homePageLinkText}) => {
   }
 
   return (
-    <Box
-      display="flex"
-      width="100%"
-      maxWidth={1620}
-      margin="auto"
-      alignItems="stretch"
-    >
+    <Box display="flex" maxWidth={1620} margin="auto">
       {leftMenuItems.map(displayMenuItems)}
       <LinkHandler
         url="/"
         className={classes.linkBox}
         aria-label={homePageLinkText}
       >
-        <Image
-          imgStyle={{objectFit: 'contain'}}
-          fluid={fluid}
-          alt={title}
-          className={classes.logo}
-        />
+        <Image fluid={fluid} alt={title} />
       </LinkHandler>
       {rightMenuItems.map(displayMenuItems)}
     </Box>
