@@ -7,12 +7,10 @@ const useStyles = makeStyles(theme => ({
   richTextLink: {
     color: theme.palette.link.main,
     lineHeight: '30px',
-    display: 'inline',
+    display: 'inline-block',
     textDecoration: 'none',
     borderBottom: '3px solid',
     fontWeight: 'bold',
-    direction: 'ltr',
-    fontSize: '21px',
   },
 }))
 
