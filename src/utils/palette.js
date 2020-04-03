@@ -1,46 +1,47 @@
 import * as colors from './colors'
 const {
-  white,
+  oldWhite,
   whiteSmoke,
   deepPurple,
-  lightPurple,
+  oldLightPurple,
   nero,
-  purple,
+  oldPurple,
   lilac,
   grey,
   lightGrey,
   jewel,
+  purple,
 } = colors
 
 export default {
   primary: {
     main: nero,
     text: nero,
-    cross: white,
-    menuText: purple,
+    cross: oldWhite,
+    menuText: oldPurple,
   },
   secondary: {
-    main: white,
-    text: white,
+    main: oldWhite,
+    text: oldWhite,
   },
   background: {
     main: whiteSmoke,
     hero: deepPurple,
-    desktopMenu: white,
+    desktopMenu: oldWhite,
     mobileMenu: lilac,
-    card: white,
+    card: oldWhite,
     footer: grey,
-    cardBorder: purple,
-    sideBar: lightPurple,
+    cardBorder: oldPurple,
+    sideBar: oldLightPurple,
     boxShadow: lightGrey,
   },
   link: {
     main: purple,
-    mobileMenu: white,
+    mobileMenu: oldWhite,
     arrow: jewel,
   },
   text: {
     primary: nero,
-    secondary: white,
+    secondary: oldWhite,
   },
 }

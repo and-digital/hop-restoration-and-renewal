@@ -1,57 +1,41 @@
+import './fonts.css'
+
 export default theme => ({
   ...theme.typography,
+  fontFamily: ['Georgia', 'Brandon Text', 'Lato'].join(','),
   h1: {
-    fontSize: '36px',
-    lineHeight: '48px',
-    fontWeight: 'normal',
-    marginBottom: '18px',
-    [theme.breakpoints.up('md')]: {
-      fontSize: '64px',
-      lineHeight: '60px',
-      marginBottom: '36px',
-    },
+    fontFamily: 'Georgia, Serif',
+    fontWeight: 'bold',
+    fontSize: '42px',
+    lineHeight: '56px',
   },
   h2: {
-    fontWeight: 'bold',
-    fontSize: '24px',
-    lineHeight: '36px',
-    fontFamily: 'sans-serif',
-    marginBottom: '14px',
-    [theme.breakpoints.up('md')]: {
-      fontSize: '36px',
-      lineHeight: '48px',
-      marginBottom: '20px',
-    },
+    fontFamily: 'Brandon, Lato, Sans-Serif',
+    fontWeight: 'normal',
+    fontSize: '28px',
+    lineHeight: '38px',
   },
   h3: {
+    fontFamily: 'Georgia, Serif',
     fontWeight: 'bold',
     fontSize: '24px',
-    lineHeight: '36px',
-    fontFamily: 'sans-serif',
-    [theme.breakpoints.up('md')]: {
-      fontWeight: '500',
-      lineHeight: '30px',
-    },
+    lineHeight: '30px',
   },
-  h6: {
-    fontSize: '28px',
-    fontFamily: 'sans-serif',
-    fontWeight: '400',
-    [theme.breakpoints.up('md')]: {fontSize: '20px'},
-    [theme.breakpoints.up('lg')]: {fontSize: '28px'},
+  h4: {
+    fontSize: '24px',
+    lineHeight: '32px',
+    fontFamily: 'Brandon Text, Lato, Sans-Serif',
+    fontWeight: 'bold',
   },
   body1: {
     fontSize: '21px',
-    fontFamily: 'sans-serif',
-    lineHeight: '44px',
-    [theme.breakpoints.up('md')]: {
-      fontSize: '24px',
-    },
+    fontFamily: 'Brandon Text, Lato, Sans-Serif',
+    lineHeight: '32px',
   },
   body2: {
-    fontSize: '24px',
-    fontFamily: 'sans-serif',
-    lineHeight: '30px',
+    fontSize: '16px',
+    fontFamily: 'Brandon, Lato, Sans-Serif',
+    lineHeight: '26px',
   },
   caption: {
     fontStyle: 'italic',

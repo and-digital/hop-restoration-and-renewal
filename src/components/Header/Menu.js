@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('md')]: {color: theme.palette.primary.menuText},
   },
   activeLink: {
-    '& h6': {
+    '& h2': {
       lineHeight: '40px',
       [theme.breakpoints.up('md')]: {lineHeight: 'unset'},
       display: 'inline-block',
@@ -39,7 +39,7 @@ const Menu = ({sections}) => {
             })}
             data-cy="navigation-link"
           >
-            <Typography variant="h6">{name}</Typography>
+            <Typography variant="h2">{name}</Typography>
           </LinkHandler>
         </Grid>
       ))}
