@@ -2,34 +2,34 @@ import React from 'react'
 import {string} from 'prop-types'
 import Obfuscate from 'react-obfuscate'
 import {makeStyles} from '@material-ui/styles'
-import {Typography} from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
   richTextLink: {
     color: theme.palette.link.main,
     lineHeight: '30px',
-    display: 'inline-block',
+    display: 'inline',
     textDecoration: 'none',
     borderBottom: '3px solid',
     fontWeight: 'bold',
+    direction: 'ltr',
+    fontSize: '21px',
   },
 }))
 
 const MailTo = ({label, emailAddress, subject, body}) => {
   const classes = useStyles()
   return (
-    <Typography variant="body1">
+    <Obfuscate
+      data-testid="mailto-link"
+      className={classes.richTextLink}
+      email={emailAddress}
+      headers={{
+        body,
+        subject,
+      }}
+    >
       {label}
-      <Obfuscate
-        data-testid="mailto-link"
-        className={classes.richTextLink}
-        email={emailAddress}
-        headers={{
-          subject,
-          body,
-        }}
-      />
-    </Typography>
+    </Obfuscate>
   )
 }
 
