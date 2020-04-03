@@ -5,13 +5,15 @@ import HeroHomepage from '..'
 
 const image = {
   title: 'Hero image title',
-  fixed: {
-    height: 605,
-    width: 605,
+  fluid: {
+    base64: '',
+    aspectRatio: 1000,
+    height: 400,
     src: '',
     srcSet: '',
-    srcWebp: '',
     srcSetWebp: '',
+    srcWebp: '',
+    sizes: '',
   },
 }
 const title = 'Hero title'

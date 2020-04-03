@@ -100,8 +100,8 @@ export const query = graphql`
         subtitle
         image {
           title
-          fixed(height: 605) {
-            ...GatsbyContentfulFixed_withWebp
+          fluid {
+            ...GatsbyContentfulFluid
           }
         }
       }

@@ -15,13 +15,15 @@ const heroImageSubtitle = 'Hero image subtitle'
 const heroData = {
   image: {
     title: heroImageTitle,
-    fixed: {
-      height: 605,
-      width: 605,
+    fluid: {
+      base64: '',
+      aspectRatio: 1000,
+      height: 400,
       src: '',
       srcSet: '',
       srcSetWebp: '',
       srcWebp: '',
+      sizes: '',
     },
   },
   title: heroImageTitle,

@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
     height: 'auto',
     width: '100%',
     overflow: 'hidden',
-    [theme.breakpoints.between('md', 'lg')]: {height: '605px'},
+    [theme.breakpoints.up('md')]: {height: '605px'},
   },
   imageWrapper: {
     width: '100%',
@@ -20,14 +20,10 @@ const useStyles = makeStyles(theme => ({
     left: '0',
     display: 'none',
     [theme.breakpoints.up('md')]: {display: 'block '},
-    '& .gatsby-image-wrapper': {
-      position: 'unset !important',
-    },
   },
   contextWrapper: {
     position: 'relative',
     width: '100%',
-    maxWidth: '1620px',
     height: '100%',
     textAlign: 'left-align',
     [theme.breakpoints.up('md')]: {
@@ -68,10 +64,14 @@ const useStyles = makeStyles(theme => ({
   heroSubtitle: {
     color: theme.palette.primary.subtitle,
   },
+  heroImage: {
+    height: 'auto',
+    [theme.breakpoints.up('md')]: {height: '605px'},
+  },
 }))
 
 const HeroHomepage = ({
-  image: {title: heroImageTitle, fixed},
+  image: {title: heroImageTitle, fluid},
   title,
   subtitle,
 }) => {
@@ -79,9 +79,13 @@ const HeroHomepage = ({
   return (
     <Box component="section" className={classes.heroContainer}>
       <Box className={classes.imageWrapper}>
-        <Image fixed={fixed} alt={heroImageTitle} />
+        <Image
+          fluid={fluid}
+          alt={heroImageTitle}
+          className={classes.heroImage}
+        />
       </Box>
-      <Box maxWidth="1620" className={classes.contextWrapper}>
+      <Box className={classes.contextWrapper}>
         <Box className={classes.heroTextContent}>
           <Typography className={classes.heroTitle} variant="h1">
             {title}
@@ -102,7 +106,7 @@ const HeroHomepage = ({
 HeroHomepage.propTypes = {
   image: shape({
     title: string.isRequired,
-    fixed: object.isRequired,
+    fluid: object.isRequired,
   }).isRequired,
   title: string.isRequired,
   subtitle: string,
