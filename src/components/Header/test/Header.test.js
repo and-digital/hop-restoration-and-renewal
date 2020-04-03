@@ -2,7 +2,6 @@ import React from 'react'
 import {fireEvent, waitForDomChange} from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 import render from '../../../utils/tests/renderWithTheme'
-
 import Header from '..'
 import mockIsMobile from '../../../stubs/mockIsMobile'
 import mockHeader from '../../../stubs/mockHeader'

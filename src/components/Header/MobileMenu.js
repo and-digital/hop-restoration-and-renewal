@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import Box from '@material-ui/core/Box'
-import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import classNames from 'classnames'
 import LinkHandler from '../LinkHandler'
@@ -115,21 +114,18 @@ const MobileMenu = ({
           data-testid="closeMenu"
         />
         <Box margin="80px 105px 105px 50px" lineHeight="96px">
-          <Grid container spacing={3} style={{width: 'calc(100% + 25px)'}}>
-            {sections.map(({name, slug}) => (
-              <Grid item key={name} xs={12} sm={12} md={12}>
-                <LinkHandler
-                  url={`/${slug}`}
-                  className={classNames(styles.link, {
-                    [styles.activeLink]: slug === section,
-                  })}
-                  data-cy="navigation-link"
-                >
-                  <Typography variant="h6">{name}</Typography>
-                </LinkHandler>
-              </Grid>
-            ))}
-          </Grid>
+          {sections.map(({name, slug}) => (
+            <LinkHandler
+              key={name}
+              url={`/${slug}`}
+              className={classNames(styles.link, {
+                [styles.activeLink]: slug === section,
+              })}
+              data-cy="navigation-link"
+            >
+              <Typography variant="h6">{name}</Typography>
+            </LinkHandler>
+          ))}
           <FooterLinks pages={footerLinks} />
         </Box>
       </Drawer>
