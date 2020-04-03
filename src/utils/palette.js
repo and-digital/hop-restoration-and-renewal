@@ -1,5 +1,7 @@
 import * as colors from './colors'
 const {
+  white,
+  orange,
   oldWhite,
   whiteSmoke,
   deepPurple,
@@ -18,7 +20,7 @@ export default {
     main: nero,
     text: nero,
     cross: oldWhite,
-    menuText: oldPurple,
+    menuText: purple,
   },
   secondary: {
     main: oldWhite,
@@ -39,6 +41,8 @@ export default {
     main: purple,
     mobileMenu: oldWhite,
     arrow: jewel,
+    activeHighlight: white,
+    activeHighlightBorder: orange,
   },
   text: {
     primary: nero,

@@ -27,7 +27,6 @@ const LinkHandler = ({url, newTab, className, children, ...props}) => {
   const classNames = generateClassNames(classes.link, {
     [className]: !!className,
   })
-  console.log(classNames)
   if (/^\/(?!\/)/.test(url)) {
     return (
       <Link to={url} className={classNames} {...props}>

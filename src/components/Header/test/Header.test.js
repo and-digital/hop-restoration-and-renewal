@@ -2,7 +2,6 @@ import React from 'react'
 import {fireEvent, waitForDomChange} from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 import render from '../../../utils/tests/renderWithTheme'
-
 import Header from '..'
 import mockIsMobile from '../../../stubs/mockIsMobile'
 import mockHeader from '../../../stubs/mockHeader'
@@ -15,7 +14,7 @@ beforeEach(() => {
 
 test('should render the component', () => {
   mockHeader()
-  const {getByAltText, getByText} = render(
+  const {getAllByAltText, getByText} = render(
     <LocationProvider>
       <Header />
     </LocationProvider>,
@@ -25,7 +24,7 @@ test('should render the component', () => {
     expect(section).toBeDefined()
     expect(section.parentNode).toHaveAttribute('href', `/${slug}`)
   })
-  const logo = getByAltText(headerData.contentfulHeader.logo.title)
+  const logo = getAllByAltText(headerData.contentfulHeader.logo.title)
   expect(logo).toBeDefined()
 })
 
@@ -40,9 +39,9 @@ test('should highlight the current section', () => {
     const section = getByText(name)
     expect(section).toBeDefined()
     expect(section.parentNode).toHaveAttribute('href', `/${slug}`)
-    const sectionStyles = window.getComputedStyle(section)
+    const sectionStyles = window.getComputedStyle(section.parentNode)
     if (slug === 'palace') {
-      expect(sectionStyles['border-bottom']).toEqual('5px solid')
+      expect(sectionStyles['border-bottom']).toEqual('5px solid #FF671D')
     } else {
       expect(sectionStyles['border-bottom']).toEqual('')
     }

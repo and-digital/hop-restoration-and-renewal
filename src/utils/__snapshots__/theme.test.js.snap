@@ -101,6 +101,8 @@ Object {
       "main": "#2196f3",
     },
     "link": Object {
+      "activeHighlight": "#EDEBEA",
+      "activeHighlightBorder": "#FF671D",
       "arrow": "#16913F",
       "main": "#3D1152",
       "mobileMenu": "#ffffff",
@@ -111,7 +113,7 @@ Object {
       "dark": "rgb(24, 24, 24)",
       "light": "rgb(79, 79, 79)",
       "main": "#232323",
-      "menuText": "#6B609C",
+      "menuText": "#3D1152",
       "text": "#232323",
     },
     "secondary": Object {
