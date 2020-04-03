@@ -20,15 +20,20 @@ const useStyles = makeStyles(theme => ({
   },
   closeIcon: {
     color: theme.palette.primary.cross,
-    right: '29px',
-    top: '28px',
     height: '45px',
     width: '45px',
     position: 'absolute',
+    right: '21px',
+    top: '21px',
+    [theme.breakpoints.up('md')]: {right: '34px', top: '34px'},
   },
   menuIcon: {
+    position: 'absolute',
     height: '42px',
     width: '60px',
+    right: '21px',
+    top: '21px',
+    [theme.breakpoints.up('md')]: {right: '34px', top: '34px'},
   },
   link: {
     color: theme.palette.secondary.main,
@@ -43,13 +48,17 @@ const useStyles = makeStyles(theme => ({
   },
   linkBox: {
     boxSizing: 'border-box',
-    padding: '20px 22px 20px 12px',
+    padding: '25px',
   },
   logo: {
-    width: '262px',
-    height: '48px',
-    [theme.breakpoints.up('lg')]: {width: '450px', height: '82px'},
-    [theme.breakpoints.up('md')]: {width: '300px', height: '58px'},
+    width: '200px',
+    height: '28px',
+    [theme.breakpoints.up(390)]: {width: '250px', height: '35px'},
+    [theme.breakpoints.up('md')]: {width: '440px', height: '60px'},
+  },
+  menuBar: {
+    justifyContent: 'flex-start',
+    [theme.breakpoints.up('sm')]: {justifyContent: 'center'},
   },
 }))
 
@@ -66,67 +75,65 @@ const MobileMenu = ({
   const {section} = useLocation()
 
   return (
-    <Box
-      display="flex"
-      justifyContent="space-between"
-      width="100%"
-      maxWidth={1620}
-      margin="auto"
-    >
-      <LinkHandler
-        url="/"
-        className={styles.linkBox}
-        aria-label={homePageLinkText}
-      >
-        <Image fluid={fluid} alt={title} className={styles.logo} />
-      </LinkHandler>
-
+    <>
       <Box
         display="flex"
-        flexDirection="row"
-        flexWrap="wrap"
-        alignItems="center"
-        height="100%"
+        maxWidth={1620}
+        margin="auto"
+        className={styles.menuBar}
       >
-        <MenuIcon
-          onClick={openMenu}
-          color="primary"
-          data-testid="mobileMenu"
-          className={styles.menuIcon}
-        />
-        <Drawer
-          anchor="right"
-          open={isOpen}
-          onClose={closeMenu}
-          data-testid="drawer"
-          classes={{paper: styles.paper}}
+        <LinkHandler
+          url="/"
+          className={styles.linkBox}
+          aria-label={homePageLinkText}
         >
-          <CloseIcon
-            onClick={closeMenu}
-            className={styles.closeIcon}
-            data-testid="closeMenu"
+          <Image
+            fluid={fluid}
+            alt={title}
+            className={styles.logo}
+            imgStyle={{objectFit: 'contain'}}
           />
-          <Box margin="80px 105px 105px 50px" lineHeight="96px">
-            <Grid container spacing={3} style={{width: 'calc(100% + 25px)'}}>
-              {sections.map(({name, slug}) => (
-                <Grid item key={name} xs={12} sm={12} md="auto">
-                  <LinkHandler
-                    url={`/${slug}`}
-                    className={classNames(styles.link, {
-                      [styles.activeLink]: slug === section,
-                    })}
-                    data-cy="navigation-link"
-                  >
-                    <Typography variant="h6">{name}</Typography>
-                  </LinkHandler>
-                </Grid>
-              ))}
-            </Grid>
-            <FooterLinks pages={footerLinks} />
-          </Box>
-        </Drawer>
+        </LinkHandler>
       </Box>
-    </Box>
+
+      <MenuIcon
+        onClick={openMenu}
+        color="primary"
+        data-testid="mobileMenu"
+        className={styles.menuIcon}
+      />
+      <Drawer
+        anchor="right"
+        open={isOpen}
+        onClose={closeMenu}
+        data-testid="drawer"
+        classes={{paper: styles.paper}}
+      >
+        <CloseIcon
+          onClick={closeMenu}
+          className={styles.closeIcon}
+          data-testid="closeMenu"
+        />
+        <Box margin="80px 105px 105px 50px" lineHeight="96px">
+          <Grid container spacing={3} style={{width: 'calc(100% + 25px)'}}>
+            {sections.map(({name, slug}) => (
+              <Grid item key={name} xs={12} sm={12} md={12}>
+                <LinkHandler
+                  url={`/${slug}`}
+                  className={classNames(styles.link, {
+                    [styles.activeLink]: slug === section,
+                  })}
+                  data-cy="navigation-link"
+                >
+                  <Typography variant="h6">{name}</Typography>
+                </LinkHandler>
+              </Grid>
+            ))}
+          </Grid>
+          <FooterLinks pages={footerLinks} />
+        </Box>
+      </Drawer>
+    </>
   )
 }
 

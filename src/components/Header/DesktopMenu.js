@@ -52,6 +52,7 @@ const DesktopMenu = ({sections, logo: {fluid, title}, homePageLinkText}) => {
 
   const displayMenuItems = ({name, slug}) => (
     <LinkHandler
+      key={`${name}${slug}`}
       url={`/${slug}`}
       className={classNames(classes.link, {
         [classes.activeLink]: slug === section,
