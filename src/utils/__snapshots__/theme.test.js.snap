@@ -63,7 +63,7 @@ Object {
       "main": "#F1F1F1",
       "mobileMenu": "#8B7DC8",
       "paper": "#fff",
-      "sideBar": "#F8F7FF;",
+      "sideBar": "#F8F7FF",
     },
     "common": Object {
       "black": "#000",
@@ -102,7 +102,7 @@ Object {
     },
     "link": Object {
       "arrow": "#16913F",
-      "main": "#6B609C",
+      "main": "#3D1152",
       "mobileMenu": "#ffffff",
     },
     "primary": Object {
@@ -195,17 +195,14 @@ Object {
   },
   "typography": Object {
     "body1": Object {
-      "@media (min-width:960px)": Object {
-        "fontSize": "24px",
-      },
-      "fontFamily": "sans-serif",
+      "fontFamily": "Brandon Text, Lato, Sans-Serif",
       "fontSize": "21px",
-      "lineHeight": "44px",
+      "lineHeight": "32px",
     },
     "body2": Object {
-      "fontFamily": "sans-serif",
-      "fontSize": "24px",
-      "lineHeight": "30px",
+      "fontFamily": "Brandon, Lato, Sans-Serif",
+      "fontSize": "16px",
+      "lineHeight": "26px",
     },
     "button": Object {
       "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
@@ -221,51 +218,35 @@ Object {
       "fontWeight": "normal",
       "lineHeight": "24px",
     },
-    "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+    "fontFamily": "Georgia,Brandon Text,Lato",
     "fontSize": 14,
     "fontWeightBold": 700,
     "fontWeightLight": 300,
     "fontWeightMedium": 500,
     "fontWeightRegular": 400,
     "h1": Object {
-      "@media (min-width:960px)": Object {
-        "fontSize": "64px",
-        "lineHeight": "60px",
-        "marginBottom": "36px",
-      },
-      "fontSize": "36px",
-      "fontWeight": "normal",
-      "lineHeight": "48px",
-      "marginBottom": "18px",
+      "fontFamily": "Georgia, Serif",
+      "fontSize": "42px",
+      "fontWeight": "bold",
+      "lineHeight": "56px",
     },
     "h2": Object {
-      "@media (min-width:960px)": Object {
-        "fontSize": "36px",
-        "lineHeight": "48px",
-        "marginBottom": "20px",
-      },
-      "fontFamily": "sans-serif",
-      "fontSize": "24px",
-      "fontWeight": "bold",
-      "lineHeight": "36px",
-      "marginBottom": "14px",
+      "fontFamily": "Brandon, Lato, Sans-Serif",
+      "fontSize": "28px",
+      "fontWeight": "normal",
+      "lineHeight": "38px",
     },
     "h3": Object {
-      "@media (min-width:960px)": Object {
-        "fontWeight": "500",
-        "lineHeight": "30px",
-      },
-      "fontFamily": "sans-serif",
+      "fontFamily": "Georgia, Serif",
       "fontSize": "24px",
       "fontWeight": "bold",
-      "lineHeight": "36px",
+      "lineHeight": "30px",
     },
     "h4": Object {
-      "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-      "fontSize": "2.125rem",
-      "fontWeight": 400,
-      "letterSpacing": "0.00735em",
-      "lineHeight": 1.235,
+      "fontFamily": "Brandon Text, Lato, Sans-Serif",
+      "fontSize": "24px",
+      "fontWeight": "bold",
+      "lineHeight": "32px",
     },
     "h5": Object {
       "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
@@ -275,15 +256,11 @@ Object {
       "lineHeight": 1.334,
     },
     "h6": Object {
-      "@media (min-width:1280px)": Object {
-        "fontSize": "28px",
-      },
-      "@media (min-width:960px)": Object {
-        "fontSize": "20px",
-      },
-      "fontFamily": "sans-serif",
-      "fontSize": "28px",
-      "fontWeight": "400",
+      "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+      "fontSize": "1.25rem",
+      "fontWeight": 500,
+      "letterSpacing": "0.0075em",
+      "lineHeight": 1.6,
     },
     "htmlFontSize": 16,
     "overline": Object {
