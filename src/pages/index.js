@@ -116,6 +116,11 @@ export const query = graphql`
         childContentfulSectionPreviewContentRichTextNode {
           json
         }
+        theme {
+          border
+          cardBackground
+          contentBackground
+        }
         hero {
           image {
             title

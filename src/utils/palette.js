@@ -13,6 +13,9 @@ const {
   jewel,
   snow,
   blackcurrant,
+  mint,
+  mint30,
+  mint40,
 } = colors
 
 export default {
@@ -47,5 +50,11 @@ export default {
   text: {
     primary: nero,
     secondary: white,
+  },
+  section: {
+    main: mint30,
+    mint: mint,
+    mint30: mint30,
+    mint40: mint40,
   },
 }
