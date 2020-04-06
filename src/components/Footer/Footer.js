@@ -2,6 +2,7 @@ import React from 'react'
 import {graphql, useStaticQuery} from 'gatsby'
 import {arrayOf, object, shape} from 'prop-types'
 import RichText from '../RichText'
+import RichTextProvider from '../../providers/RichTextProvider'
 import FooterLinks from './FooterLinks'
 import Box from '@material-ui/core/Box'
 import {makeStyles} from '@material-ui/core/styles'
@@ -49,10 +50,12 @@ const FooterComponent = ({contentfulFooter: {pages, copyrightAndContact}}) => {
     <footer className={classes.footerWrapper}>
       <Box maxWidth={1620} margin="auto">
         <FooterLinks pages={pages} />
-        <RichText
-          text={copyrightAndContact}
-          className={classes.copyrightText}
-        />
+        <RichTextProvider>
+          <RichText
+            text={copyrightAndContact}
+            className={classes.copyrightText}
+          />
+        </RichTextProvider>
       </Box>
     </footer>
   )

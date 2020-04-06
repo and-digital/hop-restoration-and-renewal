@@ -3,6 +3,7 @@ import render from '../../../utils/tests/renderWithTheme'
 import {fireEvent} from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 import RichText from '..'
+import RichTextProvider from '../../../providers/RichTextProvider'
 
 const props = {
   className: 'footer__content',
@@ -101,7 +102,11 @@ const props = {
 
 describe('Footer component', () => {
   it('should render the component', () => {
-    const {getByText} = render(<RichText {...props} />)
+    const {getByText} = render(
+      <RichTextProvider>
+        <RichText {...props} />
+      </RichTextProvider>,
+    )
     expect(getByText(/Houses of Parliament/g)).toBeDefined()
     expect(getByText('Here is an external link')).toBeDefined()
     expect(
@@ -110,7 +115,11 @@ describe('Footer component', () => {
   })
 
   it('should mask email address', () => {
-    const {getByTestId} = render(<RichText {...props} />)
+    const {getByTestId} = render(
+      <RichTextProvider>
+        <RichText {...props} />
+      </RichTextProvider>,
+    )
     const MailtoLink = getByTestId('mailto-link')
     expect(MailtoLink).toBeInTheDocument()
     expect(MailtoLink).toHaveAttribute('href', 'obfuscated')

@@ -57,6 +57,7 @@ Object {
       "card": "#ffffff",
       "cardBorder": "#6B609C",
       "default": "#fafafa",
+      "description": "#E0F5EC",
       "desktopMenu": "#ffffff",
       "footer": "#EBE9E8",
       "hero": "rgba(55, 49, 81, 0.6)",
@@ -200,14 +201,20 @@ Object {
       "@media (min-width:960px)": Object {
         "fontSize": "24px",
       },
-      "fontFamily": "sans-serif",
-      "fontSize": "21px",
-      "lineHeight": "44px",
+      "fontFamily": "Lato",
+      "fontSize": "16px",
+      "lineHeight": "26px",
     },
     "body2": Object {
-      "fontFamily": "sans-serif",
-      "fontSize": "24px",
-      "lineHeight": "30px",
+      "@media (min-width:960px)": Object {
+        "fontSize": "36px",
+        "lineHeight": "48px",
+        "marginBottom": "48px",
+      },
+      "fontFamily": "Lato",
+      "fontSize": "16px",
+      "lineHeight": "26px",
+      "marginBottom": "26px",
     },
     "button": Object {
       "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
@@ -248,14 +255,10 @@ Object {
       "marginBottom": "14px",
     },
     "h3": Object {
-      "@media (min-width:960px)": Object {
-        "fontWeight": "500",
-        "lineHeight": "30px",
-      },
-      "fontFamily": "sans-serif",
-      "fontSize": "24px",
+      "fontFamily": "Lato",
+      "fontSize": "21px",
       "fontWeight": "bold",
-      "lineHeight": "36px",
+      "lineHeight": "32px",
     },
     "h4": Object {
       "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
@@ -296,18 +299,17 @@ Object {
     "subtitle1": Object {
       "@media (min-width:1280px)": Object {
         "fontSize": "48px",
-        "lineHeight": "52px",
+        "lineHeight": "56px",
       },
       "fontFamily": "Georgia",
       "fontSize": "24px",
       "lineHeight": "32px",
     },
     "subtitle2": Object {
-      "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-      "fontSize": "0.875rem",
-      "fontWeight": 500,
-      "letterSpacing": "0.00714em",
-      "lineHeight": 1.57,
+      "fontFamily": "Lato",
+      "fontSize": "48px",
+      "fontWeight": "normal",
+      "lineHeight": "56px",
     },
   },
   "zIndex": Object {

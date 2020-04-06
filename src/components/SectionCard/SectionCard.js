@@ -4,6 +4,7 @@ import LinkHandler from '../LinkHandler'
 import Image from 'gatsby-image'
 import Typography from '@material-ui/core/Typography'
 import RichText from '../RichText/RichText'
+import RichTextProvider from '../../providers/RichTextProvider'
 import Box from '@material-ui/core/Box'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
 import Paper from '@material-ui/core/Paper'
@@ -81,11 +82,13 @@ const SectionCard = ({
             <Typography variant="h2">{sectionTitle}</Typography>
           </Box>
           <Box mb={1} className={classes.previewWrapper}>
-            <RichText
-              className={classes.sectionPreview}
-              text={body}
-              aria-label="section description"
-            />
+            <RichTextProvider>
+              <RichText
+                className={classes.sectionPreview}
+                text={body}
+                aria-label="section description"
+              />
+            </RichTextProvider>
           </Box>
           <Box className={classes.linkWrapper}>
             <LinkHandler className={classes.link} url={`/${slug}`}>

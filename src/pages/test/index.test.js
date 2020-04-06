@@ -11,21 +11,50 @@ import mockIsMobile from '../../stubs/mockIsMobile'
 
 const heroImageTitle = 'Hero image title'
 const heroImageSubtitle = 'Hero image subtitle'
+const text = {
+  json: {
+    data: {},
+    content: [
+      {
+        data: {},
+        content: [
+          {
+            data: {},
+            marks: [],
+            value:
+              'Description of the Houses of Parliament Restoration and Renewal program',
+            nodeType: 'text',
+          },
+        ],
+        nodeType: 'paragraph',
+      },
+    ],
+    nodeType: 'document',
+  },
+}
+const quoteAuthor = 'Alan Turing'
+const quoteDescription = 'Remember to be kind'
 
 const heroData = {
   image: {
     title: heroImageTitle,
-    fixed: {
-      height: 605,
-      width: 605,
+    fluid: {
+      base64: '',
+      aspectRatio: 100,
       src: '',
       srcSet: '',
-      srcSetWebp: '',
       srcWebp: '',
+      srcSetWebp: '',
+      sizes: '',
     },
   },
   title: heroImageTitle,
   subtitle: heroImageSubtitle,
+  text: text,
+  quote: {
+    quoteAuthor,
+    quoteDescription: {quoteDescription},
+  },
 }
 
 const homePageData = {

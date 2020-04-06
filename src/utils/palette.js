@@ -12,6 +12,7 @@ const {
   lightGrey,
   jewel,
   mint,
+  clearDay,
 } = colors
 
 export default {
@@ -32,6 +33,7 @@ export default {
     mobileHero: magenta,
     desktopMenu: white,
     mobileMenu: lilac,
+    description: clearDay,
     card: white,
     footer: grey,
     cardBorder: purple,

@@ -37,6 +37,10 @@ const SEO = ({title, description}) => {
         href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap"
         rel="stylesheet"
       />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
+        rel="stylesheet"
+      />
     </Helmet>
   )
 }

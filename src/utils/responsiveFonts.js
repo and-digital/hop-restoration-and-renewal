@@ -20,13 +20,9 @@ export default theme => ({
   },
   h3: {
     fontWeight: 'bold',
-    fontSize: '24px',
-    lineHeight: '36px',
-    fontFamily: 'sans-serif',
-    [theme.breakpoints.up('md')]: {
-      fontWeight: '500',
-      lineHeight: '30px',
-    },
+    fontSize: '21px',
+    lineHeight: '32px',
+    fontFamily: 'Lato',
   },
   h6: {
     fontSize: '28px',
@@ -36,17 +32,23 @@ export default theme => ({
     [theme.breakpoints.up('lg')]: {fontSize: '28px'},
   },
   body1: {
-    fontSize: '21px',
-    fontFamily: 'sans-serif',
-    lineHeight: '44px',
+    fontSize: '16px',
+    fontFamily: 'Lato',
+    lineHeight: '26px',
     [theme.breakpoints.up('md')]: {
       fontSize: '24px',
     },
   },
   body2: {
-    fontSize: '24px',
-    fontFamily: 'sans-serif',
-    lineHeight: '30px',
+    fontSize: '16px',
+    fontFamily: 'Lato',
+    lineHeight: '26px',
+    marginBottom: '26px',
+    [theme.breakpoints.up('md')]: {
+      fontSize: '36px',
+      lineHeight: '48px',
+      marginBottom: '48px',
+    },
   },
   caption: {
     fontStyle: 'italic',
@@ -61,7 +63,13 @@ export default theme => ({
 
     [theme.breakpoints.up('lg')]: {
       fontSize: '48px',
-      lineHeight: '52px',
+      lineHeight: '56px',
     },
+  },
+  subtitle2: {
+    fontFamily: 'Lato',
+    fontSize: '48px',
+    lineHeight: '56px',
+    fontWeight: 'normal',
   },
 })
