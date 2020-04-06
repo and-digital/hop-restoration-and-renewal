@@ -69,7 +69,7 @@ Index.propTypes = {
       hero: shape({
         image: shape({
           title: string.isRequired,
-          fixed: shape({
+          fluid: shape({
             height: number,
           }),
         }).isRequired,
@@ -104,8 +104,8 @@ export const query = graphql`
         }
         image {
           title
-          fixed(height: 605) {
-            ...GatsbyContentfulFixed_withWebp
+          fluid {
+            ...GatsbyContentfulFluid_withWebp
           }
         }
       }
