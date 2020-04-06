@@ -10,8 +10,6 @@ import HeadingOne from './HeadingOne'
 import HeadingTwo from './HeadingTwo'
 import HeadingThree from './HeadingThree'
 import HeadingFour from './HeadingFour'
-import HeadingFive from './HeadingFive'
-import HeadingSix from './HeadingSix'
 
 const RichText = ({className, text}) => {
   const options = {
@@ -22,18 +20,18 @@ const RichText = ({className, text}) => {
       [BLOCKS.HEADING_2]: HeadingTwo,
       [BLOCKS.HEADING_3]: HeadingThree,
       [BLOCKS.HEADING_4]: HeadingFour,
-      [BLOCKS.HEADING_5]: HeadingFive,
-      [BLOCKS.HEADING_6]: HeadingSix,
       [BLOCKS.EMBEDDED_ENTRY]: EmbeddedComponent,
       [BLOCKS.EMBEDDED_ASSET]: EmbeddedAsset,
     },
   }
+
   return (
     <div className={`rich-text ${className}`}>
       {documentToReactComponents(text.json, options)}
     </div>
   )
 }
+
 RichText.propTypes = {
   data: shape({
     uri: string,
@@ -43,10 +41,12 @@ RichText.propTypes = {
     json: object,
   }).isRequired,
 }
+
 RichText.defaultProps = {
   className: '',
   data: {
     url: '',
   },
 }
+
 export default RichText

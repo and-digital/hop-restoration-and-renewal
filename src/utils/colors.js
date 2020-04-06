@@ -1,16 +1,14 @@
-// export const white = '#ffffff'
+// Old colours
+export const oldWhite = '#ffffff'
 export const whiteSmoke = '#F1F1F1'
-// export const lightPurple = '#F8F7FF;'
-// export const purple = '#6B609C'
+export const oldLightPurple = '#F8F7FF'
+export const oldPurple = '#6B609C'
 export const deepPurple = '#373151'
 export const lilac = '#8B7DC8'
-export const pumpkin = '#FF671D'
 export const nero = '#232323'
 export const grey = '#EBE9E8'
 export const lightGrey = '#ECECEC'
 export const jewel = '#16913F'
-export const snow = '#FBFBFB'
-export const blackcurrant = '#3D1152'
 
 // New colours
 export const bodyDark = '#232323'

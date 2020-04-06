@@ -1,7 +1,6 @@
 import React from 'react'
 import render from '../../../utils/tests/renderWithTheme'
 import '@testing-library/jest-dom/extend-expect'
-
 import SectionCard from '..'
 
 const image = {
@@ -43,6 +42,7 @@ const testBody = {
 const slug = 'path'
 const sectionTitle = 'title'
 const linkText = 'here is a link'
+const bgColour = 'green'
 const description =
   'The Palace of Westminster is an icon of our nation, a symbol of democracy, and a workplace for thousands. Today its structure and workings need urgent attention.'
 
@@ -52,6 +52,7 @@ it('should show an image,description and a link with text', () => {
       slug={slug}
       image={image}
       linkText={linkText}
+      cardBackground={bgColour}
       body={testBody}
       sectionTitle={sectionTitle}
     />,
