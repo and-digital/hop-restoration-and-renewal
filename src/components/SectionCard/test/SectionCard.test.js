@@ -52,7 +52,7 @@ it('should show an image,description and a link with text', () => {
       slug={slug}
       image={image}
       linkText={linkText}
-      cardBackground={bgColour}
+      background={bgColour}
       body={testBody}
       sectionTitle={sectionTitle}
     />,

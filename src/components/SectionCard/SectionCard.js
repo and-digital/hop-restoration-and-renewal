@@ -59,7 +59,7 @@ const SectionCard = ({
   sectionTitle,
   body,
   linkText,
-  cardBackground,
+  background,
   slug,
 }) => {
   const classes = useStyles()
@@ -67,7 +67,7 @@ const SectionCard = ({
   return (
     <Box
       className={classes.card}
-      bgcolor={theme.palette.colours[cardBackground]}
+      bgcolor={theme.palette.colours[background]}
       position="relative"
     >
       <Grid container direction="row">
@@ -120,7 +120,7 @@ SectionCard.propTypes = {
   }).isRequired,
   slug: string.isRequired,
   linkText: string.isRequired,
-  cardBackground: string.isRequired,
+  background: string.isRequired,
   sectionTitle: string.isRequired,
 }
 

@@ -50,7 +50,7 @@ const Index = ({
                   sectionTitle={sectionTitle}
                   slug={slug}
                   linkText={previewLinkName}
-                  cardBackground={cardBackground}
+                  background={cardBackground}
                   body={childContentfulSectionPreviewContentRichTextNode}
                 />
               </Grid>
