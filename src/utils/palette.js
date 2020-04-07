@@ -9,6 +9,7 @@ const {
   oldLightPurple,
   nero,
   oldPurple,
+  magenta,
   lilac,
   grey,
   lightGrey,
@@ -34,6 +35,7 @@ export default {
     text: nero,
     cross: oldWhite,
     menuText: purple,
+    subtitle: mint,
   },
   secondary: {
     main: oldWhite,
@@ -42,6 +44,7 @@ export default {
   background: {
     main: whiteSmoke,
     hero: deepPurple,
+    mobileHero: magenta,
     desktopMenu: oldWhite,
     mobileMenu: lilac,
     card: oldWhite,

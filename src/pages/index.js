@@ -4,7 +4,7 @@ import {graphql} from 'gatsby'
 import {shape, object, arrayOf, string, number} from 'prop-types'
 import Grid from '@material-ui/core/Grid'
 import Box from '@material-ui/core/Box'
-import Hero from '../components/Hero'
+import HeroHomepage from '../components/HeroHomepage'
 import SectionCard from '../components/SectionCard'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import {useTheme} from '@material-ui/core/styles'
@@ -21,7 +21,7 @@ const Index = ({
   const justify = isDesktop ? 'flex-start' : 'center'
   return (
     <Layout title={title}>
-      <Hero {...hero} />
+      <HeroHomepage {...hero} />
       <Box
         data-testid="sections"
         maxWidth={1620}
@@ -75,9 +75,7 @@ Index.propTypes = {
           }),
         }).isRequired,
         title: string.isRequired,
-        text: shape({
-          json: object.isRequired,
-        }).isRequired,
+        subtitle: string,
       }).isRequired,
       cards: arrayOf(
         shape({
@@ -103,13 +101,11 @@ export const query = graphql`
     contentfulTemplateHeroWithCards(name: {eq: "homePage"}) {
       hero {
         title
-        text {
-          json
-        }
+        subtitle
         image {
           title
-          fixed(height: 605) {
-            ...GatsbyContentfulFixed_withWebp
+          fluid(maxWidth: 1920) {
+            ...GatsbyContentfulFluid
           }
         }
       }

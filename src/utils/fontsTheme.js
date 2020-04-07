@@ -43,4 +43,9 @@ export default theme => ({
     fontSize: '18px',
     lineHeight: '1.33',
   },
+  subtitle1: {
+    fontFamily: 'Georgia, Serif',
+    fontSize: '24px',
+    lineHeight: '1.33',
+  },
 })
