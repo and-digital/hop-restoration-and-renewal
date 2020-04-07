@@ -11,6 +11,7 @@ import PageIntro from '../../components/PageIntro'
 import LinkHandler from '../../components/LinkHandler'
 import Typography from '@material-ui/core/Typography'
 import {makeStyles} from '@material-ui/core/styles'
+import Hidden from '../../components/Hidden/Hidden'
 
 const useStyles = makeStyles(() => ({
   breadCrumb: {
@@ -37,11 +38,27 @@ const Section = ({
       >
         <Grid container spacing={5} data-testid="articleGrid">
           <Grid item xs={12}>
-            <LinkHandler url={'/'}>
-              <Typography variant="body1" className={classes.breadCrumb}>
-                Home
+            <Hidden smDown>
+              <LinkHandler url={'/'}>
+                <Typography variant="body1" className={classes.breadCrumb}>
+                  Home
+                </Typography>
+              </LinkHandler>
+            </Hidden>
+            <Hidden mdUp>
+              <Typography component="span" variant="body1">
+                {`‹ Back to `}
               </Typography>
-            </LinkHandler>
+              <LinkHandler url={'/'}>
+                <Typography
+                  component="span"
+                  variant="body1"
+                  className={classes.breadCrumb}
+                >
+                  Home
+                </Typography>
+              </LinkHandler>
+            </Hidden>
           </Grid>
           <Grid item xs={12} lg={9}>
             <PageIntro title={heroTitle} text={text} />
