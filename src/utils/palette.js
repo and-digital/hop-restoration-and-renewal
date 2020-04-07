@@ -1,26 +1,40 @@
 import * as colors from './colors'
 const {
+  // General theme colors
   white,
   orange,
   oldWhite,
   whiteSmoke,
   deepPurple,
   oldLightPurple,
-  nero,
   oldPurple,
   lilac,
   grey,
   lightGrey,
-  jewel,
   purple,
+  // Section colors
+  bodyDark,
+  mint,
+  mint30,
+  mint40,
+  mint95,
+  stone,
+  stone30,
+  teal,
+  teal20,
+  teal30,
+  orange20,
+  lightPurple,
+  lightPurple30,
 } = colors
 
 export default {
   primary: {
-    main: nero,
-    text: nero,
+    main: bodyDark,
+    text: bodyDark,
     cross: oldWhite,
     menuText: purple,
+    subtitle: mint,
   },
   secondary: {
     main: oldWhite,
@@ -29,8 +43,10 @@ export default {
   background: {
     main: whiteSmoke,
     hero: deepPurple,
+    mobileHero: purple,
     desktopMenu: oldWhite,
     mobileMenu: lilac,
+    description: mint30,
     card: oldWhite,
     footer: grey,
     cardBorder: oldPurple,
@@ -40,12 +56,28 @@ export default {
   link: {
     main: purple,
     mobileMenu: oldWhite,
-    arrow: jewel,
+    arrow: purple,
     activeHighlight: white,
     activeHighlightBorder: orange,
   },
   text: {
-    primary: nero,
+    primary: bodyDark,
     secondary: oldWhite,
+  },
+  colours: {
+    main: mint30,
+    mint: mint,
+    mint30: mint30,
+    mint40: mint40,
+    mint95: mint95,
+    stone: stone,
+    stone30: stone30,
+    teal: teal,
+    teal20: teal20,
+    teal30: teal30,
+    orange: orange,
+    orange20: orange20,
+    lightPurple: lightPurple,
+    lightPurple30: lightPurple30,
   },
 }
