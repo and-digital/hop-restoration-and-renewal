@@ -9,7 +9,7 @@ import {makeStyles} from '@material-ui/core/styles'
 const useStyles = makeStyles(theme => ({
   footerWrapper: {
     backgroundColor: theme.palette.background.footer,
-    padding: '27px 63px 13px 29px',
+    padding: '40px 63px 40px 29px',
     minHeight: '418px',
     [theme.breakpoints.up('sm')]: {
       minHeight: '220px',

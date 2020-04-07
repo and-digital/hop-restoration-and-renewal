@@ -100,7 +100,7 @@ export const query = graphql`
         subtitle
         image {
           title
-          fluid {
+          fluid(maxWidth: 1920) {
             ...GatsbyContentfulFluid
           }
         }

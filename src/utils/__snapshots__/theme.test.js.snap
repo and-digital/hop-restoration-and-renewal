@@ -64,7 +64,7 @@ Object {
       "mobileHero": "#3D1152",
       "mobileMenu": "#8B7DC8",
       "paper": "#fff",
-      "sideBar": "#F8F7FF;",
+      "sideBar": "#F8F7FF",
     },
     "common": Object {
       "black": "#000",
@@ -102,8 +102,10 @@ Object {
       "main": "#2196f3",
     },
     "link": Object {
+      "activeHighlight": "#EDEBEA",
+      "activeHighlightBorder": "#FF671D",
       "arrow": "#16913F",
-      "main": "#6B609C",
+      "main": "#3D1152",
       "mobileMenu": "#ffffff",
     },
     "primary": Object {
@@ -112,7 +114,7 @@ Object {
       "dark": "rgb(24, 24, 24)",
       "light": "rgb(79, 79, 79)",
       "main": "#232323",
-      "menuText": "#6B609C",
+      "menuText": "#3D1152",
       "subtitle": "#96DCBE",
       "text": "#232323",
     },
@@ -197,17 +199,23 @@ Object {
   },
   "typography": Object {
     "body1": Object {
-      "@media (min-width:960px)": Object {
-        "fontSize": "24px",
+      "@media (min-width:1280px)": Object {
+        "fontSize": "1.3158rem",
       },
-      "fontFamily": "sans-serif",
-      "fontSize": "21px",
-      "lineHeight": "44px",
+      "@media (min-width:600px)": Object {
+        "fontSize": "1.3158rem",
+      },
+      "@media (min-width:960px)": Object {
+        "fontSize": "1.3158rem",
+      },
+      "fontFamily": "Brandon Text, Lato, Sans-Serif",
+      "fontSize": "1.15625rem",
+      "lineHeight": "1.33",
     },
     "body2": Object {
-      "fontFamily": "sans-serif",
-      "fontSize": "24px",
-      "lineHeight": "30px",
+      "fontFamily": "Brandon, Lato, Sans-Serif",
+      "fontSize": "16px",
+      "lineHeight": "1.5",
     },
     "button": Object {
       "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
@@ -218,69 +226,117 @@ Object {
       "textTransform": "uppercase",
     },
     "caption": Object {
-      "fontSize": "18px",
+      "@media (min-width:1280px)": Object {
+        "fontSize": "1.1278rem",
+      },
+      "@media (min-width:600px)": Object {
+        "fontSize": "1.1278rem",
+      },
+      "@media (min-width:960px)": Object {
+        "fontSize": "1.1278rem",
+      },
+      "fontSize": "1.0625rem",
       "fontStyle": "italic",
       "fontWeight": "normal",
-      "lineHeight": "24px",
+      "lineHeight": "1.33",
     },
-    "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+    "fontFamily": "Georgia,Brandon Text,Lato",
     "fontSize": 14,
     "fontWeightBold": 700,
     "fontWeightLight": 300,
     "fontWeightMedium": 500,
     "fontWeightRegular": 400,
     "h1": Object {
-      "fontFamily": "Georgia",
-      "fontSize": "42px",
+      "@media (min-width:1280px)": Object {
+        "fontSize": "2.6316rem",
+      },
+      "@media (min-width:600px)": Object {
+        "fontSize": "2.2556rem",
+      },
+      "@media (min-width:960px)": Object {
+        "fontSize": "2.4436rem",
+      },
+      "fontFamily": "Georgia, Serif",
+      "fontSize": "1.8125rem",
       "fontWeight": "bold",
-      "lineHeight": "56px",
+      "lineHeight": "1.33",
     },
     "h2": Object {
-      "@media (min-width:960px)": Object {
-        "fontSize": "36px",
-        "lineHeight": "48px",
-        "marginBottom": "20px",
+      "@media (min-width:1280px)": Object {
+        "fontSize": "1.7405rem",
       },
-      "fontFamily": "sans-serif",
-      "fontSize": "24px",
-      "fontWeight": "bold",
-      "lineHeight": "36px",
-      "marginBottom": "14px",
+      "@media (min-width:600px)": Object {
+        "fontSize": "1.5823rem",
+      },
+      "@media (min-width:960px)": Object {
+        "fontSize": "1.5823rem",
+      },
+      "fontFamily": "Brandon, Lato, Sans-Serif",
+      "fontSize": "1.375rem",
+      "fontWeight": "normal",
+      "lineHeight": "1.58",
     },
     "h3": Object {
-      "@media (min-width:960px)": Object {
-        "fontWeight": "500",
-        "lineHeight": "30px",
+      "@media (min-width:1280px)": Object {
+        "fontSize": "1.4rem",
       },
-      "fontFamily": "sans-serif",
-      "fontSize": "24px",
+      "@media (min-width:600px)": Object {
+        "fontSize": "1.4rem",
+      },
+      "@media (min-width:960px)": Object {
+        "fontSize": "1.4rem",
+      },
+      "fontFamily": "Georgia, Serif",
+      "fontSize": "1.25rem",
       "fontWeight": "bold",
-      "lineHeight": "36px",
+      "lineHeight": "1.25",
     },
     "h4": Object {
-      "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-      "fontSize": "2.125rem",
-      "fontWeight": 400,
-      "letterSpacing": "0.00735em",
-      "lineHeight": 1.235,
+      "@media (min-width:1280px)": Object {
+        "fontSize": "1.5038rem",
+      },
+      "@media (min-width:600px)": Object {
+        "fontSize": "1.3158rem",
+      },
+      "@media (min-width:960px)": Object {
+        "fontSize": "1.5038rem",
+      },
+      "fontFamily": "Brandon Text, Lato, Sans-Serif",
+      "fontSize": "1.25rem",
+      "fontWeight": "bold",
+      "lineHeight": "1.33",
     },
     "h5": Object {
+      "@media (min-width:1280px)": Object {
+        "fontSize": "1.4993rem",
+      },
+      "@media (min-width:600px)": Object {
+        "fontSize": "1.3118rem",
+      },
+      "@media (min-width:960px)": Object {
+        "fontSize": "1.4993rem",
+      },
       "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-      "fontSize": "1.5rem",
+      "fontSize": "1.25rem",
       "fontWeight": 400,
       "letterSpacing": "0em",
       "lineHeight": 1.334,
     },
     "h6": Object {
       "@media (min-width:1280px)": Object {
-        "fontSize": "28px",
+        "fontSize": "1.25rem",
+      },
+      "@media (min-width:600px)": Object {
+        "fontSize": "1.25rem",
       },
       "@media (min-width:960px)": Object {
-        "fontSize": "20px",
+        "fontSize": "1.25rem",
       },
-      "fontFamily": "sans-serif",
-      "fontSize": "28px",
-      "fontWeight": "400",
+      "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
+      "fontSize": "1.125rem",
+      "fontWeight": 500,
+      "letterSpacing": "0.0075em",
+      "lineHeight": 1.6,
     },
     "htmlFontSize": 16,
     "overline": Object {
@@ -295,12 +351,17 @@ Object {
     "round": [Function],
     "subtitle1": Object {
       "@media (min-width:1280px)": Object {
-        "fontSize": "48px",
-        "lineHeight": "52px",
+        "fontSize": "1.5038rem",
       },
-      "fontFamily": "Georgia",
-      "fontSize": "24px",
-      "lineHeight": "32px",
+      "@media (min-width:600px)": Object {
+        "fontSize": "1.3158rem",
+      },
+      "@media (min-width:960px)": Object {
+        "fontSize": "1.5038rem",
+      },
+      "fontFamily": "Georgia, Serif",
+      "fontSize": "1.25rem",
+      "lineHeight": "1.33",
     },
     "subtitle2": Object {
       "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
