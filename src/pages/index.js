@@ -70,7 +70,7 @@ Index.propTypes = {
       hero: shape({
         image: shape({
           title: string.isRequired,
-          fixed: shape({
+          fluid: shape({
             height: number,
           }),
         }).isRequired,
@@ -102,11 +102,20 @@ export const query = graphql`
       hero {
         title
         subtitle
+        quote {
+          quoteAuthor
+          quoteDescription {
+            quoteDescription
+          }
+        }
         image {
           title
           fluid(maxWidth: 1920) {
             ...GatsbyContentfulFluid
           }
+        }
+        text {
+          json
         }
       }
       cards {

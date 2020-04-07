@@ -57,6 +57,7 @@ Object {
       "card": "#ffffff",
       "cardBorder": "#6B609C",
       "default": "#fafafa",
+      "description": "#E0F5EC",
       "desktopMenu": "#ffffff",
       "footer": "#EBE9E8",
       "hero": "rgba(55, 49, 81, 0.6)",
@@ -340,19 +341,17 @@ Object {
     },
     "h6": Object {
       "@media (min-width:1280px)": Object {
-        "fontSize": "1.25rem",
+        "fontSize": "1.7405rem",
       },
       "@media (min-width:600px)": Object {
-        "fontSize": "1.25rem",
+        "fontSize": "1.5823rem",
       },
       "@media (min-width:960px)": Object {
-        "fontSize": "1.25rem",
+        "fontSize": "1.5823rem",
       },
-      "fontFamily": "\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif",
-      "fontSize": "1.125rem",
-      "fontWeight": 500,
-      "letterSpacing": "0.0075em",
-      "lineHeight": 1.6,
+      "fontFamily": "Brandon Text, Lato, Sans-Serif",
+      "fontSize": "1.375rem",
+      "lineHeight": "1.58",
     },
     "htmlFontSize": 16,
     "overline": Object {

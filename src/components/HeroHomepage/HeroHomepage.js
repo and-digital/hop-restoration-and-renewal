@@ -4,6 +4,10 @@ import Box from '@material-ui/core/Box'
 import {makeStyles} from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import Image from 'gatsby-image'
+import RichText from '../RichText'
+import RichTextProvider from '../../providers/RichTextProvider'
+import Quote from '../Quote'
+import Hidden from '../Hidden/Hidden'
 
 const useStyles = makeStyles(theme => ({
   heroContainer: {
@@ -25,7 +29,7 @@ const useStyles = makeStyles(theme => ({
     position: 'relative',
     width: '100%',
     height: '100%',
-    textAlign: 'left-align',
+    textAlign: 'left',
     [theme.breakpoints.up('md')]: {
       display: 'flex',
       textAlign: 'center',
@@ -68,38 +72,73 @@ const useStyles = makeStyles(theme => ({
     height: 'auto',
     [theme.breakpoints.up('md')]: {height: '605px'},
   },
+  descriptionWrapper: {
+    maxWidth: '1620px',
+    margin: 'auto',
+    padding: '30px 20px 20px',
+    [theme.breakpoints.up('sm')]: {
+      paddingTop: '50px',
+    },
+    [theme.breakpoints.up('lg')]: {
+      display: 'grid',
+      gridTemplateColumns: '2fr 1fr',
+      gridColumnGap: '40px',
+    },
+  },
+  descriptionBackground: {
+    backgroundColor: theme.palette.background.description,
+  },
 }))
 
 const HeroHomepage = ({
   image: {title: heroImageTitle, fluid},
   title,
   subtitle,
+  text,
+  quote: {
+    quoteAuthor,
+    quoteDescription: {quoteDescription},
+  },
 }) => {
   const classes = useStyles()
   return (
-    <Box component="section" className={classes.heroContainer}>
-      <Box className={classes.imageWrapper}>
-        <Image
-          fluid={fluid}
-          alt={heroImageTitle}
-          className={classes.heroImage}
-        />
-      </Box>
-      <Box className={classes.contextWrapper}>
-        <Box className={classes.heroTextContent}>
-          <Typography className={classes.heroTitle} variant="h1">
-            {title}
-          </Typography>
-          <Typography
-            className={classes.heroSubtitle}
-            component="h2"
-            variant="subtitle1"
-          >
-            {subtitle}
-          </Typography>
+    <>
+      <Box component="section" className={classes.heroContainer}>
+        <Box className={classes.imageWrapper}>
+          <Image
+            fluid={fluid}
+            alt={heroImageTitle}
+            className={classes.heroImage}
+          />
+        </Box>
+        <Box maxWidth="1620" className={classes.contextWrapper}>
+          <Box className={classes.heroTextContent}>
+            <Typography className={classes.heroTitle} variant="h1">
+              {title}
+            </Typography>
+            <Typography
+              className={classes.heroSubtitle}
+              component="h2"
+              variant="subtitle1"
+            >
+              {subtitle}
+            </Typography>
+          </Box>
         </Box>
       </Box>
-    </Box>
+      <div className={classes.descriptionBackground}>
+        <div className={classes.descriptionWrapper}>
+          <div>
+            <RichTextProvider bodyType="h2">
+              <RichText text={text} />
+            </RichTextProvider>
+          </div>
+          <Hidden mdDown>
+            <Quote quoteText={quoteDescription} quoteAuthor={quoteAuthor} />
+          </Hidden>
+        </div>
+      </div>
+    </>
   )
 }
 
@@ -110,6 +149,13 @@ HeroHomepage.propTypes = {
   }).isRequired,
   title: string.isRequired,
   subtitle: string,
+  text: shape({
+    json: object.isRequired,
+  }).isRequired,
+  quote: shape({
+    quoteAuthor: string,
+    quoteDescription: shape({quoteDescription: string.isRequired}).isRequired,
+  }),
 }
 
 export default HeroHomepage

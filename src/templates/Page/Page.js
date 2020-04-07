@@ -2,6 +2,7 @@ import React from 'react'
 import {string, shape, object} from 'prop-types'
 import {graphql} from 'gatsby'
 import RichText from '../../components/RichText'
+import RichTextProvider from '../../providers/RichTextProvider'
 import Layout from '../../components/Layout'
 import Paper from '@material-ui/core/Paper'
 import {makeStyles} from '@material-ui/core/styles'
@@ -30,7 +31,9 @@ const Page = ({
   return (
     <Layout title={title}>
       <Paper className={classes.noPageWrapper}>
-        <RichText text={content} aria-label="page not found description" />
+        <RichTextProvider>
+          <RichText text={content} aria-label="page not found description" />
+        </RichTextProvider>
       </Paper>
     </Layout>
   )

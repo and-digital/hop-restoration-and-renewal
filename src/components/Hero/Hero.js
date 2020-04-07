@@ -5,6 +5,7 @@ import {makeStyles} from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import Image from 'gatsby-image'
 import RichText from '../RichText'
+import RichTextProvider from '../../providers/RichTextProvider'
 
 const useStyles = makeStyles(theme => ({
   heroContainer: {
@@ -65,7 +66,9 @@ const Hero = ({image: {title: heroImageTitle, fixed}, title, text}) => {
       <Box maxWidth="1620" className={classes.contextWrapper}>
         <Box className={classes.heroTextContent}>
           <Typography variant="h1">{title}</Typography>
-          <RichText text={text} className={classes.heroSubTextContent} />
+          <RichTextProvider>
+            <RichText text={text} className={classes.heroSubTextContent} />
+          </RichTextProvider>
         </Box>
       </Box>
     </Box>

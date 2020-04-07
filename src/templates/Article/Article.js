@@ -6,6 +6,7 @@ import SideBar from '../../components/SideBar'
 import ArticleBanner from '../../components/ArticleBanner'
 import BreadcrumbsComponent from '../../components/Breadcrumbs/Breadcrumbs'
 import RichText from '../../components/RichText'
+import RichTextProvider from '../../providers/RichTextProvider'
 import Grid from '@material-ui/core/Grid'
 import Box from '@material-ui/core/Box'
 import Paper from '@material-ui/core/Paper'
@@ -70,7 +71,9 @@ const Article = ({
           <Grid item xs={12} md={9}>
             <Paper className={classes.articlePaper}>
               <article>
-                <RichText text={content} />
+                <RichTextProvider>
+                  <RichText text={content} />
+                </RichTextProvider>
               </article>
             </Paper>
           </Grid>
