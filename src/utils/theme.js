@@ -1,11 +1,13 @@
-import {createMuiTheme} from '@material-ui/core/styles'
+import {createMuiTheme, responsiveFontSizes} from '@material-ui/core/styles'
 import palette from './palette'
-import responsiveFonts from './responsiveFonts'
+import fontsTheme from './fontsTheme'
 
-const theme = createMuiTheme({
+let theme = createMuiTheme({
   palette,
 })
 
-theme.typography = responsiveFonts(theme)
+theme.typography = fontsTheme(theme)
+
+theme = responsiveFontSizes(theme)
 
 export default theme

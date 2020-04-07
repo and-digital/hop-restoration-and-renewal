@@ -1,17 +1,11 @@
 import React from 'react'
 import {useStaticQuery, graphql} from 'gatsby'
 import {shape, string, object, arrayOf} from 'prop-types'
-import Image from 'gatsby-image'
 import {makeStyles} from '@material-ui/core/styles'
-import Box from '@material-ui/core/Box'
 import AppBar from '@material-ui/core/AppBar'
 import Hidden from '@material-ui/core/Hidden'
-
-import DesktopWrapper from './DesktopWrapper'
-import MobileWrapper from './MobileWrapper'
-
-import Menu from './Menu'
-import LinkHandler from '../LinkHandler'
+import DesktopMenu from './DesktopMenu'
+import MobileMenu from './MobileMenu'
 
 const styles = makeStyles(theme => ({
   root: {
@@ -20,16 +14,6 @@ const styles = makeStyles(theme => ({
     [theme.breakpoints.up('md')]: {
       boxShadow: '0px 5px 5px rgba(35, 35, 35, 0.1)',
     },
-  },
-  linkBox: {
-    boxSizing: 'border-box',
-    padding: '20px 22px 20px 12px',
-  },
-  logo: {
-    width: '262px',
-    height: '48px',
-    [theme.breakpoints.up('lg')]: {width: '450px', height: '82px'},
-    [theme.breakpoints.up('md')]: {width: '300px', height: '58px'},
   },
 }))
 
@@ -44,7 +28,7 @@ const Header = () => {
         homePageLinkText
         logo {
           fluid(
-            maxWidth: 450
+            maxWidth: 460
             cropFocus: CENTER
             resizingBehavior: FILL
             quality: 85
@@ -66,43 +50,28 @@ const Header = () => {
 }
 
 const HeaderComponent = ({
-  contentfulHeader: {
-    sections,
-    logo: {fluid, title},
-    homePageLinkText,
-  },
+  contentfulHeader: {sections, logo, homePageLinkText},
   contentfulFooter: {pages},
 }) => {
   const classes = styles()
 
   return (
     <AppBar className={classes.root} data-testid="header" position="relative">
-      <Box
-        display="flex"
-        justifyContent="space-between"
-        width="100%"
-        maxWidth={1620}
-        margin="auto"
-        className={classes.box}
-      >
-        <LinkHandler
-          url="/"
-          className={classes.linkBox}
-          aria-label={homePageLinkText}
-        >
-          <Image fluid={fluid} alt={title} className={classes.logo} />
-        </LinkHandler>
-        <Hidden implementation="css" mdUp>
-          <MobileWrapper footerLinks={pages}>
-            <Menu sections={sections} />
-          </MobileWrapper>
-        </Hidden>
-        <Hidden implementation="css" smDown>
-          <DesktopWrapper>
-            <Menu sections={sections} />
-          </DesktopWrapper>
-        </Hidden>
-      </Box>
+      <Hidden implementation="css" lgUp>
+        <MobileMenu
+          footerLinks={pages}
+          sections={sections}
+          logo={logo}
+          homePageLinkText={homePageLinkText}
+        />
+      </Hidden>
+      <Hidden implementation="css" mdDown>
+        <DesktopMenu
+          sections={sections}
+          logo={logo}
+          homePageLinkText={homePageLinkText}
+        />
+      </Hidden>
     </AppBar>
   )
 }

@@ -109,9 +109,6 @@ describe('Footer component', () => {
     )
     expect(getByText(/Houses of Parliament/g)).toBeDefined()
     expect(getByText('Here is an external link')).toBeDefined()
-    expect(
-      getByText(/Contact the Restoration and Renewal Programme team at/g),
-    ).toBeDefined()
   })
 
   it('should mask email address', () => {
@@ -126,7 +123,7 @@ describe('Footer component', () => {
     fireEvent.mouseOver(MailtoLink)
     expect(MailtoLink).toHaveAttribute(
       'href',
-      'mailto:restorationandrenewal@parliament.uk?subject=subject&body=body',
+      'mailto:restorationandrenewal@parliament.uk?body=body&subject=subject',
     )
   })
 })

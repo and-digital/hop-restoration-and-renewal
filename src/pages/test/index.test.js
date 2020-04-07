@@ -40,7 +40,8 @@ const heroData = {
     title: heroImageTitle,
     fluid: {
       base64: '',
-      aspectRatio: 100,
+      aspectRatio: 1000,
+      height: 400,
       src: '',
       srcSet: '',
       srcWebp: '',

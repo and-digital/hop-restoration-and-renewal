@@ -9,7 +9,7 @@ const isMasked = content => content.match(/obfuscated/)
 describe('Accessibility tests', () => {
   it('Has no detectable accessibility violations on load on header links', () => {
     cy.visit('/')
-    cy.get('header a').should('have.length', 7)
+    cy.get('header a').should('have.length', 8)
     cy.get('header a').each(item => {
       cy.visit(item[0].href)
         .get('main')
