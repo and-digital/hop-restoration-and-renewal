@@ -1,5 +1,6 @@
 import * as colors from './colors'
 const {
+  // General theme colors
   white,
   orange,
   oldWhite,
@@ -11,8 +12,20 @@ const {
   lilac,
   grey,
   lightGrey,
-  jewel,
   purple,
+  // Section colors
+  mint,
+  mint30,
+  mint40,
+  mint95,
+  stone,
+  stone30,
+  teal,
+  teal20,
+  teal30,
+  orange20,
+  lightPurple,
+  lightPurple30,
 } = colors
 
 export default {
@@ -40,12 +53,28 @@ export default {
   link: {
     main: purple,
     mobileMenu: oldWhite,
-    arrow: jewel,
+    arrow: purple,
     activeHighlight: white,
     activeHighlightBorder: orange,
   },
   text: {
     primary: nero,
     secondary: oldWhite,
+  },
+  colours: {
+    main: mint30,
+    mint: mint,
+    mint30: mint30,
+    mint40: mint40,
+    mint95: mint95,
+    stone: stone,
+    stone30: stone30,
+    teal: teal,
+    teal20: teal20,
+    teal30: teal30,
+    orange: orange,
+    orange20: orange20,
+    lightPurple: lightPurple,
+    lightPurple30: lightPurple30,
   },
 }

@@ -3,6 +3,11 @@ export default [
     title: 'Palace of Westminster',
     slug: 'palace',
     previewLinkName: 'link here',
+    theme: {
+      border: 'mint',
+      cardBackground: 'mint40',
+      contentBackground: 'mint30',
+    },
     childContentfulSectionPreviewContentRichTextNode: {
       json: {
         data: {},

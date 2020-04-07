@@ -5,43 +5,42 @@ import Image from 'gatsby-image'
 import Typography from '@material-ui/core/Typography'
 import RichText from '../RichText/RichText'
 import Box from '@material-ui/core/Box'
+import Grid from '@material-ui/core/Grid'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
-import Paper from '@material-ui/core/Paper'
-import {makeStyles} from '@material-ui/core/styles'
+import {makeStyles, useTheme} from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
-  sectionPreview: {
-    color: theme.palette.primary.main,
-    '& p': {
-      lineHeight: '22px',
-      [theme.breakpoints.up('md')]: {
-        lineHeight: '28px',
-      },
-    },
-  },
-  cardContent: {
-    marginTop: '24px',
-    marginBottom: '24px',
-    height: 294,
-    position: 'relative',
-  },
-  previewImage: {
-    height: '200px',
-    [theme.breakpoints.up('md')]: {
-      height: '220px',
-    },
-  },
   card: {
-    height: '562px',
-    padding: '20px',
-    position: 'relative',
-    [theme.breakpoints.up('md')]: {
-      height: '570px',
-      '& h2': {
-        fontSize: '24px',
-        lineHeight: '36px',
-        marginBottom: '9px',
-      },
+    height: '600px',
+    borderTop: `5px solid ${theme.palette.link.arrow}`,
+    [theme.breakpoints.up('sm')]: {
+      height: '360px',
+    },
+  },
+  sectionImage: {
+    height: '160px',
+    [theme.breakpoints.up('sm')]: {
+      height: '360px',
+    },
+  },
+  sectionContentWrapper: {
+    height: '404px',
+    [theme.breakpoints.up('sm')]: {
+      height: '324px',
+    },
+  },
+  sectionTitle: {
+    fontSize: '28px',
+  },
+  sectionTextWrapper: {
+    maxHeight: '330px',
+    [theme.breakpoints.up('sm')]: {
+      maxHeight: '280px',
+    },
+  },
+  sectionText: {
+    '& p': {
+      lineHeight: '32px',
     },
   },
   arrowIcon: {
@@ -50,16 +49,8 @@ const useStyles = makeStyles(theme => ({
     marginLeft: '8px',
   },
   link: {
-    textDecoration: 'none',
+    fontWeight: 'bold',
     color: theme.palette.link.main,
-  },
-  linkWrapper: {
-    position: 'absolute',
-    bottom: 0,
-  },
-  previewWrapper: {
-    maxHeight: '110px',
-    overflow: 'hidden',
   },
 }))
 
@@ -68,34 +59,53 @@ const SectionCard = ({
   sectionTitle,
   body,
   linkText,
+  background,
   slug,
 }) => {
   const classes = useStyles()
-
+  const theme = useTheme()
   return (
-    <Box>
-      <Paper className={classes.card}>
-        <Image fluid={fluid} alt={title} className={classes.previewImage} />
-        <Box className={classes.cardContent}>
-          <Box mb={1}>
-            <Typography variant="h2">{sectionTitle}</Typography>
-          </Box>
-          <Box mb={1} className={classes.previewWrapper}>
-            <RichText
-              className={classes.sectionPreview}
-              text={body}
-              aria-label="section description"
-            />
-          </Box>
-          <Box className={classes.linkWrapper}>
-            <LinkHandler className={classes.link} url={`/${slug}`}>
-              <Typography variant="body2">
-                {linkText} <ArrowForwardIcon className={classes.arrowIcon} />
+    <Box
+      className={classes.card}
+      bgcolor={theme.palette.colours[background]}
+      position="relative"
+    >
+      <Grid container direction="row">
+        <Grid item xs={12} sm={4}>
+          <Image fluid={fluid} alt={title} className={classes.sectionImage} />
+        </Grid>
+        <Grid item xs={12} sm={8}>
+          <Box
+            margin="18px"
+            position="relative"
+            className={classes.sectionContentWrapper}
+          >
+            <Box mb={1}>
+              <Typography variant="h3" className={classes.sectionTitle}>
+                {sectionTitle}
               </Typography>
-            </LinkHandler>
+            </Box>
+            <Box
+              mb={1}
+              overflow="hidden"
+              className={classes.sectionTextWrapper}
+            >
+              <RichText
+                className={classes.sectionText}
+                text={body}
+                aria-label="section description"
+              />
+            </Box>
+            <Box position="absolute" bottom="0">
+              <LinkHandler className={classes.link} url={`/${slug}`}>
+                <Typography variant="body1">
+                  {linkText} <ArrowForwardIcon className={classes.arrowIcon} />
+                </Typography>
+              </LinkHandler>
+            </Box>
           </Box>
-        </Box>
-      </Paper>
+        </Grid>
+      </Grid>
     </Box>
   )
 }
@@ -110,6 +120,7 @@ SectionCard.propTypes = {
   }).isRequired,
   slug: string.isRequired,
   linkText: string.isRequired,
+  background: string.isRequired,
   sectionTitle: string.isRequired,
 }
 
