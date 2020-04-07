@@ -6,7 +6,8 @@ import Typography from '@material-ui/core/Typography'
 import Image from 'gatsby-image'
 import RichText from '../RichText'
 import RichTextProvider from '../../providers/RichTextProvider'
-import Quote from '../../components/Quote'
+import Quote from '../Quote'
+import Hidden from '../Hidden/Hidden'
 
 const useStyles = makeStyles(theme => ({
   heroContainer: {
@@ -72,19 +73,20 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('md')]: {height: '605px'},
   },
   descriptionWrapper: {
-    padding: '30px 20px 40px',
-    backgroundColor: theme.palette.background.description,
-    [theme.breakpoints.up('md')]: {
-      padding: '50px 70px 30px',
+    maxWidth: '1620px',
+    margin: 'auto',
+    padding: '30px 20px 20px',
+    [theme.breakpoints.up('sm')]: {
+      paddingTop: '50px',
     },
     [theme.breakpoints.up('lg')]: {
-      display: 'flex',
-      justifyContent: 'center',
+      display: 'grid',
+      gridTemplateColumns: '2fr 1fr',
+      gridColumnGap: '40px',
     },
   },
-  homePageDescription: {
-    margin: 'auto',
-    maxWidth: '1000px',
+  descriptionBackground: {
+    backgroundColor: theme.palette.background.description,
   },
 }))
 
@@ -124,23 +126,18 @@ const HeroHomepage = ({
           </Box>
         </Box>
       </Box>
-      <Box className={classes.descriptionWrapper}>
-        <Box padding="20px">
-          <RichTextProvider bodyType="body2">
-            <RichText text={text} className={classes.homePageDescription} />
-          </RichTextProvider>
-        </Box>
-        <Box
-          display={{xs: 'none', lg: 'block'}}
-          maxWidth="450px"
-          padding="20px"
-        >
-          <Quote
-            quoteDescription={quoteDescription}
-            quoteAuthor={quoteAuthor}
-          />
-        </Box>
-      </Box>
+      <div className={classes.descriptionBackground}>
+        <div className={classes.descriptionWrapper}>
+          <div>
+            <RichTextProvider bodyType="h2">
+              <RichText text={text} />
+            </RichTextProvider>
+          </div>
+          <Hidden mdDown>
+            <Quote quoteText={quoteDescription} quoteAuthor={quoteAuthor} />
+          </Hidden>
+        </div>
+      </div>
     </>
   )
 }

@@ -1,24 +1,41 @@
 import React from 'react'
 import Typography from '@material-ui/core/Typography'
-import Box from '@material-ui/core/Box'
 import {string} from 'prop-types'
+import {makeStyles} from '@material-ui/core/styles'
 
-const Quote = ({quoteDescription, quoteAuthor}) => (
-  <>
-    <Box mb="35px">
-      <Typography variant="subtitle2">{quoteDescription}</Typography>
-    </Box>
-    <Typography variant="h3">{quoteAuthor}</Typography>
-  </>
-)
+const useStyles = makeStyles(theme => ({
+  quote: {
+    fontFamily: 'Brandon Text, Lato, Sans-Serif',
+    fontWeight: 'normal',
+    fontSize: '2rem',
+    lineHeight: '1.16',
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '2.3707rem',
+    },
+    [theme.breakpoints.up('md')]: {
+      fontSize: '2.8017rem',
+    },
+    [theme.breakpoints.up('lg')]: {
+      fontSize: '3.0172rem',
+    },
+    display: 'block',
+    marginBottom: '20px',
+  },
+}))
 
-Quote.propTypes = {
-  quoteDescription: string.isRequired,
-  quoteAuthor: string,
+const Quote = ({quoteText, quoteAuthor}) => {
+  const styles = useStyles()
+  return (
+    <div>
+      <q className={styles.quote}>{quoteText}</q>
+      <Typography variant="h4">{quoteAuthor}</Typography>
+    </div>
+  )
 }
 
-Quote.defaultProps = {
-  quoteAuthor: '',
+Quote.propTypes = {
+  quoteText: string.isRequired,
+  quoteAuthor: string.isRequired,
 }
 
 export default Quote
