@@ -1,42 +1,29 @@
 import React from 'react'
 import {object, shape, string} from 'prop-types'
-import Box from '@material-ui/core/Box'
 import {makeStyles} from '@material-ui/core/styles'
 import Image from 'gatsby-image'
 
 const useStyles = makeStyles(() => ({
-  heroContainer: {
-    position: 'relative',
-    height: 400,
-    width: '100%',
-    overflow: 'hidden',
-  },
   imageWrapper: {
-    width: '100%',
-    position: 'absolute',
-    top: '0',
-    left: '0',
-    '& .gatsby-image-wrapper': {
-      position: 'unset !important',
-    },
+    height: '388px',
   },
 }))
 
-const Hero = ({image: {title: heroImageTitle, fixed}}) => {
+const Hero = ({image: {title: heroImageTitle, fluid}}) => {
   const classes = useStyles()
   return (
-    <Box component="section" className={classes.heroContainer}>
-      <Box className={classes.imageWrapper}>
-        <Image fixed={fixed} alt={heroImageTitle} />
-      </Box>
-    </Box>
+    <Image
+      fluid={fluid}
+      alt={heroImageTitle}
+      className={classes.imageWrapper}
+    />
   )
 }
 
 Hero.propTypes = {
   image: shape({
     title: string.isRequired,
-    fixed: object.isRequired,
+    fluid: object.isRequired,
   }).isRequired,
 }
 

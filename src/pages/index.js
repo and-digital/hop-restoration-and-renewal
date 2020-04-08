@@ -111,7 +111,7 @@ export const query = graphql`
         image {
           title
           fluid(maxWidth: 1920) {
-            ...GatsbyContentfulFluid
+            ...GatsbyContentfulFluid_withWebp
           }
         }
         text {
