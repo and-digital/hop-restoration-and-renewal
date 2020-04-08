@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
     height: '600px',
     borderTop: `5px solid ${theme.palette.link.arrow}`,
     [theme.breakpoints.up('sm')]: {
-      height: '360px',
+      height: '365px',
     },
   },
   sectionImage: {
