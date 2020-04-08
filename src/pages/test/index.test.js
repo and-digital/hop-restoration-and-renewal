@@ -10,8 +10,8 @@ import mockHeader from '../../stubs/mockHeader'
 import mockIsMobile from '../../stubs/mockIsMobile'
 
 const heroImageTitle = 'Hero image title'
-
-const heroImageText = {
+const heroImageSubtitle = 'Hero image subtitle'
+const text = {
   json: {
     data: {},
     content: [
@@ -21,30 +21,41 @@ const heroImageText = {
           {
             data: {},
             marks: [],
-            value: 'Restoration and Renewal',
+            value:
+              'Description of the Houses of Parliament Restoration and Renewal program',
             nodeType: 'text',
           },
         ],
         nodeType: 'paragraph',
       },
     ],
+    nodeType: 'document',
   },
 }
+const quoteAuthor = 'Alan Turing'
+const quoteDescription = 'Remember to be kind'
 
 const heroData = {
   image: {
     title: heroImageTitle,
-    fixed: {
-      height: 605,
-      width: 605,
+    fluid: {
+      base64: '',
+      aspectRatio: 1000,
+      height: 400,
       src: '',
       srcSet: '',
-      srcSetWebp: '',
       srcWebp: '',
+      srcSetWebp: '',
+      sizes: '',
     },
   },
   title: heroImageTitle,
-  text: heroImageText,
+  subtitle: heroImageSubtitle,
+  text: text,
+  quote: {
+    quoteAuthor,
+    quoteDescription: {quoteDescription},
+  },
 }
 
 const homePageData = {
@@ -58,13 +69,12 @@ test('should show page title, main heading text and section links', async () => 
   mockSEO()
   mockHeader()
   mockFooter()
-  const title = 'Restoration and Renewal'
+
   const {getByText, getByTestId, getByAltText} = render(
     <IndexPage data={homePageData} />,
   )
-  expect(getByText(title)).toBeDefined()
+
   await waitForDomChange()
-  expect(document.title).toEqual(title)
   expect(getByTestId('header')).toBeDefined()
   expect(getByAltText(heroImageTitle)).toBeDefined()
   homePageData.contentfulTemplateHeroWithCards.cards.forEach(
@@ -90,13 +100,9 @@ test('successfully renders cards when in mobile view', async () => {
   mockSEO()
   mockHeader()
   mockFooter()
-  const title = 'Restoration and Renewal'
   const {getByText, getByTestId, getByAltText} = render(
     <IndexPage data={homePageData} />,
   )
-  expect(getByText(title)).toBeDefined()
-  await waitForDomChange()
-  expect(document.title).toEqual(title)
   expect(getByTestId('header')).toBeDefined()
   expect(getByAltText(heroImageTitle)).toBeDefined()
   homePageData.contentfulTemplateHeroWithCards.cards.forEach(
