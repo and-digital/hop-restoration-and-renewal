@@ -25,6 +25,28 @@ const heroData = {
       sizes: '(max-width: 1920px) 100vw, 1920px',
     },
   },
+  title: 'Palace of Westminster',
+  text: {
+    json: {
+      data: {},
+      content: [
+        {
+          data: {},
+          content: [
+            {
+              data: {},
+              marks: [],
+              value:
+                'The Restoration and Renewal of the Palace is a complex and large scale project affecting thousands of people. Our plan for the project is designed to minimise disruption and expense.',
+              nodeType: 'text',
+            },
+          ],
+          nodeType: 'paragraph',
+        },
+      ],
+      nodeType: 'document',
+    },
+  },
 }
 
 const data = {
