@@ -20,9 +20,9 @@ test('Should list just the last breadcrumb on mobile', () => {
   expect(queryByText(breadcrumbs[1].title)).toBeInTheDocument()
 })
 
-test('Should return null if the breadcrumbs array is empty', () => {
-  const {container} = render(
+test('Should return home if the breadcrumbs array is empty', () => {
+  const {queryByText} = render(
     <MobileBreadcrumbs breadcrumbs={[]} {...copyText} />,
   )
-  expect(container).toBeEmpty()
+  expect(queryByText('Home')).toBeInTheDocument()
 })

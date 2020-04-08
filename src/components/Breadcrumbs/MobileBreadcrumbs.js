@@ -5,18 +5,23 @@ import Box from '@material-ui/core/Box'
 import BreadcrumbLink from './BreadcrumbLink'
 
 const MobileBreadcrumbs = ({breadcrumbs, backText}) => {
-  const lastBreadcrumb = breadcrumbs[breadcrumbs.length - 1]
+  const lastBreadcrumb =
+    breadcrumbs.length === 0
+      ? {
+          slug: '',
+          title: 'Home',
+        }
+      : breadcrumbs[breadcrumbs.length - 1]
+
   return (
-    !!lastBreadcrumb && (
-      <Box>
-        <Typography variant="body1">
-          <span>{backText}</span>
-          <BreadcrumbLink url={`/${lastBreadcrumb.slug}`}>
-            {lastBreadcrumb.title}
-          </BreadcrumbLink>
-        </Typography>
-      </Box>
-    )
+    <Box>
+      <Typography variant="body1">
+        <span>{backText}</span>
+        <BreadcrumbLink url={`/${lastBreadcrumb.slug}`}>
+          {lastBreadcrumb.title}
+        </BreadcrumbLink>
+      </Typography>
+    </Box>
   )
 }
 
