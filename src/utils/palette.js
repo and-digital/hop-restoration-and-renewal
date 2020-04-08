@@ -7,14 +7,13 @@ const {
   whiteSmoke,
   deepPurple,
   oldLightPurple,
-  nero,
   oldPurple,
-  magenta,
   lilac,
   grey,
   lightGrey,
   purple,
   // Section colors
+  bodyDark,
   mint,
   mint30,
   mint40,
@@ -31,8 +30,8 @@ const {
 
 export default {
   primary: {
-    main: nero,
-    text: nero,
+    main: bodyDark,
+    text: bodyDark,
     cross: oldWhite,
     menuText: purple,
     subtitle: mint,
@@ -44,9 +43,10 @@ export default {
   background: {
     main: whiteSmoke,
     hero: deepPurple,
-    mobileHero: magenta,
+    mobileHero: purple,
     desktopMenu: oldWhite,
     mobileMenu: lilac,
+    description: mint30,
     card: oldWhite,
     footer: grey,
     cardBorder: oldPurple,
@@ -61,7 +61,7 @@ export default {
     activeHighlightBorder: orange,
   },
   text: {
-    primary: nero,
+    primary: bodyDark,
     secondary: oldWhite,
   },
   colours: {

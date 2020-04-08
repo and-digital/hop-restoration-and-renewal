@@ -27,6 +27,11 @@ export default theme => ({
     fontFamily: 'Brandon Text, Lato, Sans-Serif',
     fontWeight: 'bold',
   },
+  h6: {
+    fontSize: '28px',
+    fontFamily: 'Brandon Text, Lato, Sans-Serif',
+    lineHeight: '1.58',
+  },
   body1: {
     fontSize: '21px',
     fontFamily: 'Brandon Text, Lato, Sans-Serif',

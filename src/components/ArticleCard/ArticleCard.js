@@ -3,6 +3,7 @@ import {string, object, shape} from 'prop-types'
 import LinkHandler from '../LinkHandler'
 import Typography from '@material-ui/core/Typography'
 import RichText from '../RichText/RichText'
+import RichTextProvider from '../../providers/RichTextProvider'
 import Paper from '@material-ui/core/Paper'
 import Box from '@material-ui/core/Box'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward'
@@ -67,11 +68,13 @@ const ArticleCard = ({title, previewText, linkText, slug, sectionSlug}) => {
             <Typography variant="h2">{title}</Typography>
           </Box>
           <Box mb={1} className={classes.previewWrapper}>
-            <RichText
-              className={classes.articlePreview}
-              text={previewText}
-              aria-label="article description"
-            />
+            <RichTextProvider>
+              <RichText
+                className={classes.articlePreview}
+                text={previewText}
+                aria-label="article description"
+              />
+            </RichTextProvider>
           </Box>
           <Box className={classes.linkWrapper}>
             <LinkHandler

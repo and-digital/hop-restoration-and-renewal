@@ -1,9 +1,10 @@
 import React from 'react'
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
-import RichText from '../../components/RichText'
+import RichText from '../RichText'
 import {makeStyles} from '@material-ui/core/styles'
 import {string, shape, object} from 'prop-types'
+import RichTextProvider from '../../providers/RichTextProvider'
 
 const useStyles = makeStyles(() => ({
   title: {
@@ -18,7 +19,9 @@ const PageIntro = ({title, text}) => {
       <Typography variant="h1" className={classes.title}>
         {title}
       </Typography>
-      <RichText text={text} />
+      <RichTextProvider>
+        <RichText text={text} />
+      </RichTextProvider>
     </Box>
   )
 }
