@@ -3,16 +3,16 @@ import {node} from 'prop-types'
 import LinkHandler from '../LinkHandler'
 import {makeStyles} from '@material-ui/core/styles'
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   breadcrumbLink: {
-    color: theme.palette.primary.text,
+    fontWeight: 'bold',
   },
 }))
 
 const BreadcrumbLink = ({children, ...props}) => {
-  const styles = useStyles()
+  const classes = useStyles()
   return (
-    <LinkHandler {...props} className={styles.breadcrumbLink}>
+    <LinkHandler {...props} className={classes.breadcrumbLink}>
       {children}
     </LinkHandler>
   )
