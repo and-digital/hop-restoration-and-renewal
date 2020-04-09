@@ -41,7 +41,7 @@ const SplitMenu = ({activeSection, items}) => {
       })}
       data-cy="navigation-link"
     >
-      <Typography variant="h3">{name}</Typography>
+      <Typography variant="h4">{name}</Typography>
     </LinkHandler>
   ))
 }
