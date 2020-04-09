@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     height: '100%',
     textAlign: 'left',
-    [theme.breakpoints.up('md')]: {
+    [theme.breakpoints.up('sm')]: {
       display: 'flex',
       textAlign: 'center',
     },
@@ -67,6 +67,17 @@ const useStyles = makeStyles(theme => ({
   },
   heroSubtitle: {
     color: theme.palette.primary.subtitle,
+    fontSize: '28px',
+    lineHeight: '1.33',
+
+    [theme.breakpoints.up('md')]: {
+      fontSize: '36px',
+    },
+
+    [theme.breakpoints.up('lg')]: {
+      fontSize: '48px',
+      lineHeight: '1.5',
+    },
   },
   heroImage: {
     height: 'auto',
